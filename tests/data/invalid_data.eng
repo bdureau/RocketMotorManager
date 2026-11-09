@@ -1,0 +1,6 @@
+; invalid: non numeric value on line 5
+B6 18 70 0-2-4 0.0056 0.0189 Estes
+0.023 0.688
+0.057 2.457
+0.089 abc
+0.85 0
