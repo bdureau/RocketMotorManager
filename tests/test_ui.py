@@ -245,3 +245,32 @@ def test_corrupted_preferences_fall_back_to_defaults(tmp_path):
     path.write_text('{"theme": 5, "print_dpi": "high", "show_grid": false}')
     prefs = ConfigurationManager(path).load()
     assert prefs.theme == "light" and prefs.print_dpi == 300 and prefs.show_grid is False
+
+
+def test_plot_rescales_when_points_added(window, controller):
+    """Regression: a point entered above the current maximum must stay visible."""
+    plot = window.thrust_editor.plot
+    controller.document.set_points([ThrustPoint(0.0, 0.0), ThrustPoint(0.5, 10.0), ThrustPoint(1.0, 0.0)])
+    assert plot.axes.get_ylim()[1] < 15
+    controller.document.add_point(ThrustPoint(0.7, 50.0))
+    assert plot.axes.get_ylim()[1] >= 50
+    controller.document.add_point(ThrustPoint(3.0, 0.0))
+    assert plot.axes.get_xlim()[1] >= 3.0
+    table = window.thrust_editor.table
+    assert table.model.setData(table.model.index(1, 1), "120")  # typed in the table
+    assert plot.axes.get_ylim()[1] >= 120
+    controller.document.undo_stack.undo()  # axes shrink back automatically
+    assert plot.axes.get_ylim()[1] < 70
+
+
+def test_plot_manual_zoom_kept_but_enlarged(window, controller):
+    plot = window.thrust_editor.plot
+    controller.document.set_points([ThrustPoint(0.0, 0.0), ThrustPoint(0.5, 10.0), ThrustPoint(1.0, 0.0)])
+    plot.axes.set_xlim(0.2, 0.6)
+    plot.axes.set_ylim(5, 12)
+    plot._mark_user_view()  # as after a zoom with the toolbar
+    controller.document.update_point(1, ThrustPoint(0.5, 11.0))
+    assert plot.axes.get_xlim()[0] == pytest.approx(0.0, abs=0.05)  # enlarged to show every point
+    assert not plot.is_auto_scaled()
+    plot.reset_zoom()
+    assert plot.is_auto_scaled()

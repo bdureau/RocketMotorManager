@@ -27,6 +27,7 @@ from models.validation import ValidationReport, validate_motor
 from services.csv_service import CsvExportOptions, CsvService
 from services.eng_service import EngReadResult, EngService
 from services.excel_service import ExcelService
+from services.srm_service import SrmService
 from services.thrust_analysis import ThrustAnalysisService
 from services.xml_service import XmlLoadResult, XmlService
 
@@ -211,6 +212,7 @@ class ApplicationController(QObject):
         self.eng_service = EngService()
         self.csv_service = CsvService()
         self.excel_service = ExcelService()
+        self.srm_service = SrmService(self.excel_service)
         self.xml_service = XmlService()
         self.document = MotorDocument(self._make_analysis_service())
         self.new_motor()

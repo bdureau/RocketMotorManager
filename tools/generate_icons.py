@@ -115,7 +115,7 @@ def write_app_icon() -> None:
     from PyQt6.QtGui import QGuiApplication, QImage, QPainter
     from PyQt6.QtSvg import QSvgRenderer
 
-    _app = QGuiApplication.instance() or QGuiApplication(sys.argv[:1])
+    app = QGuiApplication.instance() or QGuiApplication(sys.argv[:1])  # noqa: F841 - must stay alive
     renderer = QSvgRenderer(str(ICON_DIR / "app.svg"))
     image = QImage(256, 256, QImage.Format.Format_ARGB32)
     image.fill(Qt.GlobalColor.transparent)

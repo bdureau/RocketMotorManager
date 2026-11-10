@@ -80,6 +80,28 @@ class ExcelService:
         table.rows = rows
         return table
 
+    def read_grids(self, path: PathLike, sheets: list[str]) -> dict[str, list[list[Any]]]:
+        """Read several worksheets as raw cell grids (no header detection,
+        no trimming), opening the workbook only once.
+
+        Empty cells are ``None``. Used by the structured importers (SRM
+        workbooks) that locate values by their labels.
+        """
+        engine = self.engine_for(path)
+        grids: dict[str, list[list[Any]]] = {}
+        try:
+            with pd.ExcelFile(path, engine=engine) as workbook:
+                for sheet in sheets:
+                    frame = workbook.parse(sheet_name=sheet, header=None, dtype=object)
+                    grids[sheet] = [[self._clean(v) for v in row] for row in frame.itertuples(index=False, name=None)]
+        except FileNotFoundError as exc:
+            raise FileAccessError(f"File not found: {path}") from exc
+        except PermissionError as exc:
+            raise FileAccessError(f"Permission denied (is the file open in Excel?): {path}") from exc
+        except Exception as exc:
+            raise FileFormatError(f"Cannot read workbook '{path}': {exc}") from exc
+        return grids
+
     @staticmethod
     def _clean(value: Any) -> Any:
         """Normalise empty cells (NaN, NaT, empty strings) to None."""

@@ -1219,628 +1219,671 @@
 </context><context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../ui/main_window.py" line="79" />
+        <location filename="../../ui/main_window.py" line="82" />
         <source>Motor properties</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="102" />
+        <location filename="../../ui/main_window.py" line="105" />
         <source>&amp;New Motor</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="102" />
+        <location filename="../../ui/main_window.py" line="105" />
         <source>Create a new empty motor</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="103" />
+        <location filename="../../ui/main_window.py" line="106" />
         <source>&amp;Open Motor...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="103" />
+        <location filename="../../ui/main_window.py" line="106" />
         <source>Open a motor project (XML)</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="104" />
+        <location filename="../../ui/main_window.py" line="107" />
         <source>&amp;Save Motor</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="104" />
+        <location filename="../../ui/main_window.py" line="107" />
         <source>Save the motor project</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="105" />
+        <location filename="../../ui/main_window.py" line="108" />
         <source>Save Motor &amp;As...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="105" />
+        <location filename="../../ui/main_window.py" line="108" />
         <source>Save the project under a new name</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="106" />
+        <location filename="../../ui/main_window.py" line="109" />
         <source>Import &amp;ENG...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="106" />
+        <location filename="../../ui/main_window.py" line="109" />
         <source>Import a RASP .eng thrust curve file</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="107" />
+        <location filename="../../ui/main_window.py" line="110" />
         <source>E&amp;xport as ENG...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="107" />
+        <location filename="../../ui/main_window.py" line="110" />
         <source>Export the motor as an OpenRocket/RockSim .eng file</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="108" />
+        <location filename="../../ui/main_window.py" line="111" />
         <source>Import &amp;CSV...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="108" />
+        <location filename="../../ui/main_window.py" line="111" />
         <source>Import thrust points from a CSV or text file</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="109" />
+        <location filename="../../ui/main_window.py" line="112" />
         <source>Export CS&amp;V...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="109" />
+        <location filename="../../ui/main_window.py" line="112" />
         <source>Export the thrust points to a CSV file</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="110" />
+        <location filename="../../ui/main_window.py" line="113" />
         <source>Import Exce&amp;l...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="110" />
+        <location filename="../../ui/main_window.py" line="113" />
         <source>Import thrust points from an Excel workbook (.xlsx, .xls)</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="111" />
-        <source>Import Thrust Curve &amp;Image...</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../../ui/main_window.py" line="111" />
-        <source>Digitize a thrust curve from a photo or scan</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../../ui/main_window.py" line="112" />
-        <source>Export &amp;Graph...</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../../ui/main_window.py" line="112" />
-        <source>Export the thrust curve as PNG, SVG or PDF</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../../ui/main_window.py" line="113" />
-        <source>E&amp;xit</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <location filename="../../ui/main_window.py" line="113" />
-        <source>Quit the application</source>
+        <location filename="../../ui/main_window.py" line="114" />
+        <source>Import &amp;SRM Workbook (Nakka)...</source>
         <translation type="unfinished" />
     </message>
     <message>
         <location filename="../../ui/main_window.py" line="115" />
-        <source>&amp;Undo</source>
+        <source>Import motor data and thrust curve from a Richard Nakka SRM design workbook (SRM 1.x, SRM 2023)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="116" />
+        <source>Import Thrust Curve &amp;Image...</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="116" />
+        <source>Digitize a thrust curve from a photo or scan</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="117" />
+        <source>Export &amp;Graph...</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="117" />
+        <source>Export the thrust curve as PNG, SVG or PDF</source>
         <translation type="unfinished" />
     </message>
     <message>
         <location filename="../../ui/main_window.py" line="118" />
+        <source>E&amp;xit</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="118" />
+        <source>Quit the application</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="120" />
+        <source>&amp;Undo</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="123" />
         <source>&amp;Redo</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="122" />
+        <location filename="../../ui/main_window.py" line="127" />
         <source>&amp;Add Thrust Point</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="122" />
+        <location filename="../../ui/main_window.py" line="127" />
         <source>Add a thrust point after the selection</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="123" />
+        <location filename="../../ui/main_window.py" line="128" />
         <source>&amp;Delete Thrust Point</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="123" />
+        <location filename="../../ui/main_window.py" line="128" />
         <source>Delete the selected thrust point(s)</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="124" />
+        <location filename="../../ui/main_window.py" line="129" />
         <source>Select &amp;All</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="124" />
+        <location filename="../../ui/main_window.py" line="129" />
         <source>Select every thrust point</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="125" />
+        <location filename="../../ui/main_window.py" line="130" />
         <source>&amp;Sort Points</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="125" />
+        <location filename="../../ui/main_window.py" line="130" />
         <source>Sort the thrust points chronologically</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="126" />
+        <location filename="../../ui/main_window.py" line="131" />
         <source>&amp;Preferences...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="126" />
+        <location filename="../../ui/main_window.py" line="131" />
         <source>Application preferences</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="128" />
+        <location filename="../../ui/main_window.py" line="133" />
         <source>Show Thrust &amp;Graph</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="128" />
+        <location filename="../../ui/main_window.py" line="133" />
         <source>Show or hide the thrust curve</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="129" />
+        <location filename="../../ui/main_window.py" line="134" />
         <source>Show Data &amp;Table</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="129" />
+        <location filename="../../ui/main_window.py" line="134" />
         <source>Show or hide the thrust data table</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="131" />
+        <location filename="../../ui/main_window.py" line="136" />
         <source>Show Motor &amp;Properties</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="132" />
+        <location filename="../../ui/main_window.py" line="137" />
         <source>&amp;Reset Graph Zoom</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="132" />
+        <location filename="../../ui/main_window.py" line="137" />
         <source>Fit the graph to the data</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="133" />
+        <location filename="../../ui/main_window.py" line="138" />
         <source>Show &amp;Grid</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="133" />
+        <location filename="../../ui/main_window.py" line="138" />
         <source>Show or hide the graph grid</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="137" />
+        <location filename="../../ui/main_window.py" line="142" />
         <source>Print Pre&amp;view...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="137" />
+        <location filename="../../ui/main_window.py" line="142" />
         <source>Preview the label sheet</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="138" />
+        <location filename="../../ui/main_window.py" line="143" />
         <source>Print &amp;PDF...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="138" />
+        <location filename="../../ui/main_window.py" line="143" />
         <source>Export the label sheet as PDF</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="139" />
+        <location filename="../../ui/main_window.py" line="144" />
         <source>Export Label as P&amp;NG...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="139" />
+        <location filename="../../ui/main_window.py" line="144" />
         <source>Export the label as a PNG image</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="140" />
+        <location filename="../../ui/main_window.py" line="145" />
         <source>Export Label as &amp;JPEG...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="140" />
+        <location filename="../../ui/main_window.py" line="145" />
         <source>Export the label as a JPEG image</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="142" />
+        <location filename="../../ui/main_window.py" line="147" />
         <source>Thrust &amp;Analysis...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="142" />
+        <location filename="../../ui/main_window.py" line="147" />
         <source>Compute and display the motor characteristics</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="143" />
+        <location filename="../../ui/main_window.py" line="148" />
         <source>Curve &amp;Digitizer...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="143" />
+        <location filename="../../ui/main_window.py" line="148" />
         <source>Digitize a thrust curve from an image</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="144" />
+        <location filename="../../ui/main_window.py" line="149" />
         <source>&amp;Label Designer...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="144" />
+        <location filename="../../ui/main_window.py" line="149" />
         <source>Design and print motor labels</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="145" />
+        <location filename="../../ui/main_window.py" line="150" />
         <source>Data &amp;Validation...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="145" />
+        <location filename="../../ui/main_window.py" line="150" />
         <source>Check the motor data for errors</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="147" />
+        <location filename="../../ui/main_window.py" line="152" />
         <source>&amp;Manual</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="147" />
+        <location filename="../../ui/main_window.py" line="152" />
         <source>Open the PDF user manual</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="148" />
+        <location filename="../../ui/main_window.py" line="153" />
         <source>&amp;Documentation</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="148" />
+        <location filename="../../ui/main_window.py" line="153" />
         <source>Open the technical documentation folder</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="149" />
+        <location filename="../../ui/main_window.py" line="154" />
         <source>&amp;About...</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="149" />
+        <location filename="../../ui/main_window.py" line="154" />
         <source>About Rocket Motor Manager</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="153" />
+        <location filename="../../ui/main_window.py" line="158" />
         <source>&amp;File</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="157" />
+        <location filename="../../ui/main_window.py" line="162" />
         <source>Recent &amp;Files</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="162" />
+        <location filename="../../ui/main_window.py" line="167" />
         <source>&amp;Edit</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="166" />
+        <location filename="../../ui/main_window.py" line="171" />
         <source>&amp;View</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="170" />
+        <location filename="../../ui/main_window.py" line="175" />
         <source>&amp;Print</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="174" />
+        <location filename="../../ui/main_window.py" line="179" />
         <source>&amp;Tools</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="178" />
+        <location filename="../../ui/main_window.py" line="183" />
         <source>&amp;Help</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="183" />
+        <location filename="../../ui/main_window.py" line="188" />
         <source>Main toolbar</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="191" />
+        <location filename="../../ui/main_window.py" line="196" />
         <source>Import</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="191" />
+        <location filename="../../ui/main_window.py" line="196" />
         <source>Import ENG, CSV, Excel or an image</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="193" />
+        <location filename="../../ui/main_window.py" line="198" />
         <source>Export</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="193" />
+        <location filename="../../ui/main_window.py" line="198" />
         <source>Export ENG, CSV or the graph</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="199" />
+        <location filename="../../ui/main_window.py" line="204" />
         <source>Analyze</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="199" />
+        <location filename="../../ui/main_window.py" line="204" />
         <source>Digitize</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="199" />
+        <location filename="../../ui/main_window.py" line="204" />
         <source>Label</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="203" />
+        <location filename="../../ui/main_window.py" line="208" />
         <source>Add Point</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="204" />
+        <location filename="../../ui/main_window.py" line="209" />
         <source>Delete Point</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="268" />
+        <location filename="../../ui/main_window.py" line="273" />
         <source>Not saved</source>
         <translation type="unfinished" />
     </message>
     <message numerus="yes">
-        <location filename="../../ui/main_window.py" line="274" />
+        <location filename="../../ui/main_window.py" line="279" />
         <source>%n point(s)</source>
         <translation type="unfinished">
             <numerusform />
         </translation>
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="292" />
+        <location filename="../../ui/main_window.py" line="297" />
         <source>Clear list</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="303" />
+        <location filename="../../ui/main_window.py" line="308" />
         <source>Unsaved changes</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="304" />
+        <location filename="../../ui/main_window.py" line="309" />
         <source>The motor '%1' has unsaved changes.
 Do you want to save them?</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="340" />
+        <location filename="../../ui/main_window.py" line="345" />
         <source>'%1' already exists. Replace it?</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="364" />
+        <location filename="../../ui/main_window.py" line="369" />
         <source>Open motor project</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="371" />
+        <location filename="../../ui/main_window.py" line="376" />
         <source>Recent files</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="371" />
+        <location filename="../../ui/main_window.py" line="376" />
         <source>The file no longer exists:
 %1</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="394" />
+        <location filename="../../ui/main_window.py" line="399" />
         <source>Opened %1</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="397" />
+        <location filename="../../ui/main_window.py" line="402" />
         <source>Cannot open the file.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="408" />
+        <location filename="../../ui/main_window.py" line="413" />
         <source>Save motor project</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="418" />
+        <location filename="../../ui/main_window.py" line="423" />
         <source>The project could not be saved.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="420" />
+        <location filename="../../ui/main_window.py" line="425" />
         <source>Saved %1</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="427" />
+        <location filename="../../ui/main_window.py" line="432" />
         <source>Import ENG file</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="432" />
+        <location filename="../../ui/main_window.py" line="437" />
         <source>Cannot import the ENG file.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="439" />
+        <location filename="../../ui/main_window.py" line="444" />
         <source>Select a motor</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="440" />
+        <location filename="../../ui/main_window.py" line="445" />
         <source>This file contains several motors:</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="447" />
+        <location filename="../../ui/main_window.py" line="452" />
         <source>ENG import</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="448" />
+        <location filename="../../ui/main_window.py" line="453" />
         <source>Imported %1 from %2</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="455" />
+        <location filename="../../ui/main_window.py" line="460" />
         <source>ENG export - validation</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="456" />
+        <location filename="../../ui/main_window.py" line="461" />
         <source>Export anyway</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="463" />
+        <location filename="../../ui/main_window.py" line="468" />
         <source>Export as ENG</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="471" />
+        <location filename="../../ui/main_window.py" line="476" />
         <source>ENG file exported: %1</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="475" />
+        <location filename="../../ui/main_window.py" line="480" />
         <source>Import CSV file</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="481" />
+        <location filename="../../ui/main_window.py" line="486" />
         <source>Import Excel file</source>
         <translation type="unfinished" />
     </message>
     <message>
         <location filename="../../ui/main_window.py" line="495" />
-        <source>Replace thrust data</source>
+        <source>SRM workbook detected</source>
         <translation type="unfinished" />
     </message>
     <message>
         <location filename="../../ui/main_window.py" line="496" />
+        <source>'%1' is a Richard Nakka SRM motor design workbook.
+
+Yes: import the motor (properties and thrust curve) from its sheets.
+No: import columns manually as a plain table.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="510" />
+        <source>Import SRM workbook</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="518" />
+        <source>Reading SRM workbook %1...</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="529" />
+        <source>Cannot import the SRM workbook.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="540" />
+        <source>Imported %1 from SRM workbook %2</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="552" />
+        <source>Replace thrust data</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/main_window.py" line="553" />
         <source>Replace the %1 current thrust point(s) with %2 imported point(s)?
 (This can be undone with Ctrl+Z.)</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="503" />
+        <location filename="../../ui/main_window.py" line="560" />
         <source>%1 point(s) imported from %2</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="514" />
-        <location filename="../../ui/main_window.py" line="509" />
+        <location filename="../../ui/main_window.py" line="571" />
+        <location filename="../../ui/main_window.py" line="566" />
         <source>Export CSV</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="509" />
+        <location filename="../../ui/main_window.py" line="566" />
         <source>There is no thrust point to export.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="522" />
+        <location filename="../../ui/main_window.py" line="579" />
         <source>CSV file exported: %1</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="526" />
+        <location filename="../../ui/main_window.py" line="583" />
         <source>Import thrust curve image</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="533" />
+        <location filename="../../ui/main_window.py" line="590" />
         <source>Export graph</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="541" />
+        <location filename="../../ui/main_window.py" line="598" />
         <source>The graph could not be exported.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="543" />
+        <location filename="../../ui/main_window.py" line="600" />
         <source>Graph exported: %1</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="599" />
+        <location filename="../../ui/main_window.py" line="656" />
         <source>the curve digitizer</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="656" />
+        <location filename="../../ui/main_window.py" line="713" />
         <source>Manual</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../ui/main_window.py" line="656" />
+        <location filename="../../ui/main_window.py" line="713" />
         <source>The user manual was not found:
 %1</source>
         <translation type="unfinished" />
@@ -2111,6 +2154,252 @@ Do you want to save them?</source>
         <translation type="unfinished" />
     </message>
 </context><context>
+    <name>SrmImportDialog</name>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="40" />
+        <source>Import SRM workbook - %1</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="56" />
+        <source>Grey: full resolution curve of the workbook. Blue: points that will be imported.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="58" />
+        <source>Characteristic</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="58" />
+        <source>SRM workbook</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="58" />
+        <source>Imported curve</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="62" />
+        <source>Cross-check between the values computed by the SRM workbook and the values recomputed from the imported thrust curve.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="79" />
+        <source>Import motor</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="88" />
+        <source>Workbook content</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="91" />
+        <source>Version</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="92" />
+        <source>Title</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="93" />
+        <source>Propellant</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="94" />
+        <source>Grain mass</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="95" />
+        <source>Chamber (inside)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="103" />
+        <source>Nozzle length</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="114" />
+        <source>Motor properties to complete</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="117" />
+        <source>Motor code written in the ENG file. Proposed from the class and the average thrust.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="119" />
+        <source>required for ENG export (e.g. your name or club)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="120" />
+        <source>The SRM workbook does not contain a manufacturer.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="122" />
+        <source>Ejection delays separated by '-'. 'P' = plugged (no ejection charge), usual for amateur motors with electronic deployment.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="126" />
+        <source>Casing OUTSIDE diameter in mm. Pre-filled with the chamber inside diameter of the workbook: add twice the casing wall thickness.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="133" />
+        <source>Overall motor length in mm. Pre-filled with the chamber length (plus the nozzle length when the workbook gives it).</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="136" />
+        <source>Empty casing mass in grams (not in the workbook). Needed for the total mass.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="138" />
+        <source>Nozzle and closure mass in grams (not in the workbook).</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="139" />
+        <source>Motor name</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="140" />
+        <source>Manufacturer</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="141" />
+        <source>Ejection delays</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="142" />
+        <source>Outside diameter (mm)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="143" />
+        <source>Overall length (mm)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="144" />
+        <source>Casing mass (g)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="145" />
+        <source>Nozzle and closure mass (g)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="149" />
+        <source>Thrust curve</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="156" />
+        <source>Performance sheet: the curve computed by SRM (about 900 points, exact total impulse).
+Simplified: only the points needed to stay within the tolerance (compact ENG files).
+Output sheet: the 23-point summary table of the workbook (coarser, impulse slightly lower).</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="166" />
+        <source>Maximum thrust deviation allowed by the simplification.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="170" />
+        <source>Number of equally spaced points of the resampled curve.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="171" />
+        <source>Source</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="172" />
+        <source>Simplification</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="173" />
+        <source>Points</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="197" />
+        <source>Workbook curve</source>
+        <translation type="unfinished" />
+    </message>
+    <message numerus="yes">
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="199" />
+        <source>Imported (%n points)</source>
+        <translation type="unfinished">
+            <numerusform />
+        </translation>
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="213" />
+        <source>Total impulse (N.s)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="214" />
+        <source>Maximum thrust (N)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="215" />
+        <source>Average thrust (N)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="216" />
+        <source>Thrust time (s)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="217" />
+        <source>Specific impulse (s)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="225" />
+        <source>Motor class</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="226" />
+        <source>Number of points</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="235" />
+        <source>SRM import</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <location filename="../../ui/dialogs/srm_import_dialog.py" line="235" />
+        <source>The selected thrust curve has fewer than two points.</source>
+        <translation type="unfinished" />
+    </message>
+</context><context>
     <name>TabularImportDialog</name>
     <message>
         <location filename="../../ui/dialogs/tabular_import_dialog.py" line="48" />
@@ -2270,33 +2559,33 @@ Do you want to save them?</source>
 </context><context>
     <name>ThrustPlotWidget</name>
     <message>
-        <location filename="../../widgets/thrust_plot.py" line="79" />
+        <location filename="../../widgets/thrust_plot.py" line="106" />
         <source>Thrust curve. Drag a point to move it, double-click to add a point, right-click a point to delete it. Use the toolbar to zoom and pan.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../widgets/thrust_plot.py" line="85" />
+        <location filename="../../widgets/thrust_plot.py" line="112" />
         <source>Move the cursor over the graph</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../widgets/thrust_plot.py" line="86" />
+        <location filename="../../widgets/thrust_plot.py" line="113" />
         <source>Cursor position (time, thrust) and interpolated thrust of the curve at that time.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../widgets/thrust_plot.py" line="173" />
+        <location filename="../../widgets/thrust_plot.py" line="236" />
         <source>No thrust data
 Add points, import a file or digitize an image</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../widgets/thrust_plot.py" line="312" />
+        <location filename="../../widgets/thrust_plot.py" line="378" />
         <source>Delete point</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <location filename="../../widgets/thrust_plot.py" line="314" />
+        <location filename="../../widgets/thrust_plot.py" line="380" />
         <source>Duplicate point</source>
         <translation type="unfinished" />
     </message>

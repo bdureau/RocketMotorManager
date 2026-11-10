@@ -7,7 +7,7 @@ import logging
 from pathlib import Path
 from typing import Callable, Optional
 
-from PyQt6.QtCore import QByteArray, QSize, Qt, QUrl
+from PyQt6.QtCore import QByteArray, QSize, Qt, QThreadPool, QUrl
 from PyQt6.QtGui import QAction, QCloseEvent, QDesktopServices, QDragEnterEvent, QDropEvent, QKeySequence
 from PyQt6.QtWidgets import (
     QApplication, QDockWidget, QFileDialog, QInputDialog, QLabel, QMainWindow, QMenu, QMessageBox, QToolBar,
@@ -16,6 +16,7 @@ from PyQt6.QtWidgets import (
 
 from application.application_controller import ApplicationController
 from application.error_handler import reporter
+from application.workers import TaskWorker
 from application.paths import resource_path
 from application.version import APP_NAME
 from models.errors import RocketMotorError
@@ -29,6 +30,7 @@ from ui.common import icon
 from ui.dialogs.about_dialog import AboutDialog
 from ui.dialogs.analysis_dialog import AnalysisDialog
 from ui.dialogs.csv_export_dialog import CsvExportDialog
+from ui.dialogs.srm_import_dialog import SrmImportDialog
 from ui.dialogs.tabular_import_dialog import TabularImportDialog
 from ui.dialogs.validation_dialog import ValidationDialog
 from ui.digitizer_window import DigitizerWindow
@@ -45,6 +47,7 @@ PROJECT_FILTER = "Rocket Motor Manager project (*.rmm.xml *.xml)"
 ENG_FILTER = "RASP engine files (*.eng *.ENG)"
 CSV_FILTER = "CSV / text files (*.csv *.txt *.tsv *.dat)"
 EXCEL_FILTER = "Excel workbooks (*.xlsx *.xlsm *.xls)"
+SRM_FILTER = "SRM workbooks (Richard Nakka) (*.xls *.xlsx *.xlsm)"
 
 
 class MainWindow(QMainWindow):
@@ -108,6 +111,8 @@ class MainWindow(QMainWindow):
         a("import_csv", self.tr("Import &CSV..."), self.import_csv, "csv", None, self.tr("Import thrust points from a CSV or text file"))
         a("export_csv", self.tr("Export CS&V..."), self.export_csv, "csv", None, self.tr("Export the thrust points to a CSV file"))
         a("import_excel", self.tr("Import Exce&l..."), self.import_excel, "csv", None, self.tr("Import thrust points from an Excel workbook (.xlsx, .xls)"))
+        a("import_srm", self.tr("Import &SRM Workbook (Nakka)..."), self.import_srm, "eng", None,
+          self.tr("Import motor data and thrust curve from a Richard Nakka SRM design workbook (SRM 1.x, SRM 2023)"))
         a("import_image", self.tr("Import Thrust Curve &Image..."), self.import_image, "image", None, self.tr("Digitize a thrust curve from a photo or scan"))
         a("export_graph", self.tr("Export &Graph..."), self.export_graph, "image", None, self.tr("Export the thrust curve as PNG, SVG or PDF"))
         a("exit", self.tr("E&xit"), self.close, "exit", sk.Quit, self.tr("Quit the application"))
@@ -152,7 +157,7 @@ class MainWindow(QMainWindow):
         bar = self.menuBar()
         file_menu = bar.addMenu(self.tr("&File"))
         for key in ("new", "open", "save", "save_as", None, "import_eng", "export_eng", None, "import_csv", "export_csv",
-                    "import_excel", None, "import_image", "export_graph", None):
+                    "import_excel", "import_srm", None, "import_image", "export_graph", None):
             file_menu.addSeparator() if key is None else file_menu.addAction(self.actions[key])
         self.recent_menu = file_menu.addMenu(icon("open"), self.tr("Recent &Files"))
         file_menu.addSeparator()
@@ -189,7 +194,7 @@ class MainWindow(QMainWindow):
             toolbar.addAction(self.actions[key])
         toolbar.addSeparator()
         toolbar.addWidget(self._menu_button(self.tr("Import"), "import", self.tr("Import ENG, CSV, Excel or an image"),
-                                            ("import_eng", "import_csv", "import_excel", "import_image")))
+                                            ("import_eng", "import_csv", "import_excel", "import_srm", "import_image")))
         toolbar.addWidget(self._menu_button(self.tr("Export"), "export", self.tr("Export ENG, CSV or the graph"),
                                             ("export_eng", "export_csv", "export_graph")))
         toolbar.addSeparator()
@@ -383,7 +388,7 @@ class MainWindow(QMainWindow):
             if suffix in (".csv", ".txt", ".tsv", ".dat"):
                 return self._import_tabular(path, "csv")
             if suffix in (".xlsx", ".xlsm", ".xls"):
-                return self._import_tabular(path, "excel")
+                return self._import_excel_path(path)
             if suffix in (".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp"):
                 self.show_digitizer(path)
                 return True
@@ -480,7 +485,59 @@ class MainWindow(QMainWindow):
         """File > Import Excel."""
         path = self._ask_open(self.tr("Import Excel file"), EXCEL_FILTER)
         if path:
-            self._import_tabular(path, "excel")
+            self._import_excel_path(path)
+
+    def _import_excel_path(self, path: str) -> bool:
+        """Import an Excel file, offering the structured SRM import when the
+        workbook is a Richard Nakka SRM workbook."""
+        if self.controller.srm_service.is_srm_workbook(path):
+            answer = QMessageBox.question(
+                self, self.tr("SRM workbook detected"),
+                self.tr("'%1' is a Richard Nakka SRM motor design workbook.\n\n"
+                        "Yes: import the motor (properties and thrust curve) from its sheets.\n"
+                        "No: import columns manually as a plain table.").replace("%1", Path(path).name),
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No | QMessageBox.StandardButton.Cancel,
+                QMessageBox.StandardButton.Yes,
+            )
+            if answer == QMessageBox.StandardButton.Yes:
+                return self._import_srm(path)
+            if answer != QMessageBox.StandardButton.No:
+                return False
+        return self._import_tabular(path, "excel")
+
+    def import_srm(self) -> None:
+        """File > Import SRM Workbook."""
+        path = self._ask_open(self.tr("Import SRM workbook"), SRM_FILTER)
+        if path:
+            self._import_srm(path)
+
+    def _import_srm(self, path: str) -> bool:
+        """Read an SRM workbook in the background, then open the import dialog."""
+        if not self.maybe_save():
+            return False
+        self.statusBar().showMessage(self.tr("Reading SRM workbook %1...").replace("%1", Path(path).name))
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
+        worker = TaskWorker(self.controller.srm_service.read, path)
+        worker.signals.finished.connect(lambda workbook: self._on_srm_read(workbook, path))
+        worker.signals.failed.connect(self._on_srm_failed)
+        QThreadPool.globalInstance().start(worker)
+        return True
+
+    def _on_srm_failed(self, exc: Exception) -> None:
+        QApplication.restoreOverrideCursor()
+        self.statusBar().clearMessage()
+        reporter().error(self, exc, self.tr("Cannot import the SRM workbook."))
+
+    def _on_srm_read(self, workbook, path: str) -> None:
+        QApplication.restoreOverrideCursor()
+        self.statusBar().clearMessage()
+        dialog = SrmImportDialog(workbook, path, self)
+        if dialog.exec() != dialog.DialogCode.Accepted or dialog.motor is None:
+            return
+        self.controller.load_imported_motor(dialog.motor)
+        self.thrust_editor.plot.reset_zoom()
+        self.statusBar().showMessage(
+            self.tr("Imported %1 from SRM workbook %2").replace("%1", dialog.motor.metadata.name).replace("%2", path), 6000)
 
     def _import_tabular(self, path: str, kind: str) -> bool:
         dialog = TabularImportDialog(path, kind, self.controller.csv_service, self.controller.excel_service, self)

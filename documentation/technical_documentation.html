@@ -90,6 +90,9 @@ Files with a newer major version are refused; a newer minor version loads with a
 <li>robust outlier rejection (rolling median + MAD), conversion to physical units, strictly increasing times, optional resampling / Douglas-Peucker simplification, closing zero point.</li>
 </ol>
 
+<h2>6b. SRM workbooks (<code>services/srm_service.py</code>)</h2>
+<p>Richard Nakka SRM workbooks are read with <code>ExcelService.read_grids()</code> (xlrd for .xls, openpyxl for .xlsx). Values are located by their <em>labels</em> (case-sensitive, spaces and trailing colon ignored: <code>Do</code> ≠ <code>do</code>), never by fixed cell addresses, so SRM 1.x (numeric propellant code) and SRM 2023 (propellant name, Nozzle Design sheet) are handled by the same code. The Performance curve (columns <code>t</code> and <code>F</code> in N) integrates exactly to the workbook's total impulse; the Output 23-point table is offered as an alternative. A deviation above 2 % between the curve and the workbook result is reported.</p>
+
 <h2>7. Labels (<code>services/label_service.py</code>)</h2>
 <p>A single <code>LabelRenderer</code> draws in millimetre coordinates on any <code>QPaintDevice</code> (screen preview,
 <code>QPrinter</code>, <code>QPdfWriter</code>, <code>QImage</code>), so all outputs are identical. Font sizes are
@@ -106,7 +109,7 @@ format, margins and spacing; images embed their DPI.</p>
 </ul>
 
 <h2>9. Tests</h2>
-<p><code>python -m pytest</code> runs 105 tests: ENG read/write/round-trip and invalid files, CSV detection/import/export,
+<p><code>python -m pytest</code> runs 118 tests: ENG read/write/round-trip and invalid files, CSV detection/import/export,
 Excel .xlsx/.xls, XML save/load/migrations/corruption, calculations against analytical curves, units, validation,
 digitizer accuracy on synthetic graphs (median error &lt; 0.1 N, impulse within 2 %), labels, preferences and offscreen
 UI smoke tests (table ↔ graph synchronisation, undo/redo, windows).</p>

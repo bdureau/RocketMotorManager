@@ -44,6 +44,32 @@ class _NavigationToolbar(NavigationToolbar2QT):
 
     toolitems = [item for item in NavigationToolbar2QT.toolitems if item[0] in ("Home", "Back", "Forward", "Pan", "Zoom", None)]
 
+    def __init__(self, canvas, parent, on_user_view, on_home) -> None:
+        self._on_user_view = on_user_view
+        self._on_home = on_home
+        super().__init__(canvas, parent)
+
+    # Every navigation made by the user switches the graph to "manual view";
+    # Home returns to automatic scaling.
+    def release_zoom(self, event) -> None:  # noqa: D102 - Matplotlib override
+        super().release_zoom(event)
+        self._on_user_view()
+
+    def release_pan(self, event) -> None:  # noqa: D102 - Matplotlib override
+        super().release_pan(event)
+        self._on_user_view()
+
+    def back(self, *args) -> None:  # noqa: D102 - Matplotlib override
+        super().back(*args)
+        self._on_user_view()
+
+    def forward(self, *args) -> None:  # noqa: D102 - Matplotlib override
+        super().forward(*args)
+        self._on_user_view()
+
+    def home(self, *args) -> None:  # noqa: D102 - Matplotlib override
+        self._on_home()
+
 
 class ThrustPlotWidget(QWidget):
     """Thrust curve view with graphical editing."""
@@ -64,6 +90,7 @@ class ThrustPlotWidget(QWidget):
         self._drag_index: Optional[int] = None
         self._selected_index: Optional[int] = None
         self._editable = True
+        self._user_view = False  # True once the user has zoomed or panned
         self._build_ui()
         self._connect_events()
         self.redraw()
@@ -80,7 +107,7 @@ class ThrustPlotWidget(QWidget):
                     "right-click a point to delete it. Use the toolbar to zoom and pan.")
         )
         self.axes = self.figure.add_subplot(111)
-        self.toolbar = _NavigationToolbar(self.canvas, self)
+        self.toolbar = _NavigationToolbar(self.canvas, self, self._mark_user_view, self.reset_zoom)
         self.toolbar.setIconSize(self.toolbar.iconSize() * 0.85)
         self.coordinates = QLabel(self.tr("Move the cursor over the graph"))
         self.coordinates.setToolTip(self.tr("Cursor position (time, thrust) and interpolated thrust of the curve at that time."))
@@ -109,14 +136,49 @@ class ThrustPlotWidget(QWidget):
         characteristics: Optional[MotorCharacteristics] = None,
         keep_view: bool = True,
     ) -> None:
-        """Display a curve. ``keep_view`` preserves the current zoom."""
-        view = (self.axes.get_xlim(), self.axes.get_ylim()) if keep_view and self._points else None
+        """Display a curve.
+
+        The axes follow the data automatically (they grow and shrink with
+        the curve, so a new point is never hidden). When the user has zoomed
+        or panned and ``keep_view`` is True, that view is kept but enlarged
+        if a point falls outside it. ``keep_view=False`` (new document)
+        returns to automatic scaling.
+        """
+        if not keep_view:
+            self._user_view = False
+        view = None
+        if self._user_view and self._points:
+            view = (self.axes.get_xlim(), self.axes.get_ylim())
         self._points = list(points)
         self._settings = settings
         self._characteristics = characteristics
         if self._selected_index is not None and self._selected_index >= len(self._points):
             self._selected_index = None
+        if view is not None:
+            view = self._enlarged_view(view)
         self.redraw(view)
+
+    def is_auto_scaled(self) -> bool:
+        """True while the axes follow the data automatically."""
+        return not self._user_view
+
+    def _mark_user_view(self) -> None:
+        self._user_view = True
+
+    def _enlarged_view(self, view: tuple[tuple[float, float], tuple[float, float]]) -> tuple[tuple[float, float], tuple[float, float]]:
+        """Enlarge a manual view so that it contains every point (with margin)."""
+        (x0, x1), (y0, y1) = view
+        if not self._points:
+            return view
+        times = [p.time_s for p in self._points]
+        thrusts = [p.thrust_n for p in self._points]
+        if min(times) < x0 or max(times) > x1:
+            span = max(times) - min(min(times), 0.0) or 1.0
+            x0, x1 = min(x0, min(times) - 0.02 * span), max(x1, max(times) + 0.05 * span)
+        if min(thrusts) < y0 or max(thrusts) > y1:
+            span = max(thrusts) - min(min(thrusts), 0.0) or 1.0
+            y0, y1 = min(y0, min(thrusts) - 0.02 * span), max(y1, max(thrusts) + 0.12 * span)
+        return (x0, x1), (y0, y1)
 
     def set_colors(self, colors: PlotColors) -> None:
         """Apply theme colours."""
@@ -133,7 +195,8 @@ class ThrustPlotWidget(QWidget):
         self.redraw((self.axes.get_xlim(), self.axes.get_ylim()) if self._points else None)
 
     def reset_zoom(self) -> None:
-        """Fit the axes to the data."""
+        """Fit the axes to the data and return to automatic scaling."""
+        self._user_view = False
         self.toolbar.update()  # clear the navigation history
         self.redraw(None)
 
@@ -229,6 +292,9 @@ class ThrustPlotWidget(QWidget):
             ax.set_xlim(settings.x_min, settings.x_max)
         if settings.y_min is not None and settings.y_max is not None and settings.y_max > settings.y_min:
             ax.set_ylim(settings.y_min, settings.y_max)
+        x_limits, y_limits = self._enlarged_view((ax.get_xlim(), ax.get_ylim()))  # never hide a point
+        ax.set_xlim(x_limits)
+        ax.set_ylim(y_limits)
 
     # ------------------------------------------------------------------
     # Interaction

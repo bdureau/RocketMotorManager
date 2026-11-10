@@ -93,6 +93,15 @@ def main() -> None:
     save(importer, "csv_import")
     importer.close()
 
+    from services.srm_service import SrmService
+    from ui.dialogs.srm_import_dialog import SrmImportDialog
+
+    srm_path = ROOT / "tests" / "data" / "SRM_2023.xls"
+    srm = SrmImportDialog(SrmService().read(srm_path), str(srm_path), window)
+    srm.show()
+    save(srm, "srm_import")
+    srm.close()
+
     window.show_digitizer()
     digitizer = window._digitizer
     digitizer.resize(1300, 780)

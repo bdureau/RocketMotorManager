@@ -14,12 +14,13 @@ Author: **Boris du Reau** — © 2026 Boris du Reau. All rights reserved.
 | Thrust curve | Matplotlib graph: zoom, pan, reset, cursor read-out and interpolated thrust, grid, auto axes, PNG/SVG/PDF export, drag points, double-click to add, right-click to delete |
 | Data table | Edit cells, add, duplicate, delete (multi-selection), sort, copy/paste from Excel, invalid rows highlighted, synchronised with the graph, unlimited undo/redo |
 | Import | ENG (multi-motor files, comments, precise line errors), CSV (separator / decimal / encoding detection, column mapping, units, preview, invalid rows), Excel .xlsx/.xls (sheet choice, preview) |
+| SRM workbooks | Richard Nakka SRM 1.x / SRM 2023 (.xls/.xlsx): motor data read from the *Data and Kn*, *Output*, *Performance*, *Pressure* and *Nozzle Design* sheets, choice of curve (Performance simplified / full / resampled, Output table), cross-check with the workbook results, auto-detection on Excel import |
 | Digitizer | Photos/scans/screenshots (PNG, JPG, TIFF, BMP): rotation, crop, perspective, contrast, grey levels, noise filters; 3-point + extra-point least-squares calibration; colour auto-detection / pipette, tolerance, outlier removal, manual point editing, Matplotlib preview, transfer to the editor |
 | Analysis | Total impulse (trapezoids), max/average thrust, burn time (full curve or NAR 5 %), initial/final thrust, time to max, masses, propellant fraction, Isp, impulse class, suggested designation; unavailable values explained |
 | Export | Strict, validated ENG writer; CSV with separator/decimal/encoding/units/metadata options |
 | Project | Versioned native XML (`.rmm.xml`) with migrations, structural validation, exact float round-trip, atomic saves |
 | Labels | Independent designer: dimensions, paper, margins, colours, fonts, alignment, borders, layouts, field selection and order, free text, logo; 6 predefined templates + user templates; print preview, printing, PDF sheet, PNG/JPEG at any dpi, physical size respected |
-| Quality | Centralised error handling, rotating log (DEBUG→ERROR), background threads for heavy image work, preferences (theme, units, colours, folders, printing, language), Qt i18n, tooltips everywhere, PDF manual, 105 automated tests |
+| Quality | Centralised error handling, rotating log (DEBUG→ERROR), background threads for heavy image work, preferences (theme, units, colours, folders, printing, language), Qt i18n, tooltips everywhere, PDF manual, 118 automated tests |
 
 ## Quick start (Windows)
 
@@ -69,6 +70,7 @@ RocketMotorManager/
 │   ├── csv_service.py            CSV detection, import, export
 │   ├── excel_service.py          .xlsx (openpyxl) / .xls (xlrd) via pandas
 │   ├── tabular_data.py           shared column mapping / conversion
+│   ├── srm_service.py            Richard Nakka SRM workbook importer
 │   ├── xml_service.py            native project format + migrations
 │   ├── thrust_analysis.py        analysis facade, resample/simplify/smooth
 │   ├── image_digitizer.py        corrections, calibration, extraction (OpenCV)

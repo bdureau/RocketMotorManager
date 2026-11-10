@@ -230,10 +230,31 @@ def chapters() -> list:
                  "their tooltip gives the reason.",
                  "Keep <b>Remove invalid rows</b> ticked to import only the valid points, then click <b>Import</b>."]),
           p("The imported points replace the thrust curve of the current motor after confirmation; the operation can be "
-            "undone with Ctrl+Z.")]
+            "undone with Ctrl+Z."),
+          p("Richard Nakka SRM workbooks", H2),
+          *screenshot("srm_import", "Figure 3 - Import of an SRM workbook with curve choice and cross-check.", 15 * cm),
+          p("The SRM design spreadsheets of Richard Nakka (SRM 1.x and SRM 2023, .xls or .xlsx) are not plain tables: "
+            "<b>File &gt; Import SRM Workbook (Nakka)</b> reads each piece of information in its own sheet. Opening such a "
+            "workbook with Import Excel or by drag and drop is detected automatically and the SRM import is proposed."),
+          table([["Sheet", "Information imported"],
+                 ["Data and Kn", "Title, propellant (KNDX, KNSB, KNSU, KNER...), chamber inside diameter and length, grain "
+                                 "geometry and mass, Kn, throat diameter"],
+                 ["Output", "SRM results (total impulse, average thrust, thrust time, Isp, class) and the 23-point table"],
+                 ["Performance", "Full resolution thrust curve (about 880 points) and maximum thrust"],
+                 ["Pressure / Nozzle Design", "Maximum chamber pressure, burn time, nozzle length (informative)"]],
+                [4 * cm, 12 * cm]),
+          bullets(["The motor name is proposed from the class and the average thrust (e.g. <i>L1729</i>), delays default to "
+                   "<i>P</i> (plugged).",
+                   "The workbook only gives the chamber <b>inside</b> dimensions: enter the casing outside diameter, the overall "
+                   "length (pre-filled with chamber + nozzle length), the hardware masses and the manufacturer.",
+                   "Curve source: <b>Performance, simplified</b> (recommended, about 30 points within 0.5 % of the maximum "
+                   "thrust), full resolution, resampled, or the Output table (coarser: its impulse is 1 to 2 % lower).",
+                   "The cross-check table compares the SRM results with the values recomputed from the imported curve.",
+                   "The design data (grain, Kn, throat, pressure...) is kept in the project file and the SRM results in the "
+                   "Comments field."])]
     # 7 -----------------------------------------------------------------
     s += [p("7. Digitizing a thrust curve", H1),
-          *screenshot("digitizer", "Figure 3 - Curve digitizer: calibrated image with extracted points and reconstructed curve."),
+          *screenshot("digitizer", "Figure 4 - Curve digitizer: calibrated image with extracted points and reconstructed curve."),
           p("Open <b>Tools &gt; Curve Digitizer</b> (F6) or <b>File &gt; Import Thrust Curve Image</b>. PNG, JPEG, TIFF and "
             "BMP photographs, screenshots and scans are supported. The mouse wheel zooms, the middle button pans."),
           p("Step 1 - Image corrections", H2),
@@ -272,11 +293,14 @@ def chapters() -> list:
                 [3.2 * cm, 6.6 * cm, 6.2 * cm]),
           p("Pasted rows replace the points from the current row onwards (appended at the end without selection). Tab, "
             "semicolon or space separated data and decimal commas are accepted; header lines are ignored."),
+          p("The graph scale follows the data automatically: entering or dragging a point above the current maximum "
+            "enlarges the axes so that it stays visible. After a manual zoom or pan the view is kept (and only enlarged "
+            "if a point leaves it); <b>View &gt; Reset Graph Zoom</b> (Ctrl+0) or the Home button returns to automatic scaling."),
           p("The curve implicitly starts at (0 s, 0 N), as in the ENG format, so the first point does not need to be at "
             "time zero. The last point should have zero thrust.", NOTE)]
     # 9 -----------------------------------------------------------------
     s += [p("9. Analysing the characteristics", H1),
-          *screenshot("analysis", "Figure 4 - Thrust analysis dialog.", 11 * cm),
+          *screenshot("analysis", "Figure 5 - Thrust analysis dialog.", 11 * cm),
           p("<b>Tools &gt; Thrust Analysis</b> (F5) lists every characteristic with its unit. A value that cannot be "
             "computed is greyed out and its tooltip explains which data is missing."),
           table([["Characteristic", "Definition"],
@@ -322,7 +346,7 @@ def chapters() -> list:
             "'#' comment lines.")]
     # 12 ----------------------------------------------------------------
     s += [p("12. Creating labels", H1),
-          *screenshot("label_designer", "Figure 5 - Label designer with live preview."),
+          *screenshot("label_designer", "Figure 6 - Label designer with live preview."),
           p("<b>Tools &gt; Label Designer</b> (F7) opens an independent window. The preview uses exactly the same renderer "
             "as the printer, so what you see is what is printed, at the physical dimensions entered."),
           bullets(["<b>Template</b>: choose a predefined template (Classic, Minimal, Banner, Dark, 18 mm wrap, Data sheet) or "
@@ -347,7 +371,7 @@ def chapters() -> list:
           p("When printing, set the printer scaling to 100 % (\"actual size\") so that the physical dimensions are respected.", NOTE)]
     # 14 ----------------------------------------------------------------
     s += [p("14. Preferences", H1),
-          *screenshot("preferences", "Figure 6 - Preferences dialog.", 9 * cm),
+          *screenshot("preferences", "Figure 7 - Preferences dialog.", 9 * cm),
           table([["Tab", "Settings"],
                  ["General", "Language (other languages appear when their translation file is installed; restart required) and light/dark theme."],
                  ["Units", "Display unit system (metric N, N.s, g, mm or imperial lbf, lbf.s, oz, in), default decimal separator, burn time definition."],
@@ -366,6 +390,7 @@ def chapters() -> list:
                  ["Excel file cannot be opened", "Close the workbook in Excel (it locks the file) and check the extension (.xlsx or .xls)."],
                  ["Digitizer finds no pixel", "Pick the curve colour on the curve itself, increase the tolerance, untick 'Only inside the calibrated area' if the curve touches the axes."],
                  ["Digitized values are shifted", "Check the calibration values, add extra calibration points and straighten the image (rotation/perspective) before calibrating."],
+                 ["SRM workbook: values missing or curve not found", "Open the workbook in Excel, click the Solve buttons, save it, then import again (the importer reads the values computed by the workbook)."],
                  ["Printed label has the wrong size", "Print at 100 % scale (no 'fit to page')."],
                  ["The motor does not appear in OpenRocket", "Put the .eng file in the user thrust curve folder declared in OpenRocket preferences and restart OpenRocket."],
                  ["Unexpected error", "The message is also written to the log file (see chapter 2); send it with the data file to the author."]],
