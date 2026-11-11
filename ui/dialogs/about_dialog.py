@@ -28,9 +28,7 @@ class AboutDialog(QDialog):
         text = QLabel(
             f"<h2>{APP_NAME}</h2><p><b>{_('Version {version}').format(version=APP_VERSION)}</b></p><p>{_(APP_DESCRIPTION)}</p>"
             f"<p>{APP_COPYRIGHT}</p>"
-            f"<p style='color:gray;font-size:8pt'>Python {platform.python_version()} · Qt {QT_VERSION_STR} · "
-            f"PyQt {PYQT_VERSION_STR} · {platform.system()} {platform.release()}<br>"
-            f"{_('Log folder: {path}').format(path=log_dir())}<br>{_('Executable: {path}').format(path=sys.executable)}</p>"
+
         )
         text.setWordWrap(True)
         text.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
