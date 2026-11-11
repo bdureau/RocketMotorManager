@@ -3,17 +3,19 @@
 # Build with:  python -m PyInstaller --noconfirm --clean RocketMotorManager.spec
 # Copyright (c) 2026 Boris du Reau
 
+import glob
+
 block_cipher = None
 
 datas = [
     ("resources/icons", "resources/icons"),
     ("resources/templates", "resources/templates"),
-    ("resources/translations", "resources/translations"),
+    ("resources/locale", "resources/locale"),
     ("resources/images", "resources/images"),
-    ("documentation/user_manual.pdf", "documentation"),
     ("documentation/technical_documentation.html", "documentation"),
-    ("documentation/screenshots", "documentation/screenshots"),
 ]
+# One PDF user manual per language (documentation/user_manual_<lang>.pdf).
+datas += [(manual, "documentation") for manual in sorted(glob.glob("documentation/user_manual_*.pdf"))]
 
 a = Analysis(
     ["main.py"],

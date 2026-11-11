@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from localization import _
+
 import math
 from functools import lru_cache
 from typing import Optional
@@ -136,7 +138,7 @@ class ColorButton(QPushButton):
         self.setStyleSheet(f"QPushButton {{ background: {self._color}; color: {text_color}; border: 1px solid #888; padding: 3px; }}")
 
     def _choose(self) -> None:
-        chosen = QColorDialog.getColor(QColor(self._color), self, self.tr("Choose a colour"))
+        chosen = QColorDialog.getColor(QColor(self._color), self, _("Choose a colour"))
         if chosen.isValid():
             self.set_color(chosen.name())
             self.color_changed.emit(self._color)

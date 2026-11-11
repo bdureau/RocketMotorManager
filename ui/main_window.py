@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import localization
+from localization import N_, _, ngettext
+
 import copy
 import logging
 from pathlib import Path
@@ -43,11 +46,21 @@ from widgets.thrust_plot import EXPORT_FORMATS
 
 logger = logging.getLogger(__name__)
 
-PROJECT_FILTER = "Rocket Motor Manager project (*.rmm.xml *.xml)"
-ENG_FILTER = "RASP engine files (*.eng *.ENG)"
-CSV_FILTER = "CSV / text files (*.csv *.txt *.tsv *.dat)"
-EXCEL_FILTER = "Excel workbooks (*.xlsx *.xlsm *.xls)"
-SRM_FILTER = "SRM workbooks (Richard Nakka) (*.xls *.xlsx *.xlsm)"
+PROJECT_FILTER = N_("Rocket Motor Manager project (*.rmm.xml *.xml)")
+ENG_FILTER = N_("RASP engine files (*.eng *.ENG)")
+CSV_FILTER = N_("CSV / text files (*.csv *.txt *.tsv *.dat)")
+EXCEL_FILTER = N_("Excel workbooks (*.xlsx *.xlsm *.xls)")
+SRM_FILTER = N_("SRM workbooks (Richard Nakka) (*.xls *.xlsx *.xlsm)")
+
+
+def manual_path(language: str) -> Path:
+    """User manual of a language: ``documentation/user_manual_<lang>.pdf``,
+    falling back to the English manual when that language has none."""
+    for code in (language, "en"):
+        candidate = resource_path("documentation", f"user_manual_{code}.pdf")
+        if candidate.exists():
+            return candidate
+    return resource_path("documentation", f"user_manual_{language}.pdf")
 
 
 class MainWindow(QMainWindow):
@@ -79,7 +92,7 @@ class MainWindow(QMainWindow):
         self.thrust_editor = ThrustEditorWidget(self.document)
         self.setCentralWidget(self.thrust_editor)
         self.motor_editor = MotorEditorWidget(self.document, self.controller.analysis_service)
-        self.properties_dock = QDockWidget(self.tr("Motor properties"), self)
+        self.properties_dock = QDockWidget(_("Motor properties"), self)
         self.properties_dock.setObjectName("properties_dock")
         self.properties_dock.setWidget(self.motor_editor)
         self.properties_dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetMovable
@@ -102,90 +115,90 @@ class MainWindow(QMainWindow):
     def _create_actions(self) -> None:
         sk = QKeySequence.StandardKey
         a = self._action
-        a("new", self.tr("&New Motor"), self.new_motor, "new", sk.New, self.tr("Create a new empty motor"))
-        a("open", self.tr("&Open Motor..."), self.open_motor_dialog, "open", sk.Open, self.tr("Open a motor project (XML)"))
-        a("save", self.tr("&Save Motor"), self.save_motor, "save", sk.Save, self.tr("Save the motor project"))
-        a("save_as", self.tr("Save Motor &As..."), self.save_motor_as, "save_as", sk.SaveAs, self.tr("Save the project under a new name"))
-        a("import_eng", self.tr("Import &ENG..."), self.import_eng, "eng", "Ctrl+E", self.tr("Import a RASP .eng thrust curve file"))
-        a("export_eng", self.tr("E&xport as ENG..."), self.export_eng, "export", "Ctrl+Shift+E", self.tr("Export the motor as an OpenRocket/RockSim .eng file"))
-        a("import_csv", self.tr("Import &CSV..."), self.import_csv, "csv", None, self.tr("Import thrust points from a CSV or text file"))
-        a("export_csv", self.tr("Export CS&V..."), self.export_csv, "csv", None, self.tr("Export the thrust points to a CSV file"))
-        a("import_excel", self.tr("Import Exce&l..."), self.import_excel, "csv", None, self.tr("Import thrust points from an Excel workbook (.xlsx, .xls)"))
-        a("import_srm", self.tr("Import &SRM Workbook (Nakka)..."), self.import_srm, "eng", None,
-          self.tr("Import motor data and thrust curve from a Richard Nakka SRM design workbook (SRM 1.x, SRM 2023)"))
-        a("import_image", self.tr("Import Thrust Curve &Image..."), self.import_image, "image", None, self.tr("Digitize a thrust curve from a photo or scan"))
-        a("export_graph", self.tr("Export &Graph..."), self.export_graph, "image", None, self.tr("Export the thrust curve as PNG, SVG or PDF"))
-        a("exit", self.tr("E&xit"), self.close, "exit", sk.Quit, self.tr("Quit the application"))
+        a("new", _("&New Motor"), self.new_motor, "new", sk.New, _("Create a new empty motor"))
+        a("open", _("&Open Motor..."), self.open_motor_dialog, "open", sk.Open, _("Open a motor project (XML)"))
+        a("save", _("&Save Motor"), self.save_motor, "save", sk.Save, _("Save the motor project"))
+        a("save_as", _("Save Motor &As..."), self.save_motor_as, "save_as", sk.SaveAs, _("Save the project under a new name"))
+        a("import_eng", _("Import &ENG..."), self.import_eng, "eng", "Ctrl+E", _("Import a RASP .eng thrust curve file"))
+        a("export_eng", _("E&xport as ENG..."), self.export_eng, "export", "Ctrl+Shift+E", _("Export the motor as an OpenRocket/RockSim .eng file"))
+        a("import_csv", _("Import &CSV..."), self.import_csv, "csv", None, _("Import thrust points from a CSV or text file"))
+        a("export_csv", _("Export CS&V..."), self.export_csv, "csv", None, _("Export the thrust points to a CSV file"))
+        a("import_excel", _("Import Exce&l..."), self.import_excel, "csv", None, _("Import thrust points from an Excel workbook (.xlsx, .xls)"))
+        a("import_srm", _("Import &SRM Workbook (Nakka)..."), self.import_srm, "eng", None,
+          _("Import motor data and thrust curve from a Richard Nakka SRM design workbook (SRM 1.x, SRM 2023)"))
+        a("import_image", _("Import Thrust Curve &Image..."), self.import_image, "image", None, _("Digitize a thrust curve from a photo or scan"))
+        a("export_graph", _("Export &Graph..."), self.export_graph, "image", None, _("Export the thrust curve as PNG, SVG or PDF"))
+        a("exit", _("E&xit"), self.close, "exit", sk.Quit, _("Quit the application"))
 
-        undo = self.document.undo_stack.createUndoAction(self, self.tr("&Undo"))
+        undo = self.document.undo_stack.createUndoAction(self, _("&Undo"))
         undo.setIcon(icon("undo"))
         undo.setShortcut(sk.Undo)
-        redo = self.document.undo_stack.createRedoAction(self, self.tr("&Redo"))
+        redo = self.document.undo_stack.createRedoAction(self, _("&Redo"))
         redo.setIcon(icon("redo"))
         redo.setShortcut(sk.Redo)
         self.actions["undo"], self.actions["redo"] = undo, redo
-        a("add_point", self.tr("&Add Thrust Point"), self.thrust_editor.add_point, "add_point", "Ctrl+Ins", self.tr("Add a thrust point after the selection"))
-        a("delete_point", self.tr("&Delete Thrust Point"), self.thrust_editor.delete_points, "delete_point", "Ctrl+Del", self.tr("Delete the selected thrust point(s)"))
-        a("select_all", self.tr("Select &All"), self.select_all, "", sk.SelectAll, self.tr("Select every thrust point"))
-        a("sort", self.tr("&Sort Points"), self.document.sort_points, "sort", None, self.tr("Sort the thrust points chronologically"))
-        a("preferences", self.tr("&Preferences..."), self.show_preferences, "settings", sk.Preferences if not QKeySequence(sk.Preferences).isEmpty() else "Ctrl+,", self.tr("Application preferences"))
+        a("add_point", _("&Add Thrust Point"), self.thrust_editor.add_point, "add_point", "Ctrl+Ins", _("Add a thrust point after the selection"))
+        a("delete_point", _("&Delete Thrust Point"), self.thrust_editor.delete_points, "delete_point", "Ctrl+Del", _("Delete the selected thrust point(s)"))
+        a("select_all", _("Select &All"), self.select_all, "", sk.SelectAll, _("Select every thrust point"))
+        a("sort", _("&Sort Points"), self.document.sort_points, "sort", None, _("Sort the thrust points chronologically"))
+        a("preferences", _("&Preferences..."), self.show_preferences, "settings", sk.Preferences if not QKeySequence(sk.Preferences).isEmpty() else "Ctrl+,", _("Application preferences"))
 
-        a("show_graph", self.tr("Show Thrust &Graph"), self.thrust_editor.show_plot, "", None, self.tr("Show or hide the thrust curve"), True)
-        a("show_table", self.tr("Show Data &Table"), self.thrust_editor.show_table, "", None, self.tr("Show or hide the thrust data table"), True)
+        a("show_graph", _("Show Thrust &Graph"), self.thrust_editor.show_plot, "", None, _("Show or hide the thrust curve"), True)
+        a("show_table", _("Show Data &Table"), self.thrust_editor.show_table, "", None, _("Show or hide the thrust data table"), True)
         self.actions["show_properties"] = self.properties_dock.toggleViewAction()
-        self.actions["show_properties"].setText(self.tr("Show Motor &Properties"))
-        a("reset_zoom", self.tr("&Reset Graph Zoom"), self.thrust_editor.plot.reset_zoom, "zoom_reset", "Ctrl+0", self.tr("Fit the graph to the data"))
-        a("show_grid", self.tr("Show &Grid"), self.toggle_grid, "grid", "Ctrl+G", self.tr("Show or hide the graph grid"), True)
+        self.actions["show_properties"].setText(_("Show Motor &Properties"))
+        a("reset_zoom", _("&Reset Graph Zoom"), self.thrust_editor.plot.reset_zoom, "zoom_reset", "Ctrl+0", _("Fit the graph to the data"))
+        a("show_grid", _("Show &Grid"), self.toggle_grid, "grid", "Ctrl+G", _("Show or hide the graph grid"), True)
         self.actions["show_graph"].setChecked(True)
         self.actions["show_table"].setChecked(True)
 
-        a("print_preview", self.tr("Print Pre&view..."), self.label_print_preview, "print", None, self.tr("Preview the label sheet"))
-        a("print_pdf", self.tr("Print &PDF..."), self.label_print_pdf, "pdf", sk.Print, self.tr("Export the label sheet as PDF"))
-        a("export_label_png", self.tr("Export Label as P&NG..."), lambda: self.label_export_image("png"), "image", None, self.tr("Export the label as a PNG image"))
-        a("export_label_jpeg", self.tr("Export Label as &JPEG..."), lambda: self.label_export_image("jpg"), "image", None, self.tr("Export the label as a JPEG image"))
+        a("print_preview", _("Print Pre&view..."), self.label_print_preview, "print", None, _("Preview the label sheet"))
+        a("print_pdf", _("Print &PDF..."), self.label_print_pdf, "pdf", sk.Print, _("Export the label sheet as PDF"))
+        a("export_label_png", _("Export Label as P&NG..."), lambda: self.label_export_image("png"), "image", None, _("Export the label as a PNG image"))
+        a("export_label_jpeg", _("Export Label as &JPEG..."), lambda: self.label_export_image("jpg"), "image", None, _("Export the label as a JPEG image"))
 
-        a("analysis", self.tr("Thrust &Analysis..."), self.show_analysis, "analyze", "F5", self.tr("Compute and display the motor characteristics"))
-        a("digitizer", self.tr("Curve &Digitizer..."), self.show_digitizer, "digitize", "F6", self.tr("Digitize a thrust curve from an image"))
-        a("label_designer", self.tr("&Label Designer..."), self.show_label_designer, "label", "F7", self.tr("Design and print motor labels"))
-        a("validation", self.tr("Data &Validation..."), self.show_validation, "validate", "F8", self.tr("Check the motor data for errors"))
+        a("analysis", _("Thrust &Analysis..."), self.show_analysis, "analyze", "F5", _("Compute and display the motor characteristics"))
+        a("digitizer", _("Curve &Digitizer..."), self.show_digitizer, "digitize", "F6", _("Digitize a thrust curve from an image"))
+        a("label_designer", _("&Label Designer..."), self.show_label_designer, "label", "F7", _("Design and print motor labels"))
+        a("validation", _("Data &Validation..."), self.show_validation, "validate", "F8", _("Check the motor data for errors"))
 
-        a("manual", self.tr("&Manual"), self.open_manual, "manual", sk.HelpContents, self.tr("Open the PDF user manual"))
-        a("documentation", self.tr("&Documentation"), self.open_documentation, "help", None, self.tr("Open the technical documentation folder"))
-        a("about", self.tr("&About..."), lambda: AboutDialog(self).exec(), "info", None, self.tr("About Rocket Motor Manager"))
+        a("manual", _("&Manual"), self.open_manual, "manual", sk.HelpContents, _("Open the PDF user manual"))
+        a("documentation", _("&Documentation"), self.open_documentation, "help", None, _("Open the technical documentation folder"))
+        a("about", _("&About..."), lambda: AboutDialog(self).exec(), "info", None, _("About Rocket Motor Manager"))
 
     def _build_menus(self) -> None:
         bar = self.menuBar()
-        file_menu = bar.addMenu(self.tr("&File"))
+        file_menu = bar.addMenu(_("&File"))
         for key in ("new", "open", "save", "save_as", None, "import_eng", "export_eng", None, "import_csv", "export_csv",
                     "import_excel", "import_srm", None, "import_image", "export_graph", None):
             file_menu.addSeparator() if key is None else file_menu.addAction(self.actions[key])
-        self.recent_menu = file_menu.addMenu(icon("open"), self.tr("Recent &Files"))
+        self.recent_menu = file_menu.addMenu(icon("open"), _("Recent &Files"))
         file_menu.addSeparator()
         file_menu.addAction(self.actions["exit"])
         self._fill_recent_menu()
 
-        edit_menu = bar.addMenu(self.tr("&Edit"))
+        edit_menu = bar.addMenu(_("&Edit"))
         for key in ("undo", "redo", None, "add_point", "delete_point", "sort", "select_all", None, "preferences"):
             edit_menu.addSeparator() if key is None else edit_menu.addAction(self.actions[key])
 
-        view_menu = bar.addMenu(self.tr("&View"))
+        view_menu = bar.addMenu(_("&View"))
         for key in ("show_graph", "show_table", "show_properties", None, "reset_zoom", "show_grid"):
             view_menu.addSeparator() if key is None else view_menu.addAction(self.actions[key])
 
-        print_menu = bar.addMenu(self.tr("&Print"))
+        print_menu = bar.addMenu(_("&Print"))
         for key in ("print_preview", "print_pdf", None, "export_label_png", "export_label_jpeg"):
             print_menu.addSeparator() if key is None else print_menu.addAction(self.actions[key])
 
-        tools_menu = bar.addMenu(self.tr("&Tools"))
+        tools_menu = bar.addMenu(_("&Tools"))
         for key in ("analysis", "digitizer", "label_designer", "validation"):
             tools_menu.addAction(self.actions[key])
 
-        help_menu = bar.addMenu(self.tr("&Help"))
+        help_menu = bar.addMenu(_("&Help"))
         for key in ("manual", "documentation", None, "about"):
             help_menu.addSeparator() if key is None else help_menu.addAction(self.actions[key])
 
     def _build_toolbar(self) -> None:
-        toolbar = QToolBar(self.tr("Main toolbar"))
+        toolbar = QToolBar(_("Main toolbar"))
         toolbar.setObjectName("main_toolbar")
         toolbar.setIconSize(QSize(24, 24))
         toolbar.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
@@ -193,20 +206,20 @@ class MainWindow(QMainWindow):
         for key in ("new", "open", "save"):
             toolbar.addAction(self.actions[key])
         toolbar.addSeparator()
-        toolbar.addWidget(self._menu_button(self.tr("Import"), "import", self.tr("Import ENG, CSV, Excel or an image"),
+        toolbar.addWidget(self._menu_button(_("Import"), "import", _("Import ENG, CSV, Excel or an image"),
                                             ("import_eng", "import_csv", "import_excel", "import_srm", "import_image")))
-        toolbar.addWidget(self._menu_button(self.tr("Export"), "export", self.tr("Export ENG, CSV or the graph"),
+        toolbar.addWidget(self._menu_button(_("Export"), "export", _("Export ENG, CSV or the graph"),
                                             ("export_eng", "export_csv", "export_graph")))
         toolbar.addSeparator()
         for key in ("undo", "redo", "add_point", "delete_point"):
             toolbar.addAction(self.actions[key])
         toolbar.addSeparator()
-        for key, text in (("analysis", self.tr("Analyze")), ("digitizer", self.tr("Digitize")), ("label_designer", self.tr("Label"))):
+        for key, text in (("analysis", _("Analyze")), ("digitizer", _("Digitize")), ("label_designer", _("Label"))):
             action = self.actions[key]
             action.setIconText(text)
             toolbar.addAction(action)
-        self.actions["add_point"].setIconText(self.tr("Add Point"))
-        self.actions["delete_point"].setIconText(self.tr("Delete Point"))
+        self.actions["add_point"].setIconText(_("Add Point"))
+        self.actions["delete_point"].setIconText(_("Delete Point"))
 
     def _menu_button(self, text: str, icon_name: str, tip: str, keys: tuple[str, ...]) -> QToolButton:
         button = QToolButton()
@@ -270,13 +283,13 @@ class MainWindow(QMainWindow):
         name = self.document.display_name()
         self.setWindowTitle(f"{name}[*] - {APP_NAME}")
         self.setWindowModified(self.document.is_modified)
-        self.file_label.setText(self.document.file_path or self.tr("Not saved"))
+        self.file_label.setText(self.document.file_path or _("Not saved"))
         self.actions["show_grid"].setChecked(self.document.motor.plot_settings.show_grid)
 
     def _update_summary(self, *_args) -> None:
         motor = self.document.motor
         result = self.document.characteristics()
-        text = self.tr("%n point(s)", "", motor.point_count())
+        text = ngettext("{n} point", "{n} points", motor.point_count()).format(n=motor.point_count())
         if result.total_impulse_ns is not None:
             text += f"  |  I = {result.total_impulse_ns:.2f} N.s"
             if result.impulse_class:
@@ -294,7 +307,7 @@ class MainWindow(QMainWindow):
             action.triggered.connect(lambda _c=False, p=path: self.open_recent(p))
         if recent:
             self.recent_menu.addSeparator()
-            self.recent_menu.addAction(self.tr("Clear list"), self.controller.clear_recent)
+            self.recent_menu.addAction(_("Clear list"), self.controller.clear_recent)
         self.recent_menu.setEnabled(bool(recent))
 
     # ------------------------------------------------------------------
@@ -305,8 +318,8 @@ class MainWindow(QMainWindow):
         if not self.document.is_modified:
             return True
         answer = QMessageBox.warning(
-            self, self.tr("Unsaved changes"),
-            self.tr("The motor '%1' has unsaved changes.\nDo you want to save them?").replace("%1", self.document.display_name()),
+            self, _("Unsaved changes"),
+            _("The motor '{name}' has unsaved changes.\nDo you want to save them?").format(name=self.document.display_name()),
             QMessageBox.StandardButton.Save | QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel,
             QMessageBox.StandardButton.Save,
         )
@@ -330,7 +343,7 @@ class MainWindow(QMainWindow):
 
     def _ask_open(self, title: str, file_filter: str) -> str:
         folder = self.controller.preferences.import_dir
-        path, _ = QFileDialog.getOpenFileName(self, title, folder, file_filter + ";;All files (*)")
+        path, _selected_filter = QFileDialog.getOpenFileName(self, title, folder, _(file_filter) + ";;" + _("All files (*)"))
         if path:
             self.controller.preferences.import_dir = str(Path(path).parent)
         return path
@@ -338,11 +351,11 @@ class MainWindow(QMainWindow):
     def _ask_save(self, title: str, file_filter: str, suggested: str, extension: str) -> str:
         """Ask a target path; the dialog confirms before overwriting a file."""
         start = str(Path(self.controller.preferences.default_save_dir) / suggested)
-        path, _ = QFileDialog.getSaveFileName(self, title, start, file_filter)
+        path, _selected_filter = QFileDialog.getSaveFileName(self, title, start, _(file_filter))
         if path and not path.lower().endswith(extension.lower()):
             path += extension
             if Path(path).exists() and QMessageBox.question(
-                self, title, self.tr("'%1' already exists. Replace it?").replace("%1", Path(path).name)
+                self, title, _("'{name}' already exists. Replace it?").format(name=Path(path).name)
             ) != QMessageBox.StandardButton.Yes:
                 return ""
         return path
@@ -366,14 +379,14 @@ class MainWindow(QMainWindow):
         if not self.maybe_save():
             return
         folder = self.controller.preferences.default_save_dir
-        path, _ = QFileDialog.getOpenFileName(self, self.tr("Open motor project"), folder, PROJECT_FILTER + ";;All files (*)")
+        path, _selected_filter = QFileDialog.getOpenFileName(self, _("Open motor project"), folder, _(PROJECT_FILTER) + ";;" + _("All files (*)"))
         if path:
             self.open_path(path)
 
     def open_recent(self, path: str) -> None:
         """Open a recent file (removed from the list if missing)."""
         if not Path(path).exists():
-            reporter().warning(self, self.tr("Recent files"), self.tr("The file no longer exists:\n%1").replace("%1", path))
+            reporter().warning(self, _("Recent files"), _("The file no longer exists:\n{path}").format(path=path))
             self.controller.forget_recent(path)
             return
         if self.maybe_save():
@@ -396,10 +409,10 @@ class MainWindow(QMainWindow):
             for warning in result.warnings:
                 self.statusBar().showMessage(warning, 8000)
             self.thrust_editor.plot.reset_zoom()
-            self.statusBar().showMessage(self.tr("Opened %1").replace("%1", path), 5000)
+            self.statusBar().showMessage(_("Opened {path}").format(path=path), 5000)
             return True
         except RocketMotorError as exc:
-            reporter().error(self, exc, self.tr("Cannot open the file."))
+            reporter().error(self, exc, _("Cannot open the file."))
             return False
 
     def save_motor(self) -> bool:
@@ -410,7 +423,7 @@ class MainWindow(QMainWindow):
 
     def save_motor_as(self) -> bool:
         """File > Save Motor As."""
-        path = self._ask_save(self.tr("Save motor project"), PROJECT_FILTER, self._suggested_name() + PROJECT_EXTENSION,
+        path = self._ask_save(_("Save motor project"), PROJECT_FILTER, self._suggested_name() + PROJECT_EXTENSION,
                               PROJECT_EXTENSION)
         return self._save_to(path) if path else False
 
@@ -420,52 +433,52 @@ class MainWindow(QMainWindow):
         try:
             self.controller.save_project(path)
         except RocketMotorError as exc:
-            reporter().error(self, exc, self.tr("The project could not be saved."))
+            reporter().error(self, exc, _("The project could not be saved."))
             return False
-        self.statusBar().showMessage(self.tr("Saved %1").replace("%1", path), 5000)
+        self.statusBar().showMessage(_("Saved {path}").format(path=path), 5000)
         return True
 
     def import_eng(self) -> None:
         """File > Import ENG."""
         if not self.maybe_save():
             return
-        path = self._ask_open(self.tr("Import ENG file"), ENG_FILTER)
+        path = self._ask_open(_("Import ENG file"), ENG_FILTER)
         if path:
             try:
                 self._load_eng(path)
             except RocketMotorError as exc:
-                reporter().error(self, exc, self.tr("Cannot import the ENG file."))
+                reporter().error(self, exc, _("Cannot import the ENG file."))
 
     def _load_eng(self, path: str) -> bool:
         result = self.controller.read_eng(path)
         motor = result.motors[0]
         if len(result.motors) > 1:
             names = [f"{m.metadata.name} ({m.metadata.manufacturer})" for m in result.motors]
-            choice, ok = QInputDialog.getItem(self, self.tr("Select a motor"),
-                                              self.tr("This file contains several motors:"), names, 0, False)
+            choice, ok = QInputDialog.getItem(self, _("Select a motor"),
+                                              _("This file contains several motors:"), names, 0, False)
             if not ok:
                 return False
             motor = result.motors[names.index(choice)]
         self.controller.load_imported_motor(motor)
         self.thrust_editor.plot.reset_zoom()
         if result.warnings:
-            reporter().warning(self, self.tr("ENG import"), "\n".join(result.warnings))
-        self.statusBar().showMessage(self.tr("Imported %1 from %2").replace("%1", motor.metadata.name).replace("%2", path), 6000)
+            reporter().warning(self, _("ENG import"), "\n".join(result.warnings))
+        self.statusBar().showMessage(_("Imported {name} from {path}").format(name=motor.metadata.name, path=path), 6000)
         return True
 
     def export_eng(self) -> None:
         """File > Export as ENG (validated first)."""
         report = self.controller.validate()
         if report.issues and (not report.is_valid or report.warnings):
-            dialog = ValidationDialog(report, self.tr("ENG export - validation"),
-                                      self.tr("Export anyway") if report.is_valid else "", self)
+            dialog = ValidationDialog(report, _("ENG export - validation"),
+                                      _("Export anyway") if report.is_valid else "", self)
             dialog.row_requested.connect(self.thrust_editor.table.select_row)
             if not report.is_valid:
                 dialog.exec()
                 return
             if dialog.exec() != dialog.DialogCode.Accepted:
                 return
-        path = self._ask_save(self.tr("Export as ENG"), ENG_FILTER, self._suggested_name() + ".eng", ".eng")
+        path = self._ask_save(_("Export as ENG"), ENG_FILTER, self._suggested_name() + ".eng", ".eng")
         if not path:
             return
         try:
@@ -473,17 +486,17 @@ class MainWindow(QMainWindow):
         except RocketMotorError as exc:
             reporter().error(self, exc)
             return
-        self.statusBar().showMessage(self.tr("ENG file exported: %1").replace("%1", path), 6000)
+        self.statusBar().showMessage(_("ENG file exported: {path}").format(path=path), 6000)
 
     def import_csv(self) -> None:
         """File > Import CSV."""
-        path = self._ask_open(self.tr("Import CSV file"), CSV_FILTER)
+        path = self._ask_open(_("Import CSV file"), CSV_FILTER)
         if path:
             self._import_tabular(path, "csv")
 
     def import_excel(self) -> None:
         """File > Import Excel."""
-        path = self._ask_open(self.tr("Import Excel file"), EXCEL_FILTER)
+        path = self._ask_open(_("Import Excel file"), EXCEL_FILTER)
         if path:
             self._import_excel_path(path)
 
@@ -492,10 +505,8 @@ class MainWindow(QMainWindow):
         workbook is a Richard Nakka SRM workbook."""
         if self.controller.srm_service.is_srm_workbook(path):
             answer = QMessageBox.question(
-                self, self.tr("SRM workbook detected"),
-                self.tr("'%1' is a Richard Nakka SRM motor design workbook.\n\n"
-                        "Yes: import the motor (properties and thrust curve) from its sheets.\n"
-                        "No: import columns manually as a plain table.").replace("%1", Path(path).name),
+                self, _("SRM workbook detected"),
+                _("'{name}' is a Richard Nakka SRM motor design workbook.\n\nYes: import the motor (properties and thrust curve) from its sheets.\nNo: import columns manually as a plain table.").format(name=Path(path).name),
                 QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No | QMessageBox.StandardButton.Cancel,
                 QMessageBox.StandardButton.Yes,
             )
@@ -507,7 +518,7 @@ class MainWindow(QMainWindow):
 
     def import_srm(self) -> None:
         """File > Import SRM Workbook."""
-        path = self._ask_open(self.tr("Import SRM workbook"), SRM_FILTER)
+        path = self._ask_open(_("Import SRM workbook"), SRM_FILTER)
         if path:
             self._import_srm(path)
 
@@ -515,7 +526,7 @@ class MainWindow(QMainWindow):
         """Read an SRM workbook in the background, then open the import dialog."""
         if not self.maybe_save():
             return False
-        self.statusBar().showMessage(self.tr("Reading SRM workbook %1...").replace("%1", Path(path).name))
+        self.statusBar().showMessage(_("Reading SRM workbook {name}...").format(name=Path(path).name))
         QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
         worker = TaskWorker(self.controller.srm_service.read, path)
         worker.signals.finished.connect(lambda workbook: self._on_srm_read(workbook, path))
@@ -526,7 +537,7 @@ class MainWindow(QMainWindow):
     def _on_srm_failed(self, exc: Exception) -> None:
         QApplication.restoreOverrideCursor()
         self.statusBar().clearMessage()
-        reporter().error(self, exc, self.tr("Cannot import the SRM workbook."))
+        reporter().error(self, exc, _("Cannot import the SRM workbook."))
 
     def _on_srm_read(self, workbook, path: str) -> None:
         QApplication.restoreOverrideCursor()
@@ -537,7 +548,7 @@ class MainWindow(QMainWindow):
         self.controller.load_imported_motor(dialog.motor)
         self.thrust_editor.plot.reset_zoom()
         self.statusBar().showMessage(
-            self.tr("Imported %1 from SRM workbook %2").replace("%1", dialog.motor.metadata.name).replace("%2", path), 6000)
+            _("Imported {name} from SRM workbook {path}").format(name=dialog.motor.metadata.name, path=path), 6000)
 
     def _import_tabular(self, path: str, kind: str) -> bool:
         dialog = TabularImportDialog(path, kind, self.controller.csv_service, self.controller.excel_service, self)
@@ -549,26 +560,25 @@ class MainWindow(QMainWindow):
         """Replace the current thrust curve after confirmation (undoable)."""
         if self.document.motor.points:
             answer = QMessageBox.question(
-                self, self.tr("Replace thrust data"),
-                self.tr("Replace the %1 current thrust point(s) with %2 imported point(s)?\n(This can be undone with Ctrl+Z.)")
-                .replace("%1", str(self.document.motor.point_count())).replace("%2", str(len(points))),
+                self, _("Replace thrust data"),
+                _("Replace the {current} current thrust point(s) with {imported} imported point(s)?\n(This can be undone with Ctrl+Z.)").format(current=str(self.document.motor.point_count()), imported=str(len(points))),
             )
             if answer != QMessageBox.StandardButton.Yes:
                 return False
         self.controller.replace_points(points, source)
         self.thrust_editor.plot.reset_zoom()
-        self.statusBar().showMessage(self.tr("%1 point(s) imported from %2").replace("%1", str(len(points))).replace("%2", source), 6000)
+        self.statusBar().showMessage(_("{count} point(s) imported from {source}").format(count=str(len(points)), source=source), 6000)
         return True
 
     def export_csv(self) -> None:
         """File > Export CSV."""
         if not self.document.motor.points:
-            reporter().warning(self, self.tr("Export CSV"), self.tr("There is no thrust point to export."))
+            reporter().warning(self, _("Export CSV"), _("There is no thrust point to export."))
             return
         dialog = CsvExportDialog(self.controller.preferences.decimal_separator, self)
         if dialog.exec() != dialog.DialogCode.Accepted:
             return
-        path = self._ask_save(self.tr("Export CSV"), CSV_FILTER, self._suggested_name() + ".csv", ".csv")
+        path = self._ask_save(_("Export CSV"), CSV_FILTER, self._suggested_name() + ".csv", ".csv")
         if not path:
             return
         try:
@@ -576,18 +586,18 @@ class MainWindow(QMainWindow):
         except (RocketMotorError, ValueError) as exc:
             reporter().error(self, exc)
             return
-        self.statusBar().showMessage(self.tr("CSV file exported: %1").replace("%1", path), 6000)
+        self.statusBar().showMessage(_("CSV file exported: {path}").format(path=path), 6000)
 
     def import_image(self) -> None:
         """File > Import Thrust Curve Image."""
-        path = self._ask_open(self.tr("Import thrust curve image"), SUPPORTED_IMAGE_FILTER)
+        path = self._ask_open(_("Import thrust curve image"), SUPPORTED_IMAGE_FILTER)
         if path:
             self.show_digitizer(path)
 
     def export_graph(self) -> None:
         """Export the graph as PNG, SVG or PDF."""
         start = str(Path(self.controller.preferences.default_save_dir) / (self._suggested_name() + "_thrust.png"))
-        path, selected = QFileDialog.getSaveFileName(self, self.tr("Export graph"), start, EXPORT_FORMATS)
+        path, selected = QFileDialog.getSaveFileName(self, _("Export graph"), start, _(EXPORT_FORMATS))
         if not path:
             return
         if Path(path).suffix.lower() not in (".png", ".svg", ".pdf"):
@@ -595,9 +605,9 @@ class MainWindow(QMainWindow):
         try:
             self.thrust_editor.plot.export(path)
         except (OSError, ValueError) as exc:
-            reporter().error(self, exc, self.tr("The graph could not be exported."))
+            reporter().error(self, exc, _("The graph could not be exported."))
             return
-        self.statusBar().showMessage(self.tr("Graph exported: %1").replace("%1", path), 6000)
+        self.statusBar().showMessage(_("Graph exported: {path}").format(path=path), 6000)
 
     # ------------------------------------------------------------------
     # Edit / View
@@ -653,7 +663,7 @@ class MainWindow(QMainWindow):
             self._digitizer.load_image(image_path)
 
     def _on_digitized(self, points: list) -> None:
-        if self.replace_points(points, self.tr("the curve digitizer")):
+        if self.replace_points(points, _("the curve digitizer")):
             self.raise_()
             self.activateWindow()
 
@@ -707,10 +717,10 @@ class MainWindow(QMainWindow):
     # Help
     # ------------------------------------------------------------------
     def open_manual(self) -> None:
-        """Help > Manual."""
-        manual = resource_path("documentation", "user_manual.pdf")
+        """Help > Manual: the PDF manual of the interface language."""
+        manual = manual_path(localization.current_language())
         if not manual.exists():
-            reporter().warning(self, self.tr("Manual"), self.tr("The user manual was not found:\n%1").replace("%1", str(manual)))
+            reporter().warning(self, _("Manual"), _("The user manual was not found:\n{manual}").format(manual=str(manual)))
             return
         QDesktopServices.openUrl(QUrl.fromLocalFile(str(manual)))
 

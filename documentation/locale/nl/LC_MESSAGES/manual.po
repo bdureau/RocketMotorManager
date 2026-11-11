@@ -1,0 +1,1343 @@
+# Dutch translations for Rocket Motor Manager.
+# Copyright (C) 2026 Boris du Reau
+# This file is distributed under the same license as the Rocket Motor Manager project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Rocket Motor Manager 1.0.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-10 20:20+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Boris du Reau\n"
+"Language: nl\n"
+"Language-Team: Dutch\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: tools/generate_manual.py:196 tools/generate_manual.py:224 tools/generate_manual.py:554
+#: tools/generate_manual.py:556
+msgid "User manual"
+msgstr "Gebruikershandleiding"
+
+#: tools/generate_manual.py:197
+#, python-brace-format
+msgid "Page {number}"
+msgstr "Pagina {number}"
+
+#: tools/generate_manual.py:227
+#, python-brace-format
+msgid "Version {version} - {date}"
+msgstr "Versie {version} - {date}"
+
+#: tools/generate_manual.py:241
+msgid "Contents"
+msgstr "Inhoud"
+
+#: tools/generate_manual.py:247
+msgid "1. General presentation"
+msgstr "1. Algemene presentatie"
+
+#: tools/generate_manual.py:248
+#, python-brace-format
+msgid ""
+"{app} is a desktop application to create, import, edit, convert, analyse, visualise and archive "
+"rocket motor thrust data. It reads and writes the standard RASP <b>.eng</b> format used by "
+"OpenRocket and RockSim, imports CSV and Excel files, digitizes thrust curves from photographs or "
+"scans, computes the motor characteristics and prints custom motor labels."
+msgstr ""
+"{app} is een desktoptoepassing om stuwkrachtgegevens van raketmotoren te maken, te importeren, te"
+" bewerken, te converteren, te analyseren, weer te geven en te archiveren. Het programma leest en "
+"schrijft het standaard RASP-formaat <b>.eng</b> dat door OpenRocket en RockSim wordt gebruikt, "
+"importeert CSV- en Excel-bestanden, digitaliseert stuwkrachtcurves uit foto's of scans, berekent "
+"de motorkenmerken en drukt eigen motoretiketten af."
+
+#: tools/generate_manual.py:252
+msgid "Main features"
+msgstr "Belangrijkste functies"
+
+#: tools/generate_manual.py:253
+msgid "Motor properties editor (identity, dimensions, masses with automatic total mass)."
+msgstr "Editor voor motoreigenschappen (identiteit, afmetingen, massa's met automatische totale massa)."
+
+#: tools/generate_manual.py:254
+msgid "Interactive thrust curve: zoom, pan, cursor read-out, graphical point editing, PNG/SVG/PDF export."
+msgstr ""
+"Interactieve stuwkrachtcurve: zoomen, verschuiven, cursoruitlezing, grafisch bewerken van punten,"
+" export naar PNG/SVG/PDF."
+
+#: tools/generate_manual.py:255
+msgid ""
+"Synchronised data table: add, edit, duplicate, delete, sort, paste from Excel, unlimited "
+"undo/redo."
+msgstr ""
+"Gesynchroniseerde gegevenstabel: toevoegen, bewerken, dupliceren, verwijderen, sorteren, plakken "
+"uit Excel, onbeperkt ongedaan maken/opnieuw."
+
+#: tools/generate_manual.py:256
+msgid ""
+"Import ENG (several motors per file), CSV (automatic separator/decimal/encoding detection), Excel"
+" (.xlsx, .xls) and Richard Nakka SRM workbooks."
+msgstr ""
+"Import van ENG (meerdere motoren per bestand), CSV (automatische detectie van scheidingsteken, "
+"decimaalteken en codering), Excel (.xlsx, .xls) en SRM-werkmappen van Richard Nakka."
+
+#: tools/generate_manual.py:258
+msgid ""
+"Curve digitizer: image corrections, multi-point axis calibration, colour extraction, outlier "
+"removal, manual correction."
+msgstr ""
+"Curvedigitalisator: beeldcorrecties, ijking van de assen met meerdere punten, extractie op kleur,"
+" verwijderen van uitschieters, handmatige correctie."
+
+#: tools/generate_manual.py:260
+msgid "Analysis: total impulse, average/maximum thrust, burn time, specific impulse, impulse class."
+msgstr ""
+"Analyse: totale impuls, gemiddelde/maximale stuwkracht, brandduur, specifieke impuls, "
+"impulsklasse."
+
+#: tools/generate_manual.py:261
+msgid ""
+"Strict ENG export with validation; native versioned XML project keeping every piece of "
+"information."
+msgstr "Strikte ENG-export met validatie; eigen XML-project met versiebeheer dat alle informatie bewaart."
+
+#: tools/generate_manual.py:262
+msgid "Label designer with templates, logo, print preview, PDF, PNG and JPEG export at physical size."
+msgstr ""
+"Etiketontwerper met sjablonen, logo, afdrukvoorbeeld, export naar PDF, PNG en JPEG op ware "
+"grootte."
+
+#: tools/generate_manual.py:263
+msgid ""
+"Interface and manual in English, French, German, Spanish, Italian, Dutch, Polish, Portuguese and "
+"Russian."
+msgstr ""
+"Interface en handleiding in het Engels, Frans, Duits, Spaans, Italiaans, Nederlands, Pools, "
+"Portugees en Russisch."
+
+#: tools/generate_manual.py:264
+msgid "Data principles"
+msgstr "Principes van de gegevens"
+
+#: tools/generate_manual.py:265
+msgid "Internal units are fixed and explicit: seconds, Newtons, Newton-seconds, grams and millimetres."
+msgstr "De interne eenheden zijn vast en expliciet: seconden, newton, newtonseconden, gram en millimeter."
+
+#: tools/generate_manual.py:266
+msgid ""
+"Original data is never altered silently: sorting, resampling or replacing points are explicit and"
+" undoable."
+msgstr ""
+"Originele gegevens worden nooit stilzwijgend gewijzigd: sorteren, herbemonsteren of vervangen van"
+" punten gebeurt expliciet en kan ongedaan worden gemaakt."
+
+#: tools/generate_manual.py:267
+msgid ""
+"Information that the ENG format cannot hold (component masses, descriptions, label...) is kept in"
+" the XML project."
+msgstr ""
+"Informatie die het ENG-formaat niet kan bevatten (massa's van onderdelen, beschrijvingen, "
+"etiket...) wordt in het XML-project bewaard."
+
+#: tools/generate_manual.py:268
+msgid "Every save is atomic: an interrupted save never corrupts an existing file."
+msgstr "Elke opslag is atomair: een onderbroken opslag beschadigt nooit een bestaand bestand."
+
+#: tools/generate_manual.py:270
+msgid "2. Installation"
+msgstr "2. Installatie"
+
+#: tools/generate_manual.py:271
+msgid "Standalone executable (recommended)"
+msgstr "Zelfstandig programma (aanbevolen)"
+
+#: tools/generate_manual.py:272
+msgid ""
+"Copy the <b>RocketMotorManager</b> folder produced by the build (or the installer output) "
+"anywhere on the computer and run <b>RocketMotorManager.exe</b>. No Python installation is "
+"required."
+msgstr ""
+"Kopieer de map <b>RocketMotorManager</b> die door de build (of het installatieprogramma) is "
+"gemaakt naar een willekeurige plaats op de computer en start <b>RocketMotorManager.exe</b>. Een "
+"Python-installatie is niet nodig."
+
+#: tools/generate_manual.py:274
+msgid "From the source code"
+msgstr "Vanuit de broncode"
+
+#: tools/generate_manual.py:275
+msgid "Install Python 3.10 or later (64-bit) from python.org, ticking <i>Add Python to PATH</i>."
+msgstr "Installeer Python 3.10 of nieuwer (64-bit) van python.org en vink <i>Add Python to PATH</i> aan."
+
+#: tools/generate_manual.py:276
+msgid ""
+"Double-click <b>install.bat</b>: it creates a virtual environment (<i>.venv</i>) and installs the"
+" dependencies."
+msgstr ""
+"Dubbelklik op <b>install.bat</b>: het maakt een virtuele omgeving (<i>.venv</i>) aan en "
+"installeert de afhankelijkheden."
+
+#: tools/generate_manual.py:277
+msgid "Double-click <b>run.bat</b> to start the application."
+msgstr "Dubbelklik op <b>run.bat</b> om de toepassing te starten."
+
+#: tools/generate_manual.py:278
+msgid ""
+"Optional: run <b>build_exe.bat</b> to produce the standalone executable in "
+"<i>dist\\RocketMotorManager</i>."
+msgstr ""
+"Optioneel: voer <b>build_exe.bat</b> uit om het zelfstandige programma in "
+"<i>dist\\RocketMotorManager</i> te maken."
+
+#: tools/generate_manual.py:279
+msgid "Files and folders used by the application"
+msgstr "Door de toepassing gebruikte bestanden en mappen"
+
+#: tools/generate_manual.py:280
+msgid "Item"
+msgstr "Onderdeel"
+
+#: tools/generate_manual.py:280
+msgid "Location (Windows)"
+msgstr "Locatie (Windows)"
+
+#: tools/generate_manual.py:281
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: tools/generate_manual.py:282
+msgid "User label templates"
+msgstr "Etiketsjablonen van de gebruiker"
+
+#: tools/generate_manual.py:283
+msgid "Technical log"
+msgstr "Technisch logboek"
+
+#: tools/generate_manual.py:286
+msgid "3. The user interface"
+msgstr "3. De gebruikersinterface"
+
+#: tools/generate_manual.py:287
+msgid "Figure 1 - Main window: motor properties (left), thrust curve (centre), data table (right)."
+msgstr ""
+"Afbeelding 1 - Hoofdvenster: motoreigenschappen (links), stuwkrachtcurve (midden), gegevenstabel "
+"(rechts)."
+
+#: tools/generate_manual.py:288
+msgid "The main window is divided into three zones:"
+msgstr "Het hoofdvenster is verdeeld in drie zones:"
+
+#: tools/generate_manual.py:289
+msgid ""
+"<b>[[Motor properties]]</b> (left dock): identification, dimensions, masses, description and a "
+"summary of the computed characteristics. The dock can be moved, floated or hidden (menu "
+"<b>[[&View]]</b>)."
+msgstr ""
+"<b>[[Motor properties]]</b> (linkerpaneel): identificatie, afmetingen, massa's, beschrijving en "
+"een samenvatting van de berekende kenmerken. Het paneel kan worden verplaatst, losgemaakt of "
+"verborgen (menu <b>[[&View]]</b>)."
+
+#: tools/generate_manual.py:291
+msgid ""
+"<b>[[Thrust curve]]</b> (centre): time (s) on X, thrust (N) on Y. The dotted green line shows the"
+" average thrust over the burn window; the box in the corner summarises impulse, average thrust "
+"and burn time."
+msgstr ""
+"<b>[[Thrust curve]]</b> (midden): tijd (s) op X, stuwkracht (N) op Y. De groene stippellijn toont"
+" de gemiddelde stuwkracht over het brandvenster; het vak in de hoek vat impuls, gemiddelde "
+"stuwkracht en brandduur samen."
+
+#: tools/generate_manual.py:293
+msgid ""
+"<b>Data table</b> (right): the points of the curve. Rows in red contain errors, rows in yellow "
+"warnings."
+msgstr ""
+"<b>Gegevenstabel</b> (rechts): de punten van de curve. Rode rijen bevatten fouten, gele rijen "
+"waarschuwingen."
+
+#: tools/generate_manual.py:294
+msgid ""
+"The toolbar gives access to the most used commands (new, open, save, import, export, undo/redo, "
+"add and delete points, analysis, digitizer, labels). The status bar shows the file path, the "
+"number of points, the total impulse with its class and the cursor coordinates. Every field and "
+"button has a tooltip explaining its meaning, unit and constraints."
+msgstr ""
+"De werkbalk geeft toegang tot de meest gebruikte opdrachten (nieuw, openen, opslaan, importeren, "
+"exporteren, ongedaan maken/opnieuw, punten toevoegen en verwijderen, analyse, digitalisator, "
+"etiketten). De statusbalk toont het bestandspad, het aantal punten, de totale impuls met zijn "
+"klasse en de cursorcoördinaten. Elk veld en elke knop heeft een tooltip die de betekenis, de "
+"eenheid en de beperkingen uitlegt."
+
+#: tools/generate_manual.py:298
+msgid "Keyboard shortcuts"
+msgstr "Sneltoetsen"
+
+#: tools/generate_manual.py:299
+msgid "Action"
+msgstr "Actie"
+
+#: tools/generate_manual.py:299
+msgid "Shortcut"
+msgstr "Sneltoets"
+
+#: tools/generate_manual.py:300
+msgid "New / Open / Save / Save As"
+msgstr "Nieuw / Openen / Opslaan / Opslaan als"
+
+#: tools/generate_manual.py:301
+msgid "Undo / Redo"
+msgstr "Ongedaan maken / Opnieuw"
+
+#: tools/generate_manual.py:302
+msgid "Import ENG / Export ENG"
+msgstr "ENG importeren / ENG exporteren"
+
+#: tools/generate_manual.py:303
+msgid "Add point / Delete point(s)"
+msgstr "Punt toevoegen / Punt(en) verwijderen"
+
+#: tools/generate_manual.py:303
+msgid "Ctrl+Ins / Del (table) or Ctrl+Del"
+msgstr "Ctrl+Ins / Del (tabel) of Ctrl+Del"
+
+#: tools/generate_manual.py:304
+msgid "Duplicate point"
+msgstr "Punt dupliceren"
+
+#: tools/generate_manual.py:304
+msgid "Ctrl+D (table)"
+msgstr "Ctrl+D (tabel)"
+
+#: tools/generate_manual.py:305
+msgid "Copy / Paste points"
+msgstr "Punten kopiëren / plakken"
+
+#: tools/generate_manual.py:305
+msgid "Ctrl+C / Ctrl+V (table)"
+msgstr "Ctrl+C / Ctrl+V (tabel)"
+
+#: tools/generate_manual.py:306
+msgid "Reset zoom / Toggle grid"
+msgstr "Zoom herstellen / Raster aan/uit"
+
+#: tools/generate_manual.py:307
+msgid "Analysis / Digitizer / Labels / Validation"
+msgstr "Analyse / Digitalisator / Etiketten / Validatie"
+
+#: tools/generate_manual.py:308
+msgid "Print labels to PDF"
+msgstr "Etiketten afdrukken naar PDF"
+
+#: tools/generate_manual.py:309
+msgid "Manual"
+msgstr "Handleiding"
+
+#: tools/generate_manual.py:310
+msgid ""
+"Files can also be dropped on the main window: .rmm.xml and .eng files are opened, CSV/Excel files"
+" are imported and images open the digitizer."
+msgstr ""
+"Bestanden kunnen ook op het hoofdvenster worden neergezet: .rmm.xml- en .eng-bestanden worden "
+"geopend, CSV-/Excel-bestanden worden geïmporteerd en afbeeldingen openen de digitalisator."
+
+#: tools/generate_manual.py:313
+msgid "4. Creating a motor"
+msgstr "4. Een motor aanmaken"
+
+#: tools/generate_manual.py:314
+msgid "Choose <b>[[&File|&New Motor]]</b> (Ctrl+N)."
+msgstr "Kies <b>[[&File|&New Motor]]</b> (Ctrl+N)."
+
+#: tools/generate_manual.py:315
+msgid ""
+"Fill in the <b>[[Motor name]]</b> (short code written in ENG files, e.g. <i>C6</i>), the "
+"<b>[[Manufacturer]]</b> and the <b>[[Motor designation]]</b> (e.g. <i>C6-5</i>)."
+msgstr ""
+"Vul <b>[[Motor name]]</b> (korte code in ENG-bestanden, bijv. <i>C6</i>), <b>[[Manufacturer]]</b>"
+" en <b>[[Motor designation]]</b> (bijv. <i>C6-5</i>) in."
+
+#: tools/generate_manual.py:317
+msgid ""
+"Enter the <b>[[Ejection delays]]</b> separated by dashes (e.g. <i>3-5-7</i>); use <i>P</i> for a "
+"plugged motor and <i>0</i> for none."
+msgstr ""
+"Voer de <b>[[Ejection delays]]</b> in, gescheiden door streepjes (bijv. <i>3-5-7</i>); gebruik "
+"<i>P</i> voor een afgesloten motor en <i>0</i> voor geen vertraging."
+
+#: tools/generate_manual.py:319
+msgid ""
+"Enter the diameter and length in millimetres and the masses in grams. Decimal point or comma are "
+"both accepted."
+msgstr ""
+"Voer de diameter en lengte in millimeter en de massa's in gram in. Zowel een decimale punt als "
+"een komma worden geaccepteerd."
+
+#: tools/generate_manual.py:320
+msgid "Enter the thrust points in the table (see chapter 8), import them or digitize a graph."
+msgstr ""
+"Voer de stuwkrachtpunten in de tabel in (zie hoofdstuk 8), importeer ze of digitaliseer een "
+"grafiek."
+
+#: tools/generate_manual.py:321
+msgid "Save the project with <b>[[&File|&Save Motor]]</b>."
+msgstr "Sla het project op met <b>[[&File|&Save Motor]]</b>."
+
+#: tools/generate_manual.py:322
+msgid "Total motor mass"
+msgstr "Totale massa van de motor"
+
+#: tools/generate_manual.py:323
+msgid ""
+"When the casing mass or the nozzle and closure mass is entered, the total motor mass is computed "
+"automatically (propellant + casing + nozzle/closure) and the field becomes read-only. Otherwise "
+"the total mass can be entered directly (this is the case after an ENG import, which only provides"
+" the total and propellant masses)."
+msgstr ""
+"Wanneer de massa van de behuizing of de massa van de straalpijp en afsluitingen wordt ingevoerd, "
+"wordt de totale motormassa automatisch berekend (stuwstof + behuizing + straalpijp/afsluitingen) "
+"en wordt het veld alleen-lezen. Anders kan de totale massa direct worden ingevoerd (dit is het "
+"geval na een ENG-import, die alleen de totale massa en de stuwstofmassa levert)."
+
+#: tools/generate_manual.py:327
+msgid ""
+"Every change can be undone with Ctrl+Z. The window title shows an asterisk when changes are not "
+"saved; the application always asks before closing or opening another motor."
+msgstr ""
+"Elke wijziging kan met Ctrl+Z ongedaan worden gemaakt. De venstertitel toont een sterretje "
+"wanneer wijzigingen niet zijn opgeslagen; de toepassing vraagt altijd bevestiging voordat ze "
+"wordt gesloten of een andere motor wordt geopend."
+
+#: tools/generate_manual.py:330
+msgid "5. Importing an ENG file"
+msgstr "5. Een ENG-bestand importeren"
+
+#: tools/generate_manual.py:331
+msgid ""
+"Choose <b>[[&File|Import &ENG...]]</b> (Ctrl+E). The header (name, diameter, length, delays, "
+"propellant mass, total mass, manufacturer), the comments and every thrust point are read. If the "
+"file contains several motors, a list lets you choose one. The motor opens as a new unsaved "
+"document."
+msgstr ""
+"Kies <b>[[&File|Import &ENG...]]</b> (Ctrl+E). De kop (naam, diameter, lengte, vertragingen, "
+"stuwstofmassa, totale massa, fabrikant), het commentaar en alle stuwkrachtpunten worden gelezen. "
+"Als het bestand meerdere motoren bevat, kunt u er een uit een lijst kiezen. De motor wordt "
+"geopend als nieuw, niet-opgeslagen document."
+
+#: tools/generate_manual.py:334
+msgid "Example of ENG file"
+msgstr "Voorbeeld van een ENG-bestand"
+
+#: tools/generate_manual.py:335
+msgid "; comment lines start with a semicolon"
+msgstr "; commentaarregels beginnen met een puntkomma"
+
+#: tools/generate_manual.py:338
+msgid ""
+"When a file is invalid the message gives the exact line number and content (for example <i>Line "
+"5: Non-numeric thrust data -&gt; \"0.089 abc\"</i>). Non-blocking problems (curve not ending at "
+"zero, non-chronological points) are reported as warnings after the import."
+msgstr ""
+"Als een bestand ongeldig is, vermeldt het bericht het exacte regelnummer en de inhoud "
+"(bijvoorbeeld <i>Regel 5: Niet-numerieke stuwkrachtgegevens -&gt; \"0.089 abc\"</i>). Niet-"
+"blokkerende problemen (curve die niet op nul eindigt, niet-chronologische punten) worden na de "
+"import als waarschuwing gemeld."
+
+#: tools/generate_manual.py:342
+msgid "6. Importing CSV and Excel files"
+msgstr "6. CSV- en Excel-bestanden importeren"
+
+#: tools/generate_manual.py:343
+msgid "Figure 2 - CSV import preview with column mapping, units and invalid row highlighting."
+msgstr ""
+"Afbeelding 2 - Voorbeeld van de CSV-import met kolomtoewijzing, eenheden en markering van "
+"ongeldige rijen."
+
+#: tools/generate_manual.py:344
+msgid ""
+"<b>[[&File|Import &CSV...]]</b> opens a preview. The encoding, column separator, decimal "
+"separator and header row are detected automatically and can be changed. <b>[[&File|Import "
+"Exce&l...]]</b> works the same way for .xlsx and .xls workbooks, with a choice of worksheet."
+msgstr ""
+"<b>[[&File|Import &CSV...]]</b> opent een voorbeeld. De codering, het kolomscheidingsteken, het "
+"decimaalteken en de koprij worden automatisch gedetecteerd en kunnen worden gewijzigd. "
+"<b>[[&File|Import Exce&l...]]</b> werkt op dezelfde manier voor .xlsx- en .xls-werkmappen, met "
+"keuze van het werkblad."
+
+#: tools/generate_manual.py:347
+msgid "Select the <b>[[Time column]]</b> and its unit (s or ms)."
+msgstr "Selecteer de <b>[[Time column]]</b> en de eenheid ervan (s of ms)."
+
+#: tools/generate_manual.py:348
+msgid ""
+"Select the <b>[[Thrust column]]</b> and its unit (N, lbf or kgf). Values are converted to seconds"
+" and Newtons."
+msgstr ""
+"Selecteer de <b>[[Thrust column]]</b> en de eenheid ervan (N, lbf of kgf). De waarden worden "
+"omgerekend naar seconden en newton."
+
+#: tools/generate_manual.py:349
+msgid ""
+"Check the preview graph. Invalid rows (missing or non-numeric values, negative times) are "
+"highlighted in red; their tooltip gives the reason."
+msgstr ""
+"Controleer de voorbeeldgrafiek. Ongeldige rijen (ontbrekende of niet-numerieke waarden, negatieve"
+" tijden) zijn rood gemarkeerd; hun tooltip geeft de reden."
+
+#: tools/generate_manual.py:351
+msgid ""
+"Keep <b>[[Remove invalid rows]]</b> ticked to import only the valid points, then click "
+"<b>[[Import]]</b>."
+msgstr ""
+"Laat <b>[[Remove invalid rows]]</b> aangevinkt om alleen de geldige punten te importeren en klik "
+"daarna op <b>[[Import]]</b>."
+
+#: tools/generate_manual.py:352
+msgid ""
+"The imported points replace the thrust curve of the current motor after confirmation; the "
+"operation can be undone with Ctrl+Z."
+msgstr ""
+"De geïmporteerde punten vervangen na bevestiging de stuwkrachtcurve van de huidige motor; de "
+"bewerking kan met Ctrl+Z ongedaan worden gemaakt."
+
+#: tools/generate_manual.py:354
+msgid "Richard Nakka SRM workbooks"
+msgstr "SRM-werkmappen van Richard Nakka"
+
+#: tools/generate_manual.py:355
+msgid "Figure 3 - Import of an SRM workbook with curve choice and cross-check."
+msgstr "Afbeelding 3 - Import van een SRM-werkmap met keuze van de curve en kruiscontrole."
+
+#: tools/generate_manual.py:356
+msgid ""
+"The SRM design spreadsheets of Richard Nakka (SRM 1.x and SRM 2023, .xls or .xlsx) are not plain "
+"tables: <b>[[&File|Import &SRM Workbook (Nakka)...]]</b> reads each piece of information in its "
+"own sheet. Opening such a workbook with the Excel import or by drag and drop is detected "
+"automatically and the SRM import is proposed."
+msgstr ""
+"De SRM-ontwerpspreadsheets van Richard Nakka (SRM 1.x en SRM 2023, .xls of .xlsx) zijn geen "
+"eenvoudige tabellen: <b>[[&File|Import &SRM Workbook (Nakka)...]]</b> leest elk gegeven uit zijn "
+"eigen werkblad. Wordt zo'n werkmap via de Excel-import of door slepen geopend, dan wordt dit "
+"automatisch herkend en wordt de SRM-import voorgesteld."
+
+#: tools/generate_manual.py:360
+msgid "Sheet"
+msgstr "Werkblad"
+
+#: tools/generate_manual.py:360
+msgid "Information imported"
+msgstr "Geïmporteerde informatie"
+
+#: tools/generate_manual.py:361
+msgid ""
+"Title, propellant (KNDX, KNSB, KNSU, KNER...), chamber inside diameter and length, grain geometry"
+" and mass, Kn, throat diameter"
+msgstr ""
+"Titel, stuwstof (KNDX, KNSB, KNSU, KNER...), binnendiameter en lengte van de verbrandingskamer, "
+"geometrie en massa van de stuwstofkorrel, Kn, keeldiameter"
+
+#: tools/generate_manual.py:363
+msgid "SRM results (total impulse, average thrust, thrust time, Isp, class) and the 23-point table"
+msgstr ""
+"SRM-resultaten (totale impuls, gemiddelde stuwkracht, stuwkrachtduur, Isp, klasse) en de tabel "
+"met 23 punten"
+
+#: tools/generate_manual.py:364
+msgid "Full resolution thrust curve (about 880 points) and maximum thrust"
+msgstr "Stuwkrachtcurve in volledige resolutie (ongeveer 880 punten) en maximale stuwkracht"
+
+#: tools/generate_manual.py:365
+msgid "Maximum chamber pressure, burn time, nozzle length (informative)"
+msgstr "Maximale kamerdruk, brandduur, lengte van de straalpijp (informatief)"
+
+#: tools/generate_manual.py:367
+msgid ""
+"The motor name is proposed from the class and the average thrust (e.g. <i>L1729</i>), delays "
+"default to <i>P</i> (plugged)."
+msgstr ""
+"De motornaam wordt voorgesteld op basis van de klasse en de gemiddelde stuwkracht (bijv. "
+"<i>L1729</i>); de vertragingen zijn standaard <i>P</i> (afgesloten)."
+
+#: tools/generate_manual.py:369
+msgid ""
+"The workbook only gives the chamber <b>inside</b> dimensions: enter the casing outside diameter, "
+"the overall length (pre-filled with chamber + nozzle length), the hardware masses and the "
+"manufacturer."
+msgstr ""
+"De werkmap geeft alleen de <b>binnen</b>afmetingen van de kamer: voer de buitendiameter van de "
+"behuizing, de totale lengte (vooraf ingevuld met kamer- + straalpijplengte), de massa's van de "
+"hardware en de fabrikant in."
+
+#: tools/generate_manual.py:371
+#, python-format
+msgid ""
+"Curve source: <b>[[Performance sheet, simplified (recommended)]]</b> (about 30 points within 0.5 "
+"% of the maximum thrust), full resolution, resampled, or the Output table (coarser: its impulse "
+"is 1 to 2 % lower)."
+msgstr ""
+"Bron van de curve: <b>[[Performance sheet, simplified (recommended)]]</b> (ongeveer 30 punten "
+"binnen 0,5 % van de maximale stuwkracht), volledige resolutie, herbemonsterd of de Output-tabel "
+"(grover: de impuls is 1 tot 2 % lager)."
+
+#: tools/generate_manual.py:374
+msgid "The cross-check table compares the SRM results with the values recomputed from the imported curve."
+msgstr ""
+"De tabel voor de kruiscontrole vergelijkt de SRM-resultaten met de waarden die uit de "
+"geïmporteerde curve opnieuw zijn berekend."
+
+#: tools/generate_manual.py:375
+msgid ""
+"The design data (grain, Kn, throat, pressure...) is kept in the project file and the SRM results "
+"in the <b>[[Comments]]</b> field."
+msgstr ""
+"De ontwerpgegevens (korrel, Kn, keel, druk...) worden in het projectbestand bewaard en de SRM-"
+"resultaten in het veld <b>[[Comments]]</b>."
+
+#: tools/generate_manual.py:378
+msgid "7. Digitizing a thrust curve"
+msgstr "7. Een stuwkrachtcurve digitaliseren"
+
+#: tools/generate_manual.py:379
+msgid "Figure 4 - Curve digitizer: calibrated image with extracted points and reconstructed curve."
+msgstr ""
+"Afbeelding 4 - Curvedigitalisator: geijkte afbeelding met geëxtraheerde punten en "
+"gereconstrueerde curve."
+
+#: tools/generate_manual.py:380
+msgid ""
+"Open <b>[[&Tools|Curve &Digitizer...]]</b> (F6) or <b>[[&File|Import Thrust Curve "
+"&Image...]]</b>. PNG, JPEG, TIFF and BMP photographs, screenshots and scans are supported. The "
+"mouse wheel zooms, the middle button pans."
+msgstr ""
+"Open <b>[[&Tools|Curve &Digitizer...]]</b> (F6) of <b>[[&File|Import Thrust Curve "
+"&Image...]]</b>. Foto's, schermafbeeldingen en scans in PNG, JPEG, TIFF en BMP worden "
+"ondersteund. Het muiswiel zoomt, de middelste knop verschuift de weergave."
+
+#: tools/generate_manual.py:383
+msgid "Step 1 - Image corrections"
+msgstr "Stap 1 - Beeldcorrecties"
+
+#: tools/generate_manual.py:384
+msgid "<b>[[Rotate]]</b> by an angle to straighten a slightly tilted graph."
+msgstr "<b>[[Rotate]]</b> over een hoek om een licht scheve grafiek recht te zetten."
+
+#: tools/generate_manual.py:385
+msgid "<b>[[Crop]]</b>: drag a rectangle around the useful area."
+msgstr "<b>[[Crop]]</b>: trek een rechthoek rond het bruikbare gebied."
+
+#: tools/generate_manual.py:386
+msgid ""
+"<b>[[Perspective]]</b>: click the four corners of the graph frame of a photograph to make it "
+"rectangular."
+msgstr ""
+"<b>[[Perspective]]</b>: klik op de vier hoeken van het grafiekkader van een foto om het "
+"rechthoekig te maken."
+
+#: tools/generate_manual.py:387
+msgid ""
+"Contrast, brightness, grey levels and noise filters (median, gaussian, bilateral, non-local "
+"means) are applied live."
+msgstr ""
+"Contrast, helderheid, grijswaarden en ruisfilters (mediaan, gaussisch, bilateraal, non-local "
+"means) worden direct toegepast."
+
+#: tools/generate_manual.py:389
+msgid ""
+"<b>[[Undo correction]]</b> and <b>[[Reset all corrections]]</b> restore the previous or original "
+"image."
+msgstr ""
+"<b>[[Undo correction]]</b> en <b>[[Reset all corrections]]</b> herstellen de vorige of de "
+"oorspronkelijke afbeelding."
+
+#: tools/generate_manual.py:390
+msgid "Geometric corrections clear the calibration, so straighten the image before calibrating."
+msgstr "Geometrische correcties wissen de ijking; zet de afbeelding dus recht voordat u ijkt."
+
+#: tools/generate_manual.py:391
+msgid "Step 2 - Axis calibration"
+msgstr "Stap 2 - IJking van de assen"
+
+#: tools/generate_manual.py:392
+msgid ""
+"<b>[[Set origin]]</b>: click the intersection of the axes and enter its time and thrust (usually "
+"0 s, 0 N)."
+msgstr ""
+"<b>[[Set origin]]</b>: klik op het snijpunt van de assen en voer de tijd en stuwkracht in "
+"(meestal 0 s, 0 N)."
+
+#: tools/generate_manual.py:393
+msgid ""
+"<b>[[Set time-axis point]]</b>: click a known graduation of the time axis (e.g. 2.0 s) and enter "
+"its value."
+msgstr ""
+"<b>[[Set time-axis point]]</b>: klik op een bekende maatstreep van de tijdas (bijv. 2,0 s) en "
+"voer de waarde in."
+
+#: tools/generate_manual.py:394
+msgid ""
+"<b>[[Set thrust-axis point]]</b>: click a known graduation of the thrust axis (e.g. 16 N) and "
+"enter its value."
+msgstr ""
+"<b>[[Set thrust-axis point]]</b>: klik op een bekende maatstreep van de stuwkrachtas (bijv. 16 N)"
+" en voer de waarde in."
+
+#: tools/generate_manual.py:395
+msgid ""
+"Optionally <b>[[Add extra point]]</b> with known coordinates: a least-squares fit then improves "
+"the precision and the residual (in pixels) is displayed."
+msgstr ""
+"Gebruik eventueel <b>[[Add extra point]]</b> met bekende coördinaten: een kleinste-"
+"kwadratenaanpassing verbetert dan de nauwkeurigheid en het residu (in pixels) wordt weergegeven."
+
+#: tools/generate_manual.py:397
+msgid ""
+"The calibration is an affine transformation, which also compensates a small rotation or skew of "
+"the graph. The status bar converts the cursor position to time and thrust in real time."
+msgstr ""
+"De ijking is een affiene transformatie, die ook een kleine rotatie of scheefstand van de grafiek "
+"compenseert. De statusbalk zet de cursorpositie in realtime om naar tijd en stuwkracht."
+
+#: tools/generate_manual.py:399
+msgid "Step 3 - Curve extraction"
+msgstr "Stap 3 - Extractie van de curve"
+
+#: tools/generate_manual.py:400
+msgid ""
+"<b>[[Auto-detect]]</b> finds the dominant curve colour; <b>[[Pick]]</b> lets you click on the "
+"curve."
+msgstr ""
+"<b>[[Auto-detect]]</b> vindt de dominante kleur van de curve; met <b>[[Pick]]</b> klikt u op de "
+"curve."
+
+#: tools/generate_manual.py:401
+msgid ""
+"<b>[[Tolerance]]</b> sets how close a pixel colour must be (tick <i>[[Show detected pixels]]</i> "
+"to check)."
+msgstr ""
+"<b>[[Tolerance]]</b> bepaalt hoe dicht de kleur van een pixel moet liggen (vink <i>[[Show "
+"detected pixels]]</i> aan om te controleren)."
+
+#: tools/generate_manual.py:402
+msgid ""
+"<b>[[Extract curve]]</b> keeps one point per pixel column inside the calibrated area, removes "
+"outliers and resamples to the chosen <b>[[Number of points]]</b>."
+msgstr ""
+"<b>[[Extract curve]]</b> houdt één punt per pixelkolom binnen het geijkte gebied, verwijdert "
+"uitschieters en herbemonstert naar het gekozen <b>[[Number of points]]</b>."
+
+#: tools/generate_manual.py:404
+msgid ""
+"<b>[[Edit points]]</b>: drag a point, click to add, right-click to delete, Shift+drag to erase an"
+" area."
+msgstr ""
+"<b>[[Edit points]]</b>: sleep een punt, klik om toe te voegen, rechtsklik om te verwijderen, "
+"Shift+slepen om een gebied te wissen."
+
+#: tools/generate_manual.py:405
+msgid "<b>[[End the curve with zero thrust]]</b> appends the burnout point required by the ENG format."
+msgstr ""
+"<b>[[End the curve with zero thrust]]</b> voegt het brandeindepunt toe dat het ENG-formaat "
+"vereist."
+
+#: tools/generate_manual.py:406
+msgid ""
+"Check the reconstructed curve and its total impulse, then click <b>[[Transfer to motor "
+"editor]]</b>."
+msgstr ""
+"Controleer de gereconstrueerde curve en de totale impuls en klik daarna op <b>[[Transfer to motor"
+" editor]]</b>."
+
+#: tools/generate_manual.py:408
+msgid "8. Editing thrust points"
+msgstr "8. Stuwkrachtpunten bewerken"
+
+#: tools/generate_manual.py:409
+msgid ""
+"The table and the graph are always synchronised: every change in one is immediately visible in "
+"the other."
+msgstr ""
+"De tabel en de grafiek zijn altijd gesynchroniseerd: elke wijziging in de ene is direct zichtbaar"
+" in de andere."
+
+#: tools/generate_manual.py:410
+msgid "Operation"
+msgstr "Bewerking"
+
+#: tools/generate_manual.py:410
+msgid "In the table"
+msgstr "In de tabel"
+
+#: tools/generate_manual.py:410
+msgid "On the graph"
+msgstr "In de grafiek"
+
+#: tools/generate_manual.py:411
+msgid "Edit a value"
+msgstr "Een waarde bewerken"
+
+#: tools/generate_manual.py:411
+msgid "Double-click a cell (or type)"
+msgstr "Dubbelklik op een cel (of typ)"
+
+#: tools/generate_manual.py:411
+msgid "Drag a point (kept between its neighbours)"
+msgstr "Sleep een punt (blijft tussen zijn buren)"
+
+#: tools/generate_manual.py:412
+msgid "Add a point"
+msgstr "Een punt toevoegen"
+
+#: tools/generate_manual.py:412
+msgid "[[Add point]] button / Ctrl+Ins (mid-point after the selection)"
+msgstr "Knop [[Add point]] / Ctrl+Ins (middelpunt na de selectie)"
+
+#: tools/generate_manual.py:413
+msgid "Double-click an empty area"
+msgstr "Dubbelklik op een leeg gebied"
+
+#: tools/generate_manual.py:414
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: tools/generate_manual.py:414
+msgid "Select rows, Del key (multiple selection allowed)"
+msgstr "Selecteer rijen, Del-toets (meervoudige selectie toegestaan)"
+
+#: tools/generate_manual.py:415
+msgid "Right-click a point &gt; [[Delete point]]"
+msgstr "Rechtsklik op een punt &gt; [[Delete point]]"
+
+#: tools/generate_manual.py:416
+msgid "Duplicate"
+msgstr "Dupliceren"
+
+#: tools/generate_manual.py:416
+msgid "Right-click a point &gt; [[Duplicate point]]"
+msgstr "Rechtsklik op een punt &gt; [[Duplicate point]]"
+
+#: tools/generate_manual.py:417
+msgid "Sort"
+msgstr "Sorteren"
+
+#: tools/generate_manual.py:417
+msgid "[[Sort chronologically]] button"
+msgstr "Knop [[Sort chronologically]]"
+
+#: tools/generate_manual.py:418
+msgid "Paste from Excel"
+msgstr "Plakken uit Excel"
+
+#: tools/generate_manual.py:418
+msgid "Copy two columns in Excel, select the start row, Ctrl+V"
+msgstr "Kopieer twee kolommen in Excel, selecteer de beginrij, Ctrl+V"
+
+#: tools/generate_manual.py:420
+msgid ""
+"Pasted rows replace the points from the current row onwards (appended at the end without "
+"selection). Tab, semicolon or space separated data and decimal commas are accepted; header lines "
+"are ignored."
+msgstr ""
+"Geplakte rijen vervangen de punten vanaf de huidige rij (zonder selectie worden ze aan het einde "
+"toegevoegd). Gegevens gescheiden door tabs, puntkomma's of spaties en decimale komma's worden "
+"geaccepteerd; kopregels worden genegeerd."
+
+#: tools/generate_manual.py:422
+msgid ""
+"The graph scale follows the data automatically: entering or dragging a point above the current "
+"maximum enlarges the axes so that it stays visible. After a manual zoom or pan the view is kept "
+"(and only enlarged if a point leaves it); <b>[[&View|&Reset Graph Zoom]]</b> (Ctrl+0) or the Home"
+" button returns to automatic scaling."
+msgstr ""
+"De schaal van de grafiek volgt automatisch de gegevens: een punt invoeren of slepen boven het "
+"huidige maximum vergroot de assen zodat het zichtbaar blijft. Na handmatig zoomen of verschuiven "
+"blijft de weergave behouden (en wordt alleen vergroot als een punt erbuiten valt); "
+"<b>[[&View|&Reset Graph Zoom]]</b> (Ctrl+0) of de Home-knop herstelt de automatische schaal."
+
+#: tools/generate_manual.py:426
+msgid ""
+"The curve implicitly starts at (0 s, 0 N), as in the ENG format, so the first point does not need"
+" to be at time zero. The last point should have zero thrust."
+msgstr ""
+"De curve begint impliciet bij (0 s, 0 N), zoals in het ENG-formaat, dus het eerste punt hoeft "
+"niet op tijd nul te liggen. Het laatste punt moet een stuwkracht van nul hebben."
+
+#: tools/generate_manual.py:429
+msgid "9. Analysing the characteristics"
+msgstr "9. De kenmerken analyseren"
+
+#: tools/generate_manual.py:430
+msgid "Figure 5 - Thrust analysis dialog."
+msgstr "Afbeelding 5 - Venster voor stuwkrachtanalyse."
+
+#: tools/generate_manual.py:431
+msgid ""
+"<b>[[&Tools|Thrust &Analysis...]]</b> (F5) lists every characteristic with its unit. A value that"
+" cannot be computed is greyed out and its tooltip explains which data is missing."
+msgstr ""
+"<b>[[&Tools|Thrust &Analysis...]]</b> (F5) toont elk kenmerk met zijn eenheid. Een waarde die "
+"niet kan worden berekend is grijs en de tooltip legt uit welke gegevens ontbreken."
+
+#: tools/generate_manual.py:433
+msgid "Characteristic"
+msgstr "Kenmerk"
+
+#: tools/generate_manual.py:433
+msgid "Definition"
+msgstr "Definitie"
+
+#: tools/generate_manual.py:434
+msgid "Trapezoidal integral of thrust over time, from the implicit origin (0, 0)."
+msgstr ""
+"Integraal van de stuwkracht over de tijd volgens de trapeziumregel, vanaf de impliciete oorsprong"
+" (0, 0)."
+
+#: tools/generate_manual.py:435
+msgid "Highest thrust sample; [[Time to maximum thrust]] is its time."
+msgstr "Hoogste stuwkrachtwaarde; [[Time to maximum thrust]] is het tijdstip ervan."
+
+#: tools/generate_manual.py:436
+#, python-format
+msgid ""
+"[[Full powered curve]] (ignition to burnout) or NAR convention: between the instants when thrust "
+"crosses 5 % of the maximum (linear interpolation)."
+msgstr ""
+"[[Full powered curve]] (van ontsteking tot brandeinde) of NAR-conventie: tussen de tijdstippen "
+"waarop de stuwkracht 5 % van het maximum passeert (lineaire interpolatie)."
+
+#: tools/generate_manual.py:438
+msgid "Total impulse / burn time."
+msgstr "Totale impuls / brandduur."
+
+#: tools/generate_manual.py:439
+msgid "Thrust of the first and last data points."
+msgstr "Stuwkracht van het eerste en het laatste gegevenspunt."
+
+#: tools/generate_manual.py:440
+msgid "Total loaded mass."
+msgstr "Totale geladen massa."
+
+#: tools/generate_manual.py:441
+msgid "Propellant mass / total motor mass."
+msgstr "Stuwstofmassa / totale motormassa."
+
+#: tools/generate_manual.py:442
+msgid "Total impulse / (propellant mass in kg × 9.80665 m/s²)."
+msgstr "Totale impuls / (stuwstofmassa in kg × 9,80665 m/s²)."
+
+#: tools/generate_manual.py:443
+msgid "NAR letter (A = 1.26-2.5 N.s, each letter doubles) with the percentage within the class."
+msgstr "NAR-letter (A = 1,26-2,5 N.s, elke letter verdubbelt) met het percentage binnen de klasse."
+
+#: tools/generate_manual.py:445
+msgid ""
+"The analysis report can be copied to the clipboard or saved as a text file. The burn time "
+"definition and the display unit system (metric or imperial) are set in the preferences."
+msgstr ""
+"Het analyserapport kan naar het klembord worden gekopieerd of als tekstbestand worden opgeslagen."
+" De definitie van de brandduur en het eenhedenstelsel van de weergave (metrisch of imperiaal) "
+"worden in de voorkeuren ingesteld."
+
+#: tools/generate_manual.py:448
+msgid "10. Exporting to ENG"
+msgstr "10. Exporteren naar ENG"
+
+#: tools/generate_manual.py:449
+msgid ""
+"<b>[[&File|E&xport as ENG...]]</b> (Ctrl+Shift+E) first validates the motor. Blocking errors "
+"(missing name, manufacturer, diameter, length or masses, invalid delays, negative or non-"
+"chronological data) prevent the export and are listed; double-click an item to select the faulty "
+"point. Warnings (for example a curve that does not end at zero thrust) require an explicit "
+"confirmation."
+msgstr ""
+"<b>[[&File|E&xport as ENG...]]</b> (Ctrl+Shift+E) valideert eerst de motor. Blokkerende fouten "
+"(ontbrekende naam, fabrikant, diameter, lengte of massa's, ongeldige vertragingen, negatieve of "
+"niet-chronologische gegevens) verhinderen de export en worden opgesomd; dubbelklik op een item om"
+" het foutieve punt te selecteren. Waarschuwingen (bijvoorbeeld een curve die niet op nul "
+"stuwkracht eindigt) vereisen een uitdrukkelijke bevestiging."
+
+#: tools/generate_manual.py:453
+msgid ""
+"Header: name, diameter (mm), length (mm), delays, propellant mass (kg), total mass (kg), "
+"manufacturer."
+msgstr ""
+"Kop: naam, diameter (mm), lengte (mm), vertragingen, stuwstofmassa (kg), totale massa (kg), "
+"fabrikant."
+
+#: tools/generate_manual.py:454
+msgid ""
+"Spaces in the name or manufacturer are replaced by underscores; non-ASCII characters are "
+"transliterated."
+msgstr ""
+"Spaties in de naam of de fabrikant worden vervangen door onderstrepingstekens; niet-ASCII-tekens "
+"worden getranslitereerd."
+
+#: tools/generate_manual.py:455
+msgid "Numbers are written in plain decimal notation (never scientific), with up to 6 decimals."
+msgstr ""
+"Getallen worden in eenvoudige decimale notatie geschreven (nooit wetenschappelijk), met maximaal "
+"6 decimalen."
+
+#: tools/generate_manual.py:456
+msgid "A leading (0, 0) point is not written because it is implicit. Lines end with CR+LF."
+msgstr "Een beginpunt (0, 0) wordt niet geschreven omdat het impliciet is. Regels eindigen op CR+LF."
+
+#: tools/generate_manual.py:457
+msgid "Original ENG comments are preserved; no non-standard data is added to the file."
+msgstr ""
+"Oorspronkelijk ENG-commentaar blijft behouden; er worden geen niet-standaardgegevens aan het "
+"bestand toegevoegd."
+
+#: tools/generate_manual.py:458
+msgid ""
+"Exported files can be re-imported by the application and loaded in OpenRocket (Preferences &gt; "
+"Motors &gt; user thrust curve folder) and RockSim."
+msgstr ""
+"Geëxporteerde bestanden kunnen opnieuw in de toepassing worden geïmporteerd en in OpenRocket "
+"(Voorkeuren &gt; Motoren &gt; map met stuwkrachtcurves van de gebruiker) en RockSim worden "
+"geladen."
+
+#: tools/generate_manual.py:461
+msgid "11. Saving the XML project"
+msgstr "11. Het XML-project opslaan"
+
+#: tools/generate_manual.py:462
+msgid ""
+"<b>[[&File|&Save Motor]]</b> writes a native project file (<i>.rmm.xml</i>) containing everything"
+" visible in the application: properties, masses, dimensions, thrust points (exact values), "
+"computed characteristics (for information), graph settings, ENG comments, metadata (creation and "
+"modification dates, source file) and the label design."
+msgstr ""
+"<b>[[&File|&Save Motor]]</b> schrijft een eigen projectbestand (<i>.rmm.xml</i>) met alles wat in"
+" de toepassing zichtbaar is: eigenschappen, massa's, afmetingen, stuwkrachtpunten (exacte "
+"waarden), berekende kenmerken (ter informatie), grafiekinstellingen, ENG-commentaar, metagegevens"
+" (aanmaak- en wijzigingsdatum, bronbestand) en het etiketontwerp."
+
+#: tools/generate_manual.py:466
+msgid ""
+"The file is versioned (<i>formatVersion</i>); older versions are upgraded automatically on "
+"opening."
+msgstr ""
+"Het bestand heeft een versie (<i>formatVersion</i>); oudere versies worden bij het openen "
+"automatisch bijgewerkt."
+
+#: tools/generate_manual.py:467
+msgid ""
+"The structure is validated on opening; a corrupted file is reported precisely and never half-"
+"loaded."
+msgstr ""
+"De structuur wordt bij het openen gevalideerd; een beschadigd bestand wordt nauwkeurig gemeld en "
+"nooit half geladen."
+
+#: tools/generate_manual.py:468
+msgid "The save dialog asks before replacing an existing file; saves are atomic."
+msgstr ""
+"Het opslagvenster vraagt bevestiging voordat een bestaand bestand wordt vervangen; het opslaan is"
+" atomair."
+
+#: tools/generate_manual.py:469
+msgid "Recent files are listed in <b>[[&File|Recent &Files]]</b>."
+msgstr "Recente bestanden staan in <b>[[&File|Recent &Files]]</b>."
+
+#: tools/generate_manual.py:470
+msgid "CSV export"
+msgstr "CSV-export"
+
+#: tools/generate_manual.py:471
+msgid ""
+"<b>[[&File|Export CS&V...]]</b> lets you choose the column separator, decimal separator, encoding"
+" (utf-8-sig is best for Excel), time and thrust units, number of decimals and whether the motor "
+"properties are written as '#' comment lines."
+msgstr ""
+"Met <b>[[&File|Export CS&V...]]</b> kiest u het kolomscheidingsteken, het decimaalteken, de "
+"codering (utf-8-sig is het best voor Excel), de tijd- en stuwkrachteenheden, het aantal decimalen"
+" en of de motoreigenschappen als commentaarregels met '#' worden geschreven."
+
+#: tools/generate_manual.py:475
+msgid "12. Creating labels"
+msgstr "12. Etiketten maken"
+
+#: tools/generate_manual.py:476
+msgid "Figure 6 - Label designer with live preview."
+msgstr "Afbeelding 6 - Etiketontwerper met live voorbeeld."
+
+#: tools/generate_manual.py:477
+msgid ""
+"<b>[[&Tools|&Label Designer...]]</b> (F7) opens an independent window. The preview uses exactly "
+"the same renderer as the printer, so what you see is what is printed, at the physical dimensions "
+"entered."
+msgstr ""
+"<b>[[&Tools|&Label Designer...]]</b> (F7) opent een zelfstandig venster. Het voorbeeld gebruikt "
+"precies dezelfde weergave als de printer: wat u ziet, wordt afgedrukt, op de ingevoerde fysieke "
+"afmetingen."
+
+#: tools/generate_manual.py:479
+msgid ""
+"<b>[[Template]]</b>: choose a predefined template (Classic, Minimal, Banner, Dark, 18 mm wrap, "
+"Data sheet) or your own; save the current design as a reusable template."
+msgstr ""
+"<b>[[Template]]</b>: kies een vooraf gedefinieerd sjabloon (Classic, Minimal, Banner, Dark, 18 mm"
+" wrap, Data sheet) of een eigen sjabloon; sla het huidige ontwerp op als herbruikbaar sjabloon."
+
+#: tools/generate_manual.py:481
+msgid "<b>[[Dimensions]]</b>: width, height, inner margin, border width and corner radius in millimetres."
+msgstr "<b>[[Dimensions]]</b>: breedte, hoogte, binnenmarge, randdikte en hoekstraal in millimeter."
+
+#: tools/generate_manual.py:482
+msgid ""
+"<b>[[Colours and text]]</b>: background, text, accent and border colours, font, sizes, alignment,"
+" layout (stacked, two columns, banner) and the field used as title."
+msgstr ""
+"<b>[[Colours and text]]</b>: achtergrond-, tekst-, accent- en randkleur, lettertype, groottes, "
+"uitlijning, indeling (gestapeld, twee kolommen, banier) en het veld dat als titel dient."
+
+#: tools/generate_manual.py:484
+msgid "<b>[[Information to display]]</b>: tick the fields and drag them to reorder; add free text lines."
+msgstr ""
+"<b>[[Information to display]]</b>: vink de velden aan en sleep ze om de volgorde te wijzigen; "
+"voeg vrije tekstregels toe."
+
+#: tools/generate_manual.py:485
+msgid "<b>[[Logo]]</b>: import a PNG or JPG logo and set its position and size (aspect ratio kept)."
+msgstr ""
+"<b>[[Logo]]</b>: importeer een PNG- of JPG-logo en stel de positie en grootte in (beeldverhouding"
+" blijft behouden)."
+
+#: tools/generate_manual.py:486
+msgid "<b>[[Store in project]]</b> saves the design in the motor project."
+msgstr "<b>[[Store in project]]</b> slaat het ontwerp op in het motorproject."
+
+#: tools/generate_manual.py:487
+msgid ""
+"Values are taken from the current motor and its analysis and are updated automatically. Text that"
+" does not fit is reduced automatically."
+msgstr ""
+"De waarden komen van de huidige motor en zijn analyse en worden automatisch bijgewerkt. Tekst die"
+" niet past, wordt automatisch verkleind."
+
+#: tools/generate_manual.py:490
+msgid "13. Printing"
+msgstr "13. Afdrukken"
+
+#: tools/generate_manual.py:491
+msgid "The <b>[[&Print]]</b> menu (and the label designer toolbar) offers:"
+msgstr "Het menu <b>[[&Print]]</b> (en de werkbalk van de etiketontwerper) biedt:"
+
+#: tools/generate_manual.py:492
+msgid ""
+"<b>[[Print Preview]]</b>: the label sheet on the selected paper format (A4, A5, A6, Letter, "
+"Legal)."
+msgstr "<b>[[Print Preview]]</b>: het etiketvel op het gekozen papierformaat (A4, A5, A6, Letter, Legal)."
+
+#: tools/generate_manual.py:493
+msgid ""
+"<b>[[Print PDF]]</b>: a vector PDF sheet; labels are laid out in a grid using the page margin and"
+" spacing. Use <i>[[Copies]]</i> or <i>[[Fill the whole page]]</i>; extra pages are added "
+"automatically."
+msgstr ""
+"<b>[[Print PDF]]</b>: een vectorieel PDF-vel; de etiketten worden in een raster geplaatst met de "
+"paginamarge en de tussenruimte. Gebruik <i>[[Copies]]</i> of <i>[[Fill the whole page]]</i>; "
+"extra pagina's worden automatisch toegevoegd."
+
+#: tools/generate_manual.py:495
+msgid ""
+"<b>[[Export Label as P&NG...]]</b> / <b>[[Export Label as &JPEG...]]</b>: one label at the chosen"
+" resolution (72-2400 dpi). The image resolution is embedded so it prints at the right size."
+msgstr ""
+"<b>[[Export Label as P&NG...]]</b> / <b>[[Export Label as &JPEG...]]</b>: één etiket in de "
+"gekozen resolutie (72-2400 dpi). De resolutie wordt in de afbeelding opgenomen, zodat deze op de "
+"juiste grootte wordt afgedrukt."
+
+#: tools/generate_manual.py:497
+msgid "<b>[[Print...]]</b> in the label designer sends the sheet to a printer."
+msgstr "<b>[[Print...]]</b> in de etiketontwerper stuurt het vel naar een printer."
+
+#: tools/generate_manual.py:498
+msgid ""
+"When printing, set the printer scaling to 100 % (\"actual size\") so that the physical dimensions"
+" are respected."
+msgstr ""
+"Stel bij het afdrukken de schaal van de printer in op 100 % (\"werkelijke grootte\"), zodat de "
+"fysieke afmetingen worden gerespecteerd."
+
+#: tools/generate_manual.py:501
+msgid "14. Preferences"
+msgstr "14. Voorkeuren"
+
+#: tools/generate_manual.py:502
+msgid "Figure 7 - Preferences dialog."
+msgstr "Afbeelding 7 - Venster Voorkeuren."
+
+#: tools/generate_manual.py:503
+msgid "Open <b>[[&Edit|&Preferences...]]</b>."
+msgstr "Open <b>[[&Edit|&Preferences...]]</b>."
+
+#: tools/generate_manual.py:504
+msgid "Tab"
+msgstr "Tabblad"
+
+#: tools/generate_manual.py:504
+msgid "Settings"
+msgstr "Instellingen"
+
+#: tools/generate_manual.py:505
+msgid ""
+"[[Language]]: English, Français, Deutsch, Español, Italiano, Nederlands, Polski, Português or "
+"Русский (restart required), and light/dark theme. The manual opened by [[&Help|&Manual]] (F1) is "
+"the one of the selected language."
+msgstr ""
+"[[Language]]: English, Français, Deutsch, Español, Italiano, Nederlands, Polski, Português of "
+"Русский (herstart vereist) en licht/donker thema. De handleiding die [[&Help|&Manual]] (F1) "
+"opent, is die van de gekozen taal."
+
+#: tools/generate_manual.py:508
+msgid ""
+"Display unit system (metric N, N.s, g, mm or imperial lbf, lbf.s, oz, in), default decimal "
+"separator, burn time definition."
+msgstr ""
+"Eenhedenstelsel van de weergave (metrisch N, N.s, g, mm of imperiaal lbf, lbf.s, oz, in), "
+"standaard decimaalteken, definitie van de brandduur."
+
+#: tools/generate_manual.py:510
+msgid "Curve and marker colours, grid, markers, area fill."
+msgstr "Kleuren van curve en markeringen, raster, markeringen, vlakvulling."
+
+#: tools/generate_manual.py:511
+msgid "Default save folder and import folder."
+msgstr "Standaardmap voor opslaan en importmap."
+
+#: tools/generate_manual.py:512
+msgid "Default paper format and image resolution."
+msgstr "Standaard papierformaat en beeldresolutie."
+
+#: tools/generate_manual.py:514
+msgid ""
+"Preferences are saved between sessions. <b>Restore Defaults</b> resets every setting (recent "
+"files and window layout are kept)."
+msgstr ""
+"Voorkeuren blijven tussen sessies bewaard. <b>Standaardwaarden herstellen</b> zet alle "
+"instellingen terug (recente bestanden en de vensterindeling blijven behouden)."
+
+#: tools/generate_manual.py:517
+msgid "15. Troubleshooting"
+msgstr "15. Probleemoplossing"
+
+#: tools/generate_manual.py:518
+msgid "Problem"
+msgstr "Probleem"
+
+#: tools/generate_manual.py:518
+msgid "Solution"
+msgstr "Oplossing"
+
+#: tools/generate_manual.py:519
+msgid "\"Line N: ...\" when importing an ENG file"
+msgstr "\"Regel N: ...\" bij het importeren van een ENG-bestand"
+
+#: tools/generate_manual.py:520
+msgid ""
+"Open the file in a text editor and fix the indicated line: each data line must contain exactly "
+"two numbers with a decimal point."
+msgstr ""
+"Open het bestand in een teksteditor en corrigeer de aangegeven regel: elke gegevensregel moet "
+"precies twee getallen met een decimale punt bevatten."
+
+#: tools/generate_manual.py:522
+msgid "ENG export refused"
+msgstr "ENG-export geweigerd"
+
+#: tools/generate_manual.py:523
+msgid ""
+"Run [[&Tools|Data &Validation...]] (F8). Fill in the required properties and fix red rows (sort "
+"the points if they are not chronological)."
+msgstr ""
+"Voer [[&Tools|Data &Validation...]] (F8) uit. Vul de verplichte eigenschappen in en corrigeer de "
+"rode rijen (sorteer de punten als ze niet chronologisch zijn)."
+
+#: tools/generate_manual.py:525
+msgid "CSV columns not separated correctly"
+msgstr "CSV-kolommen niet goed gescheiden"
+
+#: tools/generate_manual.py:526
+msgid "Change the column separator and decimal separator in the import preview."
+msgstr "Wijzig het kolomscheidingsteken en het decimaalteken in het importvoorbeeld."
+
+#: tools/generate_manual.py:527
+msgid "Excel file cannot be opened"
+msgstr "Excel-bestand kan niet worden geopend"
+
+#: tools/generate_manual.py:528
+msgid "Close the workbook in Excel (it locks the file) and check the extension (.xlsx or .xls)."
+msgstr "Sluit de werkmap in Excel (dat het bestand vergrendelt) en controleer de extensie (.xlsx of .xls)."
+
+#: tools/generate_manual.py:529
+msgid "Digitizer finds no pixel"
+msgstr "Digitalisator vindt geen pixel"
+
+#: tools/generate_manual.py:530
+msgid ""
+"Pick the curve colour on the curve itself, increase the tolerance, untick '[[Only inside the "
+"calibrated area (axes excluded)]]' if the curve touches the axes."
+msgstr ""
+"Neem de kleur op de curve zelf, verhoog de tolerantie, vink '[[Only inside the calibrated area "
+"(axes excluded)]]' uit als de curve de assen raakt."
+
+#: tools/generate_manual.py:532
+msgid "Digitized values are shifted"
+msgstr "Gedigitaliseerde waarden zijn verschoven"
+
+#: tools/generate_manual.py:533
+msgid ""
+"Check the calibration values, add extra calibration points and straighten the image "
+"(rotation/perspective) before calibrating."
+msgstr ""
+"Controleer de ijkwaarden, voeg extra ijkpunten toe en zet de afbeelding recht "
+"(rotatie/perspectief) voordat u ijkt."
+
+#: tools/generate_manual.py:535
+msgid "SRM workbook: values missing or curve not found"
+msgstr "SRM-werkmap: waarden ontbreken of curve niet gevonden"
+
+#: tools/generate_manual.py:536
+msgid ""
+"Open the workbook in Excel, click the Solve buttons, save it, then import again (the importer "
+"reads the values computed by the workbook)."
+msgstr ""
+"Open de werkmap in Excel, klik op de Solve-knoppen, sla hem op en importeer hem opnieuw (de "
+"import leest de door de werkmap berekende waarden)."
+
+#: tools/generate_manual.py:538
+msgid "Printed label has the wrong size"
+msgstr "Afgedrukt etiket heeft de verkeerde grootte"
+
+#: tools/generate_manual.py:538
+#, python-format
+msgid "Print at 100 % scale (no 'fit to page')."
+msgstr "Druk af op 100 % schaal (geen 'passend maken op pagina')."
+
+#: tools/generate_manual.py:539
+msgid "The motor does not appear in OpenRocket"
+msgstr "De motor verschijnt niet in OpenRocket"
+
+#: tools/generate_manual.py:540
+msgid ""
+"Put the .eng file in the user thrust curve folder declared in OpenRocket preferences and restart "
+"OpenRocket."
+msgstr ""
+"Plaats het .eng-bestand in de map met stuwkrachtcurves van de gebruiker die in de voorkeuren van "
+"OpenRocket is ingesteld en start OpenRocket opnieuw."
+
+#: tools/generate_manual.py:542
+msgid "Unexpected error"
+msgstr "Onverwachte fout"
+
+#: tools/generate_manual.py:543
+msgid ""
+"The message is also written to the log file (see chapter 2); send it with the data file to the "
+"author."
+msgstr ""
+"Het bericht wordt ook in het logbestand geschreven (zie hoofdstuk 2); stuur het samen met het "
+"gegevensbestand naar de auteur."
+

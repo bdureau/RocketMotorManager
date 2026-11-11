@@ -1,0 +1,1345 @@
+# Portuguese translations for Rocket Motor Manager.
+# Copyright (C) 2026 Boris du Reau
+# This file is distributed under the same license as the Rocket Motor Manager project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Rocket Motor Manager 1.0.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-10 20:20+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Boris du Reau\n"
+"Language: pt\n"
+"Language-Team: Portuguese\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: tools/generate_manual.py:196 tools/generate_manual.py:224 tools/generate_manual.py:554
+#: tools/generate_manual.py:556
+msgid "User manual"
+msgstr "Manual do utilizador"
+
+#: tools/generate_manual.py:197
+#, python-brace-format
+msgid "Page {number}"
+msgstr "Página {number}"
+
+#: tools/generate_manual.py:227
+#, python-brace-format
+msgid "Version {version} - {date}"
+msgstr "Versão {version} - {date}"
+
+#: tools/generate_manual.py:241
+msgid "Contents"
+msgstr "Índice"
+
+#: tools/generate_manual.py:247
+msgid "1. General presentation"
+msgstr "1. Apresentação geral"
+
+#: tools/generate_manual.py:248
+#, python-brace-format
+msgid ""
+"{app} is a desktop application to create, import, edit, convert, analyse, visualise and archive "
+"rocket motor thrust data. It reads and writes the standard RASP <b>.eng</b> format used by "
+"OpenRocket and RockSim, imports CSV and Excel files, digitizes thrust curves from photographs or "
+"scans, computes the motor characteristics and prints custom motor labels."
+msgstr ""
+"{app} é uma aplicação de secretária para criar, importar, editar, converter, analisar, visualizar"
+" e arquivar dados de impulso de motores de foguete. Lê e escreve o formato padrão RASP "
+"<b>.eng</b> utilizado pelo OpenRocket e pelo RockSim, importa ficheiros CSV e Excel, digitaliza "
+"curvas de impulso a partir de fotografias ou digitalizações, calcula as características do motor "
+"e imprime etiquetas de motor personalizadas."
+
+#: tools/generate_manual.py:252
+msgid "Main features"
+msgstr "Funcionalidades principais"
+
+#: tools/generate_manual.py:253
+msgid "Motor properties editor (identity, dimensions, masses with automatic total mass)."
+msgstr ""
+"Editor das propriedades do motor (identidade, dimensões, massas com cálculo automático da massa "
+"total)."
+
+#: tools/generate_manual.py:254
+msgid "Interactive thrust curve: zoom, pan, cursor read-out, graphical point editing, PNG/SVG/PDF export."
+msgstr ""
+"Curva de impulso interativa: zoom, deslocamento, leitura do cursor, edição gráfica dos pontos, "
+"exportação PNG/SVG/PDF."
+
+#: tools/generate_manual.py:255
+msgid ""
+"Synchronised data table: add, edit, duplicate, delete, sort, paste from Excel, unlimited "
+"undo/redo."
+msgstr ""
+"Tabela de dados sincronizada: adicionar, editar, duplicar, eliminar, ordenar, colar do Excel, "
+"anular/refazer ilimitados."
+
+#: tools/generate_manual.py:256
+msgid ""
+"Import ENG (several motors per file), CSV (automatic separator/decimal/encoding detection), Excel"
+" (.xlsx, .xls) and Richard Nakka SRM workbooks."
+msgstr ""
+"Importação ENG (vários motores por ficheiro), CSV (deteção automática do separador, do decimal e "
+"da codificação), Excel (.xlsx, .xls) e livros SRM de Richard Nakka."
+
+#: tools/generate_manual.py:258
+msgid ""
+"Curve digitizer: image corrections, multi-point axis calibration, colour extraction, outlier "
+"removal, manual correction."
+msgstr ""
+"Digitalizador de curvas: correções de imagem, calibração dos eixos com vários pontos, extração "
+"por cor, remoção de valores aberrantes, correção manual."
+
+#: tools/generate_manual.py:260
+msgid "Analysis: total impulse, average/maximum thrust, burn time, specific impulse, impulse class."
+msgstr ""
+"Análise: impulso total, impulso médio/máximo, tempo de combustão, impulso específico, classe de "
+"impulso."
+
+#: tools/generate_manual.py:261
+msgid ""
+"Strict ENG export with validation; native versioned XML project keeping every piece of "
+"information."
+msgstr ""
+"Exportação ENG rigorosa com validação; projeto XML nativo com versão que conserva toda a "
+"informação."
+
+#: tools/generate_manual.py:262
+msgid "Label designer with templates, logo, print preview, PDF, PNG and JPEG export at physical size."
+msgstr ""
+"Editor de etiquetas com modelos, logótipo, pré-visualização de impressão, exportação PDF, PNG e "
+"JPEG em tamanho real."
+
+#: tools/generate_manual.py:263
+msgid ""
+"Interface and manual in English, French, German, Spanish, Italian, Dutch, Polish, Portuguese and "
+"Russian."
+msgstr ""
+"Interface e manual em inglês, francês, alemão, espanhol, italiano, neerlandês, polaco, português "
+"e russo."
+
+#: tools/generate_manual.py:264
+msgid "Data principles"
+msgstr "Princípios dos dados"
+
+#: tools/generate_manual.py:265
+msgid "Internal units are fixed and explicit: seconds, Newtons, Newton-seconds, grams and millimetres."
+msgstr ""
+"As unidades internas são fixas e explícitas: segundos, newtons, newtons-segundo, gramas e "
+"milímetros."
+
+#: tools/generate_manual.py:266
+msgid ""
+"Original data is never altered silently: sorting, resampling or replacing points are explicit and"
+" undoable."
+msgstr ""
+"Os dados originais nunca são alterados silenciosamente: ordenar, reamostrar ou substituir pontos "
+"são operações explícitas e podem ser anuladas."
+
+#: tools/generate_manual.py:267
+msgid ""
+"Information that the ENG format cannot hold (component masses, descriptions, label...) is kept in"
+" the XML project."
+msgstr ""
+"As informações que o formato ENG não pode conter (massas dos componentes, descrições, "
+"etiqueta...) são guardadas no projeto XML."
+
+#: tools/generate_manual.py:268
+msgid "Every save is atomic: an interrupted save never corrupts an existing file."
+msgstr "Cada gravação é atómica: uma gravação interrompida nunca danifica um ficheiro existente."
+
+#: tools/generate_manual.py:270
+msgid "2. Installation"
+msgstr "2. Instalação"
+
+#: tools/generate_manual.py:271
+msgid "Standalone executable (recommended)"
+msgstr "Executável autónomo (recomendado)"
+
+#: tools/generate_manual.py:272
+msgid ""
+"Copy the <b>RocketMotorManager</b> folder produced by the build (or the installer output) "
+"anywhere on the computer and run <b>RocketMotorManager.exe</b>. No Python installation is "
+"required."
+msgstr ""
+"Copie a pasta <b>RocketMotorManager</b> produzida pela compilação (ou pelo instalador) para "
+"qualquer local do computador e execute <b>RocketMotorManager.exe</b>. Não é necessária nenhuma "
+"instalação do Python."
+
+#: tools/generate_manual.py:274
+msgid "From the source code"
+msgstr "A partir do código-fonte"
+
+#: tools/generate_manual.py:275
+msgid "Install Python 3.10 or later (64-bit) from python.org, ticking <i>Add Python to PATH</i>."
+msgstr ""
+"Instale o Python 3.10 ou superior (64 bits) a partir de python.org, assinalando <i>Add Python to "
+"PATH</i>."
+
+#: tools/generate_manual.py:276
+msgid ""
+"Double-click <b>install.bat</b>: it creates a virtual environment (<i>.venv</i>) and installs the"
+" dependencies."
+msgstr ""
+"Faça duplo clique em <b>install.bat</b>: cria um ambiente virtual (<i>.venv</i>) e instala as "
+"dependências."
+
+#: tools/generate_manual.py:277
+msgid "Double-click <b>run.bat</b> to start the application."
+msgstr "Faça duplo clique em <b>run.bat</b> para iniciar a aplicação."
+
+#: tools/generate_manual.py:278
+msgid ""
+"Optional: run <b>build_exe.bat</b> to produce the standalone executable in "
+"<i>dist\\RocketMotorManager</i>."
+msgstr ""
+"Opcional: execute <b>build_exe.bat</b> para produzir o executável autónomo em "
+"<i>dist\\RocketMotorManager</i>."
+
+#: tools/generate_manual.py:279
+msgid "Files and folders used by the application"
+msgstr "Ficheiros e pastas utilizados pela aplicação"
+
+#: tools/generate_manual.py:280
+msgid "Item"
+msgstr "Elemento"
+
+#: tools/generate_manual.py:280
+msgid "Location (Windows)"
+msgstr "Localização (Windows)"
+
+#: tools/generate_manual.py:281
+msgid "Preferences"
+msgstr "Preferências"
+
+#: tools/generate_manual.py:282
+msgid "User label templates"
+msgstr "Modelos de etiquetas do utilizador"
+
+#: tools/generate_manual.py:283
+msgid "Technical log"
+msgstr "Registo técnico"
+
+#: tools/generate_manual.py:286
+msgid "3. The user interface"
+msgstr "3. A interface do utilizador"
+
+#: tools/generate_manual.py:287
+msgid "Figure 1 - Main window: motor properties (left), thrust curve (centre), data table (right)."
+msgstr ""
+"Figura 1 - Janela principal: propriedades do motor (à esquerda), curva de impulso (ao centro), "
+"tabela de dados (à direita)."
+
+#: tools/generate_manual.py:288
+msgid "The main window is divided into three zones:"
+msgstr "A janela principal está dividida em três zonas:"
+
+#: tools/generate_manual.py:289
+msgid ""
+"<b>[[Motor properties]]</b> (left dock): identification, dimensions, masses, description and a "
+"summary of the computed characteristics. The dock can be moved, floated or hidden (menu "
+"<b>[[&View]]</b>)."
+msgstr ""
+"<b>[[Motor properties]]</b> (painel esquerdo): identificação, dimensões, massas, descrição e um "
+"resumo das características calculadas. O painel pode ser movido, destacado ou ocultado (menu "
+"<b>[[&View]]</b>)."
+
+#: tools/generate_manual.py:291
+msgid ""
+"<b>[[Thrust curve]]</b> (centre): time (s) on X, thrust (N) on Y. The dotted green line shows the"
+" average thrust over the burn window; the box in the corner summarises impulse, average thrust "
+"and burn time."
+msgstr ""
+"<b>[[Thrust curve]]</b> (ao centro): tempo (s) em X, impulso (N) em Y. A linha verde tracejada "
+"mostra o impulso médio na janela de combustão; a caixa no canto resume o impulso total, o impulso"
+" médio e o tempo de combustão."
+
+#: tools/generate_manual.py:293
+msgid ""
+"<b>Data table</b> (right): the points of the curve. Rows in red contain errors, rows in yellow "
+"warnings."
+msgstr ""
+"<b>Tabela de dados</b> (à direita): os pontos da curva. As linhas a vermelho contêm erros, as "
+"linhas a amarelo avisos."
+
+#: tools/generate_manual.py:294
+msgid ""
+"The toolbar gives access to the most used commands (new, open, save, import, export, undo/redo, "
+"add and delete points, analysis, digitizer, labels). The status bar shows the file path, the "
+"number of points, the total impulse with its class and the cursor coordinates. Every field and "
+"button has a tooltip explaining its meaning, unit and constraints."
+msgstr ""
+"A barra de ferramentas dá acesso aos comandos mais utilizados (novo, abrir, guardar, importar, "
+"exportar, anular/refazer, adicionar e eliminar pontos, análise, digitalizador, etiquetas). A "
+"barra de estado mostra o caminho do ficheiro, o número de pontos, o impulso total com a sua "
+"classe e as coordenadas do cursor. Cada campo e cada botão tem uma dica que explica o seu "
+"significado, unidade e restrições."
+
+#: tools/generate_manual.py:298
+msgid "Keyboard shortcuts"
+msgstr "Atalhos de teclado"
+
+#: tools/generate_manual.py:299
+msgid "Action"
+msgstr "Ação"
+
+#: tools/generate_manual.py:299
+msgid "Shortcut"
+msgstr "Atalho"
+
+#: tools/generate_manual.py:300
+msgid "New / Open / Save / Save As"
+msgstr "Novo / Abrir / Guardar / Guardar como"
+
+#: tools/generate_manual.py:301
+msgid "Undo / Redo"
+msgstr "Anular / Refazer"
+
+#: tools/generate_manual.py:302
+msgid "Import ENG / Export ENG"
+msgstr "Importar ENG / Exportar ENG"
+
+#: tools/generate_manual.py:303
+msgid "Add point / Delete point(s)"
+msgstr "Adicionar ponto / Eliminar ponto(s)"
+
+#: tools/generate_manual.py:303
+msgid "Ctrl+Ins / Del (table) or Ctrl+Del"
+msgstr "Ctrl+Ins / Del (tabela) ou Ctrl+Del"
+
+#: tools/generate_manual.py:304
+msgid "Duplicate point"
+msgstr "Duplicar ponto"
+
+#: tools/generate_manual.py:304
+msgid "Ctrl+D (table)"
+msgstr "Ctrl+D (tabela)"
+
+#: tools/generate_manual.py:305
+msgid "Copy / Paste points"
+msgstr "Copiar / Colar pontos"
+
+#: tools/generate_manual.py:305
+msgid "Ctrl+C / Ctrl+V (table)"
+msgstr "Ctrl+C / Ctrl+V (tabela)"
+
+#: tools/generate_manual.py:306
+msgid "Reset zoom / Toggle grid"
+msgstr "Repor zoom / Mostrar grelha"
+
+#: tools/generate_manual.py:307
+msgid "Analysis / Digitizer / Labels / Validation"
+msgstr "Análise / Digitalizador / Etiquetas / Validação"
+
+#: tools/generate_manual.py:308
+msgid "Print labels to PDF"
+msgstr "Imprimir etiquetas em PDF"
+
+#: tools/generate_manual.py:309
+msgid "Manual"
+msgstr "Manual"
+
+#: tools/generate_manual.py:310
+msgid ""
+"Files can also be dropped on the main window: .rmm.xml and .eng files are opened, CSV/Excel files"
+" are imported and images open the digitizer."
+msgstr ""
+"Também é possível largar ficheiros na janela principal: os ficheiros .rmm.xml e .eng são abertos,"
+" os ficheiros CSV/Excel são importados e as imagens abrem o digitalizador."
+
+#: tools/generate_manual.py:313
+msgid "4. Creating a motor"
+msgstr "4. Criar um motor"
+
+#: tools/generate_manual.py:314
+msgid "Choose <b>[[&File|&New Motor]]</b> (Ctrl+N)."
+msgstr "Escolha <b>[[&File|&New Motor]]</b> (Ctrl+N)."
+
+#: tools/generate_manual.py:315
+msgid ""
+"Fill in the <b>[[Motor name]]</b> (short code written in ENG files, e.g. <i>C6</i>), the "
+"<b>[[Manufacturer]]</b> and the <b>[[Motor designation]]</b> (e.g. <i>C6-5</i>)."
+msgstr ""
+"Preencha os campos <b>[[Motor name]]</b> (código curto escrito nos ficheiros ENG, p. ex. "
+"<i>C6</i>), <b>[[Manufacturer]]</b> e <b>[[Motor designation]]</b> (p. ex. <i>C6-5</i>)."
+
+#: tools/generate_manual.py:317
+msgid ""
+"Enter the <b>[[Ejection delays]]</b> separated by dashes (e.g. <i>3-5-7</i>); use <i>P</i> for a "
+"plugged motor and <i>0</i> for none."
+msgstr ""
+"Introduza os <b>[[Ejection delays]]</b> separados por hífenes (p. ex. <i>3-5-7</i>); utilize "
+"<i>P</i> para um motor tamponado e <i>0</i> para nenhum."
+
+#: tools/generate_manual.py:319
+msgid ""
+"Enter the diameter and length in millimetres and the masses in grams. Decimal point or comma are "
+"both accepted."
+msgstr ""
+"Introduza o diâmetro e o comprimento em milímetros e as massas em gramas. São aceites o ponto e a"
+" vírgula decimal."
+
+#: tools/generate_manual.py:320
+msgid "Enter the thrust points in the table (see chapter 8), import them or digitize a graph."
+msgstr "Introduza os pontos de impulso na tabela (ver capítulo 8), importe-os ou digitalize um gráfico."
+
+#: tools/generate_manual.py:321
+msgid "Save the project with <b>[[&File|&Save Motor]]</b>."
+msgstr "Guarde o projeto com <b>[[&File|&Save Motor]]</b>."
+
+#: tools/generate_manual.py:322
+msgid "Total motor mass"
+msgstr "Massa total do motor"
+
+#: tools/generate_manual.py:323
+msgid ""
+"When the casing mass or the nozzle and closure mass is entered, the total motor mass is computed "
+"automatically (propellant + casing + nozzle/closure) and the field becomes read-only. Otherwise "
+"the total mass can be entered directly (this is the case after an ENG import, which only provides"
+" the total and propellant masses)."
+msgstr ""
+"Quando a massa do invólucro ou a massa da tubeira e dos fechos é introduzida, a massa total do "
+"motor é calculada automaticamente (propelente + invólucro + tubeira/fechos) e o campo passa a só "
+"de leitura. Caso contrário, a massa total pode ser introduzida diretamente (é o caso após uma "
+"importação ENG, que só fornece a massa total e a massa de propelente)."
+
+#: tools/generate_manual.py:327
+msgid ""
+"Every change can be undone with Ctrl+Z. The window title shows an asterisk when changes are not "
+"saved; the application always asks before closing or opening another motor."
+msgstr ""
+"Cada alteração pode ser anulada com Ctrl+Z. O título da janela mostra um asterisco quando há "
+"alterações por guardar; a aplicação pergunta sempre antes de fechar ou de abrir outro motor."
+
+#: tools/generate_manual.py:330
+msgid "5. Importing an ENG file"
+msgstr "5. Importar um ficheiro ENG"
+
+#: tools/generate_manual.py:331
+msgid ""
+"Choose <b>[[&File|Import &ENG...]]</b> (Ctrl+E). The header (name, diameter, length, delays, "
+"propellant mass, total mass, manufacturer), the comments and every thrust point are read. If the "
+"file contains several motors, a list lets you choose one. The motor opens as a new unsaved "
+"document."
+msgstr ""
+"Escolha <b>[[&File|Import &ENG...]]</b> (Ctrl+E). O cabeçalho (nome, diâmetro, comprimento, "
+"atrasos, massa de propelente, massa total, fabricante), os comentários e todos os pontos de "
+"impulso são lidos. Se o ficheiro contiver vários motores, uma lista permite escolher um. O motor "
+"abre como um novo documento por guardar."
+
+#: tools/generate_manual.py:334
+msgid "Example of ENG file"
+msgstr "Exemplo de ficheiro ENG"
+
+#: tools/generate_manual.py:335
+msgid "; comment lines start with a semicolon"
+msgstr "; as linhas de comentário começam por ponto e vírgula"
+
+#: tools/generate_manual.py:338
+msgid ""
+"When a file is invalid the message gives the exact line number and content (for example <i>Line "
+"5: Non-numeric thrust data -&gt; \"0.089 abc\"</i>). Non-blocking problems (curve not ending at "
+"zero, non-chronological points) are reported as warnings after the import."
+msgstr ""
+"Quando um ficheiro é inválido, a mensagem indica o número e o conteúdo exatos da linha (por "
+"exemplo <i>Linha 5: Dados de impulso não numéricos -&gt; \"0.089 abc\"</i>). Os problemas não "
+"bloqueantes (curva que não termina em zero, pontos não cronológicos) são indicados como avisos "
+"após a importação."
+
+#: tools/generate_manual.py:342
+msgid "6. Importing CSV and Excel files"
+msgstr "6. Importar ficheiros CSV e Excel"
+
+#: tools/generate_manual.py:343
+msgid "Figure 2 - CSV import preview with column mapping, units and invalid row highlighting."
+msgstr ""
+"Figura 2 - Pré-visualização da importação CSV com associação de colunas, unidades e realce das "
+"linhas inválidas."
+
+#: tools/generate_manual.py:344
+msgid ""
+"<b>[[&File|Import &CSV...]]</b> opens a preview. The encoding, column separator, decimal "
+"separator and header row are detected automatically and can be changed. <b>[[&File|Import "
+"Exce&l...]]</b> works the same way for .xlsx and .xls workbooks, with a choice of worksheet."
+msgstr ""
+"<b>[[&File|Import &CSV...]]</b> abre uma pré-visualização. A codificação, o separador de colunas,"
+" o separador decimal e a linha de cabeçalho são detetados automaticamente e podem ser alterados. "
+"<b>[[&File|Import Exce&l...]]</b> funciona da mesma forma para livros .xlsx e .xls, com escolha "
+"da folha."
+
+#: tools/generate_manual.py:347
+msgid "Select the <b>[[Time column]]</b> and its unit (s or ms)."
+msgstr "Selecione a <b>[[Time column]]</b> e a sua unidade (s ou ms)."
+
+#: tools/generate_manual.py:348
+msgid ""
+"Select the <b>[[Thrust column]]</b> and its unit (N, lbf or kgf). Values are converted to seconds"
+" and Newtons."
+msgstr ""
+"Selecione a <b>[[Thrust column]]</b> e a sua unidade (N, lbf ou kgf). Os valores são convertidos "
+"em segundos e newtons."
+
+#: tools/generate_manual.py:349
+msgid ""
+"Check the preview graph. Invalid rows (missing or non-numeric values, negative times) are "
+"highlighted in red; their tooltip gives the reason."
+msgstr ""
+"Verifique o gráfico de pré-visualização. As linhas inválidas (valores em falta ou não numéricos, "
+"tempos negativos) são realçadas a vermelho; a sua dica indica o motivo."
+
+#: tools/generate_manual.py:351
+msgid ""
+"Keep <b>[[Remove invalid rows]]</b> ticked to import only the valid points, then click "
+"<b>[[Import]]</b>."
+msgstr ""
+"Mantenha <b>[[Remove invalid rows]]</b> assinalado para importar apenas os pontos válidos e "
+"clique em <b>[[Import]]</b>."
+
+#: tools/generate_manual.py:352
+msgid ""
+"The imported points replace the thrust curve of the current motor after confirmation; the "
+"operation can be undone with Ctrl+Z."
+msgstr ""
+"Os pontos importados substituem a curva de impulso do motor atual após confirmação; a operação "
+"pode ser anulada com Ctrl+Z."
+
+#: tools/generate_manual.py:354
+msgid "Richard Nakka SRM workbooks"
+msgstr "Livros SRM de Richard Nakka"
+
+#: tools/generate_manual.py:355
+msgid "Figure 3 - Import of an SRM workbook with curve choice and cross-check."
+msgstr "Figura 3 - Importação de um livro SRM com escolha da curva e verificação cruzada."
+
+#: tools/generate_manual.py:356
+msgid ""
+"The SRM design spreadsheets of Richard Nakka (SRM 1.x and SRM 2023, .xls or .xlsx) are not plain "
+"tables: <b>[[&File|Import &SRM Workbook (Nakka)...]]</b> reads each piece of information in its "
+"own sheet. Opening such a workbook with the Excel import or by drag and drop is detected "
+"automatically and the SRM import is proposed."
+msgstr ""
+"As folhas de cálculo de conceção SRM de Richard Nakka (SRM 1.x e SRM 2023, .xls ou .xlsx) não são"
+" tabelas simples: <b>[[&File|Import &SRM Workbook (Nakka)...]]</b> lê cada informação na sua "
+"própria folha. A abertura de um livro deste tipo pela importação Excel ou por arrastar e largar é"
+" detetada automaticamente e a importação SRM é proposta."
+
+#: tools/generate_manual.py:360
+msgid "Sheet"
+msgstr "Folha"
+
+#: tools/generate_manual.py:360
+msgid "Information imported"
+msgstr "Informações importadas"
+
+#: tools/generate_manual.py:361
+msgid ""
+"Title, propellant (KNDX, KNSB, KNSU, KNER...), chamber inside diameter and length, grain geometry"
+" and mass, Kn, throat diameter"
+msgstr ""
+"Título, propelente (KNDX, KNSB, KNSU, KNER...), diâmetro interior e comprimento da câmara, "
+"geometria e massa do grão, Kn, diâmetro da garganta"
+
+#: tools/generate_manual.py:363
+msgid "SRM results (total impulse, average thrust, thrust time, Isp, class) and the 23-point table"
+msgstr ""
+"Resultados SRM (impulso total, impulso médio, tempo de impulso, Isp, classe) e a tabela de 23 "
+"pontos"
+
+#: tools/generate_manual.py:364
+msgid "Full resolution thrust curve (about 880 points) and maximum thrust"
+msgstr "Curva de impulso em resolução total (cerca de 880 pontos) e impulso máximo"
+
+#: tools/generate_manual.py:365
+msgid "Maximum chamber pressure, burn time, nozzle length (informative)"
+msgstr "Pressão máxima na câmara, tempo de combustão, comprimento da tubeira (informativo)"
+
+#: tools/generate_manual.py:367
+msgid ""
+"The motor name is proposed from the class and the average thrust (e.g. <i>L1729</i>), delays "
+"default to <i>P</i> (plugged)."
+msgstr ""
+"O nome do motor é proposto a partir da classe e do impulso médio (p. ex. <i>L1729</i>); os "
+"atrasos são <i>P</i> (tamponado) por omissão."
+
+#: tools/generate_manual.py:369
+msgid ""
+"The workbook only gives the chamber <b>inside</b> dimensions: enter the casing outside diameter, "
+"the overall length (pre-filled with chamber + nozzle length), the hardware masses and the "
+"manufacturer."
+msgstr ""
+"O livro só fornece as dimensões <b>interiores</b> da câmara: introduza o diâmetro exterior do "
+"invólucro, o comprimento total (pré-preenchido com o comprimento câmara + tubeira), as massas do "
+"material e o fabricante."
+
+#: tools/generate_manual.py:371
+#, python-format
+msgid ""
+"Curve source: <b>[[Performance sheet, simplified (recommended)]]</b> (about 30 points within 0.5 "
+"% of the maximum thrust), full resolution, resampled, or the Output table (coarser: its impulse "
+"is 1 to 2 % lower)."
+msgstr ""
+"Origem da curva: <b>[[Performance sheet, simplified (recommended)]]</b> (cerca de 30 pontos com "
+"um erro inferior a 0,5 % do impulso máximo), resolução total, reamostrada ou a tabela Output "
+"(mais grosseira: o seu impulso é 1 a 2 % inferior)."
+
+#: tools/generate_manual.py:374
+msgid "The cross-check table compares the SRM results with the values recomputed from the imported curve."
+msgstr ""
+"A tabela de verificação cruzada compara os resultados SRM com os valores recalculados a partir da"
+" curva importada."
+
+#: tools/generate_manual.py:375
+msgid ""
+"The design data (grain, Kn, throat, pressure...) is kept in the project file and the SRM results "
+"in the <b>[[Comments]]</b> field."
+msgstr ""
+"Os dados de conceção (grão, Kn, garganta, pressão...) são guardados no ficheiro de projeto e os "
+"resultados SRM no campo <b>[[Comments]]</b>."
+
+#: tools/generate_manual.py:378
+msgid "7. Digitizing a thrust curve"
+msgstr "7. Digitalizar uma curva de impulso"
+
+#: tools/generate_manual.py:379
+msgid "Figure 4 - Curve digitizer: calibrated image with extracted points and reconstructed curve."
+msgstr ""
+"Figura 4 - Digitalizador de curvas: imagem calibrada com os pontos extraídos e a curva "
+"reconstruída."
+
+#: tools/generate_manual.py:380
+msgid ""
+"Open <b>[[&Tools|Curve &Digitizer...]]</b> (F6) or <b>[[&File|Import Thrust Curve "
+"&Image...]]</b>. PNG, JPEG, TIFF and BMP photographs, screenshots and scans are supported. The "
+"mouse wheel zooms, the middle button pans."
+msgstr ""
+"Abra <b>[[&Tools|Curve &Digitizer...]]</b> (F6) ou <b>[[&File|Import Thrust Curve "
+"&Image...]]</b>. São suportadas fotografias, capturas de ecrã e digitalizações PNG, JPEG, TIFF e "
+"BMP. A roda do rato faz zoom, o botão do meio desloca a vista."
+
+#: tools/generate_manual.py:383
+msgid "Step 1 - Image corrections"
+msgstr "Passo 1 - Correções da imagem"
+
+#: tools/generate_manual.py:384
+msgid "<b>[[Rotate]]</b> by an angle to straighten a slightly tilted graph."
+msgstr "<b>[[Rotate]]</b> de um ângulo para endireitar um gráfico ligeiramente inclinado."
+
+#: tools/generate_manual.py:385
+msgid "<b>[[Crop]]</b>: drag a rectangle around the useful area."
+msgstr "<b>[[Crop]]</b>: arraste um retângulo à volta da zona útil."
+
+#: tools/generate_manual.py:386
+msgid ""
+"<b>[[Perspective]]</b>: click the four corners of the graph frame of a photograph to make it "
+"rectangular."
+msgstr ""
+"<b>[[Perspective]]</b>: clique nos quatro cantos do quadro do gráfico de uma fotografia para o "
+"tornar retangular."
+
+#: tools/generate_manual.py:387
+msgid ""
+"Contrast, brightness, grey levels and noise filters (median, gaussian, bilateral, non-local "
+"means) are applied live."
+msgstr ""
+"O contraste, o brilho, os níveis de cinzento e os filtros de ruído (mediana, gaussiano, "
+"bilateral, médias não locais) são aplicados em tempo real."
+
+#: tools/generate_manual.py:389
+msgid ""
+"<b>[[Undo correction]]</b> and <b>[[Reset all corrections]]</b> restore the previous or original "
+"image."
+msgstr ""
+"<b>[[Undo correction]]</b> e <b>[[Reset all corrections]]</b> restauram a imagem anterior ou a "
+"original."
+
+#: tools/generate_manual.py:390
+msgid "Geometric corrections clear the calibration, so straighten the image before calibrating."
+msgstr "As correções geométricas apagam a calibração; endireite, portanto, a imagem antes de calibrar."
+
+#: tools/generate_manual.py:391
+msgid "Step 2 - Axis calibration"
+msgstr "Passo 2 - Calibração dos eixos"
+
+#: tools/generate_manual.py:392
+msgid ""
+"<b>[[Set origin]]</b>: click the intersection of the axes and enter its time and thrust (usually "
+"0 s, 0 N)."
+msgstr ""
+"<b>[[Set origin]]</b>: clique na interseção dos eixos e introduza o seu tempo e impulso "
+"(normalmente 0 s, 0 N)."
+
+#: tools/generate_manual.py:393
+msgid ""
+"<b>[[Set time-axis point]]</b>: click a known graduation of the time axis (e.g. 2.0 s) and enter "
+"its value."
+msgstr ""
+"<b>[[Set time-axis point]]</b>: clique numa graduação conhecida do eixo dos tempos (p. ex. 2,0 s)"
+" e introduza o seu valor."
+
+#: tools/generate_manual.py:394
+msgid ""
+"<b>[[Set thrust-axis point]]</b>: click a known graduation of the thrust axis (e.g. 16 N) and "
+"enter its value."
+msgstr ""
+"<b>[[Set thrust-axis point]]</b>: clique numa graduação conhecida do eixo do impulso (p. ex. 16 "
+"N) e introduza o seu valor."
+
+#: tools/generate_manual.py:395
+msgid ""
+"Optionally <b>[[Add extra point]]</b> with known coordinates: a least-squares fit then improves "
+"the precision and the residual (in pixels) is displayed."
+msgstr ""
+"Opcionalmente, utilize <b>[[Add extra point]]</b> com coordenadas conhecidas: um ajuste pelos "
+"mínimos quadrados melhora então a precisão e o resíduo (em píxeis) é apresentado."
+
+#: tools/generate_manual.py:397
+msgid ""
+"The calibration is an affine transformation, which also compensates a small rotation or skew of "
+"the graph. The status bar converts the cursor position to time and thrust in real time."
+msgstr ""
+"A calibração é uma transformação afim, que também compensa uma pequena rotação ou inclinação do "
+"gráfico. A barra de estado converte em tempo real a posição do cursor em tempo e impulso."
+
+#: tools/generate_manual.py:399
+msgid "Step 3 - Curve extraction"
+msgstr "Passo 3 - Extração da curva"
+
+#: tools/generate_manual.py:400
+msgid ""
+"<b>[[Auto-detect]]</b> finds the dominant curve colour; <b>[[Pick]]</b> lets you click on the "
+"curve."
+msgstr "<b>[[Auto-detect]]</b> encontra a cor dominante da curva; <b>[[Pick]]</b> permite clicar na curva."
+
+#: tools/generate_manual.py:401
+msgid ""
+"<b>[[Tolerance]]</b> sets how close a pixel colour must be (tick <i>[[Show detected pixels]]</i> "
+"to check)."
+msgstr ""
+"<b>[[Tolerance]]</b> define quão próxima deve ser a cor de um píxel (assinale <i>[[Show detected "
+"pixels]]</i> para verificar)."
+
+#: tools/generate_manual.py:402
+msgid ""
+"<b>[[Extract curve]]</b> keeps one point per pixel column inside the calibrated area, removes "
+"outliers and resamples to the chosen <b>[[Number of points]]</b>."
+msgstr ""
+"<b>[[Extract curve]]</b> mantém um ponto por coluna de píxeis dentro da zona calibrada, remove os"
+" valores aberrantes e reamostra para o <b>[[Number of points]]</b> escolhido."
+
+#: tools/generate_manual.py:404
+msgid ""
+"<b>[[Edit points]]</b>: drag a point, click to add, right-click to delete, Shift+drag to erase an"
+" area."
+msgstr ""
+"<b>[[Edit points]]</b>: arraste um ponto, clique para adicionar, clique direito para eliminar, "
+"Shift+arrastar para apagar uma zona."
+
+#: tools/generate_manual.py:405
+msgid "<b>[[End the curve with zero thrust]]</b> appends the burnout point required by the ENG format."
+msgstr ""
+"<b>[[End the curve with zero thrust]]</b> acrescenta o ponto de fim de combustão exigido pelo "
+"formato ENG."
+
+#: tools/generate_manual.py:406
+msgid ""
+"Check the reconstructed curve and its total impulse, then click <b>[[Transfer to motor "
+"editor]]</b>."
+msgstr ""
+"Verifique a curva reconstruída e o seu impulso total e clique em <b>[[Transfer to motor "
+"editor]]</b>."
+
+#: tools/generate_manual.py:408
+msgid "8. Editing thrust points"
+msgstr "8. Editar os pontos de impulso"
+
+#: tools/generate_manual.py:409
+msgid ""
+"The table and the graph are always synchronised: every change in one is immediately visible in "
+"the other."
+msgstr ""
+"A tabela e o gráfico estão sempre sincronizados: qualquer alteração num é imediatamente visível "
+"no outro."
+
+#: tools/generate_manual.py:410
+msgid "Operation"
+msgstr "Operação"
+
+#: tools/generate_manual.py:410
+msgid "In the table"
+msgstr "Na tabela"
+
+#: tools/generate_manual.py:410
+msgid "On the graph"
+msgstr "No gráfico"
+
+#: tools/generate_manual.py:411
+msgid "Edit a value"
+msgstr "Editar um valor"
+
+#: tools/generate_manual.py:411
+msgid "Double-click a cell (or type)"
+msgstr "Duplo clique numa célula (ou escrever)"
+
+#: tools/generate_manual.py:411
+msgid "Drag a point (kept between its neighbours)"
+msgstr "Arrastar um ponto (mantido entre os seus vizinhos)"
+
+#: tools/generate_manual.py:412
+msgid "Add a point"
+msgstr "Adicionar um ponto"
+
+#: tools/generate_manual.py:412
+msgid "[[Add point]] button / Ctrl+Ins (mid-point after the selection)"
+msgstr "Botão [[Add point]] / Ctrl+Ins (ponto intermédio após a seleção)"
+
+#: tools/generate_manual.py:413
+msgid "Double-click an empty area"
+msgstr "Duplo clique numa zona vazia"
+
+#: tools/generate_manual.py:414
+msgid "Delete"
+msgstr "Eliminar"
+
+#: tools/generate_manual.py:414
+msgid "Select rows, Del key (multiple selection allowed)"
+msgstr "Selecionar linhas, tecla Del (seleção múltipla permitida)"
+
+#: tools/generate_manual.py:415
+msgid "Right-click a point &gt; [[Delete point]]"
+msgstr "Clique direito num ponto &gt; [[Delete point]]"
+
+#: tools/generate_manual.py:416
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#: tools/generate_manual.py:416
+msgid "Right-click a point &gt; [[Duplicate point]]"
+msgstr "Clique direito num ponto &gt; [[Duplicate point]]"
+
+#: tools/generate_manual.py:417
+msgid "Sort"
+msgstr "Ordenar"
+
+#: tools/generate_manual.py:417
+msgid "[[Sort chronologically]] button"
+msgstr "Botão [[Sort chronologically]]"
+
+#: tools/generate_manual.py:418
+msgid "Paste from Excel"
+msgstr "Colar do Excel"
+
+#: tools/generate_manual.py:418
+msgid "Copy two columns in Excel, select the start row, Ctrl+V"
+msgstr "Copiar duas colunas no Excel, selecionar a linha inicial, Ctrl+V"
+
+#: tools/generate_manual.py:420
+msgid ""
+"Pasted rows replace the points from the current row onwards (appended at the end without "
+"selection). Tab, semicolon or space separated data and decimal commas are accepted; header lines "
+"are ignored."
+msgstr ""
+"As linhas coladas substituem os pontos a partir da linha atual (acrescentadas no fim se não "
+"houver seleção). São aceites dados separados por tabulação, ponto e vírgula ou espaço e vírgulas "
+"decimais; as linhas de cabeçalho são ignoradas."
+
+#: tools/generate_manual.py:422
+msgid ""
+"The graph scale follows the data automatically: entering or dragging a point above the current "
+"maximum enlarges the axes so that it stays visible. After a manual zoom or pan the view is kept "
+"(and only enlarged if a point leaves it); <b>[[&View|&Reset Graph Zoom]]</b> (Ctrl+0) or the Home"
+" button returns to automatic scaling."
+msgstr ""
+"A escala do gráfico segue automaticamente os dados: introduzir ou arrastar um ponto acima do "
+"máximo atual alarga os eixos para que continue visível. Após um zoom ou deslocamento manual, a "
+"vista é mantida (e só alargada se um ponto sair dela); <b>[[&View|&Reset Graph Zoom]]</b> "
+"(Ctrl+0) ou o botão Início repõem a escala automática."
+
+#: tools/generate_manual.py:426
+msgid ""
+"The curve implicitly starts at (0 s, 0 N), as in the ENG format, so the first point does not need"
+" to be at time zero. The last point should have zero thrust."
+msgstr ""
+"A curva começa implicitamente em (0 s, 0 N), como no formato ENG, pelo que o primeiro ponto não "
+"tem de estar no tempo zero. O último ponto deve ter impulso nulo."
+
+#: tools/generate_manual.py:429
+msgid "9. Analysing the characteristics"
+msgstr "9. Analisar as características"
+
+#: tools/generate_manual.py:430
+msgid "Figure 5 - Thrust analysis dialog."
+msgstr "Figura 5 - Caixa de diálogo de análise do impulso."
+
+#: tools/generate_manual.py:431
+msgid ""
+"<b>[[&Tools|Thrust &Analysis...]]</b> (F5) lists every characteristic with its unit. A value that"
+" cannot be computed is greyed out and its tooltip explains which data is missing."
+msgstr ""
+"<b>[[&Tools|Thrust &Analysis...]]</b> (F5) lista cada característica com a sua unidade. Um valor "
+"que não pode ser calculado aparece a cinzento e a sua dica explica que dados faltam."
+
+#: tools/generate_manual.py:433
+msgid "Characteristic"
+msgstr "Característica"
+
+#: tools/generate_manual.py:433
+msgid "Definition"
+msgstr "Definição"
+
+#: tools/generate_manual.py:434
+msgid "Trapezoidal integral of thrust over time, from the implicit origin (0, 0)."
+msgstr "Integral do impulso no tempo pelo método dos trapézios, a partir da origem implícita (0, 0)."
+
+#: tools/generate_manual.py:435
+msgid "Highest thrust sample; [[Time to maximum thrust]] is its time."
+msgstr "Valor de impulso mais elevado; [[Time to maximum thrust]] é o seu instante."
+
+#: tools/generate_manual.py:436
+#, python-format
+msgid ""
+"[[Full powered curve]] (ignition to burnout) or NAR convention: between the instants when thrust "
+"crosses 5 % of the maximum (linear interpolation)."
+msgstr ""
+"[[Full powered curve]] (da ignição ao fim da combustão) ou convenção NAR: entre os instantes em "
+"que o impulso cruza 5 % do máximo (interpolação linear)."
+
+#: tools/generate_manual.py:438
+msgid "Total impulse / burn time."
+msgstr "Impulso total / tempo de combustão."
+
+#: tools/generate_manual.py:439
+msgid "Thrust of the first and last data points."
+msgstr "Impulso do primeiro e do último ponto de dados."
+
+#: tools/generate_manual.py:440
+msgid "Total loaded mass."
+msgstr "Massa total carregada."
+
+#: tools/generate_manual.py:441
+msgid "Propellant mass / total motor mass."
+msgstr "Massa de propelente / massa total do motor."
+
+#: tools/generate_manual.py:442
+msgid "Total impulse / (propellant mass in kg × 9.80665 m/s²)."
+msgstr "Impulso total / (massa de propelente em kg × 9,80665 m/s²)."
+
+#: tools/generate_manual.py:443
+msgid "NAR letter (A = 1.26-2.5 N.s, each letter doubles) with the percentage within the class."
+msgstr "Letra NAR (A = 1,26-2,5 N.s, cada letra duplica) com a percentagem dentro da classe."
+
+#: tools/generate_manual.py:445
+msgid ""
+"The analysis report can be copied to the clipboard or saved as a text file. The burn time "
+"definition and the display unit system (metric or imperial) are set in the preferences."
+msgstr ""
+"O relatório de análise pode ser copiado para a área de transferência ou guardado como ficheiro de"
+" texto. A definição do tempo de combustão e o sistema de unidades de apresentação (métrico ou "
+"imperial) são definidos nas preferências."
+
+#: tools/generate_manual.py:448
+msgid "10. Exporting to ENG"
+msgstr "10. Exportar para ENG"
+
+#: tools/generate_manual.py:449
+msgid ""
+"<b>[[&File|E&xport as ENG...]]</b> (Ctrl+Shift+E) first validates the motor. Blocking errors "
+"(missing name, manufacturer, diameter, length or masses, invalid delays, negative or non-"
+"chronological data) prevent the export and are listed; double-click an item to select the faulty "
+"point. Warnings (for example a curve that does not end at zero thrust) require an explicit "
+"confirmation."
+msgstr ""
+"<b>[[&File|E&xport as ENG...]]</b> (Ctrl+Shift+E) valida primeiro o motor. Os erros bloqueantes "
+"(nome, fabricante, diâmetro, comprimento ou massas em falta, atrasos inválidos, dados negativos "
+"ou não cronológicos) impedem a exportação e são listados; faça duplo clique num elemento para "
+"selecionar o ponto com erro. Os avisos (por exemplo, uma curva que não termina com impulso nulo) "
+"exigem uma confirmação explícita."
+
+#: tools/generate_manual.py:453
+msgid ""
+"Header: name, diameter (mm), length (mm), delays, propellant mass (kg), total mass (kg), "
+"manufacturer."
+msgstr ""
+"Cabeçalho: nome, diâmetro (mm), comprimento (mm), atrasos, massa de propelente (kg), massa total "
+"(kg), fabricante."
+
+#: tools/generate_manual.py:454
+msgid ""
+"Spaces in the name or manufacturer are replaced by underscores; non-ASCII characters are "
+"transliterated."
+msgstr ""
+"Os espaços no nome ou no fabricante são substituídos por sublinhados; os caracteres não ASCII são"
+" transliterados."
+
+#: tools/generate_manual.py:455
+msgid "Numbers are written in plain decimal notation (never scientific), with up to 6 decimals."
+msgstr ""
+"Os números são escritos em notação decimal simples (nunca científica), com no máximo 6 casas "
+"decimais."
+
+#: tools/generate_manual.py:456
+msgid "A leading (0, 0) point is not written because it is implicit. Lines end with CR+LF."
+msgstr "Um ponto inicial (0, 0) não é escrito porque é implícito. As linhas terminam com CR+LF."
+
+#: tools/generate_manual.py:457
+msgid "Original ENG comments are preserved; no non-standard data is added to the file."
+msgstr "Os comentários ENG originais são preservados; nenhum dado não padrão é acrescentado ao ficheiro."
+
+#: tools/generate_manual.py:458
+msgid ""
+"Exported files can be re-imported by the application and loaded in OpenRocket (Preferences &gt; "
+"Motors &gt; user thrust curve folder) and RockSim."
+msgstr ""
+"Os ficheiros exportados podem ser reimportados pela aplicação e carregados no OpenRocket "
+"(Preferências &gt; Motores &gt; pasta de curvas de impulso do utilizador) e no RockSim."
+
+#: tools/generate_manual.py:461
+msgid "11. Saving the XML project"
+msgstr "11. Guardar o projeto XML"
+
+#: tools/generate_manual.py:462
+msgid ""
+"<b>[[&File|&Save Motor]]</b> writes a native project file (<i>.rmm.xml</i>) containing everything"
+" visible in the application: properties, masses, dimensions, thrust points (exact values), "
+"computed characteristics (for information), graph settings, ENG comments, metadata (creation and "
+"modification dates, source file) and the label design."
+msgstr ""
+"<b>[[&File|&Save Motor]]</b> escreve um ficheiro de projeto nativo (<i>.rmm.xml</i>) que contém "
+"tudo o que é visível na aplicação: propriedades, massas, dimensões, pontos de impulso (valores "
+"exatos), características calculadas (a título informativo), definições do gráfico, comentários "
+"ENG, metadados (datas de criação e modificação, ficheiro de origem) e o desenho da etiqueta."
+
+#: tools/generate_manual.py:466
+msgid ""
+"The file is versioned (<i>formatVersion</i>); older versions are upgraded automatically on "
+"opening."
+msgstr ""
+"O ficheiro tem versão (<i>formatVersion</i>); as versões mais antigas são atualizadas "
+"automaticamente na abertura."
+
+#: tools/generate_manual.py:467
+msgid ""
+"The structure is validated on opening; a corrupted file is reported precisely and never half-"
+"loaded."
+msgstr ""
+"A estrutura é validada na abertura; um ficheiro danificado é indicado com precisão e nunca é "
+"carregado pela metade."
+
+#: tools/generate_manual.py:468
+msgid "The save dialog asks before replacing an existing file; saves are atomic."
+msgstr ""
+"A caixa de diálogo de gravação pergunta antes de substituir um ficheiro existente; as gravações "
+"são atómicas."
+
+#: tools/generate_manual.py:469
+msgid "Recent files are listed in <b>[[&File|Recent &Files]]</b>."
+msgstr "Os ficheiros recentes estão listados em <b>[[&File|Recent &Files]]</b>."
+
+#: tools/generate_manual.py:470
+msgid "CSV export"
+msgstr "Exportação CSV"
+
+#: tools/generate_manual.py:471
+msgid ""
+"<b>[[&File|Export CS&V...]]</b> lets you choose the column separator, decimal separator, encoding"
+" (utf-8-sig is best for Excel), time and thrust units, number of decimals and whether the motor "
+"properties are written as '#' comment lines."
+msgstr ""
+"<b>[[&File|Export CS&V...]]</b> permite escolher o separador de colunas, o separador decimal, a "
+"codificação (utf-8-sig é a melhor para o Excel), as unidades de tempo e de impulso, o número de "
+"casas decimais e se as propriedades do motor são escritas como linhas de comentário «#»."
+
+#: tools/generate_manual.py:475
+msgid "12. Creating labels"
+msgstr "12. Criar etiquetas"
+
+#: tools/generate_manual.py:476
+msgid "Figure 6 - Label designer with live preview."
+msgstr "Figura 6 - Editor de etiquetas com pré-visualização em tempo real."
+
+#: tools/generate_manual.py:477
+msgid ""
+"<b>[[&Tools|&Label Designer...]]</b> (F7) opens an independent window. The preview uses exactly "
+"the same renderer as the printer, so what you see is what is printed, at the physical dimensions "
+"entered."
+msgstr ""
+"<b>[[&Tools|&Label Designer...]]</b> (F7) abre uma janela independente. A pré-visualização "
+"utiliza exatamente o mesmo motor de desenho que a impressora: o que vê é o que é impresso, nas "
+"dimensões físicas introduzidas."
+
+#: tools/generate_manual.py:479
+msgid ""
+"<b>[[Template]]</b>: choose a predefined template (Classic, Minimal, Banner, Dark, 18 mm wrap, "
+"Data sheet) or your own; save the current design as a reusable template."
+msgstr ""
+"<b>[[Template]]</b>: escolha um modelo predefinido (Classic, Minimal, Banner, Dark, 18 mm wrap, "
+"Data sheet) ou um seu; guarde o desenho atual como modelo reutilizável."
+
+#: tools/generate_manual.py:481
+msgid "<b>[[Dimensions]]</b>: width, height, inner margin, border width and corner radius in millimetres."
+msgstr ""
+"<b>[[Dimensions]]</b>: largura, altura, margem interior, espessura do contorno e raio dos cantos "
+"em milímetros."
+
+#: tools/generate_manual.py:482
+msgid ""
+"<b>[[Colours and text]]</b>: background, text, accent and border colours, font, sizes, alignment,"
+" layout (stacked, two columns, banner) and the field used as title."
+msgstr ""
+"<b>[[Colours and text]]</b>: cores de fundo, texto, destaque e contorno, tipo de letra, tamanhos,"
+" alinhamento, disposição (linhas empilhadas, duas colunas, faixa) e o campo usado como título."
+
+#: tools/generate_manual.py:484
+msgid "<b>[[Information to display]]</b>: tick the fields and drag them to reorder; add free text lines."
+msgstr ""
+"<b>[[Information to display]]</b>: assinale os campos e arraste-os para os reordenar; acrescente "
+"linhas de texto livre."
+
+#: tools/generate_manual.py:485
+msgid "<b>[[Logo]]</b>: import a PNG or JPG logo and set its position and size (aspect ratio kept)."
+msgstr ""
+"<b>[[Logo]]</b>: importe um logótipo PNG ou JPG e defina a sua posição e tamanho (proporções "
+"mantidas)."
+
+#: tools/generate_manual.py:486
+msgid "<b>[[Store in project]]</b> saves the design in the motor project."
+msgstr "<b>[[Store in project]]</b> guarda o desenho no projeto do motor."
+
+#: tools/generate_manual.py:487
+msgid ""
+"Values are taken from the current motor and its analysis and are updated automatically. Text that"
+" does not fit is reduced automatically."
+msgstr ""
+"Os valores provêm do motor atual e da sua análise e são atualizados automaticamente. O texto que "
+"não cabe é reduzido automaticamente."
+
+#: tools/generate_manual.py:490
+msgid "13. Printing"
+msgstr "13. Impressão"
+
+#: tools/generate_manual.py:491
+msgid "The <b>[[&Print]]</b> menu (and the label designer toolbar) offers:"
+msgstr "O menu <b>[[&Print]]</b> (e a barra de ferramentas do editor de etiquetas) oferece:"
+
+#: tools/generate_manual.py:492
+msgid ""
+"<b>[[Print Preview]]</b>: the label sheet on the selected paper format (A4, A5, A6, Letter, "
+"Legal)."
+msgstr ""
+"<b>[[Print Preview]]</b>: a folha de etiquetas no formato de papel selecionado (A4, A5, A6, "
+"Letter, Legal)."
+
+#: tools/generate_manual.py:493
+msgid ""
+"<b>[[Print PDF]]</b>: a vector PDF sheet; labels are laid out in a grid using the page margin and"
+" spacing. Use <i>[[Copies]]</i> or <i>[[Fill the whole page]]</i>; extra pages are added "
+"automatically."
+msgstr ""
+"<b>[[Print PDF]]</b>: uma folha PDF vetorial; as etiquetas são dispostas em grelha segundo a "
+"margem da página e o espaçamento. Utilize <i>[[Copies]]</i> ou <i>[[Fill the whole page]]</i>; as"
+" páginas adicionais são acrescentadas automaticamente."
+
+#: tools/generate_manual.py:495
+msgid ""
+"<b>[[Export Label as P&NG...]]</b> / <b>[[Export Label as &JPEG...]]</b>: one label at the chosen"
+" resolution (72-2400 dpi). The image resolution is embedded so it prints at the right size."
+msgstr ""
+"<b>[[Export Label as P&NG...]]</b> / <b>[[Export Label as &JPEG...]]</b>: uma etiqueta na "
+"resolução escolhida (72-2400 ppp). A resolução é incluída na imagem para que seja impressa no "
+"tamanho correto."
+
+#: tools/generate_manual.py:497
+msgid "<b>[[Print...]]</b> in the label designer sends the sheet to a printer."
+msgstr "<b>[[Print...]]</b> no editor de etiquetas envia a folha para uma impressora."
+
+#: tools/generate_manual.py:498
+msgid ""
+"When printing, set the printer scaling to 100 % (\"actual size\") so that the physical dimensions"
+" are respected."
+msgstr ""
+"Ao imprimir, defina a escala da impressora para 100 % («tamanho real») para que as dimensões "
+"físicas sejam respeitadas."
+
+#: tools/generate_manual.py:501
+msgid "14. Preferences"
+msgstr "14. Preferências"
+
+#: tools/generate_manual.py:502
+msgid "Figure 7 - Preferences dialog."
+msgstr "Figura 7 - Caixa de diálogo das preferências."
+
+#: tools/generate_manual.py:503
+msgid "Open <b>[[&Edit|&Preferences...]]</b>."
+msgstr "Abra <b>[[&Edit|&Preferences...]]</b>."
+
+#: tools/generate_manual.py:504
+msgid "Tab"
+msgstr "Separador"
+
+#: tools/generate_manual.py:504
+msgid "Settings"
+msgstr "Definições"
+
+#: tools/generate_manual.py:505
+msgid ""
+"[[Language]]: English, Français, Deutsch, Español, Italiano, Nederlands, Polski, Português or "
+"Русский (restart required), and light/dark theme. The manual opened by [[&Help|&Manual]] (F1) is "
+"the one of the selected language."
+msgstr ""
+"[[Language]]: English, Français, Deutsch, Español, Italiano, Nederlands, Polski, Português ou "
+"Русский (é necessário reiniciar) e tema claro/escuro. O manual aberto por [[&Help|&Manual]] (F1) "
+"é o do idioma selecionado."
+
+#: tools/generate_manual.py:508
+msgid ""
+"Display unit system (metric N, N.s, g, mm or imperial lbf, lbf.s, oz, in), default decimal "
+"separator, burn time definition."
+msgstr ""
+"Sistema de unidades de apresentação (métrico N, N.s, g, mm ou imperial lbf, lbf.s, oz, in), "
+"separador decimal por omissão, definição do tempo de combustão."
+
+#: tools/generate_manual.py:510
+msgid "Curve and marker colours, grid, markers, area fill."
+msgstr "Cores da curva e dos marcadores, grelha, marcadores, preenchimento da área."
+
+#: tools/generate_manual.py:511
+msgid "Default save folder and import folder."
+msgstr "Pasta de gravação por omissão e pasta de importação."
+
+#: tools/generate_manual.py:512
+msgid "Default paper format and image resolution."
+msgstr "Formato de papel e resolução de imagem por omissão."
+
+#: tools/generate_manual.py:514
+msgid ""
+"Preferences are saved between sessions. <b>Restore Defaults</b> resets every setting (recent "
+"files and window layout are kept)."
+msgstr ""
+"As preferências são guardadas entre sessões. <b>Restaurar predefinições</b> repõe todas as "
+"definições (os ficheiros recentes e a disposição das janelas são mantidos)."
+
+#: tools/generate_manual.py:517
+msgid "15. Troubleshooting"
+msgstr "15. Resolução de problemas"
+
+#: tools/generate_manual.py:518
+msgid "Problem"
+msgstr "Problema"
+
+#: tools/generate_manual.py:518
+msgid "Solution"
+msgstr "Solução"
+
+#: tools/generate_manual.py:519
+msgid "\"Line N: ...\" when importing an ENG file"
+msgstr "«Linha N: ...» ao importar um ficheiro ENG"
+
+#: tools/generate_manual.py:520
+msgid ""
+"Open the file in a text editor and fix the indicated line: each data line must contain exactly "
+"two numbers with a decimal point."
+msgstr ""
+"Abra o ficheiro num editor de texto e corrija a linha indicada: cada linha de dados deve conter "
+"exatamente dois números com ponto decimal."
+
+#: tools/generate_manual.py:522
+msgid "ENG export refused"
+msgstr "Exportação ENG recusada"
+
+#: tools/generate_manual.py:523
+msgid ""
+"Run [[&Tools|Data &Validation...]] (F8). Fill in the required properties and fix red rows (sort "
+"the points if they are not chronological)."
+msgstr ""
+"Execute [[&Tools|Data &Validation...]] (F8). Preencha as propriedades obrigatórias e corrija as "
+"linhas vermelhas (ordene os pontos se não estiverem por ordem cronológica)."
+
+#: tools/generate_manual.py:525
+msgid "CSV columns not separated correctly"
+msgstr "Colunas CSV mal separadas"
+
+#: tools/generate_manual.py:526
+msgid "Change the column separator and decimal separator in the import preview."
+msgstr "Altere o separador de colunas e o separador decimal na pré-visualização da importação."
+
+#: tools/generate_manual.py:527
+msgid "Excel file cannot be opened"
+msgstr "Não é possível abrir o ficheiro Excel"
+
+#: tools/generate_manual.py:528
+msgid "Close the workbook in Excel (it locks the file) and check the extension (.xlsx or .xls)."
+msgstr "Feche o livro no Excel (que bloqueia o ficheiro) e verifique a extensão (.xlsx ou .xls)."
+
+#: tools/generate_manual.py:529
+msgid "Digitizer finds no pixel"
+msgstr "O digitalizador não encontra nenhum píxel"
+
+#: tools/generate_manual.py:530
+msgid ""
+"Pick the curve colour on the curve itself, increase the tolerance, untick '[[Only inside the "
+"calibrated area (axes excluded)]]' if the curve touches the axes."
+msgstr ""
+"Recolha a cor diretamente na curva, aumente a tolerância, desmarque «[[Only inside the calibrated"
+" area (axes excluded)]]» se a curva tocar nos eixos."
+
+#: tools/generate_manual.py:532
+msgid "Digitized values are shifted"
+msgstr "Os valores digitalizados estão desviados"
+
+#: tools/generate_manual.py:533
+msgid ""
+"Check the calibration values, add extra calibration points and straighten the image "
+"(rotation/perspective) before calibrating."
+msgstr ""
+"Verifique os valores de calibração, acrescente pontos de calibração adicionais e endireite a "
+"imagem (rotação/perspetiva) antes de calibrar."
+
+#: tools/generate_manual.py:535
+msgid "SRM workbook: values missing or curve not found"
+msgstr "Livro SRM: valores em falta ou curva não encontrada"
+
+#: tools/generate_manual.py:536
+msgid ""
+"Open the workbook in Excel, click the Solve buttons, save it, then import again (the importer "
+"reads the values computed by the workbook)."
+msgstr ""
+"Abra o livro no Excel, clique nos botões Solve, guarde-o e volte a importá-lo (a importação lê os"
+" valores calculados pelo livro)."
+
+#: tools/generate_manual.py:538
+msgid "Printed label has the wrong size"
+msgstr "A etiqueta impressa não tem o tamanho correto"
+
+#: tools/generate_manual.py:538
+#, python-format
+msgid "Print at 100 % scale (no 'fit to page')."
+msgstr "Imprima à escala de 100 % (sem «ajustar à página»)."
+
+#: tools/generate_manual.py:539
+msgid "The motor does not appear in OpenRocket"
+msgstr "O motor não aparece no OpenRocket"
+
+#: tools/generate_manual.py:540
+msgid ""
+"Put the .eng file in the user thrust curve folder declared in OpenRocket preferences and restart "
+"OpenRocket."
+msgstr ""
+"Coloque o ficheiro .eng na pasta de curvas de impulso do utilizador indicada nas preferências do "
+"OpenRocket e reinicie o OpenRocket."
+
+#: tools/generate_manual.py:542
+msgid "Unexpected error"
+msgstr "Erro inesperado"
+
+#: tools/generate_manual.py:543
+msgid ""
+"The message is also written to the log file (see chapter 2); send it with the data file to the "
+"author."
+msgstr ""
+"A mensagem também é escrita no ficheiro de registo (ver capítulo 2); envie-a ao autor juntamente "
+"com o ficheiro de dados."
+

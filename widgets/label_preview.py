@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from localization import _
+
 from typing import Optional
 
 from PyQt6.QtCore import QRectF, Qt
@@ -21,7 +23,7 @@ class LabelPreviewWidget(QWidget):
         self.values: dict[str, str] = {}
         self.zoom = 0.0  # 0 = fit, otherwise multiple of the physical size
         self.setMinimumSize(320, 200)
-        self.setToolTip(self.tr("Print preview of one label. The printed label has exactly the dimensions entered."))
+        self.setToolTip(_("Print preview of one label. The printed label has exactly the dimensions entered."))
 
     def set_content(self, template: LabelTemplate, values: dict[str, str]) -> None:
         """Display a template filled with values."""

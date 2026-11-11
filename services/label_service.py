@@ -8,6 +8,8 @@ dimensions of the label.
 
 from __future__ import annotations
 
+from localization import _
+
 import json
 import logging
 import math
@@ -180,7 +182,7 @@ class LabelRenderer:
 
     def _lines(self) -> list[tuple[str, str]]:
         t = self.template
-        return [(LABEL_FIELD_CAPTIONS.get(name, name), self.values.get(name, "—")) for name in t.fields]
+        return [(_(LABEL_FIELD_CAPTIONS.get(name, name)), self.values.get(name, "—")) for name in t.fields]
 
     def _draw_content(self, painter: QPainter, area: QRectF) -> None:
         t = self.template
@@ -287,7 +289,7 @@ class LabelService:
     def save_user_template(self, template: LabelTemplate, folder: Optional[Path] = None) -> Path:
         """Save a template in the user library and return its path."""
         if not template.name.strip():
-            raise ValidationError("A template name is required.")
+            raise ValidationError(_('A template name is required.'))
         path = self._template_file(template.name, folder)
         atomic_write_text(path, json.dumps(template.to_dict(), indent=2))
         return path
@@ -298,7 +300,7 @@ class LabelService:
         try:
             path.unlink(missing_ok=True)
         except OSError as exc:
-            raise FileAccessError(f"Cannot delete template '{name}': {exc}") from exc
+            raise FileAccessError(_("Cannot delete template '{name}': {value}").format(name=name, value=exc)) from exc
 
     # -- layout -------------------------------------------------------------------
     @staticmethod
@@ -315,8 +317,7 @@ class LabelService:
         rows = int((usable_h + spacing) // (template.height_mm + spacing))
         if columns < 1 or rows < 1:
             raise ValidationError(
-                f"A {template.width_mm:g} x {template.height_mm:g} mm label does not fit on {template.paper_format} "
-                f"paper with {margin:g} mm margins."
+                _('A {width_mm} x {height_mm} mm label does not fit on {paper_format} paper with {margin} mm margins.').format(width_mm=f"{template.width_mm:g}", height_mm=f"{template.height_mm:g}", paper_format=template.paper_format, margin=f"{margin:g}")
             )
         positions = tuple(
             (margin + c * (template.width_mm + spacing), margin + r * (template.height_mm + spacing))
@@ -359,7 +360,7 @@ class LabelService:
         writer.setCreator("Rocket Motor Manager")
         painter = QPainter()
         if not painter.begin(writer):
-            raise FileAccessError(f"Cannot write PDF file: {path}")
+            raise FileAccessError(_('Cannot write PDF file: {path}').format(path=path))
         try:
             pages = self.render_sheets(writer, painter, template, values)
         finally:
@@ -389,12 +390,12 @@ class LabelService:
         """Export a single label as PNG or JPEG (format from extension)."""
         suffix = Path(path).suffix.lower()
         if suffix not in (".png", ".jpg", ".jpeg"):
-            raise ValidationError("Use a .png, .jpg or .jpeg file name.")
+            raise ValidationError(_('Use a .png, .jpg or .jpeg file name.'))
         image = self.render_image(template, values, dpi, transparent=False)
         if suffix != ".png":
             image = image.convertToFormat(QImage.Format.Format_RGB32)
         if not image.save(path, None, 95):
-            raise FileAccessError(f"Cannot write image file: {path}")
+            raise FileAccessError(_('Cannot write image file: {path}').format(path=path))
         logger.info("Label image exported: %s (%d dpi)", path, dpi)
 
     @staticmethod

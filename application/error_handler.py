@@ -9,6 +9,8 @@
 
 from __future__ import annotations
 
+from localization import _
+
 import logging
 import sys
 import threading
@@ -27,17 +29,17 @@ logger = logging.getLogger(__name__)
 def describe_exception(exc: BaseException) -> tuple[str, str]:
     """Return a ``(title, message)`` pair suitable for the user."""
     if isinstance(exc, FileFormatError):
-        location = f"\n\nFile: {exc.file_path}" if exc.file_path else ""
-        return "Invalid file", f"{exc}{location}"
+        location = "\n\n" + _("File: {path}").format(path=exc.file_path) if exc.file_path else ""
+        return _("Invalid file"), f"{exc}{location}"
     if isinstance(exc, FileAccessError):
-        return "File access error", str(exc)
+        return _("File access error"), str(exc)
     if isinstance(exc, ValidationError):
-        return "Invalid data", str(exc)
+        return _("Invalid data"), str(exc)
     if isinstance(exc, RocketMotorError):
-        return "Error", str(exc)
+        return _("Error"), str(exc)
     if isinstance(exc, MemoryError):
-        return "Out of memory", "The operation needs more memory than available."
-    return "Unexpected error", f"{type(exc).__name__}: {exc}"
+        return _("Out of memory"), _("The operation needs more memory than available.")
+    return _("Unexpected error"), f"{type(exc).__name__}: {exc}"
 
 
 class ErrorReporter(QObject):
@@ -110,7 +112,7 @@ def _handle_uncaught(exc_type: Type[BaseException], exc: BaseException, tb: Opti
         return
     logger.critical("Uncaught exception:\n%s", "".join(traceback.format_exception(exc_type, exc, tb)))
     try:
-        reporter().error(QApplication.activeWindow(), exc, "An unexpected error occurred. The details were written to the log file.")
+        reporter().error(QApplication.activeWindow(), exc, _("An unexpected error occurred. The details were written to the log file."))
     except Exception:  # last line of defence: never raise from the hook
         pass
 

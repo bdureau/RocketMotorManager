@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from localization import N_, _
+
 import copy
 import logging
 from pathlib import Path
@@ -35,7 +37,7 @@ class LabelEditorWindow(QMainWindow):
     def __init__(self, document: MotorDocument, unit_system_getter: Callable[[], str], default_dpi: int = 300,
                  export_folder: str = "", parent: Optional[QWidget] = None) -> None:
         super().__init__(parent)
-        self.setWindowTitle(self.tr("Label Designer"))
+        self.setWindowTitle(_("Label Designer"))
         self.setWindowIcon(icon("label"))
         self.resize(1200, 760)
         self._document = document
@@ -65,7 +67,7 @@ class LabelEditorWindow(QMainWindow):
         self.template_combo.blockSignals(True)
         self.template_combo.clear()
         for name, _template, is_user in self._all_templates():
-            self.template_combo.addItem(f"{name}  (user)" if is_user else name, name)
+            self.template_combo.addItem(_("{name}  (user)").format(name=name) if is_user else name, name)
         index = self.template_combo.findData(select or self.template.name)
         self.template_combo.setCurrentIndex(index)
         self.template_combo.blockSignals(False)
@@ -86,7 +88,7 @@ class LabelEditorWindow(QMainWindow):
             self._refresh_preview()
 
     def _save_template(self) -> None:
-        name, ok = QInputDialog.getText(self, self.tr("Save template"), self.tr("Template name:"), text=self.template.name)
+        name, ok = QInputDialog.getText(self, _("Save template"), _("Template name:"), text=self.template.name)
         if not ok or not name.strip():
             return
         self.template.name = name.strip()
@@ -96,14 +98,14 @@ class LabelEditorWindow(QMainWindow):
             reporter().error(self, exc)
             return
         self._fill_template_combo(self.template.name)
-        self.statusBar().showMessage(self.tr("Template saved: %1").replace("%1", str(path)), 5000)
+        self.statusBar().showMessage(_("Template saved: {path}").format(path=str(path)), 5000)
 
     def _delete_template(self) -> None:
         name = self.template_combo.currentData()
         if not any(t.name == name for t in self._service.user_templates()):
-            reporter().info(self, self.tr("Delete template"), self.tr("Predefined templates cannot be deleted."))
+            reporter().info(self, _("Delete template"), _("Predefined templates cannot be deleted."))
             return
-        if QMessageBox.question(self, self.tr("Delete template"), self.tr("Delete the template '%1'?").replace("%1", name)) \
+        if QMessageBox.question(self, _("Delete template"), _("Delete the template '{name}'?").format(name=name)) \
                 != QMessageBox.StandardButton.Yes:
             return
         try:
@@ -134,13 +136,13 @@ class LabelEditorWindow(QMainWindow):
         preview_scroll.setWidget(self.preview)
         preview_scroll.setWidgetResizable(True)
         self.zoom = QComboBox()
-        for text, value in ((self.tr("Fit"), 0.0), (self.tr("Real size"), 1.0), ("200 %", 2.0), ("400 %", 4.0)):
+        for text, value in ((_("Fit"), 0.0), (_("Real size"), 1.0), ("200 %", 2.0), ("400 %", 4.0)):
             self.zoom.addItem(text, value)
-        self.zoom.setToolTip(self.tr("Preview zoom. 'Real size' depends on the screen calibration."))
+        self.zoom.setToolTip(_("Preview zoom. 'Real size' depends on the screen calibration."))
         self.zoom.currentIndexChanged.connect(lambda _i: self.preview.set_zoom(self.zoom.currentData()))
         self.sheet_info = QLabel()
         top = QHBoxLayout()
-        top.addWidget(QLabel(self.tr("Zoom")))
+        top.addWidget(QLabel(_("Zoom")))
         top.addWidget(self.zoom)
         top.addStretch(1)
         top.addWidget(self.sheet_info)
@@ -156,7 +158,7 @@ class LabelEditorWindow(QMainWindow):
         self._build_toolbar(default_dpi)
 
     def _build_toolbar(self, default_dpi: int) -> None:
-        toolbar = QToolBar(self.tr("Label"))
+        toolbar = QToolBar(_("Label"))
         toolbar.setObjectName("label_toolbar")
         toolbar.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         self.addToolBar(toolbar)
@@ -165,22 +167,22 @@ class LabelEditorWindow(QMainWindow):
         self.dpi.setSingleStep(50)
         self.dpi.setValue(default_dpi)
         self.dpi.setSuffix(" dpi")
-        self.dpi.setToolTip(self.tr("Resolution of PNG and JPEG exports."))
+        self.dpi.setToolTip(_("Resolution of PNG and JPEG exports."))
         for text, icon_name, slot, shortcut, tip in (
-            (self.tr("Store in project"), "save", self._store, None,
-             self.tr("Save this label design in the motor project (XML).")),
-            (self.tr("Print Preview"), "print", lambda: label_printing.print_preview(self, self.template, self._values()),
-             None, self.tr("Preview the label sheet on the selected paper format.")),
-            (self.tr("Print..."), "print", lambda: label_printing.print_labels(self, self.template, self._values()),
-             QKeySequence.StandardKey.Print, self.tr("Print the label sheet.")),
-            (self.tr("Print PDF"), "pdf", lambda: label_printing.export_pdf(self, self.template, self._values(), self._export_folder),
-             None, self.tr("Export the label sheet as a PDF file.")),
-            (self.tr("Export PNG"), "image",
+            (_("Store in project"), "save", self._store, None,
+             _("Save this label design in the motor project (XML).")),
+            (_("Print Preview"), "print", lambda: label_printing.print_preview(self, self.template, self._values()),
+             None, _("Preview the label sheet on the selected paper format.")),
+            (_("Print..."), "print", lambda: label_printing.print_labels(self, self.template, self._values()),
+             QKeySequence.StandardKey.Print, _("Print the label sheet.")),
+            (_("Print PDF"), "pdf", lambda: label_printing.export_pdf(self, self.template, self._values(), self._export_folder),
+             None, _("Export the label sheet as a PDF file.")),
+            (_("Export PNG"), "image",
              lambda: label_printing.export_image(self, self.template, self._values(), "png", self.dpi.value(), self._export_folder),
-             None, self.tr("Export one label as a high-resolution PNG image.")),
-            (self.tr("Export JPEG"), "image",
+             None, _("Export one label as a high-resolution PNG image.")),
+            (_("Export JPEG"), "image",
              lambda: label_printing.export_image(self, self.template, self._values(), "jpg", self.dpi.value(), self._export_folder),
-             None, self.tr("Export one label as a JPEG image.")),
+             None, _("Export one label as a JPEG image.")),
         ):
             action = QAction(icon(icon_name), text, self)
             action.setToolTip(tip)
@@ -188,7 +190,7 @@ class LabelEditorWindow(QMainWindow):
             if shortcut is not None:
                 action.setShortcut(shortcut)
             toolbar.addAction(action)
-        toolbar.addWidget(QLabel("  " + self.tr("Resolution") + " "))
+        toolbar.addWidget(QLabel("  " + _("Resolution") + " "))
         toolbar.addWidget(self.dpi)
 
     def _spin(self, minimum: float, maximum: float, step: float, suffix: str, tip: str, decimals: int = 1) -> QDoubleSpinBox:
@@ -202,16 +204,16 @@ class LabelEditorWindow(QMainWindow):
         return spin
 
     def _template_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Template"))
+        group = QGroupBox(_("Template"))
         row = QHBoxLayout(group)
         self.template_combo = QComboBox()
-        self.template_combo.setToolTip(self.tr("Predefined and user templates."))
+        self.template_combo.setToolTip(_("Predefined and user templates."))
         self.template_combo.activated.connect(self._on_template_selected)
         save = QPushButton(icon("save"), "")
-        save.setToolTip(self.tr("Save the current design as a reusable template."))
+        save.setToolTip(_("Save the current design as a reusable template."))
         save.clicked.connect(self._save_template)
         delete = QPushButton(icon("delete_point"), "")
-        delete.setToolTip(self.tr("Delete the selected user template."))
+        delete.setToolTip(_("Delete the selected user template."))
         delete.clicked.connect(self._delete_template)
         row.addWidget(self.template_combo, 1)
         row.addWidget(save)
@@ -220,105 +222,105 @@ class LabelEditorWindow(QMainWindow):
         return group
 
     def _dimensions_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Dimensions"))
+        group = QGroupBox(_("Dimensions"))
         form = QFormLayout(group)
-        self.width_mm = self._spin(10, 300, 1, " mm", self.tr("Label width in millimetres."))
-        self.height_mm = self._spin(5, 300, 1, " mm", self.tr("Label height in millimetres."))
-        self.inner_margin = self._spin(0, 20, 0.5, " mm", self.tr("Margin between the border and the text."))
-        self.border_width = self._spin(0, 5, 0.1, " mm", self.tr("Border thickness (0 = no border)."), 2)
-        self.border_radius = self._spin(0, 20, 0.5, " mm", self.tr("Corner radius of the border."))
-        form.addRow(self.tr("Width"), self.width_mm)
-        form.addRow(self.tr("Height"), self.height_mm)
-        form.addRow(self.tr("Inner margin"), self.inner_margin)
-        form.addRow(self.tr("Border width"), self.border_width)
-        form.addRow(self.tr("Corner radius"), self.border_radius)
+        self.width_mm = self._spin(10, 300, 1, " mm", _("Label width in millimetres."))
+        self.height_mm = self._spin(5, 300, 1, " mm", _("Label height in millimetres."))
+        self.inner_margin = self._spin(0, 20, 0.5, " mm", _("Margin between the border and the text."))
+        self.border_width = self._spin(0, 5, 0.1, " mm", _("Border thickness (0 = no border)."), 2)
+        self.border_radius = self._spin(0, 20, 0.5, " mm", _("Corner radius of the border."))
+        form.addRow(_("Width"), self.width_mm)
+        form.addRow(_("Height"), self.height_mm)
+        form.addRow(_("Inner margin"), self.inner_margin)
+        form.addRow(_("Border width"), self.border_width)
+        form.addRow(_("Corner radius"), self.border_radius)
         return group
 
     def _paper_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Paper and sheet"))
+        group = QGroupBox(_("Paper and sheet"))
         form = QFormLayout(group)
         self.paper = QComboBox()
         self.paper.addItems(PAPER_FORMATS.keys())
-        self.paper.setToolTip(self.tr("Paper format used for printing and PDF export."))
+        self.paper.setToolTip(_("Paper format used for printing and PDF export."))
         self.paper.currentIndexChanged.connect(self._on_widget_changed)
-        self.page_margin = self._spin(0, 50, 1, " mm", self.tr("Margin around the sheet."))
-        self.spacing = self._spin(0, 30, 0.5, " mm", self.tr("Space between labels on the sheet."))
+        self.page_margin = self._spin(0, 50, 1, " mm", _("Margin around the sheet."))
+        self.spacing = self._spin(0, 30, 0.5, " mm", _("Space between labels on the sheet."))
         self.copies = QSpinBox()
         self.copies.setRange(1, 500)
-        self.copies.setToolTip(self.tr("Number of labels to print."))
+        self.copies.setToolTip(_("Number of labels to print."))
         self.copies.valueChanged.connect(self._on_widget_changed)
-        self.fill_page = QCheckBox(self.tr("Fill the whole page"))
-        self.fill_page.setToolTip(self.tr("Print as many labels as fit on one page."))
+        self.fill_page = QCheckBox(_("Fill the whole page"))
+        self.fill_page.setToolTip(_("Print as many labels as fit on one page."))
         self.fill_page.toggled.connect(self._on_widget_changed)
-        form.addRow(self.tr("Paper format"), self.paper)
-        form.addRow(self.tr("Page margin"), self.page_margin)
-        form.addRow(self.tr("Spacing"), self.spacing)
-        form.addRow(self.tr("Copies"), self.copies)
+        form.addRow(_("Paper format"), self.paper)
+        form.addRow(_("Page margin"), self.page_margin)
+        form.addRow(_("Spacing"), self.spacing)
+        form.addRow(_("Copies"), self.copies)
         form.addRow("", self.fill_page)
         return group
 
     def _style_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Colours and text"))
+        group = QGroupBox(_("Colours and text"))
         form = QFormLayout(group)
         self.colors: dict[str, ColorButton] = {}
         for attribute, caption, tip in (
-            ("background_color", "Background", "Background colour of the label."),
-            ("text_color", "Text", "Colour of the information lines."),
-            ("accent_color", "Accent / title", "Colour of the title (and of the banner)."),
-            ("border_color", "Border", "Colour of the border."),
+            ("background_color", N_("Background"), N_("Background colour of the label.")),
+            ("text_color", N_("Text"), N_("Colour of the information lines.")),
+            ("accent_color", N_("Accent / title"), N_("Colour of the title (and of the banner).")),
+            ("border_color", N_("Border"), N_("Colour of the border.")),
         ):
             button = ColorButton()
-            button.setToolTip(self.tr(tip))
+            button.setToolTip(_(tip))
             button.color_changed.connect(self._on_widget_changed)
             self.colors[attribute] = button
-            form.addRow(self.tr(caption), button)
+            form.addRow(_(caption), button)
         self.font_combo = QFontComboBox()
-        self.font_combo.setToolTip(self.tr("Font family."))
+        self.font_combo.setToolTip(_("Font family."))
         self.font_combo.currentFontChanged.connect(self._on_widget_changed)
-        self.title_size = self._spin(4, 72, 0.5, " pt", self.tr("Title font size in points."))
-        self.body_size = self._spin(3, 48, 0.5, " pt", self.tr("Information font size in points (reduced automatically if the text does not fit)."))
-        self.bold_title = QCheckBox(self.tr("Bold title"))
+        self.title_size = self._spin(4, 72, 0.5, " pt", _("Title font size in points."))
+        self.body_size = self._spin(3, 48, 0.5, " pt", _("Information font size in points (reduced automatically if the text does not fit)."))
+        self.bold_title = QCheckBox(_("Bold title"))
         self.bold_title.toggled.connect(self._on_widget_changed)
         self.alignment = QComboBox()
-        for text, value in ((self.tr("Left"), "left"), (self.tr("Centre"), "center"), (self.tr("Right"), "right")):
+        for text, value in ((_("Left"), "left"), (_("Centre"), "center"), (_("Right"), "right")):
             self.alignment.addItem(text, value)
-        self.alignment.setToolTip(self.tr("Horizontal text alignment."))
+        self.alignment.setToolTip(_("Horizontal text alignment."))
         self.alignment.currentIndexChanged.connect(self._on_widget_changed)
         self.layout_combo = QComboBox()
-        for value, text in zip(LABEL_LAYOUTS, (self.tr("Stacked lines"), self.tr("Two columns"), self.tr("Banner title"))):
+        for value, text in zip(LABEL_LAYOUTS, (_("Stacked lines"), _("Two columns"), _("Banner title"))):
             self.layout_combo.addItem(text, value)
-        self.layout_combo.setToolTip(self.tr("Arrangement of the information on the label."))
+        self.layout_combo.setToolTip(_("Arrangement of the information on the label."))
         self.layout_combo.currentIndexChanged.connect(self._on_widget_changed)
         self.title_field = QComboBox()
-        self.title_field.addItem(self.tr("(no title)"), "")
+        self.title_field.addItem(_("(no title)"), "")
         for name in LABEL_FIELDS:
-            self.title_field.addItem(self.tr(LABEL_FIELD_CAPTIONS[name]), name)
-        self.title_field.setToolTip(self.tr("Information printed as the large title."))
+            self.title_field.addItem(_(LABEL_FIELD_CAPTIONS[name]), name)
+        self.title_field.setToolTip(_("Information printed as the large title."))
         self.title_field.currentIndexChanged.connect(self._on_widget_changed)
-        self.show_captions = QCheckBox(self.tr("Show captions (e.g. 'Total impulse:')"))
+        self.show_captions = QCheckBox(_("Show captions (e.g. 'Total impulse:')"))
         self.show_captions.toggled.connect(self._on_widget_changed)
-        form.addRow(self.tr("Font"), self.font_combo)
-        form.addRow(self.tr("Title size"), self.title_size)
-        form.addRow(self.tr("Text size"), self.body_size)
+        form.addRow(_("Font"), self.font_combo)
+        form.addRow(_("Title size"), self.title_size)
+        form.addRow(_("Text size"), self.body_size)
         form.addRow("", self.bold_title)
-        form.addRow(self.tr("Alignment"), self.alignment)
-        form.addRow(self.tr("Layout"), self.layout_combo)
-        form.addRow(self.tr("Title"), self.title_field)
+        form.addRow(_("Alignment"), self.alignment)
+        form.addRow(_("Layout"), self.layout_combo)
+        form.addRow(_("Title"), self.title_field)
         form.addRow("", self.show_captions)
         return group
 
     def _fields_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Information to display"))
+        group = QGroupBox(_("Information to display"))
         layout = QVBoxLayout(group)
         self.fields_list = QListWidget()
         self.fields_list.setDragDropMode(QListWidget.DragDropMode.InternalMove)
-        self.fields_list.setToolTip(self.tr("Tick the information to print. Drag items to change their order."))
+        self.fields_list.setToolTip(_("Tick the information to print. Drag items to change their order."))
         self.fields_list.itemChanged.connect(self._on_widget_changed)
         self.fields_list.model().rowsMoved.connect(self._on_widget_changed)
         self.fields_list.setMinimumHeight(220)
         self.custom_text = QPlainTextEdit()
-        self.custom_text.setPlaceholderText(self.tr("Additional free text (one line per row)"))
-        self.custom_text.setToolTip(self.tr("Free text zone printed after the information lines."))
+        self.custom_text.setPlaceholderText(_("Additional free text (one line per row)"))
+        self.custom_text.setToolTip(_("Free text zone printed after the information lines."))
         self.custom_text.setFixedHeight(54)
         self.custom_text.textChanged.connect(self._on_widget_changed)
         layout.addWidget(self.fields_list)
@@ -326,29 +328,29 @@ class LabelEditorWindow(QMainWindow):
         return group
 
     def _logo_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Logo"))
+        group = QGroupBox(_("Logo"))
         form = QFormLayout(group)
         row = QHBoxLayout()
-        load = QPushButton(icon("image"), self.tr("Import logo..."))
-        load.setToolTip(self.tr("Import a PNG or JPG logo."))
+        load = QPushButton(icon("image"), _("Import logo..."))
+        load.setToolTip(_("Import a PNG or JPG logo."))
         load.clicked.connect(self._choose_logo)
-        clear = QPushButton(self.tr("Remove"))
-        clear.setToolTip(self.tr("Remove the logo."))
+        clear = QPushButton(_("Remove"))
+        clear.setToolTip(_("Remove the logo."))
         clear.clicked.connect(self._clear_logo)
         row.addWidget(load)
         row.addWidget(clear)
         self.logo_label = QLabel()
         self.logo_label.setWordWrap(True)
-        self.logo_x = self._spin(0, 300, 0.5, " mm", self.tr("Horizontal position of the logo from the left edge."))
-        self.logo_y = self._spin(0, 300, 0.5, " mm", self.tr("Vertical position of the logo from the top edge."))
-        self.logo_w = self._spin(1, 300, 0.5, " mm", self.tr("Logo box width (aspect ratio is kept)."))
-        self.logo_h = self._spin(1, 300, 0.5, " mm", self.tr("Logo box height (aspect ratio is kept)."))
+        self.logo_x = self._spin(0, 300, 0.5, " mm", _("Horizontal position of the logo from the left edge."))
+        self.logo_y = self._spin(0, 300, 0.5, " mm", _("Vertical position of the logo from the top edge."))
+        self.logo_w = self._spin(1, 300, 0.5, " mm", _("Logo box width (aspect ratio is kept)."))
+        self.logo_h = self._spin(1, 300, 0.5, " mm", _("Logo box height (aspect ratio is kept)."))
         form.addRow(row)
         form.addRow(self.logo_label)
-        form.addRow(self.tr("X"), self.logo_x)
-        form.addRow(self.tr("Y"), self.logo_y)
-        form.addRow(self.tr("Width"), self.logo_w)
-        form.addRow(self.tr("Height"), self.logo_h)
+        form.addRow(_("X"), self.logo_x)
+        form.addRow(_("Y"), self.logo_y)
+        form.addRow(_("Width"), self.logo_w)
+        form.addRow(_("Height"), self.logo_h)
         return group
 
     # ------------------------------------------------------------------
@@ -378,13 +380,13 @@ class LabelEditorWindow(QMainWindow):
         self.fields_list.clear()
         ordered = list(t.fields) + [name for name in LABEL_FIELDS if name not in t.fields]
         for name in ordered:
-            item = QListWidgetItem(self.tr(LABEL_FIELD_CAPTIONS[name]))
+            item = QListWidgetItem(_(LABEL_FIELD_CAPTIONS[name]))
             item.setData(Qt.ItemDataRole.UserRole, name)
             item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsDragEnabled)
             item.setCheckState(Qt.CheckState.Checked if name in t.fields else Qt.CheckState.Unchecked)
             self.fields_list.addItem(item)
         self.custom_text.setPlainText(t.custom_text)
-        self.logo_label.setText(Path(t.logo_path).name if t.logo_path else self.tr("No logo"))
+        self.logo_label.setText(Path(t.logo_path).name if t.logo_path else _("No logo"))
         self._loading = False
 
     def _on_widget_changed(self, *_args) -> None:
@@ -414,7 +416,7 @@ class LabelEditorWindow(QMainWindow):
         self._refresh_preview()
 
     def _choose_logo(self) -> None:
-        path, _ = QFileDialog.getOpenFileName(self, self.tr("Import logo"), "", self.tr("Images (*.png *.jpg *.jpeg)"))
+        path, _selected_filter = QFileDialog.getOpenFileName(self, _("Import logo"), "", _("Images (*.png *.jpg *.jpeg)"))
         if not path:
             return
         self.template.logo_path = path
@@ -442,8 +444,7 @@ class LabelEditorWindow(QMainWindow):
         try:
             layout = self._service.sheet_layout(self.template)
             pages = -(-self._service.label_count(self.template) // layout.per_page)
-            self.sheet_info.setText(self.tr("%1 per %2 page · %3 page(s)").replace("%1", str(layout.per_page))
-                                    .replace("%2", self.template.paper_format).replace("%3", str(pages)))
+            self.sheet_info.setText(_("{per_page} per {paper} page · {pages} page(s)").format(per_page=str(layout.per_page), paper=self.template.paper_format, pages=str(pages)))
             self.sheet_info.setStyleSheet("")
         except RocketMotorError as exc:
             self.sheet_info.setText(str(exc))
@@ -458,7 +459,7 @@ class LabelEditorWindow(QMainWindow):
 
     def _store(self) -> None:
         self.template_stored.emit(copy.deepcopy(self.template))
-        self.statusBar().showMessage(self.tr("Label stored in the project. Save the project to keep it."), 5000)
+        self.statusBar().showMessage(_("Label stored in the project. Save the project to keep it."), 5000)
 
     def current_template(self) -> LabelTemplate:
         """A copy of the template being edited."""

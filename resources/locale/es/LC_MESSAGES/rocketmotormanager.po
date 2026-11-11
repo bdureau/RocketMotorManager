@@ -1,0 +1,3176 @@
+# Spanish translation of Rocket Motor Manager.
+# Copyright (C) 2026 Boris du Reau
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Rocket Motor Manager 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-10 20:20+0000\n"
+"PO-Revision-Date: 2026-11-10 07:01+0000\n"
+"Last-Translator: Boris du Reau\n"
+"Language: es\n"
+"Language-Team: Spanish\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: application/error_handler.py:32
+#, python-brace-format
+msgid "File: {path}"
+msgstr "Archivo: {path}"
+
+#: application/error_handler.py:33
+msgid "Invalid file"
+msgstr "Archivo no válido"
+
+#: application/error_handler.py:35
+msgid "File access error"
+msgstr "Error de acceso al archivo"
+
+#: application/error_handler.py:37
+msgid "Invalid data"
+msgstr "Datos no válidos"
+
+#: application/error_handler.py:39
+msgid "Error"
+msgstr "Error"
+
+#: application/error_handler.py:41
+msgid "Out of memory"
+msgstr "Memoria insuficiente"
+
+#: application/error_handler.py:41
+msgid "The operation needs more memory than available."
+msgstr "La operación necesita más memoria de la disponible."
+
+#: application/error_handler.py:42
+msgid "Unexpected error"
+msgstr "Error inesperado"
+
+#: application/error_handler.py:115
+msgid "An unexpected error occurred. The details were written to the log file."
+msgstr "Se ha producido un error inesperado. Los detalles se han guardado en el archivo de registro."
+
+#: application/version.py:16
+msgid ""
+"Design, edit, convert, analyse and archive rocket motor thrust data (RASP .ENG format compatible "
+"with OpenRocket and RockSim)."
+msgstr ""
+"Diseñar, editar, convertir, analizar y archivar datos de empuje de motores cohete (formato RASP "
+".ENG compatible con OpenRocket y RockSim)."
+
+#: models/errors.py:45
+#, python-brace-format
+msgid "Line {line}: {message}"
+msgstr "Línea {line}: {message}"
+
+#: models/label_template.py:35 ui/dialogs/srm_import_dialog.py:141 ui/motor_editor.py:24
+msgid "Motor name"
+msgstr "Nombre del motor"
+
+#: models/label_template.py:36 ui/dialogs/srm_import_dialog.py:142 ui/motor_editor.py:25
+msgid "Manufacturer"
+msgstr "Fabricante"
+
+#: models/label_template.py:37
+msgid "Designation"
+msgstr "Designación"
+
+#: models/label_template.py:38
+msgid "Diameter"
+msgstr "Diámetro"
+
+#: models/label_template.py:39
+msgid "Length"
+msgstr "Longitud"
+
+#: models/label_template.py:40 models/motor_calculations.py:79 services/srm_service.py:179
+#: ui/motor_editor.py:126
+msgid "Total impulse"
+msgstr "Impulso total"
+
+#: models/label_template.py:41 models/motor_calculations.py:81 services/srm_service.py:179
+#: ui/motor_editor.py:126
+msgid "Average thrust"
+msgstr "Empuje medio"
+
+#: models/label_template.py:42 models/motor_calculations.py:80 services/srm_service.py:180
+#: ui/motor_editor.py:127
+msgid "Maximum thrust"
+msgstr "Empuje máximo"
+
+#: models/label_template.py:43 models/motor_calculations.py:82 services/srm_service.py:181
+#: ui/motor_editor.py:127 ui/preferences_window.py:86
+msgid "Burn time"
+msgstr "Tiempo de combustión"
+
+#: models/label_template.py:44 models/motor_calculations.py:87 models/validation.py:149
+msgid "Propellant mass"
+msgstr "Masa de propelente"
+
+#: models/label_template.py:45
+msgid "Total mass"
+msgstr "Masa total"
+
+#: models/label_template.py:46 ui/dialogs/srm_import_dialog.py:95
+msgid "Propellant"
+msgstr "Propelente"
+
+#: models/label_template.py:47
+msgid "Delays"
+msgstr "Retardos"
+
+#: models/label_template.py:48 services/thrust_analysis.py:94 ui/motor_editor.py:128
+msgid "Impulse class"
+msgstr "Clase de impulso"
+
+#: models/motor_calculations.py:37
+msgid "Full powered curve"
+msgstr "Curva propulsiva completa"
+
+#: models/motor_calculations.py:38
+#, python-format
+msgid "5 % of maximum thrust (NAR)"
+msgstr "5 % del empuje máximo (NAR)"
+
+#: models/motor_calculations.py:83
+msgid "Initial thrust"
+msgstr "Empuje inicial"
+
+#: models/motor_calculations.py:84
+msgid "Final thrust"
+msgstr "Empuje final"
+
+#: models/motor_calculations.py:85
+msgid "Time to maximum thrust"
+msgstr "Tiempo hasta el empuje máximo"
+
+#: models/motor_calculations.py:86
+msgid "Initial motor mass"
+msgstr "Masa inicial del motor"
+
+#: models/motor_calculations.py:88
+msgid "Propellant mass fraction"
+msgstr "Fracción másica de propelente"
+
+#: models/motor_calculations.py:89 services/srm_service.py:181 ui/motor_editor.py:128
+msgid "Specific impulse"
+msgstr "Impulso específico"
+
+#: models/motor_calculations.py:105
+msgid "The thrust curve contains non-numeric values."
+msgstr "La curva de empuje contiene valores no numéricos."
+
+#: models/motor_calculations.py:107
+msgid "Thrust points are not in strictly increasing time order."
+msgstr "Los puntos de empuje no están en orden de tiempo estrictamente creciente."
+
+#: models/motor_calculations.py:131
+msgid "The thrust curve has no positive thrust."
+msgstr "La curva de empuje no tiene empuje positivo."
+
+#: models/motor_calculations.py:195
+#, python-brace-format
+msgid "Unknown burn time method '{burn_time_method}'"
+msgstr "Método de tiempo de combustión desconocido '{burn_time_method}'"
+
+#: models/motor_calculations.py:213
+msgid "Propellant mass not specified."
+msgstr "Masa de propelente no especificada."
+
+#: models/motor_calculations.py:215
+msgid "Propellant mass must be greater than zero."
+msgstr "La masa de propelente debe ser mayor que cero."
+
+#: models/motor_calculations.py:217
+msgid "Total motor mass not specified."
+msgstr "Masa total del motor no especificada."
+
+#: models/motor_calculations.py:223
+msgid "Propellant mass is greater than the total motor mass."
+msgstr "La masa de propelente es mayor que la masa total del motor."
+
+#: models/motor_calculations.py:234 models/validation.py:100
+msgid "At least two thrust points are required."
+msgstr "Se necesitan al menos dos puntos de empuje."
+
+#: models/motor_calculations.py:243
+msgid "The curve contains negative thrust values."
+msgstr "La curva contiene valores de empuje negativos."
+
+#: models/motor_calculations.py:251
+msgid "The last thrust point is not zero: the curve may be truncated."
+msgstr "El último punto de empuje no es cero: la curva puede estar truncada."
+
+#: models/motor_calculations.py:264
+msgid "Burn time is zero."
+msgstr "El tiempo de combustión es cero."
+
+#: models/motor_calculations.py:276
+msgid "Requires propellant mass and total motor mass."
+msgstr "Requiere la masa de propelente y la masa total del motor."
+
+#: models/motor_calculations.py:282
+msgid "Requires the total impulse and a positive propellant mass."
+msgstr "Requiere el impulso total y una masa de propelente positiva."
+
+#: models/units.py:93
+#, python-brace-format
+msgid "Unknown unit '{symbol}'"
+msgstr "Unidad desconocida '{symbol}'"
+
+#: models/units.py:111
+#, python-brace-format
+msgid "Cannot convert {source_quantity} ({from_symbol}) to {target_quantity} ({to_symbol})"
+msgstr "No se puede convertir {source_quantity} ({from_symbol}) en {target_quantity} ({to_symbol})"
+
+#: models/validation.py:20
+msgid "INFO"
+msgstr "INFO"
+
+#: models/validation.py:20
+msgid "WARNING"
+msgstr "ADVERTENCIA"
+
+#: models/validation.py:20
+msgid "ERROR"
+msgstr "ERROR"
+
+#: models/validation.py:84
+msgid "No problem detected."
+msgstr "No se ha detectado ningún problema."
+
+#: models/validation.py:87 ui/dialogs/validation_dialog.py:36
+#, python-brace-format
+msgid " (row {row})"
+msgstr " (fila {row})"
+
+#: models/validation.py:97
+msgid "The thrust curve contains no point."
+msgstr "La curva de empuje no contiene ningún punto."
+
+#: models/validation.py:103
+msgid "Missing or non-numeric value."
+msgstr "Valor ausente o no numérico."
+
+#: models/validation.py:106 services/eng_service.py:171
+msgid "Negative time value."
+msgstr "Valor de tiempo negativo."
+
+#: models/validation.py:108
+msgid "Negative thrust value."
+msgstr "Valor de empuje negativo."
+
+#: models/validation.py:112
+msgid "The curve has no positive thrust."
+msgstr "La curva no tiene empuje positivo."
+
+#: models/validation.py:116
+msgid "The last point should have zero thrust (burnout); ENG readers expect it."
+msgstr "El último punto debe tener empuje cero (fin de combustión); los lectores ENG lo esperan."
+
+#: models/validation.py:131
+msgid "Duplicate time value."
+msgstr "Valor de tiempo duplicado."
+
+#: models/validation.py:133
+msgid "Time is lower than the previous point."
+msgstr "El tiempo es menor que el del punto anterior."
+
+#: models/validation.py:142
+msgid "The motor name is required."
+msgstr "El nombre del motor es obligatorio."
+
+#: models/validation.py:144
+msgid "Spaces in the motor name will be replaced by '_' in ENG files."
+msgstr "Los espacios del nombre del motor se sustituirán por '_' en los archivos ENG."
+
+#: models/validation.py:146
+msgid "The manufacturer is required by the ENG format."
+msgstr "El fabricante es obligatorio en el formato ENG."
+
+#: models/validation.py:147
+msgid "Motor diameter"
+msgstr "El diámetro del motor"
+
+#: models/validation.py:148
+msgid "Motor length"
+msgstr "La longitud del motor"
+
+#: models/validation.py:150
+msgid "Total motor mass"
+msgstr "La masa total del motor"
+
+#: models/validation.py:153
+msgid "Propellant mass exceeds the total motor mass."
+msgstr "La masa de propelente supera la masa total del motor."
+
+#: models/validation.py:156
+#, python-brace-format
+msgid "Invalid ejection delay '{token}'. Use numbers separated by '-' or 'P'."
+msgstr "Retardo de eyección no válido '{token}'. Use números separados por '-' o 'P'."
+
+#: models/validation.py:163
+#, python-brace-format
+msgid "{caption} is required."
+msgstr "{caption} es obligatorio."
+
+#: models/validation.py:165
+#, python-brace-format
+msgid "{caption} must be greater than zero."
+msgstr "{caption} debe ser mayor que cero."
+
+#: services/csv_service.py:26
+msgid "Pipe (|)"
+msgstr "Barra vertical (|)"
+
+#: services/csv_service.py:26
+msgid "Space / whitespace"
+msgstr "Espacio / blancos"
+
+#: services/csv_service.py:26 ui/dialogs/csv_export_dialog.py:23
+msgid "Tab"
+msgstr "Tabulador"
+
+#: services/csv_service.py:26 ui/dialogs/csv_export_dialog.py:23
+msgid "Semicolon (;)"
+msgstr "Punto y coma (;)"
+
+#: services/csv_service.py:26 ui/dialogs/csv_export_dialog.py:23
+msgid "Comma (,)"
+msgstr "Coma (,)"
+
+#: services/csv_service.py:155
+msgid "The field separator and the decimal separator must differ."
+msgstr "El separador de campos y el separador decimal deben ser distintos."
+
+#: services/eng_service.py:104
+msgid "Data found before the motor header line."
+msgstr "Datos encontrados antes de la línea de cabecera del motor."
+
+#: services/eng_service.py:107
+msgid "No motor header found: this is not a valid ENG file."
+msgstr "No se ha encontrado ninguna cabecera de motor: no es un archivo ENG válido."
+
+#: services/eng_service.py:139
+msgid "diameter"
+msgstr "diámetro"
+
+#: services/eng_service.py:140
+msgid "length"
+msgstr "longitud"
+
+#: services/eng_service.py:142
+msgid "propellant mass"
+msgstr "masa de propelente"
+
+#: services/eng_service.py:143
+msgid "total mass"
+msgstr "masa total"
+
+#: services/eng_service.py:152 services/eng_service.py:154
+#, python-brace-format
+msgid "Invalid {caption} '{token}' in header."
+msgstr "{caption} no válido '{token}' en la cabecera."
+
+#: services/eng_service.py:162
+#, python-brace-format
+msgid "Expected two values (time thrust), found {count}."
+msgstr "Se esperaban dos valores (tiempo empuje), se encontraron {count}."
+
+#: services/eng_service.py:167
+msgid "Non-numeric thrust data."
+msgstr "Datos de empuje no numéricos."
+
+#: services/eng_service.py:169
+msgid "Non-finite thrust data."
+msgstr "Datos de empuje no finitos."
+
+#: services/eng_service.py:180
+#, python-brace-format
+msgid "Motor '{name}' has no thrust data before line {line}."
+msgstr "El motor '{name}' no tiene datos de empuje antes de la línea {line}."
+
+#: services/eng_service.py:181
+#, python-brace-format
+msgid "Motor '{name}' has no thrust data."
+msgstr "El motor '{name}' no tiene datos de empuje."
+
+#: services/eng_service.py:183
+#, python-brace-format
+msgid "Motor '{name}': thrust points are not in increasing time order."
+msgstr "Motor '{name}': los puntos de empuje no están en orden de tiempo creciente."
+
+#: services/eng_service.py:185
+#, python-brace-format
+msgid "Motor '{name}': the curve does not end with a zero thrust point."
+msgstr "Motor '{name}': la curva no termina con un punto de empuje cero."
+
+#: services/eng_service.py:207
+#, python-brace-format
+msgid ""
+"Motor '{name}' cannot be exported to ENG:\n"
+"{report}"
+msgstr ""
+"El motor '{name}' no se puede exportar a ENG:\n"
+"{report}"
+
+#: services/eng_service.py:210
+#, python-brace-format
+msgid ""
+"Export cancelled because of warnings:\n"
+"{report}"
+msgstr ""
+"Exportación cancelada debido a las advertencias:\n"
+"{report}"
+
+#: services/eng_service.py:213
+msgid "No motor to export."
+msgstr "No hay ningún motor para exportar."
+
+#: services/excel_service.py:40
+#, python-brace-format
+msgid "Unsupported Excel file type '{suffix}'. Use .xlsx or .xls."
+msgstr "Tipo de archivo Excel no admitido '{suffix}'. Use .xlsx o .xls."
+
+#: services/excel_service.py:50 services/excel_service.py:69 services/excel_service.py:100
+#: services/file_utils.py:31
+#, python-brace-format
+msgid "File not found: {path}"
+msgstr "Archivo no encontrado: {path}"
+
+#: services/excel_service.py:52 services/excel_service.py:71 services/excel_service.py:102
+#, python-brace-format
+msgid "Permission denied (is the file open in Excel?): {path}"
+msgstr "Permiso denegado (¿está el archivo abierto en Excel?): {path}"
+
+#: services/excel_service.py:54
+#, python-brace-format
+msgid "Missing library to read this file: {value}"
+msgstr "Falta una biblioteca para leer este archivo: {value}"
+
+#: services/excel_service.py:56
+#, python-brace-format
+msgid "Cannot open workbook '{path}': {value}"
+msgstr "No se puede abrir el libro '{path}': {value}"
+
+#: services/excel_service.py:73
+#, python-brace-format
+msgid "Cannot read sheet '{sheet}' of '{path}': {value}"
+msgstr "No se puede leer la hoja '{sheet}' de '{path}': {value}"
+
+#: services/excel_service.py:104
+#, python-brace-format
+msgid "Cannot read workbook '{path}': {value}"
+msgstr "No se puede leer el libro '{path}': {value}"
+
+#: services/file_utils.py:33
+#, python-brace-format
+msgid "Permission denied while reading: {path}"
+msgstr "Permiso denegado al leer: {path}"
+
+#: services/file_utils.py:35
+#, python-brace-format
+msgid "Cannot read '{path}': {reason}"
+msgstr "No se puede leer '{path}': {reason}"
+
+#: services/file_utils.py:60
+#, python-brace-format
+msgid "Cannot decode '{path}' as {encoding}: {value}"
+msgstr "No se puede decodificar '{path}' como {encoding}: {value}"
+
+#: services/file_utils.py:82
+#, python-brace-format
+msgid "Permission denied while writing: {target}"
+msgstr "Permiso denegado al escribir: {target}"
+
+#: services/file_utils.py:84
+#, python-brace-format
+msgid "Cannot write '{target}': {reason}"
+msgstr "No se puede escribir '{target}': {reason}"
+
+#: services/file_utils.py:94
+#, python-brace-format
+msgid "Some characters cannot be encoded as {encoding}: {value}"
+msgstr "Algunos caracteres no se pueden codificar como {encoding}: {value}"
+
+#: services/image_digitizer.py:36
+msgid "Images (*.png *.jpg *.jpeg *.tif *.tiff *.bmp)"
+msgstr "Imágenes (*.png *.jpg *.jpeg *.tif *.tiff *.bmp)"
+
+#: services/image_digitizer.py:56
+#, python-brace-format
+msgid "Unsupported or corrupted image file: {path}"
+msgstr "Archivo de imagen no admitido o dañado: {path}"
+
+#: services/image_digitizer.py:98
+msgid "Perspective correction needs exactly four points."
+msgstr "La corrección de perspectiva necesita exactamente cuatro puntos."
+
+#: services/image_digitizer.py:111
+msgid "The perspective quadrilateral is too small."
+msgstr "El cuadrilátero de perspectiva es demasiado pequeño."
+
+#: services/image_digitizer.py:140
+msgid "The crop rectangle is too small."
+msgstr "El rectángulo de recorte es demasiado pequeño."
+
+#: services/image_digitizer.py:244
+msgid "Calibration needs the origin, the time-axis and the thrust-axis reference points."
+msgstr ""
+"La calibración necesita los puntos de referencia del origen, del eje de tiempo y del eje de "
+"empuje."
+
+#: services/image_digitizer.py:246
+msgid "Calibration points are aligned or have identical values; the mapping is undefined."
+msgstr ""
+"Los puntos de calibración están alineados o tienen valores idénticos; la conversión no está "
+"definida."
+
+#: services/image_digitizer.py:289
+msgid "Point outside the image."
+msgstr "Punto fuera de la imagen."
+
+#: services/image_digitizer.py:443
+msgid "No pixel of the selected colour was found. Increase the tolerance or pick the curve colour."
+msgstr ""
+"No se ha encontrado ningún píxel del color seleccionado. Aumente la tolerancia o tome el color de"
+" la curva."
+
+#: services/label_service.py:292
+msgid "A template name is required."
+msgstr "Se requiere un nombre de plantilla."
+
+#: services/label_service.py:303
+#, python-brace-format
+msgid "Cannot delete template '{name}': {value}"
+msgstr "No se puede eliminar la plantilla '{name}': {value}"
+
+#: services/label_service.py:320
+#, python-brace-format
+msgid "A {width_mm} x {height_mm} mm label does not fit on {paper_format} paper with {margin} mm margins."
+msgstr ""
+"Una etiqueta de {width_mm} x {height_mm} mm no cabe en papel {paper_format} con márgenes de "
+"{margin} mm."
+
+#: services/label_service.py:363
+#, python-brace-format
+msgid "Cannot write PDF file: {path}"
+msgstr "No se puede escribir el archivo PDF: {path}"
+
+#: services/label_service.py:393
+msgid "Use a .png, .jpg or .jpeg file name."
+msgstr "Use un nombre de archivo .png, .jpg o .jpeg."
+
+#: services/label_service.py:398
+#, python-brace-format
+msgid "Cannot write image file: {path}"
+msgstr "No se puede escribir el archivo de imagen: {path}"
+
+#: services/srm_service.py:80
+msgid "Performance sheet, simplified (recommended)"
+msgstr "Hoja Performance, simplificada (recomendado)"
+
+#: services/srm_service.py:81
+msgid "Performance sheet, full resolution"
+msgstr "Hoja Performance, resolución completa"
+
+#: services/srm_service.py:82
+msgid "Performance sheet, resampled"
+msgstr "Hoja Performance, remuestreada"
+
+#: services/srm_service.py:83
+msgid "Output sheet table (23 points)"
+msgstr "Tabla de la hoja Output (23 puntos)"
+
+#: services/srm_service.py:180
+msgid "Thrust time"
+msgstr "Tiempo de empuje"
+
+#: services/srm_service.py:182
+msgid "Max chamber pressure"
+msgstr "Presión máxima de cámara"
+
+#: services/srm_service.py:187
+#, python-brace-format
+msgid "Class {motor_class}"
+msgstr "Clase {motor_class}"
+
+#: services/srm_service.py:188
+#, python-brace-format
+msgid "SRM workbook results: {results}."
+msgstr "Resultados del libro SRM: {results}."
+
+#: services/srm_service.py:284
+#, python-brace-format
+msgid "This workbook is not a Richard Nakka SRM workbook (missing sheet(s): {missing})."
+msgstr "Este libro no es un libro SRM de Richard Nakka (faltan hojas: {missing})."
+
+#: services/srm_service.py:304
+msgid "No thrust-time data found in the 'Performance' or 'Output' sheets of the SRM workbook."
+msgstr "No se han encontrado datos de tiempo-empuje en las hojas 'Performance' u 'Output' del libro SRM."
+
+#: services/srm_service.py:306
+msgid "The 'Performance' sheet curve was not found; the Output table (lower resolution) is used."
+msgstr "No se ha encontrado la curva de la hoja 'Performance'; se usa la tabla Output (menor resolución)."
+
+#: services/srm_service.py:459
+#, python-brace-format
+msgid ""
+"The thrust curve integrates to {curve} N.s whereas the workbook reports {reference} N.s "
+"({deviation} difference). Check that the workbook was recalculated."
+msgstr ""
+"La curva de empuje integra {curve} N.s mientras que el libro indica {reference} N.s (diferencia "
+"de {deviation}). Compruebe que el libro se ha recalculado."
+
+#: services/srm_service.py:463
+msgid ""
+"SRM gives the chamber INSIDE diameter and length: enter the casing outside diameter and the "
+"overall motor length for the ENG export."
+msgstr ""
+"SRM da el diámetro y la longitud INTERIORES de la cámara: introduzca el diámetro exterior de la "
+"carcasa y la longitud total del motor para la exportación ENG."
+
+#: services/tabular_data.py:123
+msgid "Time and Thrust must be mapped to two different columns."
+msgstr "El tiempo y el empuje deben asignarse a dos columnas distintas."
+
+#: services/tabular_data.py:138
+#, python-brace-format
+msgid "{count} invalid row(s). First: row {first_row}: {first_reason}"
+msgstr "{count} fila(s) no válida(s). Primera: fila {first_row}: {first_reason}"
+
+#: services/tabular_data.py:141
+msgid "No valid numeric data found in the selected columns."
+msgstr "No hay datos numéricos válidos en las columnas seleccionadas."
+
+#: services/thrust_analysis.py:76
+msgid "n/a"
+msgstr "n/d"
+
+#: services/thrust_analysis.py:84
+#, python-brace-format
+msgid "Motor analysis - {motor}"
+msgstr "Análisis del motor - {motor}"
+
+#: services/thrust_analysis.py:84
+msgid "Unnamed motor"
+msgstr "Motor sin nombre"
+
+#: services/thrust_analysis.py:85
+#, python-brace-format
+msgid "Manufacturer: {manufacturer}"
+msgstr "Fabricante: {manufacturer}"
+
+#: services/thrust_analysis.py:86
+#, python-brace-format
+msgid "Burn time method: {method}"
+msgstr "Método de tiempo de combustión: {method}"
+
+#: services/thrust_analysis.py:87
+#, python-brace-format
+msgid "Thrust points: {count}"
+msgstr "Puntos de empuje: {count}"
+
+#: services/thrust_analysis.py:96
+msgid "Suggested designation"
+msgstr "Designación sugerida"
+
+#: services/thrust_analysis.py:99
+msgid "Warnings:"
+msgstr "Advertencias:"
+
+#: services/xml_service.py:55
+#, python-brace-format
+msgid "Invalid format version '{version}'."
+msgstr "Versión de formato no válida '{version}'."
+
+#: services/xml_service.py:206
+#, python-brace-format
+msgid "The project file is corrupted (invalid XML): {value}"
+msgstr "El archivo de proyecto está dañado (XML no válido): {value}"
+
+#: services/xml_service.py:208
+#, python-brace-format
+msgid "Not a Rocket Motor Manager project (root element '{tag}')."
+msgstr "No es un proyecto de Rocket Motor Manager (elemento raíz '{tag}')."
+
+#: services/xml_service.py:213
+msgid "Invalid project: the <Motor> element is missing."
+msgstr "Proyecto no válido: falta el elemento <Motor>."
+
+#: services/xml_service.py:229
+#, python-brace-format
+msgid ""
+"This project was created with a newer, incompatible format ({version}). Please update the "
+"application."
+msgstr ""
+"Este proyecto se creó con un formato más reciente e incompatible ({version}). Actualice la "
+"aplicación."
+
+#: services/xml_service.py:232
+#, python-brace-format
+msgid "Project format {version} is newer than {current_format_version}; unknown data may be ignored."
+msgstr ""
+"El formato de proyecto {version} es más reciente que {current_format_version}; los datos "
+"desconocidos pueden ignorarse."
+
+#: services/xml_service.py:237
+#, python-brace-format
+msgid "Project upgraded from format {version} to {target}."
+msgstr "Proyecto actualizado del formato {version} al {target}."
+
+#: services/xml_service.py:285
+#, python-brace-format
+msgid "Invalid number '{text}' in <{tag}/{tag2}>."
+msgstr "Número no válido '{text}' en <{tag}/{tag2}>."
+
+#: services/xml_service.py:287
+#, python-brace-format
+msgid "Non-finite number in <{tag}/{tag2}>."
+msgstr "Número no finito en <{tag}/{tag2}>."
+
+#: services/xml_service.py:300
+#, python-brace-format
+msgid "Invalid thrust point #{index} in <ThrustCurve>: {attrib}."
+msgstr "Punto de empuje n.º {index} no válido en <ThrustCurve>: {attrib}."
+
+#: services/xml_service.py:304
+#, python-brace-format
+msgid "Thrust curve is incomplete: {count} points found, {declared} declared."
+msgstr "Curva de empuje incompleta: {count} puntos encontrados, {declared} declarados."
+
+#: ui/common.py:141
+msgid "Choose a colour"
+msgstr "Elegir un color"
+
+#: ui/dialogs/about_dialog.py:24
+#, python-brace-format
+msgid "About {app}"
+msgstr "Acerca de {app}"
+
+#: ui/dialogs/about_dialog.py:29
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Versión {version}"
+
+#: ui/dialogs/about_dialog.py:33
+#, python-brace-format
+msgid "Log folder: {path}"
+msgstr "Carpeta de registro: {path}"
+
+#: ui/dialogs/about_dialog.py:33
+#, python-brace-format
+msgid "Executable: {path}"
+msgstr "Ejecutable: {path}"
+
+#: ui/dialogs/analysis_dialog.py:29
+msgid "Thrust Analysis"
+msgstr "Análisis de empuje"
+
+#: ui/dialogs/analysis_dialog.py:35
+#, python-format
+msgid ""
+"Definition of the burn time used for the average thrust:\n"
+"- Full powered curve: from ignition to burnout.\n"
+"- 5 % of maximum thrust: NAR/NFPA convention."
+msgstr ""
+"Definición del tiempo de combustión usada para el empuje medio:\n"
+"- Curva propulsiva completa: del encendido al fin de combustión.\n"
+"- 5 % del empuje máximo: convención NAR/NFPA."
+
+#: ui/dialogs/analysis_dialog.py:40
+msgid "Value"
+msgstr "Valor"
+
+#: ui/dialogs/analysis_dialog.py:40
+msgid "Unit"
+msgstr "Unidad"
+
+#: ui/dialogs/analysis_dialog.py:40 ui/dialogs/srm_import_dialog.py:60
+msgid "Characteristic"
+msgstr "Característica"
+
+#: ui/dialogs/analysis_dialog.py:49
+msgid "Copy report"
+msgstr "Copiar el informe"
+
+#: ui/dialogs/analysis_dialog.py:50
+msgid "Copy the analysis as text to the clipboard."
+msgstr "Copiar el análisis como texto al portapapeles."
+
+#: ui/dialogs/analysis_dialog.py:52
+msgid "Save report..."
+msgstr "Guardar el informe..."
+
+#: ui/dialogs/analysis_dialog.py:53
+msgid "Save the analysis report as a text file."
+msgstr "Guardar el informe de análisis en un archivo de texto."
+
+#: ui/dialogs/analysis_dialog.py:60
+msgid "Burn time definition"
+msgstr "Definición del tiempo de combustión"
+
+#: ui/dialogs/analysis_dialog.py:85
+msgid "Not available"
+msgstr "No disponible"
+
+#: ui/dialogs/analysis_dialog.py:91
+#, python-brace-format, python-format
+msgid "Impulse class: {impulse_class} ({percent} % of class)"
+msgstr "Clase de impulso: {impulse_class} ({percent} % de la clase)"
+
+#: ui/dialogs/analysis_dialog.py:93
+#, python-brace-format
+msgid "Suggested designation: {designation}"
+msgstr "Designación sugerida: {designation}"
+
+#: ui/dialogs/analysis_dialog.py:95
+#, python-brace-format
+msgid "Burn window: {start} s to {end} s"
+msgstr "Ventana de combustión: de {start} s a {end} s"
+
+#: ui/dialogs/analysis_dialog.py:96
+msgid "Total impulse computed by trapezoidal integration (implicit origin at 0 s, 0 N)."
+msgstr "Impulso total calculado por integración trapezoidal (origen implícito en 0 s, 0 N)."
+
+#: ui/dialogs/analysis_dialog.py:105
+msgid "Save analysis report"
+msgstr "Guardar el informe de análisis"
+
+#: ui/dialogs/analysis_dialog.py:105
+msgid "Text files (*.txt)"
+msgstr "Archivos de texto (*.txt)"
+
+#: ui/dialogs/csv_export_dialog.py:20
+msgid "Export CSV - options"
+msgstr "Exportar CSV - opciones"
+
+#: ui/dialogs/csv_export_dialog.py:25
+msgid "Character separating the two columns."
+msgstr "Carácter que separa las dos columnas."
+
+#: ui/dialogs/csv_export_dialog.py:27 ui/dialogs/tabular_import_dialog.py:72
+#: ui/preferences_window.py:77
+msgid "Point (1.5)"
+msgstr "Punto (1.5)"
+
+#: ui/dialogs/csv_export_dialog.py:28 ui/dialogs/tabular_import_dialog.py:73
+#: ui/preferences_window.py:78
+msgid "Comma (1,5)"
+msgstr "Coma (1,5)"
+
+#: ui/dialogs/csv_export_dialog.py:29
+msgid "Decimal mark. With a comma, the semicolon separator is selected automatically."
+msgstr "Separador decimal. Con la coma, se selecciona automáticamente el separador punto y coma."
+
+#: ui/dialogs/csv_export_dialog.py:34
+msgid "Text encoding. 'utf-8-sig' is best for opening in Excel."
+msgstr "Codificación del texto. 'utf-8-sig' es la mejor opción para abrir en Excel."
+
+#: ui/dialogs/csv_export_dialog.py:37
+msgid "Unit of the exported time column."
+msgstr "Unidad de la columna de tiempo exportada."
+
+#: ui/dialogs/csv_export_dialog.py:40
+msgid "Unit of the exported thrust column."
+msgstr "Unidad de la columna de empuje exportada."
+
+#: ui/dialogs/csv_export_dialog.py:44
+msgid "Maximum number of decimals (trailing zeros are removed)."
+msgstr "Número máximo de decimales (se eliminan los ceros finales)."
+
+#: ui/dialogs/csv_export_dialog.py:45
+msgid "Include motor properties as '#' header lines"
+msgstr "Incluir las propiedades del motor como líneas de cabecera '#'"
+
+#: ui/dialogs/csv_export_dialog.py:47
+msgid "Adds commented lines with the motor properties before the data."
+msgstr "Añade líneas de comentario con las propiedades del motor antes de los datos."
+
+#: ui/dialogs/csv_export_dialog.py:48 ui/dialogs/tabular_import_dialog.py:76
+msgid "Column separator"
+msgstr "Separador de columnas"
+
+#: ui/dialogs/csv_export_dialog.py:49 ui/dialogs/tabular_import_dialog.py:77
+#: ui/preferences_window.py:85
+msgid "Decimal separator"
+msgstr "Separador decimal"
+
+#: ui/dialogs/csv_export_dialog.py:50 ui/dialogs/tabular_import_dialog.py:75
+msgid "Encoding"
+msgstr "Codificación"
+
+#: ui/dialogs/csv_export_dialog.py:51
+msgid "Time unit"
+msgstr "Unidad de tiempo"
+
+#: ui/dialogs/csv_export_dialog.py:52
+msgid "Thrust unit"
+msgstr "Unidad de empuje"
+
+#: ui/dialogs/csv_export_dialog.py:53
+msgid "Decimals"
+msgstr "Decimales"
+
+#: ui/dialogs/srm_import_dialog.py:42
+#, python-brace-format
+msgid "Import SRM workbook - {name}"
+msgstr "Importar libro SRM - {name}"
+
+#: ui/dialogs/srm_import_dialog.py:58
+msgid "Grey: full resolution curve of the workbook. Blue: points that will be imported."
+msgstr "Gris: curva de resolución completa del libro. Azul: puntos que se importarán."
+
+#: ui/dialogs/srm_import_dialog.py:60
+msgid "SRM workbook"
+msgstr "Libro SRM"
+
+#: ui/dialogs/srm_import_dialog.py:60
+msgid "Imported curve"
+msgstr "Curva importada"
+
+#: ui/dialogs/srm_import_dialog.py:64
+msgid ""
+"Cross-check between the values computed by the SRM workbook and the values recomputed from the "
+"imported thrust curve."
+msgstr ""
+"Comprobación cruzada entre los valores calculados por el libro SRM y los recalculados a partir de"
+" la curva de empuje importada."
+
+#: ui/dialogs/srm_import_dialog.py:81
+msgid "Import motor"
+msgstr "Importar el motor"
+
+#: ui/dialogs/srm_import_dialog.py:90
+msgid "Workbook content"
+msgstr "Contenido del libro"
+
+#: ui/dialogs/srm_import_dialog.py:93
+msgid "Version"
+msgstr "Versión"
+
+#: ui/dialogs/srm_import_dialog.py:94 ui/label_editor.py:308
+msgid "Title"
+msgstr "Título"
+
+#: ui/dialogs/srm_import_dialog.py:96
+msgid "Grain mass"
+msgstr "Masa del grano"
+
+#: ui/dialogs/srm_import_dialog.py:97
+msgid "Chamber (inside)"
+msgstr "Cámara (interior)"
+
+#: ui/dialogs/srm_import_dialog.py:105
+msgid "Nozzle length"
+msgstr "Longitud de la tobera"
+
+#: ui/dialogs/srm_import_dialog.py:116
+msgid "Motor properties to complete"
+msgstr "Propiedades del motor por completar"
+
+#: ui/dialogs/srm_import_dialog.py:119
+msgid "Motor code written in the ENG file. Proposed from the class and the average thrust."
+msgstr "Código del motor escrito en el archivo ENG. Propuesto a partir de la clase y del empuje medio."
+
+#: ui/dialogs/srm_import_dialog.py:121
+msgid "required for ENG export (e.g. your name or club)"
+msgstr "obligatorio para la exportación ENG (p. ej., su nombre o su club)"
+
+#: ui/dialogs/srm_import_dialog.py:122
+msgid "The SRM workbook does not contain a manufacturer."
+msgstr "El libro SRM no contiene ningún fabricante."
+
+#: ui/dialogs/srm_import_dialog.py:124
+msgid ""
+"Ejection delays separated by '-'. 'P' = plugged (no ejection charge), usual for amateur motors "
+"with electronic deployment."
+msgstr ""
+"Retardos de eyección separados por '-'. 'P' = taponado (sin carga de eyección), habitual en "
+"motores amateur con despliegue electrónico."
+
+#: ui/dialogs/srm_import_dialog.py:128
+msgid ""
+"Casing OUTSIDE diameter in mm. Pre-filled with the chamber inside diameter of the workbook: add "
+"twice the casing wall thickness."
+msgstr ""
+"Diámetro EXTERIOR de la carcasa en mm. Rellenado con el diámetro interior de la cámara del libro:"
+" añada dos veces el espesor de pared de la carcasa."
+
+#: ui/dialogs/srm_import_dialog.py:135
+msgid ""
+"Overall motor length in mm. Pre-filled with the chamber length (plus the nozzle length when the "
+"workbook gives it)."
+msgstr ""
+"Longitud total del motor en mm. Rellenada con la longitud de la cámara (más la longitud de la "
+"tobera si el libro la indica)."
+
+#: ui/dialogs/srm_import_dialog.py:138
+msgid "Empty casing mass in grams (not in the workbook). Needed for the total mass."
+msgstr "Masa de la carcasa vacía en gramos (no está en el libro). Necesaria para la masa total."
+
+#: ui/dialogs/srm_import_dialog.py:140
+msgid "Nozzle and closure mass in grams (not in the workbook)."
+msgstr "Masa de la tobera y de los cierres en gramos (no está en el libro)."
+
+#: ui/dialogs/srm_import_dialog.py:143 ui/motor_editor.py:27
+msgid "Ejection delays"
+msgstr "Retardos de eyección"
+
+#: ui/dialogs/srm_import_dialog.py:144
+msgid "Outside diameter (mm)"
+msgstr "Diámetro exterior (mm)"
+
+#: ui/dialogs/srm_import_dialog.py:145
+msgid "Overall length (mm)"
+msgstr "Longitud total (mm)"
+
+#: ui/dialogs/srm_import_dialog.py:146 ui/motor_editor.py:34
+msgid "Casing mass (g)"
+msgstr "Masa de la carcasa (g)"
+
+#: ui/dialogs/srm_import_dialog.py:147 ui/motor_editor.py:35
+msgid "Nozzle and closure mass (g)"
+msgstr "Masa de tobera y cierres (g)"
+
+#: ui/dialogs/srm_import_dialog.py:151
+msgid "Thrust curve"
+msgstr "Curva de empuje"
+
+#: ui/dialogs/srm_import_dialog.py:159
+msgid ""
+"Performance sheet: the curve computed by SRM (about 900 points, exact total impulse).\n"
+"Simplified: only the points needed to stay within the tolerance (compact ENG files).\n"
+"Output sheet: the 23-point summary table of the workbook (coarser, impulse slightly lower)."
+msgstr ""
+"Hoja Performance: la curva calculada por SRM (unos 900 puntos, impulso total exacto).\n"
+"Simplificada: solo los puntos necesarios para mantenerse dentro de la tolerancia (archivos ENG "
+"compactos).\n"
+"Hoja Output: la tabla resumen de 23 puntos del libro (más basta, impulso ligeramente inferior)."
+
+#: ui/dialogs/srm_import_dialog.py:167
+#, python-format
+msgid "% of Fmax"
+msgstr "% de Fmáx"
+
+#: ui/dialogs/srm_import_dialog.py:168
+msgid "Maximum thrust deviation allowed by the simplification."
+msgstr "Desviación máxima de empuje permitida por la simplificación."
+
+#: ui/dialogs/srm_import_dialog.py:172
+msgid "Number of equally spaced points of the resampled curve."
+msgstr "Número de puntos equiespaciados de la curva remuestreada."
+
+#: ui/dialogs/srm_import_dialog.py:173
+msgid "Source"
+msgstr "Origen"
+
+#: ui/dialogs/srm_import_dialog.py:174
+msgid "Simplification"
+msgstr "Simplificación"
+
+#: ui/dialogs/srm_import_dialog.py:175
+msgid "Points"
+msgstr "Puntos"
+
+#: ui/dialogs/srm_import_dialog.py:199
+msgid "Workbook curve"
+msgstr "Curva del libro"
+
+#: ui/dialogs/srm_import_dialog.py:201
+#, python-brace-format
+msgid "Imported ({n} point)"
+msgid_plural "Imported ({n} points)"
+msgstr[0] "Importado ({n} punto)"
+msgstr[1] "Importado ({n} puntos)"
+
+#: ui/dialogs/srm_import_dialog.py:202 ui/dialogs/tabular_import_dialog.py:274
+#: ui/digitizer_window.py:267 ui/digitizer_window.py:699 widgets/thrust_plot.py:227
+#: widgets/thrust_table.py:59
+msgid "Time (s)"
+msgstr "Tiempo (s)"
+
+#: ui/dialogs/srm_import_dialog.py:203 ui/dialogs/tabular_import_dialog.py:275
+#: ui/digitizer_window.py:267 ui/digitizer_window.py:700 widgets/thrust_plot.py:228
+#: widgets/thrust_table.py:59
+msgid "Thrust (N)"
+msgstr "Empuje (N)"
+
+#: ui/dialogs/srm_import_dialog.py:215
+msgid "Total impulse (N.s)"
+msgstr "Impulso total (N.s)"
+
+#: ui/dialogs/srm_import_dialog.py:216
+msgid "Maximum thrust (N)"
+msgstr "Empuje máximo (N)"
+
+#: ui/dialogs/srm_import_dialog.py:217
+msgid "Average thrust (N)"
+msgstr "Empuje medio (N)"
+
+#: ui/dialogs/srm_import_dialog.py:218
+msgid "Thrust time (s)"
+msgstr "Tiempo de empuje (s)"
+
+#: ui/dialogs/srm_import_dialog.py:219
+msgid "Specific impulse (s)"
+msgstr "Impulso específico (s)"
+
+#: ui/dialogs/srm_import_dialog.py:227
+msgid "Motor class"
+msgstr "Clase del motor"
+
+#: ui/dialogs/srm_import_dialog.py:228 ui/digitizer_window.py:321
+msgid "Number of points"
+msgstr "Número de puntos"
+
+#: ui/dialogs/srm_import_dialog.py:237
+msgid "SRM import"
+msgstr "Importación SRM"
+
+#: ui/dialogs/srm_import_dialog.py:237
+msgid "The selected thrust curve has fewer than two points."
+msgstr "La curva de empuje seleccionada tiene menos de dos puntos."
+
+#: ui/dialogs/tabular_import_dialog.py:50
+#, python-brace-format
+msgid "Import {kind} - preview"
+msgstr "Importar {kind} - vista previa"
+
+#: ui/dialogs/tabular_import_dialog.py:59
+msgid "Reading options"
+msgstr "Opciones de lectura"
+
+#: ui/dialogs/tabular_import_dialog.py:61
+msgid "First row contains column names"
+msgstr "La primera fila contiene los nombres de columna"
+
+#: ui/dialogs/tabular_import_dialog.py:62
+msgid "Tick when the first row holds headers instead of numbers."
+msgstr "Marque si la primera fila contiene encabezados en lugar de números."
+
+#: ui/dialogs/tabular_import_dialog.py:66
+msgid "Text encoding of the file (detected automatically)."
+msgstr "Codificación del texto del archivo (detectada automáticamente)."
+
+#: ui/dialogs/tabular_import_dialog.py:70
+msgid "Character separating the columns (detected automatically)."
+msgstr "Carácter que separa las columnas (detectado automáticamente)."
+
+#: ui/dialogs/tabular_import_dialog.py:74
+msgid "Decimal separator used in the numbers (detected automatically)."
+msgstr "Separador decimal usado en los números (detectado automáticamente)."
+
+#: ui/dialogs/tabular_import_dialog.py:80
+msgid "Worksheet containing the thrust data."
+msgstr "Hoja que contiene los datos de empuje."
+
+#: ui/dialogs/tabular_import_dialog.py:81
+msgid "Worksheet"
+msgstr "Hoja"
+
+#: ui/dialogs/tabular_import_dialog.py:84
+msgid "Column mapping"
+msgstr "Asignación de columnas"
+
+#: ui/dialogs/tabular_import_dialog.py:87
+msgid "Column containing the time values."
+msgstr "Columna que contiene los valores de tiempo."
+
+#: ui/dialogs/tabular_import_dialog.py:88
+msgid "Column containing the thrust values."
+msgstr "Columna que contiene los valores de empuje."
+
+#: ui/dialogs/tabular_import_dialog.py:91
+msgid "Unit of the time column; values are converted to seconds."
+msgstr "Unidad de la columna de tiempo; los valores se convierten a segundos."
+
+#: ui/dialogs/tabular_import_dialog.py:94
+msgid "Unit of the thrust column; values are converted to Newtons."
+msgstr "Unidad de la columna de empuje; los valores se convierten a newtons."
+
+#: ui/dialogs/tabular_import_dialog.py:95
+msgid "Time column"
+msgstr "Columna de tiempo"
+
+#: ui/dialogs/tabular_import_dialog.py:96
+msgid "Thrust column"
+msgstr "Columna de empuje"
+
+#: ui/dialogs/tabular_import_dialog.py:97
+msgid "Remove invalid rows"
+msgstr "Eliminar las filas no válidas"
+
+#: ui/dialogs/tabular_import_dialog.py:99
+msgid "Invalid rows (highlighted in red) are skipped. Untick to refuse the import if any row is invalid."
+msgstr ""
+"Las filas no válidas (resaltadas en rojo) se omiten. Desmarque para rechazar la importación si "
+"alguna fila no es válida."
+
+#: ui/dialogs/tabular_import_dialog.py:104
+msgid "Raw data preview. Rows in red cannot be converted."
+msgstr "Vista previa de los datos brutos. Las filas en rojo no se pueden convertir."
+
+#: ui/dialogs/tabular_import_dialog.py:118 ui/main_window.py:209
+msgid "Import"
+msgstr "Importar"
+
+#: ui/dialogs/tabular_import_dialog.py:237
+msgid "At least two columns are needed (time and thrust)."
+msgstr "Se necesitan al menos dos columnas (tiempo y empuje)."
+
+#: ui/dialogs/tabular_import_dialog.py:250
+#, python-brace-format
+msgid "{valid} valid point(s), {invalid} invalid row(s)."
+msgstr "{valid} punto(s) válido(s), {invalid} fila(s) no válida(s)."
+
+#: ui/dialogs/tabular_import_dialog.py:252
+msgid "Tick 'Remove invalid rows' to import the valid points."
+msgstr "Marque «Eliminar las filas no válidas» para importar los puntos válidos."
+
+#: ui/dialogs/tabular_import_dialog.py:254
+msgid "Warning: times are not strictly increasing (use Sort after import)."
+msgstr "Atención: los tiempos no son estrictamente crecientes (use Ordenar tras la importación)."
+
+#: ui/dialogs/tabular_import_dialog.py:284
+msgid "Invalid rows"
+msgstr "Filas no válidas"
+
+#: ui/dialogs/tabular_import_dialog.py:284
+msgid "Some rows are invalid. Tick 'Remove invalid rows' or fix the file."
+msgstr "Algunas filas no son válidas. Marque «Eliminar las filas no válidas» o corrija el archivo."
+
+#: ui/dialogs/validation_dialog.py:26
+msgid "Data Validation"
+msgstr "Validación de datos"
+
+#: ui/dialogs/validation_dialog.py:30
+msgid "✔ No problem detected. The data is valid."
+msgstr "✔ No se ha detectado ningún problema. Los datos son válidos."
+
+#: ui/dialogs/validation_dialog.py:33
+#, python-brace-format
+msgid "{errors} error(s), {warnings} warning(s). Double-click an item to go to the point."
+msgstr "{errors} error(es), {warnings} advertencia(s). Haga doble clic en un elemento para ir al punto."
+
+#: ui/digitizer_window.py:41
+msgid "Origin"
+msgstr "Origen"
+
+#: ui/digitizer_window.py:41
+msgid "Time max"
+msgstr "Tiempo máx."
+
+#: ui/digitizer_window.py:41
+msgid "Thrust max"
+msgstr "Empuje máx."
+
+#: ui/digitizer_window.py:41
+msgid "Extra"
+msgstr "Adicional"
+
+#: ui/digitizer_window.py:43
+msgid "None"
+msgstr "Ninguno"
+
+#: ui/digitizer_window.py:43
+msgid "Median"
+msgstr "Mediana"
+
+#: ui/digitizer_window.py:43
+msgid "Gaussian"
+msgstr "Gaussiano"
+
+#: ui/digitizer_window.py:44
+msgid "Bilateral"
+msgstr "Bilateral"
+
+#: ui/digitizer_window.py:44
+msgid "Non-local means"
+msgstr "Medias no locales"
+
+#: ui/digitizer_window.py:54
+msgid "Navigate: drag to pan, wheel to zoom."
+msgstr "Navegar: arrastre para desplazar, rueda para hacer zoom."
+
+#: ui/digitizer_window.py:55
+msgid "Click the graph origin (intersection of the axes)."
+msgstr "Haga clic en el origen del gráfico (intersección de los ejes)."
+
+#: ui/digitizer_window.py:56
+msgid "Click a point of the time axis whose value you know (e.g. the last graduation)."
+msgstr "Haga clic en un punto del eje de tiempo cuyo valor conozca (p. ej., la última graduación)."
+
+#: ui/digitizer_window.py:57
+msgid "Click a point of the thrust axis whose value you know (e.g. the top graduation)."
+msgstr "Haga clic en un punto del eje de empuje cuyo valor conozca (p. ej., la graduación superior)."
+
+#: ui/digitizer_window.py:58
+msgid "Click any point whose time and thrust you know (improves precision)."
+msgstr "Haga clic en cualquier punto cuyo tiempo y empuje conozca (mejora la precisión)."
+
+#: ui/digitizer_window.py:59 ui/digitizer_window.py:286
+msgid "Click on the curve to pick its colour."
+msgstr "Haga clic en la curva para tomar su color."
+
+#: ui/digitizer_window.py:60
+msgid "Drag a rectangle around the area to keep."
+msgstr "Arrastre un rectángulo alrededor de la zona que desea conservar."
+
+#: ui/digitizer_window.py:61
+msgid "Click the four corners of the graph frame (any order)."
+msgstr "Haga clic en las cuatro esquinas del marco del gráfico (en cualquier orden)."
+
+#: ui/digitizer_window.py:62
+msgid "Drag a point to move it, click to add, right-click to delete, Shift+drag to erase an area."
+msgstr ""
+"Arrastre un punto para moverlo, haga clic para añadir, clic derecho para eliminar, "
+"Mayús+arrastrar para borrar una zona."
+
+#: ui/digitizer_window.py:71
+#, python-brace-format
+msgid "Calibration point - {label}"
+msgstr "Punto de calibración - {label}"
+
+#: ui/digitizer_window.py:78
+msgid "Time value of the clicked point in seconds."
+msgstr "Valor de tiempo del punto pulsado, en segundos."
+
+#: ui/digitizer_window.py:84
+msgid "Thrust value of the clicked point in Newtons."
+msgstr "Valor de empuje del punto pulsado, en newtons."
+
+#: ui/digitizer_window.py:85
+msgid "Time"
+msgstr "Tiempo"
+
+#: ui/digitizer_window.py:86
+msgid "Thrust"
+msgstr "Empuje"
+
+#: ui/digitizer_window.py:106
+msgid "Curve Digitizer"
+msgstr "Digitalizador de curvas"
+
+#: ui/digitizer_window.py:139
+msgid "1. Image"
+msgstr "1. Imagen"
+
+#: ui/digitizer_window.py:140
+msgid "2. Calibration"
+msgstr "2. Calibración"
+
+#: ui/digitizer_window.py:141
+msgid "3. Extraction"
+msgstr "3. Extracción"
+
+#: ui/digitizer_window.py:144
+msgid "Reconstructed thrust curve (physical units)."
+msgstr "Curva de empuje reconstruida (unidades físicas)."
+
+#: ui/digitizer_window.py:147
+msgid "Transfer to motor editor"
+msgstr "Transferir al editor del motor"
+
+#: ui/digitizer_window.py:148
+msgid "Replace the thrust points of the current motor with the digitized curve."
+msgstr "Sustituir los puntos de empuje del motor actual por la curva digitalizada."
+
+#: ui/digitizer_window.py:175
+msgid "Digitizer"
+msgstr "Digitalizador"
+
+#: ui/digitizer_window.py:179
+msgid "Open image..."
+msgstr "Abrir imagen..."
+
+#: ui/digitizer_window.py:180
+msgid "Open a photo, screenshot or scan (PNG, JPG, TIFF, BMP)."
+msgstr "Abrir una foto, captura de pantalla o escaneo (PNG, JPG, TIFF, BMP)."
+
+#: ui/digitizer_window.py:181
+msgid "Fit to window"
+msgstr "Ajustar a la ventana"
+
+#: ui/digitizer_window.py:181
+msgid "Show the whole image."
+msgstr "Mostrar la imagen completa."
+
+#: ui/digitizer_window.py:182
+msgid "Navigate"
+msgstr "Navegar"
+
+#: ui/digitizer_window.py:183
+msgid "Pan and zoom tool (Esc)."
+msgstr "Herramienta de desplazamiento y zoom (Esc)."
+
+#: ui/digitizer_window.py:210
+msgid "Rotation angle (counter-clockwise, degrees) used to straighten the graph."
+msgstr "Ángulo de rotación (antihorario, en grados) para enderezar el gráfico."
+
+#: ui/digitizer_window.py:211
+msgid "Rotation"
+msgstr "Rotación"
+
+#: ui/digitizer_window.py:213
+msgid "Rotate"
+msgstr "Girar"
+
+#: ui/digitizer_window.py:213
+msgid "Apply the rotation angle."
+msgstr "Aplicar el ángulo de rotación."
+
+#: ui/digitizer_window.py:214
+msgid "Drag a rectangle on the image to crop it."
+msgstr "Arrastre un rectángulo en la imagen para recortarla."
+
+#: ui/digitizer_window.py:214 ui/digitizer_window.py:419
+msgid "Crop"
+msgstr "Recortar"
+
+#: ui/digitizer_window.py:216
+msgid "Click the four corners of the graph frame to straighten a photo."
+msgstr "Haga clic en las cuatro esquinas del marco del gráfico para enderezar una foto."
+
+#: ui/digitizer_window.py:216 ui/digitizer_window.py:428
+msgid "Perspective"
+msgstr "Perspectiva"
+
+#: ui/digitizer_window.py:218
+msgid "Undo correction"
+msgstr "Deshacer la corrección"
+
+#: ui/digitizer_window.py:218
+msgid "Undo the last rotation / crop / perspective."
+msgstr "Deshacer la última rotación / recorte / perspectiva."
+
+#: ui/digitizer_window.py:223
+msgid "Contrast (100 % = unchanged)."
+msgstr "Contraste (100 % = sin cambios)."
+
+#: ui/digitizer_window.py:227
+msgid "Brightness offset (0 = unchanged)."
+msgstr "Desplazamiento de brillo (0 = sin cambios)."
+
+#: ui/digitizer_window.py:228
+msgid "Grey levels"
+msgstr "Escala de grises"
+
+#: ui/digitizer_window.py:229
+msgid "Convert to grey levels (for black curves on coloured paper)."
+msgstr "Convertir a escala de grises (para curvas negras sobre papel de color)."
+
+#: ui/digitizer_window.py:233
+msgid ""
+"Noise filter: median (salt and pepper), gaussian (blur), bilateral (keeps edges), non-local means"
+" (photos, slow)."
+msgstr ""
+"Filtro de ruido: mediana (sal y pimienta), gaussiano (desenfoque), bilateral (conserva bordes), "
+"medias no locales (fotos, lento)."
+
+#: ui/digitizer_window.py:238
+msgid "Strength of the noise filter."
+msgstr "Intensidad del filtro de ruido."
+
+#: ui/digitizer_window.py:239
+msgid "Contrast"
+msgstr "Contraste"
+
+#: ui/digitizer_window.py:241
+msgid "Brightness"
+msgstr "Brillo"
+
+#: ui/digitizer_window.py:246
+msgid "Reset all corrections"
+msgstr "Restablecer todas las correcciones"
+
+#: ui/digitizer_window.py:246
+msgid "Return to the original image."
+msgstr "Volver a la imagen original."
+
+#: ui/digitizer_window.py:259
+msgid "Set origin"
+msgstr "Definir el origen"
+
+#: ui/digitizer_window.py:259
+msgid "Click the origin of the graph (time t0, thrust F0)."
+msgstr "Haga clic en el origen del gráfico (tiempo t0, empuje F0)."
+
+#: ui/digitizer_window.py:260
+msgid "Set time-axis point"
+msgstr "Definir un punto del eje de tiempo"
+
+#: ui/digitizer_window.py:260
+msgid "Click a known graduation on the time axis."
+msgstr "Haga clic en una graduación conocida del eje de tiempo."
+
+#: ui/digitizer_window.py:261
+msgid "Set thrust-axis point"
+msgstr "Definir un punto del eje de empuje"
+
+#: ui/digitizer_window.py:261
+msgid "Click a known graduation on the thrust axis."
+msgstr "Haga clic en una graduación conocida del eje de empuje."
+
+#: ui/digitizer_window.py:262
+msgid "Add extra point"
+msgstr "Añadir un punto adicional"
+
+#: ui/digitizer_window.py:262
+msgid "Add any point with known time and thrust to improve precision."
+msgstr "Añadir un punto con tiempo y empuje conocidos para mejorar la precisión."
+
+#: ui/digitizer_window.py:267
+msgid "Reference"
+msgstr "Referencia"
+
+#: ui/digitizer_window.py:269
+msgid "Calibration references. Time and thrust cells can be edited."
+msgstr "Referencias de calibración. Las celdas de tiempo y empuje se pueden editar."
+
+#: ui/digitizer_window.py:273
+msgid "Remove selected"
+msgstr "Eliminar la selección"
+
+#: ui/digitizer_window.py:273
+msgid "Delete the selected reference."
+msgstr "Eliminar la referencia seleccionada."
+
+#: ui/digitizer_window.py:274
+msgid "Clear"
+msgstr "Borrar"
+
+#: ui/digitizer_window.py:274
+msgid "Delete every reference."
+msgstr "Eliminar todas las referencias."
+
+#: ui/digitizer_window.py:285
+msgid "Auto-detect"
+msgstr "Detección automática"
+
+#: ui/digitizer_window.py:285
+msgid "Detect the curve colour automatically."
+msgstr "Detectar automáticamente el color de la curva."
+
+#: ui/digitizer_window.py:286
+msgid "Pick"
+msgstr "Tomar"
+
+#: ui/digitizer_window.py:290
+msgid "Colour of the curve to extract."
+msgstr "Color de la curva que se va a extraer."
+
+#: ui/digitizer_window.py:292 ui/preferences_window.py:99
+msgid "Curve colour"
+msgstr "Color de la curva"
+
+#: ui/digitizer_window.py:296
+msgid "Colour tolerance (CIE-Lab distance). Increase for faded or anti-aliased curves."
+msgstr "Tolerancia de color (distancia CIE-Lab). Auméntela para curvas desvaídas o suavizadas."
+
+#: ui/digitizer_window.py:301
+msgid "Tolerance"
+msgstr "Tolerancia"
+
+#: ui/digitizer_window.py:303
+msgid "Line centre"
+msgstr "Centro de la línea"
+
+#: ui/digitizer_window.py:304
+msgid "Top edge (filled curves)"
+msgstr "Borde superior (curvas rellenas)"
+
+#: ui/digitizer_window.py:305
+msgid "Which pixel is used in each column of the image."
+msgstr "Píxel utilizado en cada columna de la imagen."
+
+#: ui/digitizer_window.py:306
+msgid "Detection"
+msgstr "Detección"
+
+#: ui/digitizer_window.py:307
+msgid "Only inside the calibrated area (axes excluded)"
+msgstr "Solo dentro de la zona calibrada (ejes excluidos)"
+
+#: ui/digitizer_window.py:309
+msgid "Restrict the search to the rectangle defined by the calibration points."
+msgstr "Limitar la búsqueda al rectángulo definido por los puntos de calibración."
+
+#: ui/digitizer_window.py:314
+msgid "Outlier threshold in robust deviations (0 = disabled). Lower removes more points."
+msgstr ""
+"Umbral de valores atípicos en desviaciones robustas (0 = desactivado). Más bajo elimina más "
+"puntos."
+
+#: ui/digitizer_window.py:315
+msgid "Outlier threshold"
+msgstr "Umbral de valores atípicos"
+
+#: ui/digitizer_window.py:319
+msgid "All"
+msgstr "Todos"
+
+#: ui/digitizer_window.py:320
+msgid "Resample the curve to this number of equally spaced points (All = one per pixel column)."
+msgstr ""
+"Remuestrear la curva con este número de puntos equiespaciados (Todos = uno por columna de "
+"píxeles)."
+
+#: ui/digitizer_window.py:326
+msgid "Remove points while staying within this thrust tolerance (0 = keep all)."
+msgstr "Eliminar puntos sin salir de esta tolerancia de empuje (0 = conservar todos)."
+
+#: ui/digitizer_window.py:327
+msgid "Simplify tolerance"
+msgstr "Tolerancia de simplificación"
+
+#: ui/digitizer_window.py:328
+msgid "End the curve with zero thrust"
+msgstr "Terminar la curva con empuje cero"
+
+#: ui/digitizer_window.py:330
+msgid "Append a final zero-thrust point (required by the ENG format)."
+msgstr "Añadir un último punto de empuje cero (requerido por el formato ENG)."
+
+#: ui/digitizer_window.py:332
+msgid "Show detected pixels"
+msgstr "Mostrar los píxeles detectados"
+
+#: ui/digitizer_window.py:333
+msgid "Overlay the pixels matching the colour in magenta."
+msgstr "Superponer en magenta los píxeles que coinciden con el color."
+
+#: ui/digitizer_window.py:337
+msgid "Extract curve"
+msgstr "Extraer la curva"
+
+#: ui/digitizer_window.py:337
+msgid "Run the automatic extraction."
+msgstr "Ejecutar la extracción automática."
+
+#: ui/digitizer_window.py:339
+msgid "Edit points"
+msgstr "Editar puntos"
+
+#: ui/digitizer_window.py:339
+msgid "Correct the extracted points manually."
+msgstr "Corregir manualmente los puntos extraídos."
+
+#: ui/digitizer_window.py:341
+msgid "Remove outliers"
+msgstr "Eliminar valores atípicos"
+
+#: ui/digitizer_window.py:341
+msgid "Remove aberrant points from the current curve."
+msgstr "Eliminar los puntos atípicos de la curva actual."
+
+#: ui/digitizer_window.py:343
+msgid "Clear points"
+msgstr "Borrar los puntos"
+
+#: ui/digitizer_window.py:343
+msgid "Delete every extracted point."
+msgstr "Eliminar todos los puntos extraídos."
+
+#: ui/digitizer_window.py:355
+msgid "Open thrust curve image"
+msgstr "Abrir imagen de curva de empuje"
+
+#: ui/digitizer_window.py:376
+#, python-brace-format
+msgid "Curve Digitizer - {name}"
+msgstr "Digitalizador de curvas - {name}"
+
+#: ui/digitizer_window.py:394
+msgid "Image correction"
+msgstr "Corrección de la imagen"
+
+#: ui/digitizer_window.py:395
+msgid "Changing the image geometry clears the calibration and the extracted points. Continue?"
+msgstr "Cambiar la geometría de la imagen borra la calibración y los puntos extraídos. ¿Continuar?"
+
+#: ui/digitizer_window.py:475
+msgid "Processing image..."
+msgstr "Procesando la imagen..."
+
+#: ui/digitizer_window.py:560
+msgid "✔ Calibration ready."
+msgstr "✔ Calibración lista."
+
+#: ui/digitizer_window.py:562
+#, python-brace-format
+msgid "Fit residual: {rms} px."
+msgstr "Residuo del ajuste: {rms} px."
+
+#: ui/digitizer_window.py:565
+msgid "Define the origin, a time-axis point and a thrust-axis point."
+msgstr "Defina el origen, un punto del eje de tiempo y un punto del eje de empuje."
+
+#: ui/digitizer_window.py:639
+msgid "Calibration"
+msgstr "Calibración"
+
+#: ui/digitizer_window.py:639
+msgid "Calibrate the axes before extracting the curve (tab 2)."
+msgstr "Calibre los ejes antes de extraer la curva (pestaña 2)."
+
+#: ui/digitizer_window.py:644
+msgid "Extracting the curve..."
+msgstr "Extrayendo la curva..."
+
+#: ui/digitizer_window.py:653
+#, python-brace-format
+msgid "{pixels} curve pixels found, {outliers} outlier(s) removed."
+msgstr "{pixels} píxeles de curva encontrados, {outliers} valor(es) atípico(s) eliminado(s)."
+
+#: ui/digitizer_window.py:661
+msgid "Extraction"
+msgstr "Extracción"
+
+#: ui/digitizer_window.py:671
+#, python-brace-format
+msgid "{count} outlier(s) removed."
+msgstr "{count} valor(es) atípico(s) eliminado(s)."
+
+#: ui/digitizer_window.py:707
+#, python-brace-format
+msgid "{count} points · total impulse {impulse} N.s · max thrust {peak} N · duration {duration} s"
+msgstr "{count} puntos · impulso total {impulse} N.s · empuje máx. {peak} N · duración {duration} s"
+
+#: ui/digitizer_window.py:709
+msgid "No digitized point yet."
+msgstr "Todavía no hay ningún punto digitalizado."
+
+#: ui/digitizer_window.py:730
+msgid "Close digitizer"
+msgstr "Cerrar el digitalizador"
+
+#: ui/digitizer_window.py:731
+msgid "The digitized curve has not been transferred. Close anyway?"
+msgstr "La curva digitalizada no se ha transferido. ¿Cerrar de todos modos?"
+
+#: ui/label_editor.py:40
+msgid "Label Designer"
+msgstr "Diseñador de etiquetas"
+
+#: ui/label_editor.py:70
+#, python-brace-format
+msgid "{name}  (user)"
+msgstr "{name}  (usuario)"
+
+#: ui/label_editor.py:91
+msgid "Save template"
+msgstr "Guardar plantilla"
+
+#: ui/label_editor.py:91
+msgid "Template name:"
+msgstr "Nombre de la plantilla:"
+
+#: ui/label_editor.py:101
+#, python-brace-format
+msgid "Template saved: {path}"
+msgstr "Plantilla guardada: {path}"
+
+#: ui/label_editor.py:106
+msgid "Predefined templates cannot be deleted."
+msgstr "Las plantillas predefinidas no se pueden eliminar."
+
+#: ui/label_editor.py:106 ui/label_editor.py:108
+msgid "Delete template"
+msgstr "Eliminar plantilla"
+
+#: ui/label_editor.py:108
+#, python-brace-format
+msgid "Delete the template '{name}'?"
+msgstr "¿Eliminar la plantilla '{name}'?"
+
+#: ui/label_editor.py:139
+msgid "Fit"
+msgstr "Ajustar"
+
+#: ui/label_editor.py:139
+msgid "Real size"
+msgstr "Tamaño real"
+
+#: ui/label_editor.py:141
+msgid "Preview zoom. 'Real size' depends on the screen calibration."
+msgstr "Zoom de la vista previa. «Tamaño real» depende de la calibración de la pantalla."
+
+#: ui/label_editor.py:145
+msgid "Zoom"
+msgstr "Zoom"
+
+#: ui/label_editor.py:161 ui/main_window.py:217
+msgid "Label"
+msgstr "Etiqueta"
+
+#: ui/label_editor.py:170
+msgid "Resolution of PNG and JPEG exports."
+msgstr "Resolución de las exportaciones PNG y JPEG."
+
+#: ui/label_editor.py:172
+msgid "Store in project"
+msgstr "Guardar en el proyecto"
+
+#: ui/label_editor.py:173
+msgid "Save this label design in the motor project (XML)."
+msgstr "Guardar este diseño de etiqueta en el proyecto del motor (XML)."
+
+#: ui/label_editor.py:174
+msgid "Print Preview"
+msgstr "Vista previa de impresión"
+
+#: ui/label_editor.py:175
+msgid "Preview the label sheet on the selected paper format."
+msgstr "Previsualizar la hoja de etiquetas en el formato de papel seleccionado."
+
+#: ui/label_editor.py:176
+msgid "Print..."
+msgstr "Imprimir..."
+
+#: ui/label_editor.py:177
+msgid "Print the label sheet."
+msgstr "Imprimir la hoja de etiquetas."
+
+#: ui/label_editor.py:178
+msgid "Print PDF"
+msgstr "Imprimir en PDF"
+
+#: ui/label_editor.py:179
+msgid "Export the label sheet as a PDF file."
+msgstr "Exportar la hoja de etiquetas como archivo PDF."
+
+#: ui/label_editor.py:180
+msgid "Export PNG"
+msgstr "Exportar PNG"
+
+#: ui/label_editor.py:182
+msgid "Export one label as a high-resolution PNG image."
+msgstr "Exportar una etiqueta como imagen PNG de alta resolución."
+
+#: ui/label_editor.py:183
+msgid "Export JPEG"
+msgstr "Exportar JPEG"
+
+#: ui/label_editor.py:185
+msgid "Export one label as a JPEG image."
+msgstr "Exportar una etiqueta como imagen JPEG."
+
+#: ui/label_editor.py:193 ui/label_printing.py:95
+msgid "Resolution"
+msgstr "Resolución"
+
+#: ui/label_editor.py:207
+msgid "Template"
+msgstr "Plantilla"
+
+#: ui/label_editor.py:210
+msgid "Predefined and user templates."
+msgstr "Plantillas predefinidas y de usuario."
+
+#: ui/label_editor.py:213
+msgid "Save the current design as a reusable template."
+msgstr "Guardar el diseño actual como plantilla reutilizable."
+
+#: ui/label_editor.py:216
+msgid "Delete the selected user template."
+msgstr "Eliminar la plantilla de usuario seleccionada."
+
+#: ui/label_editor.py:225
+msgid "Dimensions"
+msgstr "Dimensiones"
+
+#: ui/label_editor.py:227
+msgid "Label width in millimetres."
+msgstr "Anchura de la etiqueta en milímetros."
+
+#: ui/label_editor.py:228
+msgid "Label height in millimetres."
+msgstr "Altura de la etiqueta en milímetros."
+
+#: ui/label_editor.py:229
+msgid "Margin between the border and the text."
+msgstr "Margen entre el borde y el texto."
+
+#: ui/label_editor.py:230
+msgid "Border thickness (0 = no border)."
+msgstr "Grosor del borde (0 = sin borde)."
+
+#: ui/label_editor.py:231
+msgid "Corner radius of the border."
+msgstr "Radio de las esquinas del borde."
+
+#: ui/label_editor.py:232 ui/label_editor.py:352
+msgid "Width"
+msgstr "Anchura"
+
+#: ui/label_editor.py:233 ui/label_editor.py:353
+msgid "Height"
+msgstr "Altura"
+
+#: ui/label_editor.py:234
+msgid "Inner margin"
+msgstr "Margen interior"
+
+#: ui/label_editor.py:235
+msgid "Border width"
+msgstr "Grosor del borde"
+
+#: ui/label_editor.py:236
+msgid "Corner radius"
+msgstr "Radio de las esquinas"
+
+#: ui/label_editor.py:240
+msgid "Paper and sheet"
+msgstr "Papel y hoja"
+
+#: ui/label_editor.py:244
+msgid "Paper format used for printing and PDF export."
+msgstr "Formato de papel usado para imprimir y exportar a PDF."
+
+#: ui/label_editor.py:246
+msgid "Margin around the sheet."
+msgstr "Margen alrededor de la hoja."
+
+#: ui/label_editor.py:247
+msgid "Space between labels on the sheet."
+msgstr "Espacio entre las etiquetas en la hoja."
+
+#: ui/label_editor.py:250
+msgid "Number of labels to print."
+msgstr "Número de etiquetas que se van a imprimir."
+
+#: ui/label_editor.py:252
+msgid "Fill the whole page"
+msgstr "Llenar toda la página"
+
+#: ui/label_editor.py:253
+msgid "Print as many labels as fit on one page."
+msgstr "Imprimir tantas etiquetas como quepan en una página."
+
+#: ui/label_editor.py:255 ui/preferences_window.py:138
+msgid "Paper format"
+msgstr "Formato de papel"
+
+#: ui/label_editor.py:256
+msgid "Page margin"
+msgstr "Margen de página"
+
+#: ui/label_editor.py:257
+msgid "Spacing"
+msgstr "Espaciado"
+
+#: ui/label_editor.py:258
+msgid "Copies"
+msgstr "Copias"
+
+#: ui/label_editor.py:263
+msgid "Colours and text"
+msgstr "Colores y texto"
+
+#: ui/label_editor.py:267
+msgid "Background"
+msgstr "Fondo"
+
+#: ui/label_editor.py:267
+msgid "Background colour of the label."
+msgstr "Color de fondo de la etiqueta."
+
+#: ui/label_editor.py:268
+msgid "Text"
+msgstr "Texto"
+
+#: ui/label_editor.py:268
+msgid "Colour of the information lines."
+msgstr "Color de las líneas de información."
+
+#: ui/label_editor.py:269
+msgid "Accent / title"
+msgstr "Acento / título"
+
+#: ui/label_editor.py:269
+msgid "Colour of the title (and of the banner)."
+msgstr "Color del título (y de la banda)."
+
+#: ui/label_editor.py:270
+msgid "Border"
+msgstr "Borde"
+
+#: ui/label_editor.py:270
+msgid "Colour of the border."
+msgstr "Color del borde."
+
+#: ui/label_editor.py:278
+msgid "Font family."
+msgstr "Familia tipográfica."
+
+#: ui/label_editor.py:280
+msgid "Title font size in points."
+msgstr "Tamaño de la fuente del título, en puntos."
+
+#: ui/label_editor.py:281
+msgid "Information font size in points (reduced automatically if the text does not fit)."
+msgstr "Tamaño de la fuente de la información, en puntos (se reduce automáticamente si el texto no cabe)."
+
+#: ui/label_editor.py:282
+msgid "Bold title"
+msgstr "Título en negrita"
+
+#: ui/label_editor.py:285
+msgid "Left"
+msgstr "Izquierda"
+
+#: ui/label_editor.py:285
+msgid "Centre"
+msgstr "Centro"
+
+#: ui/label_editor.py:285
+msgid "Right"
+msgstr "Derecha"
+
+#: ui/label_editor.py:287
+msgid "Horizontal text alignment."
+msgstr "Alineación horizontal del texto."
+
+#: ui/label_editor.py:290
+msgid "Stacked lines"
+msgstr "Líneas apiladas"
+
+#: ui/label_editor.py:290
+msgid "Two columns"
+msgstr "Dos columnas"
+
+#: ui/label_editor.py:290
+msgid "Banner title"
+msgstr "Título en banda"
+
+#: ui/label_editor.py:292
+msgid "Arrangement of the information on the label."
+msgstr "Disposición de la información en la etiqueta."
+
+#: ui/label_editor.py:295
+msgid "(no title)"
+msgstr "(sin título)"
+
+#: ui/label_editor.py:298
+msgid "Information printed as the large title."
+msgstr "Información impresa como título grande."
+
+#: ui/label_editor.py:300
+msgid "Show captions (e.g. 'Total impulse:')"
+msgstr "Mostrar las etiquetas (p. ej., «Impulso total:»)"
+
+#: ui/label_editor.py:302
+msgid "Font"
+msgstr "Fuente"
+
+#: ui/label_editor.py:303
+msgid "Title size"
+msgstr "Tamaño del título"
+
+#: ui/label_editor.py:304
+msgid "Text size"
+msgstr "Tamaño del texto"
+
+#: ui/label_editor.py:306
+msgid "Alignment"
+msgstr "Alineación"
+
+#: ui/label_editor.py:307
+msgid "Layout"
+msgstr "Disposición"
+
+#: ui/label_editor.py:313
+msgid "Information to display"
+msgstr "Información que se mostrará"
+
+#: ui/label_editor.py:317
+msgid "Tick the information to print. Drag items to change their order."
+msgstr "Marque la información que desea imprimir. Arrastre los elementos para cambiar su orden."
+
+#: ui/label_editor.py:322
+msgid "Additional free text (one line per row)"
+msgstr "Texto libre adicional (una línea por fila)"
+
+#: ui/label_editor.py:323
+msgid "Free text zone printed after the information lines."
+msgstr "Zona de texto libre impresa después de las líneas de información."
+
+#: ui/label_editor.py:331
+msgid "Logo"
+msgstr "Logotipo"
+
+#: ui/label_editor.py:334
+msgid "Import logo..."
+msgstr "Importar logotipo..."
+
+#: ui/label_editor.py:335
+msgid "Import a PNG or JPG logo."
+msgstr "Importar un logotipo PNG o JPG."
+
+#: ui/label_editor.py:337
+msgid "Remove"
+msgstr "Quitar"
+
+#: ui/label_editor.py:338
+msgid "Remove the logo."
+msgstr "Quitar el logotipo."
+
+#: ui/label_editor.py:344
+msgid "Horizontal position of the logo from the left edge."
+msgstr "Posición horizontal del logotipo desde el borde izquierdo."
+
+#: ui/label_editor.py:345
+msgid "Vertical position of the logo from the top edge."
+msgstr "Posición vertical del logotipo desde el borde superior."
+
+#: ui/label_editor.py:346
+msgid "Logo box width (aspect ratio is kept)."
+msgstr "Anchura del cuadro del logotipo (se conservan las proporciones)."
+
+#: ui/label_editor.py:347
+msgid "Logo box height (aspect ratio is kept)."
+msgstr "Altura del cuadro del logotipo (se conservan las proporciones)."
+
+#: ui/label_editor.py:350
+msgid "X"
+msgstr "X"
+
+#: ui/label_editor.py:351
+msgid "Y"
+msgstr "Y"
+
+#: ui/label_editor.py:389
+msgid "No logo"
+msgstr "Sin logotipo"
+
+#: ui/label_editor.py:419
+msgid "Import logo"
+msgstr "Importar logotipo"
+
+#: ui/label_editor.py:419
+msgid "Images (*.png *.jpg *.jpeg)"
+msgstr "Imágenes (*.png *.jpg *.jpeg)"
+
+#: ui/label_editor.py:447
+#, python-brace-format
+msgid "{per_page} per {paper} page · {pages} page(s)"
+msgstr "{per_page} por página {paper} · {pages} página(s)"
+
+#: ui/label_editor.py:462
+msgid "Label stored in the project. Save the project to keep it."
+msgstr "Etiqueta guardada en el proyecto. Guarde el proyecto para conservarla."
+
+#: ui/label_printing.py:54
+msgid "Print Preview - labels"
+msgstr "Vista previa de impresión - etiquetas"
+
+#: ui/label_printing.py:76
+msgid "Print labels to PDF"
+msgstr "Imprimir etiquetas en PDF"
+
+#: ui/label_printing.py:87
+#, python-brace-format
+msgid ""
+"Label sheet exported ({pages} page(s)):\n"
+"{path}"
+msgstr ""
+"Hoja de etiquetas exportada ({pages} página(s)):\n"
+"{path}"
+
+#: ui/label_printing.py:95
+msgid "Image resolution (dpi):"
+msgstr "Resolución de la imagen (ppp):"
+
+#: ui/label_printing.py:100
+msgid "PNG image (*.png)"
+msgstr "Imagen PNG (*.png)"
+
+#: ui/label_printing.py:100
+msgid "JPEG image (*.jpg *.jpeg)"
+msgstr "Imagen JPEG (*.jpg *.jpeg)"
+
+#: ui/label_printing.py:101
+msgid "Export label"
+msgstr "Exportar etiqueta"
+
+#: ui/main_window.py:49
+msgid "Rocket Motor Manager project (*.rmm.xml *.xml)"
+msgstr "Proyecto de Rocket Motor Manager (*.rmm.xml *.xml)"
+
+#: ui/main_window.py:50
+msgid "RASP engine files (*.eng *.ENG)"
+msgstr "Archivos de motor RASP (*.eng *.ENG)"
+
+#: ui/main_window.py:51
+msgid "CSV / text files (*.csv *.txt *.tsv *.dat)"
+msgstr "Archivos CSV / de texto (*.csv *.txt *.tsv *.dat)"
+
+#: ui/main_window.py:52
+msgid "Excel workbooks (*.xlsx *.xlsm *.xls)"
+msgstr "Libros de Excel (*.xlsx *.xlsm *.xls)"
+
+#: ui/main_window.py:53
+msgid "SRM workbooks (Richard Nakka) (*.xls *.xlsx *.xlsm)"
+msgstr "Libros SRM (Richard Nakka) (*.xls *.xlsx *.xlsm)"
+
+#: ui/main_window.py:95
+msgid "Motor properties"
+msgstr "Propiedades del motor"
+
+#: ui/main_window.py:118
+msgid "&New Motor"
+msgstr "&Nuevo motor"
+
+#: ui/main_window.py:118
+msgid "Create a new empty motor"
+msgstr "Crear un nuevo motor vacío"
+
+#: ui/main_window.py:119
+msgid "&Open Motor..."
+msgstr "&Abrir motor..."
+
+#: ui/main_window.py:119
+msgid "Open a motor project (XML)"
+msgstr "Abrir un proyecto de motor (XML)"
+
+#: ui/main_window.py:120
+msgid "&Save Motor"
+msgstr "&Guardar motor"
+
+#: ui/main_window.py:120
+msgid "Save the motor project"
+msgstr "Guardar el proyecto del motor"
+
+#: ui/main_window.py:121
+msgid "Save Motor &As..."
+msgstr "Guardar motor &como..."
+
+#: ui/main_window.py:121
+msgid "Save the project under a new name"
+msgstr "Guardar el proyecto con un nombre nuevo"
+
+#: ui/main_window.py:122
+msgid "Import &ENG..."
+msgstr "Importar &ENG..."
+
+#: ui/main_window.py:122
+msgid "Import a RASP .eng thrust curve file"
+msgstr "Importar un archivo de curva de empuje RASP .eng"
+
+#: ui/main_window.py:123
+msgid "E&xport as ENG..."
+msgstr "E&xportar a ENG..."
+
+#: ui/main_window.py:123
+msgid "Export the motor as an OpenRocket/RockSim .eng file"
+msgstr "Exportar el motor como archivo .eng de OpenRocket/RockSim"
+
+#: ui/main_window.py:124
+msgid "Import &CSV..."
+msgstr "Importar &CSV..."
+
+#: ui/main_window.py:124
+msgid "Import thrust points from a CSV or text file"
+msgstr "Importar puntos de empuje desde un archivo CSV o de texto"
+
+#: ui/main_window.py:125
+msgid "Export CS&V..."
+msgstr "Exportar C&SV..."
+
+#: ui/main_window.py:125
+msgid "Export the thrust points to a CSV file"
+msgstr "Exportar los puntos de empuje a un archivo CSV"
+
+#: ui/main_window.py:126
+msgid "Import Exce&l..."
+msgstr "Importar Exce&l..."
+
+#: ui/main_window.py:126
+msgid "Import thrust points from an Excel workbook (.xlsx, .xls)"
+msgstr "Importar puntos de empuje desde un libro de Excel (.xlsx, .xls)"
+
+#: ui/main_window.py:127
+msgid "Import &SRM Workbook (Nakka)..."
+msgstr "Importar libro &SRM (Nakka)..."
+
+#: ui/main_window.py:128
+msgid "Import motor data and thrust curve from a Richard Nakka SRM design workbook (SRM 1.x, SRM 2023)"
+msgstr ""
+"Importar los datos del motor y la curva de empuje de un libro de diseño SRM de Richard Nakka (SRM"
+" 1.x, SRM 2023)"
+
+#: ui/main_window.py:129
+msgid "Import Thrust Curve &Image..."
+msgstr "Importar &imagen de curva de empuje..."
+
+#: ui/main_window.py:129
+msgid "Digitize a thrust curve from a photo or scan"
+msgstr "Digitalizar una curva de empuje desde una foto o un escaneo"
+
+#: ui/main_window.py:130
+msgid "Export &Graph..."
+msgstr "Exportar &gráfico..."
+
+#: ui/main_window.py:130
+msgid "Export the thrust curve as PNG, SVG or PDF"
+msgstr "Exportar la curva de empuje como PNG, SVG o PDF"
+
+#: ui/main_window.py:131
+msgid "E&xit"
+msgstr "&Salir"
+
+#: ui/main_window.py:131
+msgid "Quit the application"
+msgstr "Salir de la aplicación"
+
+#: ui/main_window.py:133
+msgid "&Undo"
+msgstr "&Deshacer"
+
+#: ui/main_window.py:136
+msgid "&Redo"
+msgstr "&Rehacer"
+
+#: ui/main_window.py:140
+msgid "&Add Thrust Point"
+msgstr "&Añadir punto de empuje"
+
+#: ui/main_window.py:140
+msgid "Add a thrust point after the selection"
+msgstr "Añadir un punto de empuje después de la selección"
+
+#: ui/main_window.py:141
+msgid "&Delete Thrust Point"
+msgstr "&Eliminar punto de empuje"
+
+#: ui/main_window.py:141
+msgid "Delete the selected thrust point(s)"
+msgstr "Eliminar el/los punto(s) de empuje seleccionado(s)"
+
+#: ui/main_window.py:142
+msgid "Select &All"
+msgstr "Seleccionar &todo"
+
+#: ui/main_window.py:142
+msgid "Select every thrust point"
+msgstr "Seleccionar todos los puntos de empuje"
+
+#: ui/main_window.py:143
+msgid "&Sort Points"
+msgstr "&Ordenar puntos"
+
+#: ui/main_window.py:143
+msgid "Sort the thrust points chronologically"
+msgstr "Ordenar cronológicamente los puntos de empuje"
+
+#: ui/main_window.py:144
+msgid "&Preferences..."
+msgstr "&Preferencias..."
+
+#: ui/main_window.py:144
+msgid "Application preferences"
+msgstr "Preferencias de la aplicación"
+
+#: ui/main_window.py:146
+msgid "Show Thrust &Graph"
+msgstr "Mostrar &gráfico de empuje"
+
+#: ui/main_window.py:146
+msgid "Show or hide the thrust curve"
+msgstr "Mostrar u ocultar la curva de empuje"
+
+#: ui/main_window.py:147
+msgid "Show Data &Table"
+msgstr "Mostrar &tabla de datos"
+
+#: ui/main_window.py:147
+msgid "Show or hide the thrust data table"
+msgstr "Mostrar u ocultar la tabla de datos de empuje"
+
+#: ui/main_window.py:149
+msgid "Show Motor &Properties"
+msgstr "Mostrar &propiedades del motor"
+
+#: ui/main_window.py:150
+msgid "&Reset Graph Zoom"
+msgstr "&Restablecer zoom del gráfico"
+
+#: ui/main_window.py:150
+msgid "Fit the graph to the data"
+msgstr "Ajustar el gráfico a los datos"
+
+#: ui/main_window.py:151
+msgid "Show &Grid"
+msgstr "Mostrar &cuadrícula"
+
+#: ui/main_window.py:151
+msgid "Show or hide the graph grid"
+msgstr "Mostrar u ocultar la cuadrícula del gráfico"
+
+#: ui/main_window.py:155
+msgid "Print Pre&view..."
+msgstr "&Vista previa de impresión..."
+
+#: ui/main_window.py:155
+msgid "Preview the label sheet"
+msgstr "Previsualizar la hoja de etiquetas"
+
+#: ui/main_window.py:156
+msgid "Print &PDF..."
+msgstr "Imprimir en &PDF..."
+
+#: ui/main_window.py:156
+msgid "Export the label sheet as PDF"
+msgstr "Exportar la hoja de etiquetas como PDF"
+
+#: ui/main_window.py:157
+msgid "Export Label as P&NG..."
+msgstr "Exportar etiqueta como P&NG..."
+
+#: ui/main_window.py:157
+msgid "Export the label as a PNG image"
+msgstr "Exportar la etiqueta como imagen PNG"
+
+#: ui/main_window.py:158
+msgid "Export Label as &JPEG..."
+msgstr "Exportar etiqueta como &JPEG..."
+
+#: ui/main_window.py:158
+msgid "Export the label as a JPEG image"
+msgstr "Exportar la etiqueta como imagen JPEG"
+
+#: ui/main_window.py:160
+msgid "Thrust &Analysis..."
+msgstr "&Análisis de empuje..."
+
+#: ui/main_window.py:160
+msgid "Compute and display the motor characteristics"
+msgstr "Calcular y mostrar las características del motor"
+
+#: ui/main_window.py:161
+msgid "Curve &Digitizer..."
+msgstr "&Digitalizador de curvas..."
+
+#: ui/main_window.py:161
+msgid "Digitize a thrust curve from an image"
+msgstr "Digitalizar una curva de empuje desde una imagen"
+
+#: ui/main_window.py:162
+msgid "&Label Designer..."
+msgstr "Diseñador de &etiquetas..."
+
+#: ui/main_window.py:162
+msgid "Design and print motor labels"
+msgstr "Diseñar e imprimir etiquetas de motor"
+
+#: ui/main_window.py:163
+msgid "Data &Validation..."
+msgstr "&Validación de datos..."
+
+#: ui/main_window.py:163
+msgid "Check the motor data for errors"
+msgstr "Comprobar si hay errores en los datos del motor"
+
+#: ui/main_window.py:165
+msgid "&Manual"
+msgstr "&Manual"
+
+#: ui/main_window.py:165
+msgid "Open the PDF user manual"
+msgstr "Abrir el manual de usuario en PDF"
+
+#: ui/main_window.py:166
+msgid "&Documentation"
+msgstr "&Documentación"
+
+#: ui/main_window.py:166
+msgid "Open the technical documentation folder"
+msgstr "Abrir la carpeta de documentación técnica"
+
+#: ui/main_window.py:167
+msgid "&About..."
+msgstr "&Acerca de..."
+
+#: ui/main_window.py:167
+msgid "About Rocket Motor Manager"
+msgstr "Acerca de Rocket Motor Manager"
+
+#: ui/main_window.py:171
+msgid "&File"
+msgstr "&Archivo"
+
+#: ui/main_window.py:175
+msgid "Recent &Files"
+msgstr "Archivos &recientes"
+
+#: ui/main_window.py:180
+msgid "&Edit"
+msgstr "&Editar"
+
+#: ui/main_window.py:184
+msgid "&View"
+msgstr "&Ver"
+
+#: ui/main_window.py:188
+msgid "&Print"
+msgstr "&Imprimir"
+
+#: ui/main_window.py:192
+msgid "&Tools"
+msgstr "&Herramientas"
+
+#: ui/main_window.py:196
+msgid "&Help"
+msgstr "Ay&uda"
+
+#: ui/main_window.py:201
+msgid "Main toolbar"
+msgstr "Barra de herramientas principal"
+
+#: ui/main_window.py:209
+msgid "Import ENG, CSV, Excel or an image"
+msgstr "Importar ENG, CSV, Excel o una imagen"
+
+#: ui/main_window.py:211
+msgid "Export"
+msgstr "Exportar"
+
+#: ui/main_window.py:211
+msgid "Export ENG, CSV or the graph"
+msgstr "Exportar ENG, CSV o el gráfico"
+
+#: ui/main_window.py:217
+msgid "Analyze"
+msgstr "Analizar"
+
+#: ui/main_window.py:217
+msgid "Digitize"
+msgstr "Digitalizar"
+
+#: ui/main_window.py:221
+msgid "Add Point"
+msgstr "Añadir punto"
+
+#: ui/main_window.py:222
+msgid "Delete Point"
+msgstr "Eliminar punto"
+
+#: ui/main_window.py:286
+msgid "Not saved"
+msgstr "Sin guardar"
+
+#: ui/main_window.py:292 widgets/thrust_table.py:304
+#, python-brace-format
+msgid "{n} point"
+msgid_plural "{n} points"
+msgstr[0] "{n} punto"
+msgstr[1] "{n} puntos"
+
+#: ui/main_window.py:310
+msgid "Clear list"
+msgstr "Borrar la lista"
+
+#: ui/main_window.py:321
+msgid "Unsaved changes"
+msgstr "Cambios sin guardar"
+
+#: ui/main_window.py:322
+#, python-brace-format
+msgid ""
+"The motor '{name}' has unsaved changes.\n"
+"Do you want to save them?"
+msgstr ""
+"El motor '{name}' tiene cambios sin guardar.\n"
+"¿Desea guardarlos?"
+
+#: ui/main_window.py:346 ui/main_window.py:382
+msgid "All files (*)"
+msgstr "Todos los archivos (*)"
+
+#: ui/main_window.py:358
+#, python-brace-format
+msgid "'{name}' already exists. Replace it?"
+msgstr "'{name}' ya existe. ¿Desea reemplazarlo?"
+
+#: ui/main_window.py:382
+msgid "Open motor project"
+msgstr "Abrir proyecto de motor"
+
+#: ui/main_window.py:389
+msgid "Recent files"
+msgstr "Archivos recientes"
+
+#: ui/main_window.py:389
+#, python-brace-format
+msgid ""
+"The file no longer exists:\n"
+"{path}"
+msgstr ""
+"El archivo ya no existe:\n"
+"{path}"
+
+#: ui/main_window.py:412
+#, python-brace-format
+msgid "Opened {path}"
+msgstr "Abierto: {path}"
+
+#: ui/main_window.py:415
+msgid "Cannot open the file."
+msgstr "No se puede abrir el archivo."
+
+#: ui/main_window.py:426
+msgid "Save motor project"
+msgstr "Guardar proyecto de motor"
+
+#: ui/main_window.py:436
+msgid "The project could not be saved."
+msgstr "No se ha podido guardar el proyecto."
+
+#: ui/main_window.py:438
+#, python-brace-format
+msgid "Saved {path}"
+msgstr "Guardado: {path}"
+
+#: ui/main_window.py:445
+msgid "Import ENG file"
+msgstr "Importar archivo ENG"
+
+#: ui/main_window.py:450
+msgid "Cannot import the ENG file."
+msgstr "No se puede importar el archivo ENG."
+
+#: ui/main_window.py:457
+msgid "Select a motor"
+msgstr "Seleccionar un motor"
+
+#: ui/main_window.py:458
+msgid "This file contains several motors:"
+msgstr "Este archivo contiene varios motores:"
+
+#: ui/main_window.py:465
+msgid "ENG import"
+msgstr "Importación ENG"
+
+#: ui/main_window.py:466
+#, python-brace-format
+msgid "Imported {name} from {path}"
+msgstr "{name} importado desde {path}"
+
+#: ui/main_window.py:473
+msgid "ENG export - validation"
+msgstr "Exportación ENG - validación"
+
+#: ui/main_window.py:474
+msgid "Export anyway"
+msgstr "Exportar de todos modos"
+
+#: ui/main_window.py:481
+msgid "Export as ENG"
+msgstr "Exportar a ENG"
+
+#: ui/main_window.py:489
+#, python-brace-format
+msgid "ENG file exported: {path}"
+msgstr "Archivo ENG exportado: {path}"
+
+#: ui/main_window.py:493
+msgid "Import CSV file"
+msgstr "Importar archivo CSV"
+
+#: ui/main_window.py:499
+msgid "Import Excel file"
+msgstr "Importar archivo Excel"
+
+#: ui/main_window.py:508
+msgid "SRM workbook detected"
+msgstr "Libro SRM detectado"
+
+#: ui/main_window.py:509
+#, python-brace-format
+msgid ""
+"'{name}' is a Richard Nakka SRM motor design workbook.\n"
+"\n"
+"Yes: import the motor (properties and thrust curve) from its sheets.\n"
+"No: import columns manually as a plain table."
+msgstr ""
+"'{name}' es un libro de diseño de motores SRM de Richard Nakka.\n"
+"\n"
+"Sí: importar el motor (propiedades y curva de empuje) desde sus hojas.\n"
+"No: importar columnas manualmente como una tabla simple."
+
+#: ui/main_window.py:521
+msgid "Import SRM workbook"
+msgstr "Importar libro SRM"
+
+#: ui/main_window.py:529
+#, python-brace-format
+msgid "Reading SRM workbook {name}..."
+msgstr "Leyendo el libro SRM {name}..."
+
+#: ui/main_window.py:540
+msgid "Cannot import the SRM workbook."
+msgstr "No se puede importar el libro SRM."
+
+#: ui/main_window.py:551
+#, python-brace-format
+msgid "Imported {name} from SRM workbook {path}"
+msgstr "{name} importado desde el libro SRM {path}"
+
+#: ui/main_window.py:563
+msgid "Replace thrust data"
+msgstr "Reemplazar los datos de empuje"
+
+#: ui/main_window.py:564
+#, python-brace-format
+msgid ""
+"Replace the {current} current thrust point(s) with {imported} imported point(s)?\n"
+"(This can be undone with Ctrl+Z.)"
+msgstr ""
+"¿Reemplazar los {current} punto(s) de empuje actuales por {imported} punto(s) importado(s)?\n"
+"(Se puede deshacer con Ctrl+Z.)"
+
+#: ui/main_window.py:570
+#, python-brace-format
+msgid "{count} point(s) imported from {source}"
+msgstr "{count} punto(s) importado(s) desde {source}"
+
+#: ui/main_window.py:576
+msgid "There is no thrust point to export."
+msgstr "No hay ningún punto de empuje para exportar."
+
+#: ui/main_window.py:576 ui/main_window.py:581
+msgid "Export CSV"
+msgstr "Exportar CSV"
+
+#: ui/main_window.py:589
+#, python-brace-format
+msgid "CSV file exported: {path}"
+msgstr "Archivo CSV exportado: {path}"
+
+#: ui/main_window.py:593
+msgid "Import thrust curve image"
+msgstr "Importar imagen de curva de empuje"
+
+#: ui/main_window.py:600
+msgid "Export graph"
+msgstr "Exportar gráfico"
+
+#: ui/main_window.py:608
+msgid "The graph could not be exported."
+msgstr "No se ha podido exportar el gráfico."
+
+#: ui/main_window.py:610
+#, python-brace-format
+msgid "Graph exported: {path}"
+msgstr "Gráfico exportado: {path}"
+
+#: ui/main_window.py:666
+msgid "the curve digitizer"
+msgstr "el digitalizador de curvas"
+
+#: ui/main_window.py:723
+msgid "Manual"
+msgstr "Manual"
+
+#: ui/main_window.py:723
+#, python-brace-format
+msgid ""
+"The user manual was not found:\n"
+"{manual}"
+msgstr ""
+"No se ha encontrado el manual de usuario:\n"
+"{manual}"
+
+#: ui/motor_editor.py:24
+msgid "Short motor code written in the ENG file, e.g. 'C6'. Required; spaces become '_'."
+msgstr ""
+"Código corto del motor escrito en el archivo ENG, p. ej. 'C6'. Obligatorio; los espacios se "
+"convierten en '_'."
+
+#: ui/motor_editor.py:25
+msgid "Manufacturer name or abbreviation (e.g. 'Estes'). Required by the ENG format."
+msgstr "Nombre o abreviatura del fabricante (p. ej. 'Estes'). Obligatorio en el formato ENG."
+
+#: ui/motor_editor.py:26
+msgid "Motor designation"
+msgstr "Designación del motor"
+
+#: ui/motor_editor.py:26
+msgid "Full commercial designation including the delay, e.g. 'C6-5'."
+msgstr "Designación comercial completa, incluido el retardo, p. ej. 'C6-5'."
+
+#: ui/motor_editor.py:27
+msgid ""
+"Available ejection delays in seconds separated by '-' (e.g. '3-5-7'). 'P' = plugged (no ejection "
+"charge), '0' = none."
+msgstr ""
+"Retardos de eyección disponibles en segundos, separados por '-' (p. ej. '3-5-7'). 'P' = taponado "
+"(sin carga de eyección), '0' = ninguno."
+
+#: ui/motor_editor.py:31
+msgid "Motor diameter (mm)"
+msgstr "Diámetro del motor (mm)"
+
+#: ui/motor_editor.py:31
+msgid "Outside diameter of the motor casing in millimetres (> 0). Required for ENG export."
+msgstr ""
+"Diámetro exterior de la carcasa del motor en milímetros (> 0). Obligatorio para la exportación "
+"ENG."
+
+#: ui/motor_editor.py:32
+msgid "Motor length (mm)"
+msgstr "Longitud del motor (mm)"
+
+#: ui/motor_editor.py:32
+msgid "Overall length of the motor in millimetres (> 0). Required for ENG export."
+msgstr "Longitud total del motor en milímetros (> 0). Obligatoria para la exportación ENG."
+
+#: ui/motor_editor.py:33
+msgid "Propellant mass (g)"
+msgstr "Masa de propelente (g)"
+
+#: ui/motor_editor.py:33
+msgid "Mass of propellant in grams (> 0). Written in kg in ENG files."
+msgstr "Masa de propelente en gramos (> 0). Se escribe en kg en los archivos ENG."
+
+#: ui/motor_editor.py:34
+msgid "Empty casing mass in grams (optional). When given, the total mass is computed."
+msgstr "Masa de la carcasa vacía en gramos (opcional). Si se indica, se calcula la masa total."
+
+#: ui/motor_editor.py:35
+msgid "Mass of the nozzle and closures in grams (optional)."
+msgstr "Masa de la tobera y de los cierres en gramos (opcional)."
+
+#: ui/motor_editor.py:70
+msgid "Identification"
+msgstr "Identificación"
+
+#: ui/motor_editor.py:81
+msgid "Propellant family (choose from the list or type your own)."
+msgstr "Familia de propelente (elija de la lista o escriba la suya)."
+
+#: ui/motor_editor.py:85
+msgid "Propellant type"
+msgstr "Tipo de propelente"
+
+#: ui/motor_editor.py:89
+msgid "Dimensions and masses"
+msgstr "Dimensiones y masas"
+
+#: ui/motor_editor.py:99
+msgid "Total motor mass (g)"
+msgstr "Masa total del motor (g)"
+
+#: ui/motor_editor.py:99
+msgid "Loaded motor mass in grams."
+msgstr "Masa del motor cargado en gramos."
+
+#: ui/motor_editor.py:107
+msgid "Description"
+msgstr "Descripción"
+
+#: ui/motor_editor.py:110
+msgid "Free description of the motor (saved in the project file, not in ENG)."
+msgstr "Descripción libre del motor (se guarda en el archivo de proyecto, no en el ENG)."
+
+#: ui/motor_editor.py:114
+msgid "Personal comments (saved in the project file, not in ENG)."
+msgstr "Comentarios personales (se guardan en el archivo de proyecto, no en el ENG)."
+
+#: ui/motor_editor.py:117
+msgid "Motor description"
+msgstr "Descripción del motor"
+
+#: ui/motor_editor.py:117
+msgid "Free description."
+msgstr "Descripción libre."
+
+#: ui/motor_editor.py:118
+msgid "Comments"
+msgstr "Comentarios"
+
+#: ui/motor_editor.py:118
+msgid "Personal comments."
+msgstr "Comentarios personales."
+
+#: ui/motor_editor.py:122
+msgid "Characteristics (computed)"
+msgstr "Características (calculadas)"
+
+#: ui/motor_editor.py:123
+msgid "Values computed from the thrust curve. Open Tools > Thrust Analysis for details."
+msgstr ""
+"Valores calculados a partir de la curva de empuje. Abra Herramientas > Análisis de empuje para "
+"ver los detalles."
+
+#: ui/motor_editor.py:174
+msgid "Computed automatically: propellant + casing + nozzle/closure masses."
+msgstr "Calculada automáticamente: propelente + carcasa + tobera/cierres."
+
+#: ui/motor_editor.py:175
+msgid "Computed from the component masses."
+msgstr "Calculada a partir de las masas de los componentes."
+
+#: ui/motor_editor.py:177
+msgid "Total loaded mass in grams. Enter the casing and nozzle masses to compute it automatically."
+msgstr ""
+"Masa total cargada en gramos. Introduzca las masas de la carcasa y de la tobera para calcularla "
+"automáticamente."
+
+#: ui/motor_editor.py:178
+msgid "Declared value (enter casing/nozzle masses to compute it)."
+msgstr "Valor declarado (introduzca las masas carcasa/tobera para calcularlo)."
+
+#: ui/preferences_window.py:26
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: ui/preferences_window.py:31
+msgid "General"
+msgstr "General"
+
+#: ui/preferences_window.py:32
+msgid "Units"
+msgstr "Unidades"
+
+#: ui/preferences_window.py:33
+msgid "Graph"
+msgstr "Gráfico"
+
+#: ui/preferences_window.py:34
+msgid "Folders"
+msgstr "Carpetas"
+
+#: ui/preferences_window.py:35
+msgid "Printing"
+msgstr "Impresión"
+
+#: ui/preferences_window.py:43
+msgid "Reset every preference to its default value."
+msgstr "Restablecer todas las preferencias a su valor predeterminado."
+
+#: ui/preferences_window.py:59
+msgid "Interface language (restart required)."
+msgstr "Idioma de la interfaz (requiere reiniciar)."
+
+#: ui/preferences_window.py:61
+msgid "Light"
+msgstr "Claro"
+
+#: ui/preferences_window.py:62
+msgid "Dark"
+msgstr "Oscuro"
+
+#: ui/preferences_window.py:63
+msgid "Colour theme of the application."
+msgstr "Tema de color de la aplicación."
+
+#: ui/preferences_window.py:64 ui/preferences_window.py:195
+msgid "Language"
+msgstr "Idioma"
+
+#: ui/preferences_window.py:65
+msgid "Theme"
+msgstr "Tema"
+
+#: ui/preferences_window.py:72
+msgid "Metric (N, N.s, g, mm)"
+msgstr "Métrico (N, N.s, g, mm)"
+
+#: ui/preferences_window.py:73
+msgid "Imperial (lbf, lbf.s, oz, in)"
+msgstr "Imperial (lbf, lbf.s, oz, in)"
+
+#: ui/preferences_window.py:74
+msgid ""
+"Units used to display the analysis results and on labels. Data is always stored in SI units (s, "
+"N, g, mm)."
+msgstr ""
+"Unidades usadas para mostrar los resultados del análisis y en las etiquetas. Los datos siempre se"
+" guardan en unidades SI (s, N, g, mm)."
+
+#: ui/preferences_window.py:79
+msgid "Default decimal separator for CSV exports. Input fields accept both."
+msgstr "Separador decimal predeterminado para las exportaciones CSV. Los campos de entrada aceptan ambos."
+
+#: ui/preferences_window.py:83
+msgid "Burn time definition used for the average thrust."
+msgstr "Definición del tiempo de combustión usada para el empuje medio."
+
+#: ui/preferences_window.py:84
+msgid "Unit system"
+msgstr "Sistema de unidades"
+
+#: ui/preferences_window.py:93
+msgid "Colour of the thrust curve."
+msgstr "Color de la curva de empuje."
+
+#: ui/preferences_window.py:95
+msgid "Colour of the point markers."
+msgstr "Color de los marcadores de punto."
+
+#: ui/preferences_window.py:96
+msgid "Show grid"
+msgstr "Mostrar la cuadrícula"
+
+#: ui/preferences_window.py:97
+msgid "Show point markers"
+msgstr "Mostrar los marcadores de punto"
+
+#: ui/preferences_window.py:98
+msgid "Fill the area under the curve"
+msgstr "Rellenar el área bajo la curva"
+
+#: ui/preferences_window.py:100
+msgid "Marker colour"
+msgstr "Color de los marcadores"
+
+#: ui/preferences_window.py:110
+msgid "Default folder proposed when saving projects and exports."
+msgstr "Carpeta propuesta por defecto para guardar proyectos y exportaciones."
+
+#: ui/preferences_window.py:112
+msgid "Default folder proposed when importing files."
+msgstr "Carpeta propuesta por defecto para importar archivos."
+
+#: ui/preferences_window.py:113
+msgid "Default save folder"
+msgstr "Carpeta de guardado predeterminada"
+
+#: ui/preferences_window.py:114
+msgid "Import folder"
+msgstr "Carpeta de importación"
+
+#: ui/preferences_window.py:121
+msgid "Browse..."
+msgstr "Examinar..."
+
+#: ui/preferences_window.py:132
+msgid "Default paper format for label sheets."
+msgstr "Formato de papel predeterminado para las hojas de etiquetas."
+
+#: ui/preferences_window.py:137
+msgid "Default resolution of PNG/JPEG label exports."
+msgstr "Resolución predeterminada de las exportaciones de etiquetas PNG/JPEG."
+
+#: ui/preferences_window.py:139
+msgid "Image resolution"
+msgstr "Resolución de imagen"
+
+#: ui/preferences_window.py:146
+msgid "Choose a folder"
+msgstr "Elegir una carpeta"
+
+#: ui/preferences_window.py:195
+msgid "The new language will be used after restarting the application."
+msgstr "El nuevo idioma se usará después de reiniciar la aplicación."
+
+#: widgets/image_calibration_widget.py:84
+msgid "Mouse wheel: zoom. Middle button: pan. The active tool is shown in the status bar."
+msgstr "Rueda: zoom. Botón central: desplazar. La herramienta activa se muestra en la barra de estado."
+
+#: widgets/label_preview.py:26
+msgid "Print preview of one label. The printed label has exactly the dimensions entered."
+msgstr "Vista previa de una etiqueta. La etiqueta impresa tiene exactamente las dimensiones indicadas."
+
+#: widgets/thrust_plot.py:41
+msgid "PNG image (*.png);;SVG vector image (*.svg);;PDF document (*.pdf)"
+msgstr "Imagen PNG (*.png);;Imagen vectorial SVG (*.svg);;Documento PDF (*.pdf)"
+
+#: widgets/thrust_plot.py:108
+msgid ""
+"Thrust curve. Drag a point to move it, double-click to add a point, right-click a point to delete"
+" it. Use the toolbar to zoom and pan."
+msgstr ""
+"Curva de empuje. Arrastre un punto para moverlo, haga doble clic para añadir un punto, clic "
+"derecho en un punto para eliminarlo. Use la barra de herramientas para hacer zoom y desplazar."
+
+#: widgets/thrust_plot.py:114
+msgid "Move the cursor over the graph"
+msgstr "Mueva el cursor sobre el gráfico"
+
+#: widgets/thrust_plot.py:115
+msgid "Cursor position (time, thrust) and interpolated thrust of the curve at that time."
+msgstr "Posición del cursor (tiempo, empuje) y empuje interpolado de la curva en ese instante."
+
+#: widgets/thrust_plot.py:238
+msgid ""
+"No thrust data\n"
+"Add points, import a file or digitize an image"
+msgstr ""
+"No hay datos de empuje\n"
+"Añada puntos, importe un archivo o digitalice una imagen"
+
+#: widgets/thrust_plot.py:264
+#, python-brace-format
+msgid "Max {value} N"
+msgstr "Máx. {value} N"
+
+#: widgets/thrust_plot.py:380
+msgid "Delete point"
+msgstr "Eliminar punto"
+
+#: widgets/thrust_plot.py:382 widgets/thrust_table.py:286
+msgid "Duplicate point"
+msgstr "Duplicar punto"
+
+#: widgets/thrust_table.py:97
+msgid "Time since ignition in seconds (>= 0, increasing)."
+msgstr "Tiempo desde el encendido en segundos (>= 0, creciente)."
+
+#: widgets/thrust_table.py:98
+msgid "Thrust in Newtons (>= 0)."
+msgstr "Empuje en newtons (>= 0)."
+
+#: widgets/thrust_table.py:162
+msgid ""
+"Thrust points. Double-click a cell to edit it. Red rows contain errors, yellow rows warnings. "
+"Ctrl+V pastes data copied from Excel."
+msgstr ""
+"Puntos de empuje. Haga doble clic en una celda para editarla. Las filas rojas contienen errores y"
+" las amarillas advertencias. Ctrl+V pega los datos copiados de Excel."
+
+#: widgets/thrust_table.py:169
+msgid "Add a point after the selected row (Ctrl+Ins)"
+msgstr "Añadir un punto después de la fila seleccionada (Ctrl+Ins)"
+
+#: widgets/thrust_table.py:170
+msgid "Duplicate the selected point (Ctrl+D)"
+msgstr "Duplicar el punto seleccionado (Ctrl+D)"
+
+#: widgets/thrust_table.py:171
+msgid "Delete the selected point(s) (Del)"
+msgstr "Eliminar el/los punto(s) seleccionado(s) (Supr)"
+
+#: widgets/thrust_table.py:172
+msgid "Sort points chronologically"
+msgstr "Ordenar los puntos cronológicamente"
+
+#: widgets/thrust_table.py:285
+msgid "Add point"
+msgstr "Añadir punto"
+
+#: widgets/thrust_table.py:287
+msgid "Delete selected point(s)"
+msgstr "Eliminar el/los punto(s) seleccionado(s)"
+
+#: widgets/thrust_table.py:289
+msgid "Copy"
+msgstr "Copiar"
+
+#: widgets/thrust_table.py:290
+msgid "Paste"
+msgstr "Pegar"
+
+#: widgets/thrust_table.py:292
+msgid "Sort chronologically"
+msgstr "Ordenar cronológicamente"
+
+#: widgets/thrust_table.py:293
+msgid "Select all"
+msgstr "Seleccionar todo"
+

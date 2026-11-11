@@ -8,6 +8,8 @@ global error handler.
 
 from __future__ import annotations
 
+from localization import _
+
 from typing import Optional
 
 
@@ -40,7 +42,7 @@ class FileFormatError(RocketMotorError):
     def _compose(self) -> str:
         parts = []
         if self.line_number is not None:
-            parts.append(f"Line {self.line_number}: {self.base_message}")
+            parts.append(_("Line {line}: {message}").format(line=self.line_number, message=self.base_message))
         else:
             parts.append(self.base_message)
         if self.line_content is not None:

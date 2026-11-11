@@ -14,6 +14,8 @@ window forwards to the document, which then refreshes every view.
 
 from __future__ import annotations
 
+from localization import N_, _
+
 import logging
 from typing import Optional, Sequence
 
@@ -36,7 +38,7 @@ from ui.theme import LIGHT_PLOT, PlotColors  # noqa: E402
 logger = logging.getLogger(__name__)
 
 PICK_RADIUS_PX = 8.0
-EXPORT_FORMATS = "PNG image (*.png);;SVG vector image (*.svg);;PDF document (*.pdf)"
+EXPORT_FORMATS = N_("PNG image (*.png);;SVG vector image (*.svg);;PDF document (*.pdf)")
 
 
 class _NavigationToolbar(NavigationToolbar2QT):
@@ -103,14 +105,14 @@ class ThrustPlotWidget(QWidget):
         self.canvas = FigureCanvasQTAgg(self.figure)
         self.canvas.setFocusPolicy(Qt.FocusPolicy.ClickFocus)
         self.canvas.setToolTip(
-            self.tr("Thrust curve. Drag a point to move it, double-click to add a point, "
+            _("Thrust curve. Drag a point to move it, double-click to add a point, "
                     "right-click a point to delete it. Use the toolbar to zoom and pan.")
         )
         self.axes = self.figure.add_subplot(111)
         self.toolbar = _NavigationToolbar(self.canvas, self, self._mark_user_view, self.reset_zoom)
         self.toolbar.setIconSize(self.toolbar.iconSize() * 0.85)
-        self.coordinates = QLabel(self.tr("Move the cursor over the graph"))
-        self.coordinates.setToolTip(self.tr("Cursor position (time, thrust) and interpolated thrust of the curve at that time."))
+        self.coordinates = QLabel(_("Move the cursor over the graph"))
+        self.coordinates.setToolTip(_("Cursor position (time, thrust) and interpolated thrust of the curve at that time."))
         top = QHBoxLayout()
         top.addWidget(self.toolbar)
         top.addStretch(1)
@@ -222,8 +224,8 @@ class ThrustPlotWidget(QWidget):
         for spine in ax.spines.values():
             spine.set_color(colors.text)
         ax.tick_params(colors=colors.text)
-        ax.set_xlabel("Time (s)", color=colors.text)
-        ax.set_ylabel("Thrust (N)", color=colors.text)
+        ax.set_xlabel(_("Time (s)"), color=colors.text)
+        ax.set_ylabel(_("Thrust (N)"), color=colors.text)
         if self._settings.show_grid:
             ax.grid(True, color=colors.grid, linestyle="--", linewidth=0.6)
         self._draw_curve()
@@ -233,7 +235,7 @@ class ThrustPlotWidget(QWidget):
     def _draw_curve(self) -> None:
         ax = self.axes
         if not self._points:
-            ax.text(0.5, 0.5, self.tr("No thrust data\nAdd points, import a file or digitize an image"),
+            ax.text(0.5, 0.5, _("No thrust data\nAdd points, import a file or digitize an image"),
                     ha="center", va="center", transform=ax.transAxes, color=self._colors.text, alpha=0.6)
             return
         times = [p.time_s for p in self._points]
@@ -259,7 +261,7 @@ class ThrustPlotWidget(QWidget):
             return
         ax = self.axes
         ax.annotate(
-            f"Max {result.maximum_thrust_n:.2f} N",
+            _("Max {value} N").format(value=f"{result.maximum_thrust_n:.2f}"),
             xy=(result.time_to_max_thrust_s, result.maximum_thrust_n),
             xytext=(10, -2), textcoords="offset points", fontsize=8, color=self._colors.text,
         )
@@ -375,9 +377,9 @@ class ThrustPlotWidget(QWidget):
         point = self._points[index]
         menu = QMenu(self)
         menu.addSection(f"t = {point.time_s:g} s, F = {point.thrust_n:g} N")
-        delete = QAction(self.tr("Delete point"), menu)
+        delete = QAction(_("Delete point"), menu)
         delete.triggered.connect(lambda: self.point_delete_requested.emit(index))
-        duplicate = QAction(self.tr("Duplicate point"), menu)
+        duplicate = QAction(_("Duplicate point"), menu)
         duplicate.triggered.connect(lambda: self.point_duplicate_requested.emit(index))
         menu.addAction(delete)
         menu.addAction(duplicate)

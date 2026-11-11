@@ -1,0 +1,4 @@
+PyInstaller "main.py" --onefile --windowed --noconfirm --clean --name RocketMotorManager --distpath dist --specpath build\onefile_externa
+l --workpath build\onefile_external --icon="$PWD\resources\icons\app.ico" --version-file "$PWD\version_info.txt" --hidden-import openpyxl --hidden-import xlrd --hidden-import matplotlib.backends.back
+end_qtagg --hidden-import matplotlib.backends.backend_pdf --hidden-import matplotlib.backends.backend_svg --hidden-import scipy.signal --hidden-import PyQt6.QtSvg --hidden-import PyQt6.QtPrintSupport
+ --exclude-module tkinter --exclude-module pytest --exclude-module PyQt5 --exclude-module PySide6

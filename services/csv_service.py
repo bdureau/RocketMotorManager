@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from localization import N_, _
+
 import csv
 import io
 import logging
@@ -21,7 +23,7 @@ logger = logging.getLogger(__name__)
 #: of whitespace".
 SEPARATORS: tuple[str, ...] = ("\t", ";", ",", "|", " ")
 SEPARATOR_NAMES: dict[str, str] = {
-    "\t": "Tab", ";": "Semicolon (;)", ",": "Comma (,)", "|": "Pipe (|)", " ": "Space / whitespace",
+    "\t": N_("Tab"), ";": N_("Semicolon (;)"), ",": N_("Comma (,)"), "|": N_("Pipe (|)"), " ": N_("Space / whitespace"),
 }
 ENCODINGS: tuple[str, ...] = ("utf-8", "utf-8-sig", "cp1252", "latin-1", "utf-16")
 COMMENT_PREFIX = "#"
@@ -150,7 +152,7 @@ class CsvService:
     def generate(self, motor: Motor, options: CsvExportOptions) -> str:
         """Generate CSV text for the motor thrust curve."""
         if options.separator == options.decimal_separator:
-            raise ValueError("The field separator and the decimal separator must differ.")
+            raise ValueError(_('The field separator and the decimal separator must differ.'))
         buffer = io.StringIO()
         if options.include_metadata:
             for line in self._metadata_lines(motor):

@@ -6,6 +6,8 @@ that the UI displays and that the exporters use to refuse or warn.
 
 from __future__ import annotations
 
+from localization import N_, _
+
 import math
 from dataclasses import dataclass, field
 from enum import Enum
@@ -15,12 +17,19 @@ from models.motor import Motor
 from models.thrust_point import ThrustPoint
 
 
+_SEVERITY_CAPTIONS = {"info": N_("INFO"), "warning": N_("WARNING"), "error": N_("ERROR")}
+
+
 class Severity(str, Enum):
     """Severity of a validation issue."""
 
     INFO = "info"
     WARNING = "warning"
     ERROR = "error"
+
+    def caption(self) -> str:
+        """Translated upper-case caption (INFO, WARNING, ERROR)."""
+        return _(_SEVERITY_CAPTIONS[self.value])
 
 
 @dataclass(frozen=True)
@@ -72,11 +81,11 @@ class ValidationReport:
     def summary(self) -> str:
         """Return a multi-line text summary of the issues."""
         if not self.issues:
-            return "No problem detected."
+            return _("No problem detected.")
         lines = []
         for issue in self.issues:
-            where = f" (row {issue.row + 1})" if issue.row is not None else ""
-            lines.append(f"[{issue.severity.value.upper()}] {issue.message}{where}")
+            where = _(" (row {row})").format(row=issue.row + 1) if issue.row is not None else ""
+            lines.append(f"[{issue.severity.caption()}] {issue.message}{where}")
         return "\n".join(lines)
 
 
@@ -85,26 +94,26 @@ def validate_points(points: Sequence[ThrustPoint]) -> ValidationReport:
     thrusts, chronological order, duplicates and termination."""
     report = ValidationReport()
     if not points:
-        report.add(Severity.ERROR, "no_points", "The thrust curve contains no point.")
+        report.add(Severity.ERROR, "no_points", _('The thrust curve contains no point.'))
         return report
     if len(points) < 2:
-        report.add(Severity.ERROR, "too_few_points", "At least two thrust points are required.")
+        report.add(Severity.ERROR, "too_few_points", _('At least two thrust points are required.'))
     for row, point in enumerate(points):
         if not point.is_finite():
-            report.add(Severity.ERROR, "non_numeric", "Missing or non-numeric value.", row)
+            report.add(Severity.ERROR, "non_numeric", _('Missing or non-numeric value.'), row)
             continue
         if point.time_s < 0:
-            report.add(Severity.ERROR, "negative_time", "Negative time value.", row)
+            report.add(Severity.ERROR, "negative_time", _('Negative time value.'), row)
         if point.thrust_n < 0:
-            report.add(Severity.ERROR, "negative_thrust", "Negative thrust value.", row)
+            report.add(Severity.ERROR, "negative_thrust", _('Negative thrust value.'), row)
     _check_order(points, report)
     finite = [p for p in points if p.is_finite()]
     if finite and max(p.thrust_n for p in finite) <= 0:
-        report.add(Severity.ERROR, "no_thrust", "The curve has no positive thrust.")
+        report.add(Severity.ERROR, "no_thrust", _('The curve has no positive thrust.'))
     if finite and finite[-1].thrust_n != 0:
         report.add(
             Severity.WARNING, "not_terminated",
-            "The last point should have zero thrust (burnout); ENG readers expect it.",
+            _('The last point should have zero thrust (burnout); ENG readers expect it.'),
             len(points) - 1,
         )
     return report
@@ -119,9 +128,9 @@ def _check_order(points: Sequence[ThrustPoint], report: ValidationReport) -> Non
             continue
         if previous is not None:
             if current.time_s == previous.time_s:
-                report.add(Severity.ERROR, "duplicate_time", "Duplicate time value.", row)
+                report.add(Severity.ERROR, "duplicate_time", _('Duplicate time value.'), row)
             elif current.time_s < previous.time_s:
-                report.add(Severity.ERROR, "not_chronological", "Time is lower than the previous point.", row)
+                report.add(Severity.ERROR, "not_chronological", _('Time is lower than the previous point.'), row)
         previous = current
 
 
@@ -130,30 +139,30 @@ def validate_metadata(motor: Motor) -> ValidationReport:
     report = ValidationReport()
     meta = motor.metadata
     if not meta.name.strip():
-        report.add(Severity.ERROR, "no_name", "The motor name is required.")
+        report.add(Severity.ERROR, "no_name", _('The motor name is required.'))
     elif any(ch.isspace() for ch in meta.name.strip()):
-        report.add(Severity.WARNING, "name_spaces", "Spaces in the motor name will be replaced by '_' in ENG files.")
+        report.add(Severity.WARNING, "name_spaces", _("Spaces in the motor name will be replaced by '_' in ENG files."))
     if not meta.manufacturer.strip():
-        report.add(Severity.ERROR, "no_manufacturer", "The manufacturer is required by the ENG format.")
-    _require_positive(report, meta.diameter_mm, "diameter", "Motor diameter")
-    _require_positive(report, meta.length_mm, "length", "Motor length")
-    _require_positive(report, meta.propellant_mass_g, "propellant_mass", "Propellant mass")
-    _require_positive(report, meta.total_mass_g, "total_mass", "Total motor mass")
+        report.add(Severity.ERROR, "no_manufacturer", _('The manufacturer is required by the ENG format.'))
+    _require_positive(report, meta.diameter_mm, "diameter", _('Motor diameter'))
+    _require_positive(report, meta.length_mm, "length", _('Motor length'))
+    _require_positive(report, meta.propellant_mass_g, "propellant_mass", _('Propellant mass'))
+    _require_positive(report, meta.total_mass_g, "total_mass", _('Total motor mass'))
     total, prop = meta.total_mass_g, meta.propellant_mass_g
     if total is not None and prop is not None and prop > total:
-        report.add(Severity.ERROR, "mass_inconsistent", "Propellant mass exceeds the total motor mass.")
+        report.add(Severity.ERROR, "mass_inconsistent", _('Propellant mass exceeds the total motor mass.'))
     for token in meta.delay_list():
         if not (token.upper() == "P" or _is_number(token)):
-            report.add(Severity.ERROR, "bad_delay", f"Invalid ejection delay '{token}'. Use numbers separated by '-' or 'P'.")
+            report.add(Severity.ERROR, "bad_delay", _("Invalid ejection delay '{token}'. Use numbers separated by '-' or 'P'.").format(token=token))
     return report
 
 
 def _require_positive(report: ValidationReport, value: Optional[float], code: str, caption: str) -> None:
     """Add an error when ``value`` is missing or not strictly positive."""
     if value is None:
-        report.add(Severity.ERROR, f"no_{code}", f"{caption} is required.")
+        report.add(Severity.ERROR, f"no_{code}", _('{caption} is required.').format(caption=caption))
     elif not math.isfinite(value) or value <= 0:
-        report.add(Severity.ERROR, f"bad_{code}", f"{caption} must be greater than zero.")
+        report.add(Severity.ERROR, f"bad_{code}", _('{caption} must be greater than zero.').format(caption=caption))
 
 
 def _is_number(text: str) -> bool:

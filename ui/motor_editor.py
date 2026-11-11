@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from localization import N_, _
+
 from typing import Optional
 
 from PyQt6.QtCore import Qt
@@ -19,18 +21,18 @@ class MotorEditorWidget(QScrollArea):
     """Form editing :class:`MotorMetadata` through the document (undoable)."""
 
     TEXT_FIELDS = (
-        ("name", "Motor name", "Short motor code written in the ENG file, e.g. 'C6'. Required; spaces become '_'."),
-        ("manufacturer", "Manufacturer", "Manufacturer name or abbreviation (e.g. 'Estes'). Required by the ENG format."),
-        ("designation", "Motor designation", "Full commercial designation including the delay, e.g. 'C6-5'."),
-        ("delays", "Ejection delays", "Available ejection delays in seconds separated by '-' (e.g. '3-5-7'). "
-                                      "'P' = plugged (no ejection charge), '0' = none."),
+        ("name", N_("Motor name"), N_("Short motor code written in the ENG file, e.g. 'C6'. Required; spaces become '_'.")),
+        ("manufacturer", N_("Manufacturer"), N_("Manufacturer name or abbreviation (e.g. 'Estes'). Required by the ENG format.")),
+        ("designation", N_("Motor designation"), N_("Full commercial designation including the delay, e.g. 'C6-5'.")),
+        ("delays", N_("Ejection delays"), N_("Available ejection delays in seconds separated by '-' (e.g. '3-5-7'). "
+                                      "'P' = plugged (no ejection charge), '0' = none.")),
     )
     NUMBER_FIELDS = (
-        ("diameter_mm", "Motor diameter (mm)", "mm", "Outside diameter of the motor casing in millimetres (> 0). Required for ENG export."),
-        ("length_mm", "Motor length (mm)", "mm", "Overall length of the motor in millimetres (> 0). Required for ENG export."),
-        ("propellant_mass_g", "Propellant mass (g)", "g", "Mass of propellant in grams (> 0). Written in kg in ENG files."),
-        ("casing_mass_g", "Casing mass (g)", "g", "Empty casing mass in grams (optional). When given, the total mass is computed."),
-        ("nozzle_closure_mass_g", "Nozzle and closure mass (g)", "g", "Mass of the nozzle and closures in grams (optional)."),
+        ("diameter_mm", N_("Motor diameter (mm)"), "mm", N_("Outside diameter of the motor casing in millimetres (> 0). Required for ENG export.")),
+        ("length_mm", N_("Motor length (mm)"), "mm", N_("Overall length of the motor in millimetres (> 0). Required for ENG export.")),
+        ("propellant_mass_g", N_("Propellant mass (g)"), "g", N_("Mass of propellant in grams (> 0). Written in kg in ENG files.")),
+        ("casing_mass_g", N_("Casing mass (g)"), "g", N_("Empty casing mass in grams (optional). When given, the total mass is computed.")),
+        ("nozzle_closure_mass_g", N_("Nozzle and closure mass (g)"), "g", N_("Mass of the nozzle and closures in grams (optional).")),
     )
 
     def __init__(self, document: MotorDocument, analysis: ThrustAnalysisService, parent: Optional[QWidget] = None) -> None:
@@ -65,36 +67,36 @@ class MotorEditorWidget(QScrollArea):
         self.setMinimumWidth(300)
 
     def _build_identity_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Identification"))
+        group = QGroupBox(_("Identification"))
         form = QFormLayout(group)
         for name, caption, tip in self.TEXT_FIELDS:
             edit = QLineEdit()
-            edit.setToolTip(self.tr(tip))
+            edit.setToolTip(_(tip))
             edit.editingFinished.connect(lambda n=name, e=edit: self._document.set_metadata_field(n, e.text().strip()))
             self._text_edits[name] = edit
             form.addRow(self._label(caption, tip), edit)
         self.propellant_type = QComboBox()
         self.propellant_type.setEditable(True)
         self.propellant_type.addItems([""] + list(PROPELLANT_TYPES))
-        tip = "Propellant family (choose from the list or type your own)."
-        self.propellant_type.setToolTip(self.tr(tip))
+        tip = N_("Propellant family (choose from the list or type your own).")
+        self.propellant_type.setToolTip(_(tip))
         self.propellant_type.lineEdit().editingFinished.connect(self._commit_propellant_type)
         self.propellant_type.activated.connect(lambda _i: self._commit_propellant_type())
-        form.addRow(self._label("Propellant type", tip), self.propellant_type)
+        form.addRow(self._label(N_("Propellant type"), tip), self.propellant_type)
         return group
 
     def _build_physical_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Dimensions and masses"))
+        group = QGroupBox(_("Dimensions and masses"))
         form = QFormLayout(group)
         for name, caption, unit, tip in self.NUMBER_FIELDS:
             edit = OptionalNumberEdit(unit)
-            edit.setToolTip(self.tr(tip))
+            edit.setToolTip(_(tip))
             edit.value_committed.connect(lambda value, n=name: self._document.set_metadata_field(n, value))
             self._number_edits[name] = edit
             form.addRow(self._label(caption, tip), edit)
         self.total_mass = OptionalNumberEdit("g")
         self.total_mass.value_committed.connect(lambda v: self._document.set_metadata_field("declared_total_mass_g", v))
-        form.addRow(self._label("Total motor mass (g)", "Loaded motor mass in grams."), self.total_mass)
+        form.addRow(self._label(N_("Total motor mass (g)"), N_("Loaded motor mass in grams.")), self.total_mass)
         self.total_mass_hint = QLabel()
         self.total_mass_hint.setWordWrap(True)
         self.total_mass_hint.setStyleSheet("color: gray; font-size: 8pt;")
@@ -102,39 +104,39 @@ class MotorEditorWidget(QScrollArea):
         return group
 
     def _build_text_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Description"))
+        group = QGroupBox(_("Description"))
         form = QFormLayout(group)
         self.description = CommitTextEdit()
-        self.description.setToolTip(self.tr("Free description of the motor (saved in the project file, not in ENG)."))
+        self.description.setToolTip(_("Free description of the motor (saved in the project file, not in ENG)."))
         self.description.setFixedHeight(60)
         self.description.committed.connect(lambda text: self._document.set_metadata_field("description", text))
         self.comments = CommitTextEdit()
-        self.comments.setToolTip(self.tr("Personal comments (saved in the project file, not in ENG)."))
+        self.comments.setToolTip(_("Personal comments (saved in the project file, not in ENG)."))
         self.comments.setFixedHeight(60)
         self.comments.committed.connect(lambda text: self._document.set_metadata_field("comments", text))
-        form.addRow(self._label("Motor description", "Free description."), self.description)
-        form.addRow(self._label("Comments", "Personal comments."), self.comments)
+        form.addRow(self._label(N_("Motor description"), N_("Free description.")), self.description)
+        form.addRow(self._label(N_("Comments"), N_("Personal comments.")), self.comments)
         return group
 
     def _build_summary_group(self) -> QGroupBox:
-        group = QGroupBox(self.tr("Characteristics (computed)"))
-        group.setToolTip(self.tr("Values computed from the thrust curve. Open Tools > Thrust Analysis for details."))
+        group = QGroupBox(_("Characteristics (computed)"))
+        group.setToolTip(_("Values computed from the thrust curve. Open Tools > Thrust Analysis for details."))
         form = QFormLayout(group)
         for key, caption in (
-            ("total_impulse_ns", "Total impulse"), ("average_thrust_n", "Average thrust"),
-            ("maximum_thrust_n", "Maximum thrust"), ("burn_time_s", "Burn time"),
-            ("specific_impulse_s", "Specific impulse"), ("class", "Impulse class"),
+            ("total_impulse_ns", N_("Total impulse")), ("average_thrust_n", N_("Average thrust")),
+            ("maximum_thrust_n", N_("Maximum thrust")), ("burn_time_s", N_("Burn time")),
+            ("specific_impulse_s", N_("Specific impulse")), ("class", N_("Impulse class")),
         ):
             value = QLabel("n/a")
             value.setAlignment(Qt.AlignmentFlag.AlignRight)
             value.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
             self._summary_labels[key] = value
-            form.addRow(self.tr(caption), value)
+            form.addRow(_(caption), value)
         return group
 
     def _label(self, caption: str, tip: str) -> QLabel:
-        label = QLabel(self.tr(caption))
-        label.setToolTip(self.tr(tip))
+        label = QLabel(_(caption))
+        label.setToolTip(_(tip))
         return label
 
     # ------------------------------------------------------------------
@@ -169,11 +171,11 @@ class MotorEditorWidget(QScrollArea):
         self.total_mass.set_value(meta.total_mass_g)
         self.total_mass.setReadOnly(computed)
         if computed:
-            self.total_mass.setToolTip(self.tr("Computed automatically: propellant + casing + nozzle/closure masses."))
-            self.total_mass_hint.setText(self.tr("Computed from the component masses."))
+            self.total_mass.setToolTip(_("Computed automatically: propellant + casing + nozzle/closure masses."))
+            self.total_mass_hint.setText(_("Computed from the component masses."))
         else:
-            self.total_mass.setToolTip(self.tr("Total loaded mass in grams. Enter the casing and nozzle masses to compute it automatically."))
-            self.total_mass_hint.setText(self.tr("Declared value (enter casing/nozzle masses to compute it)."))
+            self.total_mass.setToolTip(_("Total loaded mass in grams. Enter the casing and nozzle masses to compute it automatically."))
+            self.total_mass_hint.setText(_("Declared value (enter casing/nozzle masses to compute it)."))
 
     def _refresh_summary(self) -> None:
         result = self._document.characteristics()

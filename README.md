@@ -20,7 +20,7 @@ Author: **Boris du Reau** — © 2026 Boris du Reau. All rights reserved.
 | Export | Strict, validated ENG writer; CSV with separator/decimal/encoding/units/metadata options |
 | Project | Versioned native XML (`.rmm.xml`) with migrations, structural validation, exact float round-trip, atomic saves |
 | Labels | Independent designer: dimensions, paper, margins, colours, fonts, alignment, borders, layouts, field selection and order, free text, logo; 6 predefined templates + user templates; print preview, printing, PDF sheet, PNG/JPEG at any dpi, physical size respected |
-| Quality | Centralised error handling, rotating log (DEBUG→ERROR), background threads for heavy image work, preferences (theme, units, colours, folders, printing, language), Qt i18n, tooltips everywhere, PDF manual, 118 automated tests |
+| Quality | Centralised error handling, rotating log (DEBUG→ERROR), background threads for heavy image work, preferences (theme, units, colours, folders, printing, language), interface and PDF manual in 9 languages (gettext .po), tooltips everywhere, 180 automated tests |
 
 ## Quick start (Windows)
 
@@ -28,7 +28,9 @@ Author: **Boris du Reau** — © 2026 Boris du Reau. All rights reserved.
 install.bat      :: creates .venv and installs dependencies
 run.bat          :: starts the application
 run_tests.bat    :: runs the automated tests
-build_exe.bat    :: builds dist\RocketMotorManager\RocketMotorManager.exe
+build_exe.bat    :: builds dist\RocketMotorManager\RocketMotorManager.exe (one folder)
+build_onefile.bat :: builds dist\RocketMotorManager.exe (single file, resources inside)
+build_onefile_external.bat :: single-file exe + resources/documentation folders beside it
 ```
 
 Manual start on any OS:
@@ -46,14 +48,15 @@ python -m pytest
 ```
 RocketMotorManager/
 ├── main.py                       entry point
-├── application/                  bootstrap, controller, configuration, logging, errors, i18n, workers
+├── localization/                 gettext: _(), ngettext(), N_(), language installation
+├── application/                  bootstrap, controller, configuration, logging, errors, workers
 │   ├── app.py                    QApplication + main window creation
 │   ├── application_controller.py MotorDocument (state, undo stack) + ApplicationController
 │   ├── configuration.py          JSON preferences, recent files
 │   ├── error_handler.py          global exception hook + ErrorReporter
 │   ├── logging_setup.py          rotating log file in %LOCALAPPDATA%
 │   ├── paths.py                  user folders and bundled resources (PyInstaller aware)
-│   ├── translator.py             QTranslator management
+│   ├── translator.py             Qt base translations (standard dialogs)
 │   ├── version.py                name, version, copyright
 │   └── workers.py                QThreadPool background tasks
 ├── models/                       business model (no Qt)
@@ -82,10 +85,12 @@ RocketMotorManager/
 │   ├── label_printing.py, common.py, theme.py
 │   └── dialogs/                  import preview, CSV export, analysis, validation, about
 ├── widgets/                      thrust_plot, thrust_table, image_calibration_widget, label_preview
-├── resources/                    icons (SVG + app.ico), label templates (JSON), translations
-├── documentation/                user_manual.pdf, technical_documentation.html, screenshots
+├── resources/                    icons (SVG + app.ico), label templates (JSON), locale (.pot/.po/.mo)
+├── documentation/                user_manual_<lang>.pdf, technical_documentation.html,
+│                                 locale (manual .pot/.po/.mo), screenshots/<lang>, fonts (DejaVu)
 ├── tests/                        pytest suites + reference data
-└── tools/                        generate_icons.py, capture_screenshots.py, generate_manual.py
+└── tools/                        generate_icons.py, capture_screenshots.py, generate_manual.py, build_translations.py,
+                                  check_bundle.py
 ```
 
 **Separation of responsibilities:** `models` contain the physics and validation
@@ -103,11 +108,87 @@ and emits `changed`, keeping the properties panel, graph and table synchronised.
 
 ## Building the executable
 
-`build_exe.bat` runs the tests, regenerates icons, screenshots and the manual,
-then runs PyInstaller with `RocketMotorManager.spec` (one-folder build, windowed,
+`build_exe.bat` runs the tests, compiles the translations, regenerates the icons,
+the screenshots and the manuals of every language, then runs PyInstaller with `RocketMotorManager.spec` (one-folder build, windowed,
 icon `resources/icons/app.ico`, version resource `version_info.txt`). The result
 in `dist\RocketMotorManager` runs on Windows without a Python installation; it can
 be zipped or wrapped in an installer (Inno Setup, NSIS).
+
+**Single-file executable.** `build_onefile.bat` runs
+`PyInstaller main.py --onefile --windowed --icon=resources/icons/app.ico` with
+every `--add-data` (icons, label templates, images, translations, manuals,
+technical documentation) and `--hidden-import` the application needs, then
+checks the result. Any build can be checked with:
+
+```bat
+python tools\check_bundle.py dist\RocketMotorManager.exe     :: --onefile build
+python tools\check_bundle.py dist\RocketMotorManager         :: one-folder build
+```
+
+It compares the content of the executable with the resources of the source
+tree and lists anything missing (exit code 1).
+
+**Single-file executable with external resources.** `build_onefile_external.bat`
+builds an executable that contains only the code and copies the resources beside
+it:
+
+```
+dist\RocketMotorManager_onefile\
+├── RocketMotorManager.exe
+├── resources\        icons, templates, images, locale (*.mo)
+└── documentation\    user_manual_<lang>.pdf, technical_documentation.html
+```
+
+Deliver the whole folder. The application looks for each resource first beside
+the executable, then inside the bundle, then in the source tree
+(`application/paths.py`), so a manual, a translation or a label template can be
+replaced without rebuilding, and an external file overrides an embedded one.
+
+## Translations
+
+The interface is available in **English, Français, Deutsch, Español, Italiano,
+Nederlands, Polski, Português and Русский** (*Edit > Preferences > General >
+Language*, restart required). Translations use GNU gettext:
+
+```
+resources/locale/rocketmotormanager.pot                  template (extracted from the sources)
+resources/locale/<lang>/LC_MESSAGES/rocketmotormanager.po translations (edit these)
+resources/locale/<lang>/LC_MESSAGES/rocketmotormanager.mo compiled (loaded by the application)
+```
+
+* Code: mark texts with `_("text")`, `ngettext("{n} point", "{n} points", n)` or
+  `N_("text")` for constants (`from localization import _`). Placeholders use
+  named `str.format` fields (`{path}`), never positional ones.
+* Edit a `.po` file with Poedit, Lokalize or a text editor, then run
+  `python tools/build_translations.py` (extract → update → check → compile).
+  Placeholder mismatches are reported and block the compilation.
+* New language: `python tools/build_translations.py init xx`, translate, add the
+  code to `LANGUAGES` in `localization/__init__.py`, then rebuild.
+* Qt's standard dialogs (Yes/No buttons, file dialogs, print preview) use Qt's
+  own `qtbase_<lang>.qm` catalogues; Qt only ships Brazilian Portuguese.
+
+### User manual
+
+*Help > Manual* (F1) opens `documentation/user_manual_<lang>.pdf` for the
+interface language (English if that language has no manual). The manual texts
+are a second gettext catalogue, `manual`:
+
+```
+documentation/locale/manual.pot                       template (extracted from tools/generate_manual.py)
+documentation/locale/<lang>/LC_MESSAGES/manual.po     translations (edit these)
+documentation/locale/<lang>/LC_MESSAGES/manual.mo     compiled (used by generate_manual.py)
+```
+
+* Interface elements are written `[[&File|&New Motor]]` in the manual texts:
+  the generator replaces them with the captions of the application catalogue
+  ("Fichier > Nouveau moteur"), so the manual always matches the translated
+  interface. Translators keep these references unchanged (checked by
+  `build_translations.py` and the tests).
+* `python tools/capture_screenshots.py --lang all` captures the illustrations
+  of every language into `documentation/screenshots/<lang>/`.
+* `python tools/generate_manual.py [fr de ...]` builds the PDF manuals (all
+  languages by default) with the DejaVu fonts of `documentation/fonts`
+  (Latin, Polish and Cyrillic characters).
 
 ## Log and settings
 

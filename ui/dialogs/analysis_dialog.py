@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from localization import _
+
 from typing import Optional
 
 from PyQt6.QtGui import QBrush, QColor, QGuiApplication
@@ -24,18 +26,18 @@ class AnalysisDialog(QDialog):
         super().__init__(parent)
         self._motor = motor
         self._unit_system = unit_system
-        self.setWindowTitle(self.tr("Thrust Analysis"))
+        self.setWindowTitle(_("Thrust Analysis"))
         self.resize(640, 560)
         self.method = QComboBox()
         for key, caption in BURN_TIME_METHODS.items():
-            self.method.addItem(self.tr(caption), key)
+            self.method.addItem(_(caption), key)
         self.method.setCurrentIndex(max(0, self.method.findData(burn_time_method)))
-        self.method.setToolTip(self.tr("Definition of the burn time used for the average thrust:\n"
+        self.method.setToolTip(_("Definition of the burn time used for the average thrust:\n"
                                        "- Full powered curve: from ignition to burnout.\n"
                                        "- 5 % of maximum thrust: NAR/NFPA convention."))
         self.method.currentIndexChanged.connect(self._update)
         self.table = QTableWidget(0, 3)
-        self.table.setHorizontalHeaderLabels([self.tr("Characteristic"), self.tr("Value"), self.tr("Unit")])
+        self.table.setHorizontalHeaderLabels([_("Characteristic"), _("Value"), _("Unit")])
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
         self.table.verticalHeader().setVisible(False)
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
@@ -44,18 +46,18 @@ class AnalysisDialog(QDialog):
         self.warnings = QLabel()
         self.warnings.setWordWrap(True)
         self.warnings.setStyleSheet("color: #B9770E;")
-        copy_button = QPushButton(self.tr("Copy report"))
-        copy_button.setToolTip(self.tr("Copy the analysis as text to the clipboard."))
+        copy_button = QPushButton(_("Copy report"))
+        copy_button.setToolTip(_("Copy the analysis as text to the clipboard."))
         copy_button.clicked.connect(lambda: QGuiApplication.clipboard().setText(self._report()))
-        save_button = QPushButton(self.tr("Save report..."))
-        save_button.setToolTip(self.tr("Save the analysis report as a text file."))
+        save_button = QPushButton(_("Save report..."))
+        save_button.setToolTip(_("Save the analysis report as a text file."))
         save_button.clicked.connect(self._save)
         buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Close)
         buttons.addButton(copy_button, QDialogButtonBox.ButtonRole.ActionRole)
         buttons.addButton(save_button, QDialogButtonBox.ButtonRole.ActionRole)
         buttons.rejected.connect(self.reject)
         form = QFormLayout()
-        form.addRow(self.tr("Burn time definition"), self.method)
+        form.addRow(_("Burn time definition"), self.method)
         layout = QVBoxLayout(self)
         layout.addLayout(form)
         layout.addWidget(self.table, 1)
@@ -74,26 +76,24 @@ class AnalysisDialog(QDialog):
         self.table.setRowCount(len(rows))
         grey = QBrush(QColor("#888888"))
         for index, row in enumerate(rows):
-            caption = QTableWidgetItem(self.tr(row.caption))
+            caption = QTableWidgetItem(_(row.caption))
             value = QTableWidgetItem(row.text)
             unit = QTableWidgetItem(row.unit)
             if row.value is None:
                 for item in (caption, value, unit):
                     item.setForeground(grey)
-                    item.setToolTip(row.reason or self.tr("Not available"))
+                    item.setToolTip(row.reason or _("Not available"))
             self.table.setItem(index, 0, caption)
             self.table.setItem(index, 1, value)
             self.table.setItem(index, 2, unit)
         details = []
         if result.impulse_class:
-            details.append(self.tr("Impulse class: %1 (%2 % of class)").replace("%1", result.impulse_class).replace(
-                "%2", f"{result.class_percent:.0f}"))
+            details.append(_("Impulse class: {impulse_class} ({percent} % of class)").format(impulse_class=result.impulse_class, percent=f"{result.class_percent:.0f}"))
         if result.suggested_designation:
-            details.append(self.tr("Suggested designation: %1").replace("%1", result.suggested_designation))
+            details.append(_("Suggested designation: {designation}").format(designation=result.suggested_designation))
         if result.burn_start_s is not None:
-            details.append(self.tr("Burn window: %1 s to %2 s").replace("%1", f"{result.burn_start_s:.4f}").replace(
-                "%2", f"{result.burn_end_s:.4f}"))
-        details.append(self.tr("Total impulse computed by trapezoidal integration (implicit origin at 0 s, 0 N)."))
+            details.append(_("Burn window: {start} s to {end} s").format(start=f"{result.burn_start_s:.4f}", end=f"{result.burn_end_s:.4f}"))
+        details.append(_("Total impulse computed by trapezoidal integration (implicit origin at 0 s, 0 N)."))
         self.extra.setText("\n".join(details))
         self.warnings.setText("\n".join("⚠ " + w for w in result.warnings))
 
@@ -102,7 +102,7 @@ class AnalysisDialog(QDialog):
         return service.report_text(self._motor, service.analyse(self._motor))
 
     def _save(self) -> None:
-        path, _ = QFileDialog.getSaveFileName(self, self.tr("Save analysis report"), "analysis.txt", self.tr("Text files (*.txt)"))
+        path, _selected_filter = QFileDialog.getSaveFileName(self, _("Save analysis report"), "analysis.txt", _("Text files (*.txt)"))
         if not path:
             return
         try:

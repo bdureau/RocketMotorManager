@@ -17,6 +17,7 @@ from application.logging_setup import setup_logging
 from application.paths import resource_path
 from application.translator import TranslationManager
 from application.version import APP_AUTHOR, APP_ID, APP_NAME, APP_VERSION
+import localization
 
 logger = logging.getLogger(__name__)
 
@@ -37,8 +38,10 @@ class RocketMotorManagerApp:
         self.qt_app.setWindowIcon(QIcon(str(resource_path("resources", "icons", "app.ico"))))
         self._set_windows_app_id()
         self.controller = ApplicationController()
+        language = self.controller.preferences.language
+        localization.install(language)  # application texts (gettext .po/.mo)
         self.translations = TranslationManager()
-        self.translations.install(self.qt_app, self.controller.preferences.language)
+        self.translations.install(self.qt_app, language)  # Qt standard dialogs
         from ui.main_window import MainWindow  # imported after QApplication creation
 
         self.window = MainWindow(self.controller)

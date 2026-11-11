@@ -6,6 +6,8 @@ chosen from the file extension.
 
 from __future__ import annotations
 
+from localization import _
+
 import logging
 import math
 from pathlib import Path
@@ -35,7 +37,7 @@ class ExcelService:
         """
         suffix = Path(path).suffix.lower()
         if suffix not in ENGINES:
-            raise FileFormatError(f"Unsupported Excel file type '{suffix}'. Use .xlsx or .xls.")
+            raise FileFormatError(_("Unsupported Excel file type '{suffix}'. Use .xlsx or .xls.").format(suffix=suffix))
         return ENGINES[suffix]
 
     def list_sheets(self, path: PathLike) -> list[str]:
@@ -45,13 +47,13 @@ class ExcelService:
             with pd.ExcelFile(path, engine=engine) as workbook:
                 return [str(name) for name in workbook.sheet_names]
         except FileNotFoundError as exc:
-            raise FileAccessError(f"File not found: {path}") from exc
+            raise FileAccessError(_('File not found: {path}').format(path=path)) from exc
         except PermissionError as exc:
-            raise FileAccessError(f"Permission denied (is the file open in Excel?): {path}") from exc
+            raise FileAccessError(_('Permission denied (is the file open in Excel?): {path}').format(path=path)) from exc
         except ImportError as exc:
-            raise FileAccessError(f"Missing library to read this file: {exc}") from exc
+            raise FileAccessError(_('Missing library to read this file: {value}').format(value=exc)) from exc
         except Exception as exc:  # corrupted workbook: library-specific errors
-            raise FileFormatError(f"Cannot open workbook '{path}': {exc}") from exc
+            raise FileFormatError(_("Cannot open workbook '{path}': {value}").format(path=path, value=exc)) from exc
 
     def read_sheet(self, path: PathLike, sheet: str, header: str = "auto") -> TabularData:
         """Read a worksheet as raw cells.
@@ -64,11 +66,11 @@ class ExcelService:
             frame = pd.read_excel(path, sheet_name=sheet, header=None, dtype=object, engine=engine,
                                   nrows=PREVIEW_ROW_LIMIT)
         except FileNotFoundError as exc:
-            raise FileAccessError(f"File not found: {path}") from exc
+            raise FileAccessError(_('File not found: {path}').format(path=path)) from exc
         except PermissionError as exc:
-            raise FileAccessError(f"Permission denied (is the file open in Excel?): {path}") from exc
+            raise FileAccessError(_('Permission denied (is the file open in Excel?): {path}').format(path=path)) from exc
         except Exception as exc:
-            raise FileFormatError(f"Cannot read sheet '{sheet}' of '{path}': {exc}") from exc
+            raise FileFormatError(_("Cannot read sheet '{sheet}' of '{path}': {value}").format(sheet=sheet, path=path, value=exc)) from exc
         rows = [[self._clean(value) for value in row] for row in frame.itertuples(index=False, name=None)]
         rows = self._trim(rows)
         logger.info("Read %d rows from sheet '%s' of %s", len(rows), sheet, path)
@@ -95,11 +97,11 @@ class ExcelService:
                     frame = workbook.parse(sheet_name=sheet, header=None, dtype=object)
                     grids[sheet] = [[self._clean(v) for v in row] for row in frame.itertuples(index=False, name=None)]
         except FileNotFoundError as exc:
-            raise FileAccessError(f"File not found: {path}") from exc
+            raise FileAccessError(_('File not found: {path}').format(path=path)) from exc
         except PermissionError as exc:
-            raise FileAccessError(f"Permission denied (is the file open in Excel?): {path}") from exc
+            raise FileAccessError(_('Permission denied (is the file open in Excel?): {path}').format(path=path)) from exc
         except Exception as exc:
-            raise FileFormatError(f"Cannot read workbook '{path}': {exc}") from exc
+            raise FileFormatError(_("Cannot read workbook '{path}': {value}").format(path=path, value=exc)) from exc
         return grids
 
     @staticmethod

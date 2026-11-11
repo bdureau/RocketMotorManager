@@ -7,6 +7,8 @@ or inside the XML project file.
 
 from __future__ import annotations
 
+from localization import N_
+
 from dataclasses import asdict, dataclass, field, fields
 from typing import Any
 
@@ -30,20 +32,20 @@ LABEL_FIELDS: tuple[str, ...] = (
 
 #: Human-readable captions for each label field.
 LABEL_FIELD_CAPTIONS: dict[str, str] = {
-    "motor_name": "Motor name",
-    "manufacturer": "Manufacturer",
-    "designation": "Designation",
-    "diameter": "Diameter",
-    "length": "Length",
-    "total_impulse": "Total impulse",
-    "average_thrust": "Average thrust",
-    "maximum_thrust": "Maximum thrust",
-    "burn_time": "Burn time",
-    "propellant_mass": "Propellant mass",
-    "total_mass": "Total mass",
-    "propellant_type": "Propellant",
-    "delays": "Delays",
-    "impulse_class": "Impulse class",
+    "motor_name": N_("Motor name"),
+    "manufacturer": N_("Manufacturer"),
+    "designation": N_("Designation"),
+    "diameter": N_("Diameter"),
+    "length": N_("Length"),
+    "total_impulse": N_("Total impulse"),
+    "average_thrust": N_("Average thrust"),
+    "maximum_thrust": N_("Maximum thrust"),
+    "burn_time": N_("Burn time"),
+    "propellant_mass": N_("Propellant mass"),
+    "total_mass": N_("Total mass"),
+    "propellant_type": N_("Propellant"),
+    "delays": N_("Delays"),
+    "impulse_class": N_("Impulse class"),
 }
 
 #: Supported layouts.

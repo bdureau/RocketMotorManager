@@ -5,6 +5,8 @@ smoothing) used by the editor and the digitizer.
 
 from __future__ import annotations
 
+from localization import _
+
 from dataclasses import dataclass
 from typing import Optional, Sequence
 
@@ -12,7 +14,7 @@ import numpy as np
 from scipy.signal import savgol_filter
 
 from models.motor import Motor
-from models.motor_calculations import MotorCalculator, MotorCharacteristics
+from models.motor_calculations import BURN_TIME_METHODS, MotorCalculator, MotorCharacteristics
 from models.thrust_point import ThrustPoint
 from models.units import Quantity, display_unit, from_reference
 from services.file_utils import format_number
@@ -71,30 +73,30 @@ class ThrustAnalysisService:
         rows = []
         for key, caption, value, _unit in result.as_rows():
             converted, unit = self.convert_value(key, value)
-            text = format_number(converted, decimals) if converted is not None else "n/a"
-            rows.append(DisplayRow(key, caption, converted, unit, text, result.unavailable.get(key, "")))
+            text = format_number(converted, decimals) if converted is not None else _("n/a")
+            rows.append(DisplayRow(key, _(caption), converted, unit, text, result.unavailable.get(key, "")))
         return rows
 
     def report_text(self, motor: Motor, result: MotorCharacteristics) -> str:
         """Plain-text analysis report (for the clipboard or a file)."""
         meta = motor.metadata
         lines = [
-            f"Motor analysis - {meta.designation or meta.name or 'Unnamed motor'}",
-            f"Manufacturer: {meta.manufacturer}",
-            f"Burn time method: {result.burn_time_method}",
-            f"Thrust points: {motor.point_count()}",
+            _("Motor analysis - {motor}").format(motor=meta.designation or meta.name or _("Unnamed motor")),
+            _("Manufacturer: {manufacturer}").format(manufacturer=meta.manufacturer),
+            _("Burn time method: {method}").format(method=_(BURN_TIME_METHODS.get(result.burn_time_method, result.burn_time_method))),
+            _("Thrust points: {count}").format(count=motor.point_count()),
             "",
         ]
         for row in self.display_rows(result):
             suffix = f"   ({row.reason})" if row.reason else ""
             lines.append(f"{row.caption:<28} {row.text:>12} {row.unit}{suffix}")
         if result.impulse_class:
-            lines.append(f"{'Impulse class':<28} {result.impulse_class:>12} ({result.class_percent:.0f} %)")
+            lines.append(f"{_('Impulse class'):<28} {result.impulse_class:>12} ({result.class_percent:.0f} %)")
         if result.suggested_designation:
-            lines.append(f"{'Suggested designation':<28} {result.suggested_designation:>12}")
+            lines.append(f"{_('Suggested designation'):<28} {result.suggested_designation:>12}")
         if result.warnings:
             lines.append("")
-            lines.append("Warnings:")
+            lines.append(_("Warnings:"))
             lines.extend(f"  - {warning}" for warning in result.warnings)
         return "\n".join(lines)
 

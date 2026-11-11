@@ -13,6 +13,8 @@ reopening a project never alters a value.
 
 from __future__ import annotations
 
+from localization import _
+
 import logging
 import math
 import xml.etree.ElementTree as ET
@@ -50,7 +52,7 @@ def _version_tuple(version: str) -> tuple[int, int]:
         major, minor = version.split(".")[:2]
         return int(major), int(minor)
     except ValueError as exc:
-        raise FileFormatError(f"Invalid format version '{version}'.") from exc
+        raise FileFormatError(_("Invalid format version '{version}'.").format(version=version)) from exc
 
 
 # ----------------------------------------------------------------------
@@ -201,14 +203,14 @@ class XmlService:
             root = ET.fromstring(data)
         except ET.ParseError as exc:
             line = exc.position[0] if hasattr(exc, "position") else None
-            raise FileFormatError(f"The project file is corrupted (invalid XML): {exc}", line_number=line) from exc
+            raise FileFormatError(_('The project file is corrupted (invalid XML): {value}').format(value=exc), line_number=line) from exc
         if root.tag != ROOT_TAG:
-            raise FileFormatError(f"Not a Rocket Motor Manager project (root element '{root.tag}').")
+            raise FileFormatError(_("Not a Rocket Motor Manager project (root element '{tag}').").format(tag=root.tag))
         version = root.get("formatVersion", "1.0")
         warnings = self._migrate(root, version)
         motor_node = root.find("Motor")
         if motor_node is None:
-            raise FileFormatError("Invalid project: the <Motor> element is missing.")
+            raise FileFormatError(_('Invalid project: the <Motor> element is missing.'))
         motor = Motor(
             metadata=self._read_metadata(root, motor_node),
             points=self._read_points(motor_node),
@@ -224,15 +226,15 @@ class XmlService:
         found = _version_tuple(version)
         if found[0] > current[0]:
             raise FileFormatError(
-                f"This project was created with a newer, incompatible format ({version}). Please update the application."
+                _('This project was created with a newer, incompatible format ({version}). Please update the application.').format(version=version)
             )
         if found > current:
-            warnings.append(f"Project format {version} is newer than {CURRENT_FORMAT_VERSION}; unknown data may be ignored.")
+            warnings.append(_('Project format {version} is newer than {current_format_version}; unknown data may be ignored.').format(version=version, current_format_version=CURRENT_FORMAT_VERSION))
             return warnings
         while version in MIGRATIONS:
             target, migrate = MIGRATIONS[version]
             migrate(root)
-            warnings.append(f"Project upgraded from format {version} to {target}.")
+            warnings.append(_('Project upgraded from format {version} to {target}.').format(version=version, target=target))
             version = target
         return warnings
 
@@ -280,9 +282,9 @@ class XmlService:
         try:
             value = float(node.text)
         except ValueError as exc:
-            raise FileFormatError(f"Invalid number '{node.text}' in <{parent.tag}/{tag}>.") from exc
+            raise FileFormatError(_("Invalid number '{text}' in <{tag}/{tag2}>.").format(text=node.text, tag=parent.tag, tag2=tag)) from exc
         if not math.isfinite(value):
-            raise FileFormatError(f"Non-finite number in <{parent.tag}/{tag}>.")
+            raise FileFormatError(_('Non-finite number in <{tag}/{tag2}>.').format(tag=parent.tag, tag2=tag))
         return value
 
     @staticmethod
@@ -295,11 +297,11 @@ class XmlService:
             try:
                 points.append(ThrustPoint(float(node.attrib["t"]), float(node.attrib["f"])))
             except (KeyError, ValueError) as exc:
-                raise FileFormatError(f"Invalid thrust point #{index} in <ThrustCurve>: {node.attrib}.") from exc
+                raise FileFormatError(_('Invalid thrust point #{index} in <ThrustCurve>: {attrib}.').format(index=index, attrib=node.attrib)) from exc
         declared = curve.get("count")
         if declared is not None and declared.isdigit() and int(declared) != len(points):
             raise FileFormatError(
-                f"Thrust curve is incomplete: {len(points)} points found, {declared} declared."
+                _('Thrust curve is incomplete: {count} points found, {declared} declared.').format(count=len(points), declared=declared)
             )
         return points
 

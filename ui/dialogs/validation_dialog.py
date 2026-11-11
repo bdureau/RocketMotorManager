@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from localization import _
+
 from typing import Optional
 
 from PyQt6.QtCore import pyqtSignal
@@ -21,18 +23,17 @@ class ValidationDialog(QDialog):
     def __init__(self, report: ValidationReport, title: str = "", confirm_text: str = "",
                  parent: Optional[QWidget] = None) -> None:
         super().__init__(parent)
-        self.setWindowTitle(title or self.tr("Data Validation"))
+        self.setWindowTitle(title or _("Data Validation"))
         self.resize(560, 380)
         summary = QLabel()
         if report.is_valid and not report.warnings:
-            summary.setText(self.tr("✔ No problem detected. The data is valid."))
+            summary.setText(_("✔ No problem detected. The data is valid."))
             summary.setStyleSheet("color: #2E8B57; font-weight: bold;")
         else:
-            summary.setText(self.tr("%1 error(s), %2 warning(s). Double-click an item to go to the point.")
-                            .replace("%1", str(len(report.errors))).replace("%2", str(len(report.warnings))))
+            summary.setText(_("{errors} error(s), {warnings} warning(s). Double-click an item to go to the point.").format(errors=str(len(report.errors)), warnings=str(len(report.warnings))))
         self.list = QListWidget()
         for issue in report.issues:
-            where = self.tr(" (row %1)").replace("%1", str(issue.row + 1)) if issue.row is not None else ""
+            where = _(" (row {row})").format(row=str(issue.row + 1)) if issue.row is not None else ""
             item = QListWidgetItem(icon(_ICONS[issue.severity]), f"[{issue.severity.value.upper()}] {issue.message}{where}")
             item.setData(256, issue.row)
             self.list.addItem(item)

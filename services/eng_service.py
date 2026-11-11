@@ -25,6 +25,8 @@ implicit. A file may contain several motors one after another.
 
 from __future__ import annotations
 
+from localization import _
+
 import logging
 import math
 import unicodedata
@@ -99,10 +101,10 @@ class EngService:
                 pending_comments = []
                 continue
             if current is None:
-                raise FileFormatError("Data found before the motor header line.", line_number=number, line_content=raw)
+                raise FileFormatError(_('Data found before the motor header line.'), line_number=number, line_content=raw)
             current.points.append(self._parse_point(tokens, number, raw))
         if current is None:
-            raise FileFormatError("No motor header found: this is not a valid ENG file.")
+            raise FileFormatError(_('No motor header found: this is not a valid ENG file.'))
         current.metadata.eng_comments.extend(pending_comments)  # trailing comments are kept
         self._finish_motor(current, result, None)
         return result
@@ -134,11 +136,11 @@ class EngService:
             name=name,
             manufacturer=manufacturer,
             designation=name,
-            diameter_mm=self._header_number(diameter, "diameter", number, raw),
-            length_mm=self._header_number(length, "length", number, raw),
+            diameter_mm=self._header_number(diameter, _("diameter"), number, raw),
+            length_mm=self._header_number(length, _("length"), number, raw),
             delays=delays,
-            propellant_mass_g=self._header_number(prop_kg, "propellant mass", number, raw) * 1000.0,
-            declared_total_mass_g=self._header_number(total_kg, "total mass", number, raw) * 1000.0,
+            propellant_mass_g=self._header_number(prop_kg, _("propellant mass"), number, raw) * 1000.0,
+            declared_total_mass_g=self._header_number(total_kg, _("total mass"), number, raw) * 1000.0,
         )
         return Motor(metadata=meta)
 
@@ -147,9 +149,9 @@ class EngService:
         try:
             value = float(token)
         except ValueError as exc:
-            raise FileFormatError(f"Invalid {caption} '{token}' in header.", line_number=number, line_content=raw) from exc
+            raise FileFormatError(_("Invalid {caption} '{token}' in header.").format(caption=caption, token=token), line_number=number, line_content=raw) from exc
         if not math.isfinite(value) or value < 0:
-            raise FileFormatError(f"Invalid {caption} '{token}' in header.", line_number=number, line_content=raw)
+            raise FileFormatError(_("Invalid {caption} '{token}' in header.").format(caption=caption, token=token), line_number=number, line_content=raw)
         return value
 
     @staticmethod
@@ -157,16 +159,16 @@ class EngService:
         """Parse a ``time thrust`` line."""
         if len(tokens) != 2:
             raise FileFormatError(
-                f"Expected two values (time thrust), found {len(tokens)}.", line_number=number, line_content=raw
+                _('Expected two values (time thrust), found {count}.').format(count=len(tokens)), line_number=number, line_content=raw
             )
         try:
             time_s, thrust_n = float(tokens[0]), float(tokens[1])
         except ValueError as exc:
-            raise FileFormatError("Non-numeric thrust data.", line_number=number, line_content=raw) from exc
+            raise FileFormatError(_('Non-numeric thrust data.'), line_number=number, line_content=raw) from exc
         if not (math.isfinite(time_s) and math.isfinite(thrust_n)):
-            raise FileFormatError("Non-finite thrust data.", line_number=number, line_content=raw)
+            raise FileFormatError(_('Non-finite thrust data.'), line_number=number, line_content=raw)
         if time_s < 0:
-            raise FileFormatError("Negative time value.", line_number=number, line_content=raw)
+            raise FileFormatError(_('Negative time value.'), line_number=number, line_content=raw)
         return ThrustPoint(time_s, thrust_n)
 
     @staticmethod
@@ -174,12 +176,13 @@ class EngService:
         """Validate a completed motor block and add it to the result."""
         name = motor.metadata.name
         if not motor.points:
-            where = f" before line {next_line}" if next_line else ""
-            raise FileFormatError(f"Motor '{name}' has no thrust data{where}.")
+            if next_line:
+                raise FileFormatError(_("Motor '{name}' has no thrust data before line {line}.").format(name=name, line=next_line))
+            raise FileFormatError(_("Motor '{name}' has no thrust data.").format(name=name))
         if not motor.is_chronological():
-            result.warnings.append(f"Motor '{name}': thrust points are not in increasing time order.")
+            result.warnings.append(_("Motor '{name}': thrust points are not in increasing time order.").format(name=name))
         if motor.points[-1].thrust_n != 0.0:
-            result.warnings.append(f"Motor '{name}': the curve does not end with a zero thrust point.")
+            result.warnings.append(_("Motor '{name}': the curve does not end with a zero thrust point.").format(name=name))
         result.motors.append(motor)
 
     # ------------------------------------------------------------------
@@ -201,13 +204,13 @@ class EngService:
             report = self.validate_for_export(motor)
             if not report.is_valid:
                 raise ValidationError(
-                    f"Motor '{motor.metadata.name or '?'}' cannot be exported to ENG:\n{report.summary()}"
+                    _("Motor '{name}' cannot be exported to ENG:\n{report}").format(name=motor.metadata.name or '?', report=report.summary())
                 )
             if report.warnings and not allow_warnings:
-                raise ValidationError(f"Export cancelled because of warnings:\n{report.summary()}")
+                raise ValidationError(_('Export cancelled because of warnings:\n{report}').format(report=report.summary()))
             blocks.append(self._motor_block(motor, header_comment))
         if not blocks:
-            raise ValidationError("No motor to export.")
+            raise ValidationError(_('No motor to export.'))
         return ENG_LINE_ENDING.join(blocks) + ENG_LINE_ENDING
 
     def write_file(self, path: PathLike, motors: Iterable[Motor], allow_warnings: bool = True, header_comment: str = "") -> None:

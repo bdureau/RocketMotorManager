@@ -7,6 +7,8 @@ so that each value displayed or exported can be traced back to its source.
 
 from __future__ import annotations
 
+from localization import _
+
 from dataclasses import dataclass
 from enum import Enum
 
@@ -88,7 +90,7 @@ def get_unit(symbol: str) -> Unit:
     try:
         return _UNITS[symbol]
     except KeyError as exc:
-        raise KeyError(f"Unknown unit '{symbol}'") from exc
+        raise KeyError(_("Unknown unit '{symbol}'").format(symbol=symbol)) from exc
 
 
 def units_for(quantity: Quantity) -> list[str]:
@@ -106,8 +108,7 @@ def convert(value: float, from_symbol: str, to_symbol: str) -> float:
     target = get_unit(to_symbol)
     if source.quantity != target.quantity:
         raise ValueError(
-            f"Cannot convert {source.quantity.value} ({from_symbol}) "
-            f"to {target.quantity.value} ({to_symbol})"
+            _('Cannot convert {source_quantity} ({from_symbol}) to {target_quantity} ({to_symbol})').format(source_quantity=source.quantity.value, from_symbol=from_symbol, target_quantity=target.quantity.value, to_symbol=to_symbol)
         )
     return value * source.factor / target.factor
 

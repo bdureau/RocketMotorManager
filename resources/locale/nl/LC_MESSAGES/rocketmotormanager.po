@@ -1,0 +1,3162 @@
+# Dutch translation of Rocket Motor Manager.
+# Copyright (C) 2026 Boris du Reau
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Rocket Motor Manager 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-10 20:20+0000\n"
+"PO-Revision-Date: 2026-11-10 07:01+0000\n"
+"Last-Translator: Boris du Reau\n"
+"Language: nl\n"
+"Language-Team: Dutch\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: application/error_handler.py:32
+#, python-brace-format
+msgid "File: {path}"
+msgstr "Bestand: {path}"
+
+#: application/error_handler.py:33
+msgid "Invalid file"
+msgstr "Ongeldig bestand"
+
+#: application/error_handler.py:35
+msgid "File access error"
+msgstr "Fout bij bestandstoegang"
+
+#: application/error_handler.py:37
+msgid "Invalid data"
+msgstr "Ongeldige gegevens"
+
+#: application/error_handler.py:39
+msgid "Error"
+msgstr "Fout"
+
+#: application/error_handler.py:41
+msgid "Out of memory"
+msgstr "Onvoldoende geheugen"
+
+#: application/error_handler.py:41
+msgid "The operation needs more memory than available."
+msgstr "De bewerking heeft meer geheugen nodig dan beschikbaar."
+
+#: application/error_handler.py:42
+msgid "Unexpected error"
+msgstr "Onverwachte fout"
+
+#: application/error_handler.py:115
+msgid "An unexpected error occurred. The details were written to the log file."
+msgstr "Er is een onverwachte fout opgetreden. De details zijn in het logbestand geschreven."
+
+#: application/version.py:16
+msgid ""
+"Design, edit, convert, analyse and archive rocket motor thrust data (RASP .ENG format compatible "
+"with OpenRocket and RockSim)."
+msgstr ""
+"Stuwkrachtgegevens van raketmotoren ontwerpen, bewerken, converteren, analyseren en archiveren "
+"(RASP .ENG-formaat, compatibel met OpenRocket en RockSim)."
+
+#: models/errors.py:45
+#, python-brace-format
+msgid "Line {line}: {message}"
+msgstr "Regel {line}: {message}"
+
+#: models/label_template.py:35 ui/dialogs/srm_import_dialog.py:141 ui/motor_editor.py:24
+msgid "Motor name"
+msgstr "Motornaam"
+
+#: models/label_template.py:36 ui/dialogs/srm_import_dialog.py:142 ui/motor_editor.py:25
+msgid "Manufacturer"
+msgstr "Fabrikant"
+
+#: models/label_template.py:37
+msgid "Designation"
+msgstr "Aanduiding"
+
+#: models/label_template.py:38
+msgid "Diameter"
+msgstr "Diameter"
+
+#: models/label_template.py:39
+msgid "Length"
+msgstr "Lengte"
+
+#: models/label_template.py:40 models/motor_calculations.py:79 services/srm_service.py:179
+#: ui/motor_editor.py:126
+msgid "Total impulse"
+msgstr "Totale impuls"
+
+#: models/label_template.py:41 models/motor_calculations.py:81 services/srm_service.py:179
+#: ui/motor_editor.py:126
+msgid "Average thrust"
+msgstr "Gemiddelde stuwkracht"
+
+#: models/label_template.py:42 models/motor_calculations.py:80 services/srm_service.py:180
+#: ui/motor_editor.py:127
+msgid "Maximum thrust"
+msgstr "Maximale stuwkracht"
+
+#: models/label_template.py:43 models/motor_calculations.py:82 services/srm_service.py:181
+#: ui/motor_editor.py:127 ui/preferences_window.py:86
+msgid "Burn time"
+msgstr "Brandduur"
+
+#: models/label_template.py:44 models/motor_calculations.py:87 models/validation.py:149
+msgid "Propellant mass"
+msgstr "Stuwstofmassa"
+
+#: models/label_template.py:45
+msgid "Total mass"
+msgstr "Totale massa"
+
+#: models/label_template.py:46 ui/dialogs/srm_import_dialog.py:95
+msgid "Propellant"
+msgstr "Stuwstof"
+
+#: models/label_template.py:47
+msgid "Delays"
+msgstr "Vertragingen"
+
+#: models/label_template.py:48 services/thrust_analysis.py:94 ui/motor_editor.py:128
+msgid "Impulse class"
+msgstr "Impulsklasse"
+
+#: models/motor_calculations.py:37
+msgid "Full powered curve"
+msgstr "Volledige stuwkrachtcurve"
+
+#: models/motor_calculations.py:38
+#, python-format
+msgid "5 % of maximum thrust (NAR)"
+msgstr "5 % van de maximale stuwkracht (NAR)"
+
+#: models/motor_calculations.py:83
+msgid "Initial thrust"
+msgstr "Beginstuwkracht"
+
+#: models/motor_calculations.py:84
+msgid "Final thrust"
+msgstr "Eindstuwkracht"
+
+#: models/motor_calculations.py:85
+msgid "Time to maximum thrust"
+msgstr "Tijd tot maximale stuwkracht"
+
+#: models/motor_calculations.py:86
+msgid "Initial motor mass"
+msgstr "Beginmassa van de motor"
+
+#: models/motor_calculations.py:88
+msgid "Propellant mass fraction"
+msgstr "Stuwstofmassafractie"
+
+#: models/motor_calculations.py:89 services/srm_service.py:181 ui/motor_editor.py:128
+msgid "Specific impulse"
+msgstr "Specifieke impuls"
+
+#: models/motor_calculations.py:105
+msgid "The thrust curve contains non-numeric values."
+msgstr "De stuwkrachtcurve bevat niet-numerieke waarden."
+
+#: models/motor_calculations.py:107
+msgid "Thrust points are not in strictly increasing time order."
+msgstr "De stuwkrachtpunten staan niet in strikt oplopende tijdsvolgorde."
+
+#: models/motor_calculations.py:131
+msgid "The thrust curve has no positive thrust."
+msgstr "De stuwkrachtcurve heeft geen positieve stuwkracht."
+
+#: models/motor_calculations.py:195
+#, python-brace-format
+msgid "Unknown burn time method '{burn_time_method}'"
+msgstr "Onbekende brandduurmethode '{burn_time_method}'"
+
+#: models/motor_calculations.py:213
+msgid "Propellant mass not specified."
+msgstr "Stuwstofmassa niet opgegeven."
+
+#: models/motor_calculations.py:215
+msgid "Propellant mass must be greater than zero."
+msgstr "De stuwstofmassa moet groter zijn dan nul."
+
+#: models/motor_calculations.py:217
+msgid "Total motor mass not specified."
+msgstr "Totale motormassa niet opgegeven."
+
+#: models/motor_calculations.py:223
+msgid "Propellant mass is greater than the total motor mass."
+msgstr "De stuwstofmassa is groter dan de totale motormassa."
+
+#: models/motor_calculations.py:234 models/validation.py:100
+msgid "At least two thrust points are required."
+msgstr "Er zijn minstens twee stuwkrachtpunten nodig."
+
+#: models/motor_calculations.py:243
+msgid "The curve contains negative thrust values."
+msgstr "De curve bevat negatieve stuwkrachtwaarden."
+
+#: models/motor_calculations.py:251
+msgid "The last thrust point is not zero: the curve may be truncated."
+msgstr "Het laatste stuwkrachtpunt is niet nul: de curve is mogelijk afgekapt."
+
+#: models/motor_calculations.py:264
+msgid "Burn time is zero."
+msgstr "De brandduur is nul."
+
+#: models/motor_calculations.py:276
+msgid "Requires propellant mass and total motor mass."
+msgstr "Vereist de stuwstofmassa en de totale motormassa."
+
+#: models/motor_calculations.py:282
+msgid "Requires the total impulse and a positive propellant mass."
+msgstr "Vereist de totale impuls en een positieve stuwstofmassa."
+
+#: models/units.py:93
+#, python-brace-format
+msgid "Unknown unit '{symbol}'"
+msgstr "Onbekende eenheid '{symbol}'"
+
+#: models/units.py:111
+#, python-brace-format
+msgid "Cannot convert {source_quantity} ({from_symbol}) to {target_quantity} ({to_symbol})"
+msgstr "Kan {source_quantity} ({from_symbol}) niet omrekenen naar {target_quantity} ({to_symbol})"
+
+#: models/validation.py:20
+msgid "INFO"
+msgstr "INFO"
+
+#: models/validation.py:20
+msgid "WARNING"
+msgstr "WAARSCHUWING"
+
+#: models/validation.py:20
+msgid "ERROR"
+msgstr "FOUT"
+
+#: models/validation.py:84
+msgid "No problem detected."
+msgstr "Geen problemen gevonden."
+
+#: models/validation.py:87 ui/dialogs/validation_dialog.py:36
+#, python-brace-format
+msgid " (row {row})"
+msgstr " (rij {row})"
+
+#: models/validation.py:97
+msgid "The thrust curve contains no point."
+msgstr "De stuwkrachtcurve bevat geen punten."
+
+#: models/validation.py:103
+msgid "Missing or non-numeric value."
+msgstr "Ontbrekende of niet-numerieke waarde."
+
+#: models/validation.py:106 services/eng_service.py:171
+msgid "Negative time value."
+msgstr "Negatieve tijdwaarde."
+
+#: models/validation.py:108
+msgid "Negative thrust value."
+msgstr "Negatieve stuwkrachtwaarde."
+
+#: models/validation.py:112
+msgid "The curve has no positive thrust."
+msgstr "De curve heeft geen positieve stuwkracht."
+
+#: models/validation.py:116
+msgid "The last point should have zero thrust (burnout); ENG readers expect it."
+msgstr "Het laatste punt moet stuwkracht nul hebben (einde verbranding); ENG-lezers verwachten dit."
+
+#: models/validation.py:131
+msgid "Duplicate time value."
+msgstr "Dubbele tijdwaarde."
+
+#: models/validation.py:133
+msgid "Time is lower than the previous point."
+msgstr "De tijd is kleiner dan die van het vorige punt."
+
+#: models/validation.py:142
+msgid "The motor name is required."
+msgstr "De motornaam is verplicht."
+
+#: models/validation.py:144
+msgid "Spaces in the motor name will be replaced by '_' in ENG files."
+msgstr "Spaties in de motornaam worden in ENG-bestanden vervangen door '_'."
+
+#: models/validation.py:146
+msgid "The manufacturer is required by the ENG format."
+msgstr "De fabrikant is verplicht in het ENG-formaat."
+
+#: models/validation.py:147
+msgid "Motor diameter"
+msgstr "De motordiameter"
+
+#: models/validation.py:148
+msgid "Motor length"
+msgstr "De motorlengte"
+
+#: models/validation.py:150
+msgid "Total motor mass"
+msgstr "De totale motormassa"
+
+#: models/validation.py:153
+msgid "Propellant mass exceeds the total motor mass."
+msgstr "De stuwstofmassa overschrijdt de totale motormassa."
+
+#: models/validation.py:156
+#, python-brace-format
+msgid "Invalid ejection delay '{token}'. Use numbers separated by '-' or 'P'."
+msgstr "Ongeldige uitstootvertraging '{token}'. Gebruik getallen gescheiden door '-' of 'P'."
+
+#: models/validation.py:163
+#, python-brace-format
+msgid "{caption} is required."
+msgstr "{caption} is verplicht."
+
+#: models/validation.py:165
+#, python-brace-format
+msgid "{caption} must be greater than zero."
+msgstr "{caption} moet groter zijn dan nul."
+
+#: services/csv_service.py:26
+msgid "Pipe (|)"
+msgstr "Verticale streep (|)"
+
+#: services/csv_service.py:26
+msgid "Space / whitespace"
+msgstr "Spatie / witruimte"
+
+#: services/csv_service.py:26 ui/dialogs/csv_export_dialog.py:23
+msgid "Tab"
+msgstr "Tab"
+
+#: services/csv_service.py:26 ui/dialogs/csv_export_dialog.py:23
+msgid "Semicolon (;)"
+msgstr "Puntkomma (;)"
+
+#: services/csv_service.py:26 ui/dialogs/csv_export_dialog.py:23
+msgid "Comma (,)"
+msgstr "Komma (,)"
+
+#: services/csv_service.py:155
+msgid "The field separator and the decimal separator must differ."
+msgstr "Het veldscheidingsteken en het decimaalteken moeten verschillen."
+
+#: services/eng_service.py:104
+msgid "Data found before the motor header line."
+msgstr "Gegevens gevonden vóór de kopregel van de motor."
+
+#: services/eng_service.py:107
+msgid "No motor header found: this is not a valid ENG file."
+msgstr "Geen motorkop gevonden: dit is geen geldig ENG-bestand."
+
+#: services/eng_service.py:139
+msgid "diameter"
+msgstr "diameter"
+
+#: services/eng_service.py:140
+msgid "length"
+msgstr "lengte"
+
+#: services/eng_service.py:142
+msgid "propellant mass"
+msgstr "stuwstofmassa"
+
+#: services/eng_service.py:143
+msgid "total mass"
+msgstr "totale massa"
+
+#: services/eng_service.py:152 services/eng_service.py:154
+#, python-brace-format
+msgid "Invalid {caption} '{token}' in header."
+msgstr "Ongeldige {caption} '{token}' in de kop."
+
+#: services/eng_service.py:162
+#, python-brace-format
+msgid "Expected two values (time thrust), found {count}."
+msgstr "Twee waarden verwacht (tijd stuwkracht), {count} gevonden."
+
+#: services/eng_service.py:167
+msgid "Non-numeric thrust data."
+msgstr "Niet-numerieke stuwkrachtgegevens."
+
+#: services/eng_service.py:169
+msgid "Non-finite thrust data."
+msgstr "Niet-eindige stuwkrachtgegevens."
+
+#: services/eng_service.py:180
+#, python-brace-format
+msgid "Motor '{name}' has no thrust data before line {line}."
+msgstr "Motor '{name}' heeft geen stuwkrachtgegevens vóór regel {line}."
+
+#: services/eng_service.py:181
+#, python-brace-format
+msgid "Motor '{name}' has no thrust data."
+msgstr "Motor '{name}' heeft geen stuwkrachtgegevens."
+
+#: services/eng_service.py:183
+#, python-brace-format
+msgid "Motor '{name}': thrust points are not in increasing time order."
+msgstr "Motor '{name}': de stuwkrachtpunten staan niet in oplopende tijdsvolgorde."
+
+#: services/eng_service.py:185
+#, python-brace-format
+msgid "Motor '{name}': the curve does not end with a zero thrust point."
+msgstr "Motor '{name}': de curve eindigt niet met een punt met stuwkracht nul."
+
+#: services/eng_service.py:207
+#, python-brace-format
+msgid ""
+"Motor '{name}' cannot be exported to ENG:\n"
+"{report}"
+msgstr ""
+"Motor '{name}' kan niet naar ENG worden geëxporteerd:\n"
+"{report}"
+
+#: services/eng_service.py:210
+#, python-brace-format
+msgid ""
+"Export cancelled because of warnings:\n"
+"{report}"
+msgstr ""
+"Export geannuleerd vanwege waarschuwingen:\n"
+"{report}"
+
+#: services/eng_service.py:213
+msgid "No motor to export."
+msgstr "Geen motor om te exporteren."
+
+#: services/excel_service.py:40
+#, python-brace-format
+msgid "Unsupported Excel file type '{suffix}'. Use .xlsx or .xls."
+msgstr "Niet-ondersteund Excel-bestandstype '{suffix}'. Gebruik .xlsx of .xls."
+
+#: services/excel_service.py:50 services/excel_service.py:69 services/excel_service.py:100
+#: services/file_utils.py:31
+#, python-brace-format
+msgid "File not found: {path}"
+msgstr "Bestand niet gevonden: {path}"
+
+#: services/excel_service.py:52 services/excel_service.py:71 services/excel_service.py:102
+#, python-brace-format
+msgid "Permission denied (is the file open in Excel?): {path}"
+msgstr "Toegang geweigerd (is het bestand geopend in Excel?): {path}"
+
+#: services/excel_service.py:54
+#, python-brace-format
+msgid "Missing library to read this file: {value}"
+msgstr "Ontbrekende bibliotheek om dit bestand te lezen: {value}"
+
+#: services/excel_service.py:56
+#, python-brace-format
+msgid "Cannot open workbook '{path}': {value}"
+msgstr "Kan werkmap '{path}' niet openen: {value}"
+
+#: services/excel_service.py:73
+#, python-brace-format
+msgid "Cannot read sheet '{sheet}' of '{path}': {value}"
+msgstr "Kan blad '{sheet}' van '{path}' niet lezen: {value}"
+
+#: services/excel_service.py:104
+#, python-brace-format
+msgid "Cannot read workbook '{path}': {value}"
+msgstr "Kan werkmap '{path}' niet lezen: {value}"
+
+#: services/file_utils.py:33
+#, python-brace-format
+msgid "Permission denied while reading: {path}"
+msgstr "Leestoegang geweigerd: {path}"
+
+#: services/file_utils.py:35
+#, python-brace-format
+msgid "Cannot read '{path}': {reason}"
+msgstr "Kan '{path}' niet lezen: {reason}"
+
+#: services/file_utils.py:60
+#, python-brace-format
+msgid "Cannot decode '{path}' as {encoding}: {value}"
+msgstr "Kan '{path}' niet decoderen als {encoding}: {value}"
+
+#: services/file_utils.py:82
+#, python-brace-format
+msgid "Permission denied while writing: {target}"
+msgstr "Schrijftoegang geweigerd: {target}"
+
+#: services/file_utils.py:84
+#, python-brace-format
+msgid "Cannot write '{target}': {reason}"
+msgstr "Kan '{target}' niet schrijven: {reason}"
+
+#: services/file_utils.py:94
+#, python-brace-format
+msgid "Some characters cannot be encoded as {encoding}: {value}"
+msgstr "Sommige tekens kunnen niet worden gecodeerd als {encoding}: {value}"
+
+#: services/image_digitizer.py:36
+msgid "Images (*.png *.jpg *.jpeg *.tif *.tiff *.bmp)"
+msgstr "Afbeeldingen (*.png *.jpg *.jpeg *.tif *.tiff *.bmp)"
+
+#: services/image_digitizer.py:56
+#, python-brace-format
+msgid "Unsupported or corrupted image file: {path}"
+msgstr "Niet-ondersteund of beschadigd afbeeldingsbestand: {path}"
+
+#: services/image_digitizer.py:98
+msgid "Perspective correction needs exactly four points."
+msgstr "Perspectiefcorrectie vereist precies vier punten."
+
+#: services/image_digitizer.py:111
+msgid "The perspective quadrilateral is too small."
+msgstr "De perspectiefvierhoek is te klein."
+
+#: services/image_digitizer.py:140
+msgid "The crop rectangle is too small."
+msgstr "De bijsnijrechthoek is te klein."
+
+#: services/image_digitizer.py:244
+msgid "Calibration needs the origin, the time-axis and the thrust-axis reference points."
+msgstr "De kalibratie vereist de referentiepunten oorsprong, tijdas en stuwkrachtas."
+
+#: services/image_digitizer.py:246
+msgid "Calibration points are aligned or have identical values; the mapping is undefined."
+msgstr "De kalibratiepunten liggen op één lijn of hebben identieke waarden; de omrekening is onbepaald."
+
+#: services/image_digitizer.py:289
+msgid "Point outside the image."
+msgstr "Punt buiten de afbeelding."
+
+#: services/image_digitizer.py:443
+msgid "No pixel of the selected colour was found. Increase the tolerance or pick the curve colour."
+msgstr "Geen pixel van de gekozen kleur gevonden. Verhoog de tolerantie of kies de kleur van de curve."
+
+#: services/label_service.py:292
+msgid "A template name is required."
+msgstr "Een sjabloonnaam is verplicht."
+
+#: services/label_service.py:303
+#, python-brace-format
+msgid "Cannot delete template '{name}': {value}"
+msgstr "Kan sjabloon '{name}' niet verwijderen: {value}"
+
+#: services/label_service.py:320
+#, python-brace-format
+msgid "A {width_mm} x {height_mm} mm label does not fit on {paper_format} paper with {margin} mm margins."
+msgstr ""
+"Een etiket van {width_mm} x {height_mm} mm past niet op {paper_format}-papier met marges van "
+"{margin} mm."
+
+#: services/label_service.py:363
+#, python-brace-format
+msgid "Cannot write PDF file: {path}"
+msgstr "Kan PDF-bestand niet schrijven: {path}"
+
+#: services/label_service.py:393
+msgid "Use a .png, .jpg or .jpeg file name."
+msgstr "Gebruik een bestandsnaam met .png, .jpg of .jpeg."
+
+#: services/label_service.py:398
+#, python-brace-format
+msgid "Cannot write image file: {path}"
+msgstr "Kan afbeeldingsbestand niet schrijven: {path}"
+
+#: services/srm_service.py:80
+msgid "Performance sheet, simplified (recommended)"
+msgstr "Blad Performance, vereenvoudigd (aanbevolen)"
+
+#: services/srm_service.py:81
+msgid "Performance sheet, full resolution"
+msgstr "Blad Performance, volledige resolutie"
+
+#: services/srm_service.py:82
+msgid "Performance sheet, resampled"
+msgstr "Blad Performance, herbemonsterd"
+
+#: services/srm_service.py:83
+msgid "Output sheet table (23 points)"
+msgstr "Tabel van blad Output (23 punten)"
+
+#: services/srm_service.py:180
+msgid "Thrust time"
+msgstr "Stuwkrachtduur"
+
+#: services/srm_service.py:182
+msgid "Max chamber pressure"
+msgstr "Maximale kamerdruk"
+
+#: services/srm_service.py:187
+#, python-brace-format
+msgid "Class {motor_class}"
+msgstr "Klasse {motor_class}"
+
+#: services/srm_service.py:188
+#, python-brace-format
+msgid "SRM workbook results: {results}."
+msgstr "Resultaten van de SRM-werkmap: {results}."
+
+#: services/srm_service.py:284
+#, python-brace-format
+msgid "This workbook is not a Richard Nakka SRM workbook (missing sheet(s): {missing})."
+msgstr "Deze werkmap is geen SRM-werkmap van Richard Nakka (ontbrekende bladen: {missing})."
+
+#: services/srm_service.py:304
+msgid "No thrust-time data found in the 'Performance' or 'Output' sheets of the SRM workbook."
+msgstr "Geen tijd-stuwkrachtgegevens gevonden in de bladen 'Performance' of 'Output' van de SRM-werkmap."
+
+#: services/srm_service.py:306
+msgid "The 'Performance' sheet curve was not found; the Output table (lower resolution) is used."
+msgstr ""
+"De curve van blad 'Performance' is niet gevonden; de Output-tabel (lagere resolutie) wordt "
+"gebruikt."
+
+#: services/srm_service.py:459
+#, python-brace-format
+msgid ""
+"The thrust curve integrates to {curve} N.s whereas the workbook reports {reference} N.s "
+"({deviation} difference). Check that the workbook was recalculated."
+msgstr ""
+"De stuwkrachtcurve geeft {curve} N.s terwijl de werkmap {reference} N.s meldt ({deviation} "
+"verschil). Controleer of de werkmap opnieuw is berekend."
+
+#: services/srm_service.py:463
+msgid ""
+"SRM gives the chamber INSIDE diameter and length: enter the casing outside diameter and the "
+"overall motor length for the ENG export."
+msgstr ""
+"SRM geeft de BINNENdiameter en -lengte van de kamer: voer voor de ENG-export de buitendiameter "
+"van de behuizing en de totale motorlengte in."
+
+#: services/tabular_data.py:123
+msgid "Time and Thrust must be mapped to two different columns."
+msgstr "Tijd en stuwkracht moeten aan twee verschillende kolommen worden gekoppeld."
+
+#: services/tabular_data.py:138
+#, python-brace-format
+msgid "{count} invalid row(s). First: row {first_row}: {first_reason}"
+msgstr "{count} ongeldige rij(en). Eerste: rij {first_row}: {first_reason}"
+
+#: services/tabular_data.py:141
+msgid "No valid numeric data found in the selected columns."
+msgstr "Geen geldige numerieke gegevens in de geselecteerde kolommen."
+
+#: services/thrust_analysis.py:76
+msgid "n/a"
+msgstr "n.v.t."
+
+#: services/thrust_analysis.py:84
+#, python-brace-format
+msgid "Motor analysis - {motor}"
+msgstr "Motoranalyse - {motor}"
+
+#: services/thrust_analysis.py:84
+msgid "Unnamed motor"
+msgstr "Naamloze motor"
+
+#: services/thrust_analysis.py:85
+#, python-brace-format
+msgid "Manufacturer: {manufacturer}"
+msgstr "Fabrikant: {manufacturer}"
+
+#: services/thrust_analysis.py:86
+#, python-brace-format
+msgid "Burn time method: {method}"
+msgstr "Brandduurmethode: {method}"
+
+#: services/thrust_analysis.py:87
+#, python-brace-format
+msgid "Thrust points: {count}"
+msgstr "Stuwkrachtpunten: {count}"
+
+#: services/thrust_analysis.py:96
+msgid "Suggested designation"
+msgstr "Voorgestelde aanduiding"
+
+#: services/thrust_analysis.py:99
+msgid "Warnings:"
+msgstr "Waarschuwingen:"
+
+#: services/xml_service.py:55
+#, python-brace-format
+msgid "Invalid format version '{version}'."
+msgstr "Ongeldige formaatversie '{version}'."
+
+#: services/xml_service.py:206
+#, python-brace-format
+msgid "The project file is corrupted (invalid XML): {value}"
+msgstr "Het projectbestand is beschadigd (ongeldige XML): {value}"
+
+#: services/xml_service.py:208
+#, python-brace-format
+msgid "Not a Rocket Motor Manager project (root element '{tag}')."
+msgstr "Geen Rocket Motor Manager-project (hoofdelement '{tag}')."
+
+#: services/xml_service.py:213
+msgid "Invalid project: the <Motor> element is missing."
+msgstr "Ongeldig project: het element <Motor> ontbreekt."
+
+#: services/xml_service.py:229
+#, python-brace-format
+msgid ""
+"This project was created with a newer, incompatible format ({version}). Please update the "
+"application."
+msgstr "Dit project is gemaakt met een nieuwer, incompatibel formaat ({version}). Werk de toepassing bij."
+
+#: services/xml_service.py:232
+#, python-brace-format
+msgid "Project format {version} is newer than {current_format_version}; unknown data may be ignored."
+msgstr ""
+"Projectformaat {version} is nieuwer dan {current_format_version}; onbekende gegevens kunnen "
+"worden genegeerd."
+
+#: services/xml_service.py:237
+#, python-brace-format
+msgid "Project upgraded from format {version} to {target}."
+msgstr "Project bijgewerkt van formaat {version} naar {target}."
+
+#: services/xml_service.py:285
+#, python-brace-format
+msgid "Invalid number '{text}' in <{tag}/{tag2}>."
+msgstr "Ongeldig getal '{text}' in <{tag}/{tag2}>."
+
+#: services/xml_service.py:287
+#, python-brace-format
+msgid "Non-finite number in <{tag}/{tag2}>."
+msgstr "Niet-eindig getal in <{tag}/{tag2}>."
+
+#: services/xml_service.py:300
+#, python-brace-format
+msgid "Invalid thrust point #{index} in <ThrustCurve>: {attrib}."
+msgstr "Ongeldig stuwkrachtpunt nr. {index} in <ThrustCurve>: {attrib}."
+
+#: services/xml_service.py:304
+#, python-brace-format
+msgid "Thrust curve is incomplete: {count} points found, {declared} declared."
+msgstr "Stuwkrachtcurve onvolledig: {count} punten gevonden, {declared} opgegeven."
+
+#: ui/common.py:141
+msgid "Choose a colour"
+msgstr "Kies een kleur"
+
+#: ui/dialogs/about_dialog.py:24
+#, python-brace-format
+msgid "About {app}"
+msgstr "Over {app}"
+
+#: ui/dialogs/about_dialog.py:29
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Versie {version}"
+
+#: ui/dialogs/about_dialog.py:33
+#, python-brace-format
+msgid "Log folder: {path}"
+msgstr "Logmap: {path}"
+
+#: ui/dialogs/about_dialog.py:33
+#, python-brace-format
+msgid "Executable: {path}"
+msgstr "Uitvoerbaar bestand: {path}"
+
+#: ui/dialogs/analysis_dialog.py:29
+msgid "Thrust Analysis"
+msgstr "Stuwkrachtanalyse"
+
+#: ui/dialogs/analysis_dialog.py:35
+#, python-format
+msgid ""
+"Definition of the burn time used for the average thrust:\n"
+"- Full powered curve: from ignition to burnout.\n"
+"- 5 % of maximum thrust: NAR/NFPA convention."
+msgstr ""
+"Definitie van de brandduur voor de gemiddelde stuwkracht:\n"
+"- Volledige stuwkrachtcurve: van ontsteking tot einde verbranding.\n"
+"- 5 % van de maximale stuwkracht: NAR/NFPA-conventie."
+
+#: ui/dialogs/analysis_dialog.py:40
+msgid "Value"
+msgstr "Waarde"
+
+#: ui/dialogs/analysis_dialog.py:40
+msgid "Unit"
+msgstr "Eenheid"
+
+#: ui/dialogs/analysis_dialog.py:40 ui/dialogs/srm_import_dialog.py:60
+msgid "Characteristic"
+msgstr "Kenmerk"
+
+#: ui/dialogs/analysis_dialog.py:49
+msgid "Copy report"
+msgstr "Rapport kopiëren"
+
+#: ui/dialogs/analysis_dialog.py:50
+msgid "Copy the analysis as text to the clipboard."
+msgstr "De analyse als tekst naar het klembord kopiëren."
+
+#: ui/dialogs/analysis_dialog.py:52
+msgid "Save report..."
+msgstr "Rapport opslaan..."
+
+#: ui/dialogs/analysis_dialog.py:53
+msgid "Save the analysis report as a text file."
+msgstr "Het analyserapport als tekstbestand opslaan."
+
+#: ui/dialogs/analysis_dialog.py:60
+msgid "Burn time definition"
+msgstr "Definitie van de brandduur"
+
+#: ui/dialogs/analysis_dialog.py:85
+msgid "Not available"
+msgstr "Niet beschikbaar"
+
+#: ui/dialogs/analysis_dialog.py:91
+#, python-brace-format, python-format
+msgid "Impulse class: {impulse_class} ({percent} % of class)"
+msgstr "Impulsklasse: {impulse_class} ({percent} % van de klasse)"
+
+#: ui/dialogs/analysis_dialog.py:93
+#, python-brace-format
+msgid "Suggested designation: {designation}"
+msgstr "Voorgestelde aanduiding: {designation}"
+
+#: ui/dialogs/analysis_dialog.py:95
+#, python-brace-format
+msgid "Burn window: {start} s to {end} s"
+msgstr "Brandvenster: {start} s tot {end} s"
+
+#: ui/dialogs/analysis_dialog.py:96
+msgid "Total impulse computed by trapezoidal integration (implicit origin at 0 s, 0 N)."
+msgstr "Totale impuls berekend met trapeziumintegratie (impliciete oorsprong bij 0 s, 0 N)."
+
+#: ui/dialogs/analysis_dialog.py:105
+msgid "Save analysis report"
+msgstr "Analyserapport opslaan"
+
+#: ui/dialogs/analysis_dialog.py:105
+msgid "Text files (*.txt)"
+msgstr "Tekstbestanden (*.txt)"
+
+#: ui/dialogs/csv_export_dialog.py:20
+msgid "Export CSV - options"
+msgstr "CSV exporteren - opties"
+
+#: ui/dialogs/csv_export_dialog.py:25
+msgid "Character separating the two columns."
+msgstr "Teken dat de twee kolommen scheidt."
+
+#: ui/dialogs/csv_export_dialog.py:27 ui/dialogs/tabular_import_dialog.py:72
+#: ui/preferences_window.py:77
+msgid "Point (1.5)"
+msgstr "Punt (1.5)"
+
+#: ui/dialogs/csv_export_dialog.py:28 ui/dialogs/tabular_import_dialog.py:73
+#: ui/preferences_window.py:78
+msgid "Comma (1,5)"
+msgstr "Komma (1,5)"
+
+#: ui/dialogs/csv_export_dialog.py:29
+msgid "Decimal mark. With a comma, the semicolon separator is selected automatically."
+msgstr "Decimaalteken. Bij een komma wordt automatisch de puntkomma als scheidingsteken gekozen."
+
+#: ui/dialogs/csv_export_dialog.py:34
+msgid "Text encoding. 'utf-8-sig' is best for opening in Excel."
+msgstr "Tekstcodering. 'utf-8-sig' is het best om te openen in Excel."
+
+#: ui/dialogs/csv_export_dialog.py:37
+msgid "Unit of the exported time column."
+msgstr "Eenheid van de geëxporteerde tijdkolom."
+
+#: ui/dialogs/csv_export_dialog.py:40
+msgid "Unit of the exported thrust column."
+msgstr "Eenheid van de geëxporteerde stuwkrachtkolom."
+
+#: ui/dialogs/csv_export_dialog.py:44
+msgid "Maximum number of decimals (trailing zeros are removed)."
+msgstr "Maximaal aantal decimalen (nullen achteraan worden verwijderd)."
+
+#: ui/dialogs/csv_export_dialog.py:45
+msgid "Include motor properties as '#' header lines"
+msgstr "Motoreigenschappen opnemen als '#'-kopregels"
+
+#: ui/dialogs/csv_export_dialog.py:47
+msgid "Adds commented lines with the motor properties before the data."
+msgstr "Voegt vóór de gegevens commentaarregels met de motoreigenschappen toe."
+
+#: ui/dialogs/csv_export_dialog.py:48 ui/dialogs/tabular_import_dialog.py:76
+msgid "Column separator"
+msgstr "Kolomscheidingsteken"
+
+#: ui/dialogs/csv_export_dialog.py:49 ui/dialogs/tabular_import_dialog.py:77
+#: ui/preferences_window.py:85
+msgid "Decimal separator"
+msgstr "Decimaalteken"
+
+#: ui/dialogs/csv_export_dialog.py:50 ui/dialogs/tabular_import_dialog.py:75
+msgid "Encoding"
+msgstr "Codering"
+
+#: ui/dialogs/csv_export_dialog.py:51
+msgid "Time unit"
+msgstr "Tijdeenheid"
+
+#: ui/dialogs/csv_export_dialog.py:52
+msgid "Thrust unit"
+msgstr "Stuwkrachteenheid"
+
+#: ui/dialogs/csv_export_dialog.py:53
+msgid "Decimals"
+msgstr "Decimalen"
+
+#: ui/dialogs/srm_import_dialog.py:42
+#, python-brace-format
+msgid "Import SRM workbook - {name}"
+msgstr "SRM-werkmap importeren - {name}"
+
+#: ui/dialogs/srm_import_dialog.py:58
+msgid "Grey: full resolution curve of the workbook. Blue: points that will be imported."
+msgstr "Grijs: curve van de werkmap in volledige resolutie. Blauw: punten die worden geïmporteerd."
+
+#: ui/dialogs/srm_import_dialog.py:60
+msgid "SRM workbook"
+msgstr "SRM-werkmap"
+
+#: ui/dialogs/srm_import_dialog.py:60
+msgid "Imported curve"
+msgstr "Geïmporteerde curve"
+
+#: ui/dialogs/srm_import_dialog.py:64
+msgid ""
+"Cross-check between the values computed by the SRM workbook and the values recomputed from the "
+"imported thrust curve."
+msgstr ""
+"Kruiscontrole tussen de waarden berekend door de SRM-werkmap en de waarden herberekend uit de "
+"geïmporteerde stuwkrachtcurve."
+
+#: ui/dialogs/srm_import_dialog.py:81
+msgid "Import motor"
+msgstr "Motor importeren"
+
+#: ui/dialogs/srm_import_dialog.py:90
+msgid "Workbook content"
+msgstr "Inhoud van de werkmap"
+
+#: ui/dialogs/srm_import_dialog.py:93
+msgid "Version"
+msgstr "Versie"
+
+#: ui/dialogs/srm_import_dialog.py:94 ui/label_editor.py:308
+msgid "Title"
+msgstr "Titel"
+
+#: ui/dialogs/srm_import_dialog.py:96
+msgid "Grain mass"
+msgstr "Korrelmassa"
+
+#: ui/dialogs/srm_import_dialog.py:97
+msgid "Chamber (inside)"
+msgstr "Kamer (binnenzijde)"
+
+#: ui/dialogs/srm_import_dialog.py:105
+msgid "Nozzle length"
+msgstr "Lengte van de straalpijp"
+
+#: ui/dialogs/srm_import_dialog.py:116
+msgid "Motor properties to complete"
+msgstr "Aan te vullen motoreigenschappen"
+
+#: ui/dialogs/srm_import_dialog.py:119
+msgid "Motor code written in the ENG file. Proposed from the class and the average thrust."
+msgstr ""
+"Motorcode die in het ENG-bestand wordt geschreven. Voorgesteld op basis van klasse en gemiddelde "
+"stuwkracht."
+
+#: ui/dialogs/srm_import_dialog.py:121
+msgid "required for ENG export (e.g. your name or club)"
+msgstr "verplicht voor ENG-export (bijv. uw naam of club)"
+
+#: ui/dialogs/srm_import_dialog.py:122
+msgid "The SRM workbook does not contain a manufacturer."
+msgstr "De SRM-werkmap bevat geen fabrikant."
+
+#: ui/dialogs/srm_import_dialog.py:124
+msgid ""
+"Ejection delays separated by '-'. 'P' = plugged (no ejection charge), usual for amateur motors "
+"with electronic deployment."
+msgstr ""
+"Uitstootvertragingen gescheiden door '-'. 'P' = afgesloten (zonder uitstootlading), gebruikelijk "
+"voor amateurmotoren met elektronische uitstoot."
+
+#: ui/dialogs/srm_import_dialog.py:128
+msgid ""
+"Casing OUTSIDE diameter in mm. Pre-filled with the chamber inside diameter of the workbook: add "
+"twice the casing wall thickness."
+msgstr ""
+"BUITENdiameter van de behuizing in mm. Vooraf ingevuld met de binnendiameter van de kamer uit de "
+"werkmap: tel tweemaal de wanddikte van de behuizing op."
+
+#: ui/dialogs/srm_import_dialog.py:135
+msgid ""
+"Overall motor length in mm. Pre-filled with the chamber length (plus the nozzle length when the "
+"workbook gives it)."
+msgstr ""
+"Totale motorlengte in mm. Vooraf ingevuld met de kamerlengte (plus de lengte van de straalpijp "
+"als de werkmap die geeft)."
+
+#: ui/dialogs/srm_import_dialog.py:138
+msgid "Empty casing mass in grams (not in the workbook). Needed for the total mass."
+msgstr "Massa van de lege behuizing in gram (niet in de werkmap). Nodig voor de totale massa."
+
+#: ui/dialogs/srm_import_dialog.py:140
+msgid "Nozzle and closure mass in grams (not in the workbook)."
+msgstr "Massa van de straalpijp en afsluitingen in gram (niet in de werkmap)."
+
+#: ui/dialogs/srm_import_dialog.py:143 ui/motor_editor.py:27
+msgid "Ejection delays"
+msgstr "Uitstootvertragingen"
+
+#: ui/dialogs/srm_import_dialog.py:144
+msgid "Outside diameter (mm)"
+msgstr "Buitendiameter (mm)"
+
+#: ui/dialogs/srm_import_dialog.py:145
+msgid "Overall length (mm)"
+msgstr "Totale lengte (mm)"
+
+#: ui/dialogs/srm_import_dialog.py:146 ui/motor_editor.py:34
+msgid "Casing mass (g)"
+msgstr "Massa van de behuizing (g)"
+
+#: ui/dialogs/srm_import_dialog.py:147 ui/motor_editor.py:35
+msgid "Nozzle and closure mass (g)"
+msgstr "Massa straalpijp en afsluitingen (g)"
+
+#: ui/dialogs/srm_import_dialog.py:151
+msgid "Thrust curve"
+msgstr "Stuwkrachtcurve"
+
+#: ui/dialogs/srm_import_dialog.py:159
+msgid ""
+"Performance sheet: the curve computed by SRM (about 900 points, exact total impulse).\n"
+"Simplified: only the points needed to stay within the tolerance (compact ENG files).\n"
+"Output sheet: the 23-point summary table of the workbook (coarser, impulse slightly lower)."
+msgstr ""
+"Blad Performance: de door SRM berekende curve (ongeveer 900 punten, exacte totale impuls).\n"
+"Vereenvoudigd: alleen de punten die nodig zijn om binnen de tolerantie te blijven (compacte ENG-"
+"bestanden).\n"
+"Blad Output: de overzichtstabel met 23 punten van de werkmap (grover, iets lagere impuls)."
+
+#: ui/dialogs/srm_import_dialog.py:167
+#, python-format
+msgid "% of Fmax"
+msgstr "% van Fmax"
+
+#: ui/dialogs/srm_import_dialog.py:168
+msgid "Maximum thrust deviation allowed by the simplification."
+msgstr "Maximale stuwkrachtafwijking toegestaan door de vereenvoudiging."
+
+#: ui/dialogs/srm_import_dialog.py:172
+msgid "Number of equally spaced points of the resampled curve."
+msgstr "Aantal gelijkmatig verdeelde punten van de herbemonsterde curve."
+
+#: ui/dialogs/srm_import_dialog.py:173
+msgid "Source"
+msgstr "Bron"
+
+#: ui/dialogs/srm_import_dialog.py:174
+msgid "Simplification"
+msgstr "Vereenvoudiging"
+
+#: ui/dialogs/srm_import_dialog.py:175
+msgid "Points"
+msgstr "Punten"
+
+#: ui/dialogs/srm_import_dialog.py:199
+msgid "Workbook curve"
+msgstr "Curve van de werkmap"
+
+#: ui/dialogs/srm_import_dialog.py:201
+#, python-brace-format
+msgid "Imported ({n} point)"
+msgid_plural "Imported ({n} points)"
+msgstr[0] "Geïmporteerd ({n} punt)"
+msgstr[1] "Geïmporteerd ({n} punten)"
+
+#: ui/dialogs/srm_import_dialog.py:202 ui/dialogs/tabular_import_dialog.py:274
+#: ui/digitizer_window.py:267 ui/digitizer_window.py:699 widgets/thrust_plot.py:227
+#: widgets/thrust_table.py:59
+msgid "Time (s)"
+msgstr "Tijd (s)"
+
+#: ui/dialogs/srm_import_dialog.py:203 ui/dialogs/tabular_import_dialog.py:275
+#: ui/digitizer_window.py:267 ui/digitizer_window.py:700 widgets/thrust_plot.py:228
+#: widgets/thrust_table.py:59
+msgid "Thrust (N)"
+msgstr "Stuwkracht (N)"
+
+#: ui/dialogs/srm_import_dialog.py:215
+msgid "Total impulse (N.s)"
+msgstr "Totale impuls (N.s)"
+
+#: ui/dialogs/srm_import_dialog.py:216
+msgid "Maximum thrust (N)"
+msgstr "Maximale stuwkracht (N)"
+
+#: ui/dialogs/srm_import_dialog.py:217
+msgid "Average thrust (N)"
+msgstr "Gemiddelde stuwkracht (N)"
+
+#: ui/dialogs/srm_import_dialog.py:218
+msgid "Thrust time (s)"
+msgstr "Stuwkrachtduur (s)"
+
+#: ui/dialogs/srm_import_dialog.py:219
+msgid "Specific impulse (s)"
+msgstr "Specifieke impuls (s)"
+
+#: ui/dialogs/srm_import_dialog.py:227
+msgid "Motor class"
+msgstr "Motorklasse"
+
+#: ui/dialogs/srm_import_dialog.py:228 ui/digitizer_window.py:321
+msgid "Number of points"
+msgstr "Aantal punten"
+
+#: ui/dialogs/srm_import_dialog.py:237
+msgid "SRM import"
+msgstr "SRM-import"
+
+#: ui/dialogs/srm_import_dialog.py:237
+msgid "The selected thrust curve has fewer than two points."
+msgstr "De gekozen stuwkrachtcurve heeft minder dan twee punten."
+
+#: ui/dialogs/tabular_import_dialog.py:50
+#, python-brace-format
+msgid "Import {kind} - preview"
+msgstr "{kind} importeren - voorbeeld"
+
+#: ui/dialogs/tabular_import_dialog.py:59
+msgid "Reading options"
+msgstr "Leesopties"
+
+#: ui/dialogs/tabular_import_dialog.py:61
+msgid "First row contains column names"
+msgstr "De eerste rij bevat de kolomnamen"
+
+#: ui/dialogs/tabular_import_dialog.py:62
+msgid "Tick when the first row holds headers instead of numbers."
+msgstr "Vink aan als de eerste rij kopteksten bevat in plaats van getallen."
+
+#: ui/dialogs/tabular_import_dialog.py:66
+msgid "Text encoding of the file (detected automatically)."
+msgstr "Tekstcodering van het bestand (automatisch gedetecteerd)."
+
+#: ui/dialogs/tabular_import_dialog.py:70
+msgid "Character separating the columns (detected automatically)."
+msgstr "Teken dat de kolommen scheidt (automatisch gedetecteerd)."
+
+#: ui/dialogs/tabular_import_dialog.py:74
+msgid "Decimal separator used in the numbers (detected automatically)."
+msgstr "Decimaalteken in de getallen (automatisch gedetecteerd)."
+
+#: ui/dialogs/tabular_import_dialog.py:80
+msgid "Worksheet containing the thrust data."
+msgstr "Werkblad met de stuwkrachtgegevens."
+
+#: ui/dialogs/tabular_import_dialog.py:81
+msgid "Worksheet"
+msgstr "Werkblad"
+
+#: ui/dialogs/tabular_import_dialog.py:84
+msgid "Column mapping"
+msgstr "Kolomtoewijzing"
+
+#: ui/dialogs/tabular_import_dialog.py:87
+msgid "Column containing the time values."
+msgstr "Kolom met de tijdwaarden."
+
+#: ui/dialogs/tabular_import_dialog.py:88
+msgid "Column containing the thrust values."
+msgstr "Kolom met de stuwkrachtwaarden."
+
+#: ui/dialogs/tabular_import_dialog.py:91
+msgid "Unit of the time column; values are converted to seconds."
+msgstr "Eenheid van de tijdkolom; waarden worden omgerekend naar seconden."
+
+#: ui/dialogs/tabular_import_dialog.py:94
+msgid "Unit of the thrust column; values are converted to Newtons."
+msgstr "Eenheid van de stuwkrachtkolom; waarden worden omgerekend naar newton."
+
+#: ui/dialogs/tabular_import_dialog.py:95
+msgid "Time column"
+msgstr "Tijdkolom"
+
+#: ui/dialogs/tabular_import_dialog.py:96
+msgid "Thrust column"
+msgstr "Stuwkrachtkolom"
+
+#: ui/dialogs/tabular_import_dialog.py:97
+msgid "Remove invalid rows"
+msgstr "Ongeldige rijen verwijderen"
+
+#: ui/dialogs/tabular_import_dialog.py:99
+msgid "Invalid rows (highlighted in red) are skipped. Untick to refuse the import if any row is invalid."
+msgstr ""
+"Ongeldige rijen (rood gemarkeerd) worden overgeslagen. Vink uit om de import te weigeren als een "
+"rij ongeldig is."
+
+#: ui/dialogs/tabular_import_dialog.py:104
+msgid "Raw data preview. Rows in red cannot be converted."
+msgstr "Voorbeeld van de ruwe gegevens. Rode rijen kunnen niet worden omgezet."
+
+#: ui/dialogs/tabular_import_dialog.py:118 ui/main_window.py:209
+msgid "Import"
+msgstr "Importeren"
+
+#: ui/dialogs/tabular_import_dialog.py:237
+msgid "At least two columns are needed (time and thrust)."
+msgstr "Er zijn minstens twee kolommen nodig (tijd en stuwkracht)."
+
+#: ui/dialogs/tabular_import_dialog.py:250
+#, python-brace-format
+msgid "{valid} valid point(s), {invalid} invalid row(s)."
+msgstr "{valid} geldig(e) punt(en), {invalid} ongeldige rij(en)."
+
+#: ui/dialogs/tabular_import_dialog.py:252
+msgid "Tick 'Remove invalid rows' to import the valid points."
+msgstr "Vink 'Ongeldige rijen verwijderen' aan om de geldige punten te importeren."
+
+#: ui/dialogs/tabular_import_dialog.py:254
+msgid "Warning: times are not strictly increasing (use Sort after import)."
+msgstr "Let op: de tijden zijn niet strikt oplopend (gebruik Sorteren na de import)."
+
+#: ui/dialogs/tabular_import_dialog.py:284
+msgid "Invalid rows"
+msgstr "Ongeldige rijen"
+
+#: ui/dialogs/tabular_import_dialog.py:284
+msgid "Some rows are invalid. Tick 'Remove invalid rows' or fix the file."
+msgstr "Sommige rijen zijn ongeldig. Vink 'Ongeldige rijen verwijderen' aan of corrigeer het bestand."
+
+#: ui/dialogs/validation_dialog.py:26
+msgid "Data Validation"
+msgstr "Gegevensvalidatie"
+
+#: ui/dialogs/validation_dialog.py:30
+msgid "✔ No problem detected. The data is valid."
+msgstr "✔ Geen problemen gevonden. De gegevens zijn geldig."
+
+#: ui/dialogs/validation_dialog.py:33
+#, python-brace-format
+msgid "{errors} error(s), {warnings} warning(s). Double-click an item to go to the point."
+msgstr "{errors} fout(en), {warnings} waarschuwing(en). Dubbelklik op een item om naar het punt te gaan."
+
+#: ui/digitizer_window.py:41
+msgid "Origin"
+msgstr "Oorsprong"
+
+#: ui/digitizer_window.py:41
+msgid "Time max"
+msgstr "Tijd max"
+
+#: ui/digitizer_window.py:41
+msgid "Thrust max"
+msgstr "Stuwkracht max"
+
+#: ui/digitizer_window.py:41
+msgid "Extra"
+msgstr "Extra"
+
+#: ui/digitizer_window.py:43
+msgid "None"
+msgstr "Geen"
+
+#: ui/digitizer_window.py:43
+msgid "Median"
+msgstr "Mediaan"
+
+#: ui/digitizer_window.py:43
+msgid "Gaussian"
+msgstr "Gaussiaans"
+
+#: ui/digitizer_window.py:44
+msgid "Bilateral"
+msgstr "Bilateraal"
+
+#: ui/digitizer_window.py:44
+msgid "Non-local means"
+msgstr "Niet-lokale gemiddelden"
+
+#: ui/digitizer_window.py:54
+msgid "Navigate: drag to pan, wheel to zoom."
+msgstr "Navigeren: slepen om te verschuiven, scrollwiel om te zoomen."
+
+#: ui/digitizer_window.py:55
+msgid "Click the graph origin (intersection of the axes)."
+msgstr "Klik op de oorsprong van de grafiek (snijpunt van de assen)."
+
+#: ui/digitizer_window.py:56
+msgid "Click a point of the time axis whose value you know (e.g. the last graduation)."
+msgstr "Klik op een punt van de tijdas waarvan u de waarde kent (bijv. de laatste maatstreep)."
+
+#: ui/digitizer_window.py:57
+msgid "Click a point of the thrust axis whose value you know (e.g. the top graduation)."
+msgstr "Klik op een punt van de stuwkrachtas waarvan u de waarde kent (bijv. de bovenste maatstreep)."
+
+#: ui/digitizer_window.py:58
+msgid "Click any point whose time and thrust you know (improves precision)."
+msgstr "Klik op een punt waarvan u tijd en stuwkracht kent (verbetert de nauwkeurigheid)."
+
+#: ui/digitizer_window.py:59 ui/digitizer_window.py:286
+msgid "Click on the curve to pick its colour."
+msgstr "Klik op de curve om de kleur ervan te kiezen."
+
+#: ui/digitizer_window.py:60
+msgid "Drag a rectangle around the area to keep."
+msgstr "Sleep een rechthoek rond het te behouden gebied."
+
+#: ui/digitizer_window.py:61
+msgid "Click the four corners of the graph frame (any order)."
+msgstr "Klik op de vier hoeken van het grafiekkader (willekeurige volgorde)."
+
+#: ui/digitizer_window.py:62
+msgid "Drag a point to move it, click to add, right-click to delete, Shift+drag to erase an area."
+msgstr ""
+"Sleep een punt om het te verplaatsen, klik om toe te voegen, rechtsklik om te verwijderen, "
+"Shift+slepen om een gebied te wissen."
+
+#: ui/digitizer_window.py:71
+#, python-brace-format
+msgid "Calibration point - {label}"
+msgstr "Kalibratiepunt - {label}"
+
+#: ui/digitizer_window.py:78
+msgid "Time value of the clicked point in seconds."
+msgstr "Tijdwaarde van het aangeklikte punt in seconden."
+
+#: ui/digitizer_window.py:84
+msgid "Thrust value of the clicked point in Newtons."
+msgstr "Stuwkrachtwaarde van het aangeklikte punt in newton."
+
+#: ui/digitizer_window.py:85
+msgid "Time"
+msgstr "Tijd"
+
+#: ui/digitizer_window.py:86
+msgid "Thrust"
+msgstr "Stuwkracht"
+
+#: ui/digitizer_window.py:106
+msgid "Curve Digitizer"
+msgstr "Curvedigitaliseerder"
+
+#: ui/digitizer_window.py:139
+msgid "1. Image"
+msgstr "1. Afbeelding"
+
+#: ui/digitizer_window.py:140
+msgid "2. Calibration"
+msgstr "2. Kalibratie"
+
+#: ui/digitizer_window.py:141
+msgid "3. Extraction"
+msgstr "3. Extractie"
+
+#: ui/digitizer_window.py:144
+msgid "Reconstructed thrust curve (physical units)."
+msgstr "Gereconstrueerde stuwkrachtcurve (fysieke eenheden)."
+
+#: ui/digitizer_window.py:147
+msgid "Transfer to motor editor"
+msgstr "Overbrengen naar de motoreditor"
+
+#: ui/digitizer_window.py:148
+msgid "Replace the thrust points of the current motor with the digitized curve."
+msgstr "De stuwkrachtpunten van de huidige motor vervangen door de gedigitaliseerde curve."
+
+#: ui/digitizer_window.py:175
+msgid "Digitizer"
+msgstr "Digitaliseerder"
+
+#: ui/digitizer_window.py:179
+msgid "Open image..."
+msgstr "Afbeelding openen..."
+
+#: ui/digitizer_window.py:180
+msgid "Open a photo, screenshot or scan (PNG, JPG, TIFF, BMP)."
+msgstr "Een foto, schermafbeelding of scan openen (PNG, JPG, TIFF, BMP)."
+
+#: ui/digitizer_window.py:181
+msgid "Fit to window"
+msgstr "Aanpassen aan venster"
+
+#: ui/digitizer_window.py:181
+msgid "Show the whole image."
+msgstr "De hele afbeelding tonen."
+
+#: ui/digitizer_window.py:182
+msgid "Navigate"
+msgstr "Navigeren"
+
+#: ui/digitizer_window.py:183
+msgid "Pan and zoom tool (Esc)."
+msgstr "Verschuif- en zoomgereedschap (Esc)."
+
+#: ui/digitizer_window.py:210
+msgid "Rotation angle (counter-clockwise, degrees) used to straighten the graph."
+msgstr "Rotatiehoek (tegen de klok in, graden) om de grafiek recht te zetten."
+
+#: ui/digitizer_window.py:211
+msgid "Rotation"
+msgstr "Rotatie"
+
+#: ui/digitizer_window.py:213
+msgid "Rotate"
+msgstr "Roteren"
+
+#: ui/digitizer_window.py:213
+msgid "Apply the rotation angle."
+msgstr "De rotatiehoek toepassen."
+
+#: ui/digitizer_window.py:214
+msgid "Drag a rectangle on the image to crop it."
+msgstr "Sleep een rechthoek op de afbeelding om bij te snijden."
+
+#: ui/digitizer_window.py:214 ui/digitizer_window.py:419
+msgid "Crop"
+msgstr "Bijsnijden"
+
+#: ui/digitizer_window.py:216
+msgid "Click the four corners of the graph frame to straighten a photo."
+msgstr "Klik op de vier hoeken van het grafiekkader om een foto recht te trekken."
+
+#: ui/digitizer_window.py:216 ui/digitizer_window.py:428
+msgid "Perspective"
+msgstr "Perspectief"
+
+#: ui/digitizer_window.py:218
+msgid "Undo correction"
+msgstr "Correctie ongedaan maken"
+
+#: ui/digitizer_window.py:218
+msgid "Undo the last rotation / crop / perspective."
+msgstr "Laatste rotatie / bijsnijding / perspectief ongedaan maken."
+
+#: ui/digitizer_window.py:223
+msgid "Contrast (100 % = unchanged)."
+msgstr "Contrast (100 % = ongewijzigd)."
+
+#: ui/digitizer_window.py:227
+msgid "Brightness offset (0 = unchanged)."
+msgstr "Helderheidsverschuiving (0 = ongewijzigd)."
+
+#: ui/digitizer_window.py:228
+msgid "Grey levels"
+msgstr "Grijstinten"
+
+#: ui/digitizer_window.py:229
+msgid "Convert to grey levels (for black curves on coloured paper)."
+msgstr "Omzetten naar grijstinten (voor zwarte curves op gekleurd papier)."
+
+#: ui/digitizer_window.py:233
+msgid ""
+"Noise filter: median (salt and pepper), gaussian (blur), bilateral (keeps edges), non-local means"
+" (photos, slow)."
+msgstr ""
+"Ruisfilter: mediaan (peper en zout), gaussiaans (vervaging), bilateraal (behoudt randen), niet-"
+"lokale gemiddelden (foto's, traag)."
+
+#: ui/digitizer_window.py:238
+msgid "Strength of the noise filter."
+msgstr "Sterkte van het ruisfilter."
+
+#: ui/digitizer_window.py:239
+msgid "Contrast"
+msgstr "Contrast"
+
+#: ui/digitizer_window.py:241
+msgid "Brightness"
+msgstr "Helderheid"
+
+#: ui/digitizer_window.py:246
+msgid "Reset all corrections"
+msgstr "Alle correcties herstellen"
+
+#: ui/digitizer_window.py:246
+msgid "Return to the original image."
+msgstr "Terug naar de oorspronkelijke afbeelding."
+
+#: ui/digitizer_window.py:259
+msgid "Set origin"
+msgstr "Oorsprong instellen"
+
+#: ui/digitizer_window.py:259
+msgid "Click the origin of the graph (time t0, thrust F0)."
+msgstr "Klik op de oorsprong van de grafiek (tijd t0, stuwkracht F0)."
+
+#: ui/digitizer_window.py:260
+msgid "Set time-axis point"
+msgstr "Punt op de tijdas instellen"
+
+#: ui/digitizer_window.py:260
+msgid "Click a known graduation on the time axis."
+msgstr "Klik op een bekende maatstreep van de tijdas."
+
+#: ui/digitizer_window.py:261
+msgid "Set thrust-axis point"
+msgstr "Punt op de stuwkrachtas instellen"
+
+#: ui/digitizer_window.py:261
+msgid "Click a known graduation on the thrust axis."
+msgstr "Klik op een bekende maatstreep van de stuwkrachtas."
+
+#: ui/digitizer_window.py:262
+msgid "Add extra point"
+msgstr "Extra punt toevoegen"
+
+#: ui/digitizer_window.py:262
+msgid "Add any point with known time and thrust to improve precision."
+msgstr "Een punt met bekende tijd en stuwkracht toevoegen om de nauwkeurigheid te verbeteren."
+
+#: ui/digitizer_window.py:267
+msgid "Reference"
+msgstr "Referentie"
+
+#: ui/digitizer_window.py:269
+msgid "Calibration references. Time and thrust cells can be edited."
+msgstr "Kalibratiereferenties. De cellen voor tijd en stuwkracht kunnen worden bewerkt."
+
+#: ui/digitizer_window.py:273
+msgid "Remove selected"
+msgstr "Selectie verwijderen"
+
+#: ui/digitizer_window.py:273
+msgid "Delete the selected reference."
+msgstr "De geselecteerde referentie verwijderen."
+
+#: ui/digitizer_window.py:274
+msgid "Clear"
+msgstr "Wissen"
+
+#: ui/digitizer_window.py:274
+msgid "Delete every reference."
+msgstr "Alle referenties verwijderen."
+
+#: ui/digitizer_window.py:285
+msgid "Auto-detect"
+msgstr "Automatisch detecteren"
+
+#: ui/digitizer_window.py:285
+msgid "Detect the curve colour automatically."
+msgstr "De kleur van de curve automatisch detecteren."
+
+#: ui/digitizer_window.py:286
+msgid "Pick"
+msgstr "Kiezen"
+
+#: ui/digitizer_window.py:290
+msgid "Colour of the curve to extract."
+msgstr "Kleur van de te extraheren curve."
+
+#: ui/digitizer_window.py:292 ui/preferences_window.py:99
+msgid "Curve colour"
+msgstr "Curvekleur"
+
+#: ui/digitizer_window.py:296
+msgid "Colour tolerance (CIE-Lab distance). Increase for faded or anti-aliased curves."
+msgstr "Kleurtolerantie (CIE-Lab-afstand). Verhoog voor vervaagde of anti-aliased curves."
+
+#: ui/digitizer_window.py:301
+msgid "Tolerance"
+msgstr "Tolerantie"
+
+#: ui/digitizer_window.py:303
+msgid "Line centre"
+msgstr "Midden van de lijn"
+
+#: ui/digitizer_window.py:304
+msgid "Top edge (filled curves)"
+msgstr "Bovenrand (gevulde curves)"
+
+#: ui/digitizer_window.py:305
+msgid "Which pixel is used in each column of the image."
+msgstr "Welke pixel in elke kolom van de afbeelding wordt gebruikt."
+
+#: ui/digitizer_window.py:306
+msgid "Detection"
+msgstr "Detectie"
+
+#: ui/digitizer_window.py:307
+msgid "Only inside the calibrated area (axes excluded)"
+msgstr "Alleen binnen het gekalibreerde gebied (assen uitgesloten)"
+
+#: ui/digitizer_window.py:309
+msgid "Restrict the search to the rectangle defined by the calibration points."
+msgstr "De zoekactie beperken tot de rechthoek gedefinieerd door de kalibratiepunten."
+
+#: ui/digitizer_window.py:314
+msgid "Outlier threshold in robust deviations (0 = disabled). Lower removes more points."
+msgstr "Drempel voor uitschieters in robuuste afwijkingen (0 = uit). Lager verwijdert meer punten."
+
+#: ui/digitizer_window.py:315
+msgid "Outlier threshold"
+msgstr "Drempel voor uitschieters"
+
+#: ui/digitizer_window.py:319
+msgid "All"
+msgstr "Alle"
+
+#: ui/digitizer_window.py:320
+msgid "Resample the curve to this number of equally spaced points (All = one per pixel column)."
+msgstr "De curve herbemonsteren naar dit aantal gelijkmatig verdeelde punten (Alle = één per pixelkolom)."
+
+#: ui/digitizer_window.py:326
+msgid "Remove points while staying within this thrust tolerance (0 = keep all)."
+msgstr "Punten verwijderen binnen deze stuwkrachttolerantie (0 = alles behouden)."
+
+#: ui/digitizer_window.py:327
+msgid "Simplify tolerance"
+msgstr "Vereenvoudigingstolerantie"
+
+#: ui/digitizer_window.py:328
+msgid "End the curve with zero thrust"
+msgstr "Curve laten eindigen met stuwkracht nul"
+
+#: ui/digitizer_window.py:330
+msgid "Append a final zero-thrust point (required by the ENG format)."
+msgstr "Een laatste punt met stuwkracht nul toevoegen (vereist door het ENG-formaat)."
+
+#: ui/digitizer_window.py:332
+msgid "Show detected pixels"
+msgstr "Gedetecteerde pixels tonen"
+
+#: ui/digitizer_window.py:333
+msgid "Overlay the pixels matching the colour in magenta."
+msgstr "De pixels die overeenkomen met de kleur in magenta weergeven."
+
+#: ui/digitizer_window.py:337
+msgid "Extract curve"
+msgstr "Curve extraheren"
+
+#: ui/digitizer_window.py:337
+msgid "Run the automatic extraction."
+msgstr "De automatische extractie uitvoeren."
+
+#: ui/digitizer_window.py:339
+msgid "Edit points"
+msgstr "Punten bewerken"
+
+#: ui/digitizer_window.py:339
+msgid "Correct the extracted points manually."
+msgstr "De geëxtraheerde punten handmatig corrigeren."
+
+#: ui/digitizer_window.py:341
+msgid "Remove outliers"
+msgstr "Uitschieters verwijderen"
+
+#: ui/digitizer_window.py:341
+msgid "Remove aberrant points from the current curve."
+msgstr "Afwijkende punten uit de huidige curve verwijderen."
+
+#: ui/digitizer_window.py:343
+msgid "Clear points"
+msgstr "Punten wissen"
+
+#: ui/digitizer_window.py:343
+msgid "Delete every extracted point."
+msgstr "Alle geëxtraheerde punten verwijderen."
+
+#: ui/digitizer_window.py:355
+msgid "Open thrust curve image"
+msgstr "Afbeelding van stuwkrachtcurve openen"
+
+#: ui/digitizer_window.py:376
+#, python-brace-format
+msgid "Curve Digitizer - {name}"
+msgstr "Curvedigitaliseerder - {name}"
+
+#: ui/digitizer_window.py:394
+msgid "Image correction"
+msgstr "Afbeeldingscorrectie"
+
+#: ui/digitizer_window.py:395
+msgid "Changing the image geometry clears the calibration and the extracted points. Continue?"
+msgstr "Het wijzigen van de afbeeldingsgeometrie wist de kalibratie en de geëxtraheerde punten. Doorgaan?"
+
+#: ui/digitizer_window.py:475
+msgid "Processing image..."
+msgstr "Afbeelding wordt verwerkt..."
+
+#: ui/digitizer_window.py:560
+msgid "✔ Calibration ready."
+msgstr "✔ Kalibratie gereed."
+
+#: ui/digitizer_window.py:562
+#, python-brace-format
+msgid "Fit residual: {rms} px."
+msgstr "Restfout van de aanpassing: {rms} px."
+
+#: ui/digitizer_window.py:565
+msgid "Define the origin, a time-axis point and a thrust-axis point."
+msgstr "Stel de oorsprong, een punt op de tijdas en een punt op de stuwkrachtas in."
+
+#: ui/digitizer_window.py:639
+msgid "Calibration"
+msgstr "Kalibratie"
+
+#: ui/digitizer_window.py:639
+msgid "Calibrate the axes before extracting the curve (tab 2)."
+msgstr "Kalibreer de assen voordat u de curve extraheert (tabblad 2)."
+
+#: ui/digitizer_window.py:644
+msgid "Extracting the curve..."
+msgstr "Curve wordt geëxtraheerd..."
+
+#: ui/digitizer_window.py:653
+#, python-brace-format
+msgid "{pixels} curve pixels found, {outliers} outlier(s) removed."
+msgstr "{pixels} curvepixels gevonden, {outliers} uitschieter(s) verwijderd."
+
+#: ui/digitizer_window.py:661
+msgid "Extraction"
+msgstr "Extractie"
+
+#: ui/digitizer_window.py:671
+#, python-brace-format
+msgid "{count} outlier(s) removed."
+msgstr "{count} uitschieter(s) verwijderd."
+
+#: ui/digitizer_window.py:707
+#, python-brace-format
+msgid "{count} points · total impulse {impulse} N.s · max thrust {peak} N · duration {duration} s"
+msgstr "{count} punten · totale impuls {impulse} N.s · max. stuwkracht {peak} N · duur {duration} s"
+
+#: ui/digitizer_window.py:709
+msgid "No digitized point yet."
+msgstr "Nog geen gedigitaliseerd punt."
+
+#: ui/digitizer_window.py:730
+msgid "Close digitizer"
+msgstr "Digitaliseerder sluiten"
+
+#: ui/digitizer_window.py:731
+msgid "The digitized curve has not been transferred. Close anyway?"
+msgstr "De gedigitaliseerde curve is niet overgebracht. Toch sluiten?"
+
+#: ui/label_editor.py:40
+msgid "Label Designer"
+msgstr "Etiketontwerper"
+
+#: ui/label_editor.py:70
+#, python-brace-format
+msgid "{name}  (user)"
+msgstr "{name}  (gebruiker)"
+
+#: ui/label_editor.py:91
+msgid "Save template"
+msgstr "Sjabloon opslaan"
+
+#: ui/label_editor.py:91
+msgid "Template name:"
+msgstr "Sjabloonnaam:"
+
+#: ui/label_editor.py:101
+#, python-brace-format
+msgid "Template saved: {path}"
+msgstr "Sjabloon opgeslagen: {path}"
+
+#: ui/label_editor.py:106
+msgid "Predefined templates cannot be deleted."
+msgstr "Vooraf gedefinieerde sjablonen kunnen niet worden verwijderd."
+
+#: ui/label_editor.py:106 ui/label_editor.py:108
+msgid "Delete template"
+msgstr "Sjabloon verwijderen"
+
+#: ui/label_editor.py:108
+#, python-brace-format
+msgid "Delete the template '{name}'?"
+msgstr "Sjabloon '{name}' verwijderen?"
+
+#: ui/label_editor.py:139
+msgid "Fit"
+msgstr "Passend"
+
+#: ui/label_editor.py:139
+msgid "Real size"
+msgstr "Werkelijke grootte"
+
+#: ui/label_editor.py:141
+msgid "Preview zoom. 'Real size' depends on the screen calibration."
+msgstr "Zoom van het voorbeeld. 'Werkelijke grootte' hangt af van de schermkalibratie."
+
+#: ui/label_editor.py:145
+msgid "Zoom"
+msgstr "Zoom"
+
+#: ui/label_editor.py:161 ui/main_window.py:217
+msgid "Label"
+msgstr "Etiket"
+
+#: ui/label_editor.py:170
+msgid "Resolution of PNG and JPEG exports."
+msgstr "Resolutie van PNG- en JPEG-exports."
+
+#: ui/label_editor.py:172
+msgid "Store in project"
+msgstr "Opslaan in het project"
+
+#: ui/label_editor.py:173
+msgid "Save this label design in the motor project (XML)."
+msgstr "Dit etiketontwerp opslaan in het motorproject (XML)."
+
+#: ui/label_editor.py:174
+msgid "Print Preview"
+msgstr "Afdrukvoorbeeld"
+
+#: ui/label_editor.py:175
+msgid "Preview the label sheet on the selected paper format."
+msgstr "Het etiketvel bekijken op het gekozen papierformaat."
+
+#: ui/label_editor.py:176
+msgid "Print..."
+msgstr "Afdrukken..."
+
+#: ui/label_editor.py:177
+msgid "Print the label sheet."
+msgstr "Het etiketvel afdrukken."
+
+#: ui/label_editor.py:178
+msgid "Print PDF"
+msgstr "Afdrukken naar PDF"
+
+#: ui/label_editor.py:179
+msgid "Export the label sheet as a PDF file."
+msgstr "Het etiketvel exporteren als PDF-bestand."
+
+#: ui/label_editor.py:180
+msgid "Export PNG"
+msgstr "PNG exporteren"
+
+#: ui/label_editor.py:182
+msgid "Export one label as a high-resolution PNG image."
+msgstr "Eén etiket exporteren als PNG-afbeelding met hoge resolutie."
+
+#: ui/label_editor.py:183
+msgid "Export JPEG"
+msgstr "JPEG exporteren"
+
+#: ui/label_editor.py:185
+msgid "Export one label as a JPEG image."
+msgstr "Eén etiket exporteren als JPEG-afbeelding."
+
+#: ui/label_editor.py:193 ui/label_printing.py:95
+msgid "Resolution"
+msgstr "Resolutie"
+
+#: ui/label_editor.py:207
+msgid "Template"
+msgstr "Sjabloon"
+
+#: ui/label_editor.py:210
+msgid "Predefined and user templates."
+msgstr "Vooraf gedefinieerde en eigen sjablonen."
+
+#: ui/label_editor.py:213
+msgid "Save the current design as a reusable template."
+msgstr "Het huidige ontwerp opslaan als herbruikbaar sjabloon."
+
+#: ui/label_editor.py:216
+msgid "Delete the selected user template."
+msgstr "Het geselecteerde eigen sjabloon verwijderen."
+
+#: ui/label_editor.py:225
+msgid "Dimensions"
+msgstr "Afmetingen"
+
+#: ui/label_editor.py:227
+msgid "Label width in millimetres."
+msgstr "Etiketbreedte in millimeter."
+
+#: ui/label_editor.py:228
+msgid "Label height in millimetres."
+msgstr "Etikethoogte in millimeter."
+
+#: ui/label_editor.py:229
+msgid "Margin between the border and the text."
+msgstr "Marge tussen de rand en de tekst."
+
+#: ui/label_editor.py:230
+msgid "Border thickness (0 = no border)."
+msgstr "Randdikte (0 = geen rand)."
+
+#: ui/label_editor.py:231
+msgid "Corner radius of the border."
+msgstr "Hoekstraal van de rand."
+
+#: ui/label_editor.py:232 ui/label_editor.py:352
+msgid "Width"
+msgstr "Breedte"
+
+#: ui/label_editor.py:233 ui/label_editor.py:353
+msgid "Height"
+msgstr "Hoogte"
+
+#: ui/label_editor.py:234
+msgid "Inner margin"
+msgstr "Binnenmarge"
+
+#: ui/label_editor.py:235
+msgid "Border width"
+msgstr "Randdikte"
+
+#: ui/label_editor.py:236
+msgid "Corner radius"
+msgstr "Hoekstraal"
+
+#: ui/label_editor.py:240
+msgid "Paper and sheet"
+msgstr "Papier en vel"
+
+#: ui/label_editor.py:244
+msgid "Paper format used for printing and PDF export."
+msgstr "Papierformaat voor afdrukken en PDF-export."
+
+#: ui/label_editor.py:246
+msgid "Margin around the sheet."
+msgstr "Marge rond het vel."
+
+#: ui/label_editor.py:247
+msgid "Space between labels on the sheet."
+msgstr "Ruimte tussen de etiketten op het vel."
+
+#: ui/label_editor.py:250
+msgid "Number of labels to print."
+msgstr "Aantal af te drukken etiketten."
+
+#: ui/label_editor.py:252
+msgid "Fill the whole page"
+msgstr "Hele pagina vullen"
+
+#: ui/label_editor.py:253
+msgid "Print as many labels as fit on one page."
+msgstr "Zoveel etiketten afdrukken als op één pagina passen."
+
+#: ui/label_editor.py:255 ui/preferences_window.py:138
+msgid "Paper format"
+msgstr "Papierformaat"
+
+#: ui/label_editor.py:256
+msgid "Page margin"
+msgstr "Paginamarge"
+
+#: ui/label_editor.py:257
+msgid "Spacing"
+msgstr "Tussenruimte"
+
+#: ui/label_editor.py:258
+msgid "Copies"
+msgstr "Exemplaren"
+
+#: ui/label_editor.py:263
+msgid "Colours and text"
+msgstr "Kleuren en tekst"
+
+#: ui/label_editor.py:267
+msgid "Background"
+msgstr "Achtergrond"
+
+#: ui/label_editor.py:267
+msgid "Background colour of the label."
+msgstr "Achtergrondkleur van het etiket."
+
+#: ui/label_editor.py:268
+msgid "Text"
+msgstr "Tekst"
+
+#: ui/label_editor.py:268
+msgid "Colour of the information lines."
+msgstr "Kleur van de informatieregels."
+
+#: ui/label_editor.py:269
+msgid "Accent / title"
+msgstr "Accent / titel"
+
+#: ui/label_editor.py:269
+msgid "Colour of the title (and of the banner)."
+msgstr "Kleur van de titel (en de banner)."
+
+#: ui/label_editor.py:270
+msgid "Border"
+msgstr "Rand"
+
+#: ui/label_editor.py:270
+msgid "Colour of the border."
+msgstr "Kleur van de rand."
+
+#: ui/label_editor.py:278
+msgid "Font family."
+msgstr "Lettertypefamilie."
+
+#: ui/label_editor.py:280
+msgid "Title font size in points."
+msgstr "Lettergrootte van de titel in punten."
+
+#: ui/label_editor.py:281
+msgid "Information font size in points (reduced automatically if the text does not fit)."
+msgstr "Lettergrootte van de informatie in punten (automatisch verkleind als de tekst niet past)."
+
+#: ui/label_editor.py:282
+msgid "Bold title"
+msgstr "Titel vet"
+
+#: ui/label_editor.py:285
+msgid "Left"
+msgstr "Links"
+
+#: ui/label_editor.py:285
+msgid "Centre"
+msgstr "Midden"
+
+#: ui/label_editor.py:285
+msgid "Right"
+msgstr "Rechts"
+
+#: ui/label_editor.py:287
+msgid "Horizontal text alignment."
+msgstr "Horizontale tekstuitlijning."
+
+#: ui/label_editor.py:290
+msgid "Stacked lines"
+msgstr "Gestapelde regels"
+
+#: ui/label_editor.py:290
+msgid "Two columns"
+msgstr "Twee kolommen"
+
+#: ui/label_editor.py:290
+msgid "Banner title"
+msgstr "Bannertitel"
+
+#: ui/label_editor.py:292
+msgid "Arrangement of the information on the label."
+msgstr "Indeling van de informatie op het etiket."
+
+#: ui/label_editor.py:295
+msgid "(no title)"
+msgstr "(geen titel)"
+
+#: ui/label_editor.py:298
+msgid "Information printed as the large title."
+msgstr "Informatie die als grote titel wordt afgedrukt."
+
+#: ui/label_editor.py:300
+msgid "Show captions (e.g. 'Total impulse:')"
+msgstr "Bijschriften tonen (bijv. 'Totale impuls:')"
+
+#: ui/label_editor.py:302
+msgid "Font"
+msgstr "Lettertype"
+
+#: ui/label_editor.py:303
+msgid "Title size"
+msgstr "Titelgrootte"
+
+#: ui/label_editor.py:304
+msgid "Text size"
+msgstr "Tekstgrootte"
+
+#: ui/label_editor.py:306
+msgid "Alignment"
+msgstr "Uitlijning"
+
+#: ui/label_editor.py:307
+msgid "Layout"
+msgstr "Indeling"
+
+#: ui/label_editor.py:313
+msgid "Information to display"
+msgstr "Weer te geven informatie"
+
+#: ui/label_editor.py:317
+msgid "Tick the information to print. Drag items to change their order."
+msgstr "Vink de af te drukken informatie aan. Sleep items om de volgorde te wijzigen."
+
+#: ui/label_editor.py:322
+msgid "Additional free text (one line per row)"
+msgstr "Extra vrije tekst (één regel per rij)"
+
+#: ui/label_editor.py:323
+msgid "Free text zone printed after the information lines."
+msgstr "Vrij tekstgebied dat na de informatieregels wordt afgedrukt."
+
+#: ui/label_editor.py:331
+msgid "Logo"
+msgstr "Logo"
+
+#: ui/label_editor.py:334
+msgid "Import logo..."
+msgstr "Logo importeren..."
+
+#: ui/label_editor.py:335
+msgid "Import a PNG or JPG logo."
+msgstr "Een PNG- of JPG-logo importeren."
+
+#: ui/label_editor.py:337
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: ui/label_editor.py:338
+msgid "Remove the logo."
+msgstr "Het logo verwijderen."
+
+#: ui/label_editor.py:344
+msgid "Horizontal position of the logo from the left edge."
+msgstr "Horizontale positie van het logo vanaf de linkerrand."
+
+#: ui/label_editor.py:345
+msgid "Vertical position of the logo from the top edge."
+msgstr "Verticale positie van het logo vanaf de bovenrand."
+
+#: ui/label_editor.py:346
+msgid "Logo box width (aspect ratio is kept)."
+msgstr "Breedte van het logokader (verhoudingen blijven behouden)."
+
+#: ui/label_editor.py:347
+msgid "Logo box height (aspect ratio is kept)."
+msgstr "Hoogte van het logokader (verhoudingen blijven behouden)."
+
+#: ui/label_editor.py:350
+msgid "X"
+msgstr "X"
+
+#: ui/label_editor.py:351
+msgid "Y"
+msgstr "Y"
+
+#: ui/label_editor.py:389
+msgid "No logo"
+msgstr "Geen logo"
+
+#: ui/label_editor.py:419
+msgid "Import logo"
+msgstr "Logo importeren"
+
+#: ui/label_editor.py:419
+msgid "Images (*.png *.jpg *.jpeg)"
+msgstr "Afbeeldingen (*.png *.jpg *.jpeg)"
+
+#: ui/label_editor.py:447
+#, python-brace-format
+msgid "{per_page} per {paper} page · {pages} page(s)"
+msgstr "{per_page} per {paper}-pagina · {pages} pagina('s)"
+
+#: ui/label_editor.py:462
+msgid "Label stored in the project. Save the project to keep it."
+msgstr "Etiket opgeslagen in het project. Sla het project op om het te behouden."
+
+#: ui/label_printing.py:54
+msgid "Print Preview - labels"
+msgstr "Afdrukvoorbeeld - etiketten"
+
+#: ui/label_printing.py:76
+msgid "Print labels to PDF"
+msgstr "Etiketten afdrukken naar PDF"
+
+#: ui/label_printing.py:87
+#, python-brace-format
+msgid ""
+"Label sheet exported ({pages} page(s)):\n"
+"{path}"
+msgstr ""
+"Etiketvel geëxporteerd ({pages} pagina('s)):\n"
+"{path}"
+
+#: ui/label_printing.py:95
+msgid "Image resolution (dpi):"
+msgstr "Afbeeldingsresolutie (dpi):"
+
+#: ui/label_printing.py:100
+msgid "PNG image (*.png)"
+msgstr "PNG-afbeelding (*.png)"
+
+#: ui/label_printing.py:100
+msgid "JPEG image (*.jpg *.jpeg)"
+msgstr "JPEG-afbeelding (*.jpg *.jpeg)"
+
+#: ui/label_printing.py:101
+msgid "Export label"
+msgstr "Etiket exporteren"
+
+#: ui/main_window.py:49
+msgid "Rocket Motor Manager project (*.rmm.xml *.xml)"
+msgstr "Rocket Motor Manager-project (*.rmm.xml *.xml)"
+
+#: ui/main_window.py:50
+msgid "RASP engine files (*.eng *.ENG)"
+msgstr "RASP-motorbestanden (*.eng *.ENG)"
+
+#: ui/main_window.py:51
+msgid "CSV / text files (*.csv *.txt *.tsv *.dat)"
+msgstr "CSV-/tekstbestanden (*.csv *.txt *.tsv *.dat)"
+
+#: ui/main_window.py:52
+msgid "Excel workbooks (*.xlsx *.xlsm *.xls)"
+msgstr "Excel-werkmappen (*.xlsx *.xlsm *.xls)"
+
+#: ui/main_window.py:53
+msgid "SRM workbooks (Richard Nakka) (*.xls *.xlsx *.xlsm)"
+msgstr "SRM-werkmappen (Richard Nakka) (*.xls *.xlsx *.xlsm)"
+
+#: ui/main_window.py:95
+msgid "Motor properties"
+msgstr "Motoreigenschappen"
+
+#: ui/main_window.py:118
+msgid "&New Motor"
+msgstr "&Nieuwe motor"
+
+#: ui/main_window.py:118
+msgid "Create a new empty motor"
+msgstr "Een nieuwe lege motor maken"
+
+#: ui/main_window.py:119
+msgid "&Open Motor..."
+msgstr "Motor &openen..."
+
+#: ui/main_window.py:119
+msgid "Open a motor project (XML)"
+msgstr "Een motorproject (XML) openen"
+
+#: ui/main_window.py:120
+msgid "&Save Motor"
+msgstr "Motor op&slaan"
+
+#: ui/main_window.py:120
+msgid "Save the motor project"
+msgstr "Het motorproject opslaan"
+
+#: ui/main_window.py:121
+msgid "Save Motor &As..."
+msgstr "Motor opslaan &als..."
+
+#: ui/main_window.py:121
+msgid "Save the project under a new name"
+msgstr "Het project onder een nieuwe naam opslaan"
+
+#: ui/main_window.py:122
+msgid "Import &ENG..."
+msgstr "&ENG importeren..."
+
+#: ui/main_window.py:122
+msgid "Import a RASP .eng thrust curve file"
+msgstr "Een RASP .eng-stuwkrachtcurvebestand importeren"
+
+#: ui/main_window.py:123
+msgid "E&xport as ENG..."
+msgstr "E&xporteren als ENG..."
+
+#: ui/main_window.py:123
+msgid "Export the motor as an OpenRocket/RockSim .eng file"
+msgstr "De motor exporteren als OpenRocket/RockSim .eng-bestand"
+
+#: ui/main_window.py:124
+msgid "Import &CSV..."
+msgstr "&CSV importeren..."
+
+#: ui/main_window.py:124
+msgid "Import thrust points from a CSV or text file"
+msgstr "Stuwkrachtpunten importeren uit een CSV- of tekstbestand"
+
+#: ui/main_window.py:125
+msgid "Export CS&V..."
+msgstr "C&SV exporteren..."
+
+#: ui/main_window.py:125
+msgid "Export the thrust points to a CSV file"
+msgstr "De stuwkrachtpunten exporteren naar een CSV-bestand"
+
+#: ui/main_window.py:126
+msgid "Import Exce&l..."
+msgstr "Exce&l importeren..."
+
+#: ui/main_window.py:126
+msgid "Import thrust points from an Excel workbook (.xlsx, .xls)"
+msgstr "Stuwkrachtpunten importeren uit een Excel-werkmap (.xlsx, .xls)"
+
+#: ui/main_window.py:127
+msgid "Import &SRM Workbook (Nakka)..."
+msgstr "&SRM-werkmap importeren (Nakka)..."
+
+#: ui/main_window.py:128
+msgid "Import motor data and thrust curve from a Richard Nakka SRM design workbook (SRM 1.x, SRM 2023)"
+msgstr ""
+"Motorgegevens en stuwkrachtcurve importeren uit een SRM-ontwerpwerkmap van Richard Nakka (SRM "
+"1.x, SRM 2023)"
+
+#: ui/main_window.py:129
+msgid "Import Thrust Curve &Image..."
+msgstr "&Afbeelding van stuwkrachtcurve importeren..."
+
+#: ui/main_window.py:129
+msgid "Digitize a thrust curve from a photo or scan"
+msgstr "Een stuwkrachtcurve digitaliseren uit een foto of scan"
+
+#: ui/main_window.py:130
+msgid "Export &Graph..."
+msgstr "&Grafiek exporteren..."
+
+#: ui/main_window.py:130
+msgid "Export the thrust curve as PNG, SVG or PDF"
+msgstr "De stuwkrachtcurve exporteren als PNG, SVG of PDF"
+
+#: ui/main_window.py:131
+msgid "E&xit"
+msgstr "Af&sluiten"
+
+#: ui/main_window.py:131
+msgid "Quit the application"
+msgstr "De toepassing afsluiten"
+
+#: ui/main_window.py:133
+msgid "&Undo"
+msgstr "&Ongedaan maken"
+
+#: ui/main_window.py:136
+msgid "&Redo"
+msgstr "Opnieuw &doen"
+
+#: ui/main_window.py:140
+msgid "&Add Thrust Point"
+msgstr "Stuwkrachtpunt &toevoegen"
+
+#: ui/main_window.py:140
+msgid "Add a thrust point after the selection"
+msgstr "Een stuwkrachtpunt na de selectie toevoegen"
+
+#: ui/main_window.py:141
+msgid "&Delete Thrust Point"
+msgstr "Stuwkrachtpunt &verwijderen"
+
+#: ui/main_window.py:141
+msgid "Delete the selected thrust point(s)"
+msgstr "De geselecteerde stuwkrachtpunt(en) verwijderen"
+
+#: ui/main_window.py:142
+msgid "Select &All"
+msgstr "Alles &selecteren"
+
+#: ui/main_window.py:142
+msgid "Select every thrust point"
+msgstr "Alle stuwkrachtpunten selecteren"
+
+#: ui/main_window.py:143
+msgid "&Sort Points"
+msgstr "Punten &sorteren"
+
+#: ui/main_window.py:143
+msgid "Sort the thrust points chronologically"
+msgstr "De stuwkrachtpunten chronologisch sorteren"
+
+#: ui/main_window.py:144
+msgid "&Preferences..."
+msgstr "&Voorkeuren..."
+
+#: ui/main_window.py:144
+msgid "Application preferences"
+msgstr "Voorkeuren van de toepassing"
+
+#: ui/main_window.py:146
+msgid "Show Thrust &Graph"
+msgstr "Stuwkracht&grafiek tonen"
+
+#: ui/main_window.py:146
+msgid "Show or hide the thrust curve"
+msgstr "De stuwkrachtcurve tonen of verbergen"
+
+#: ui/main_window.py:147
+msgid "Show Data &Table"
+msgstr "Gegevens&tabel tonen"
+
+#: ui/main_window.py:147
+msgid "Show or hide the thrust data table"
+msgstr "De tabel met stuwkrachtgegevens tonen of verbergen"
+
+#: ui/main_window.py:149
+msgid "Show Motor &Properties"
+msgstr "Motor&eigenschappen tonen"
+
+#: ui/main_window.py:150
+msgid "&Reset Graph Zoom"
+msgstr "Grafiekzoom &herstellen"
+
+#: ui/main_window.py:150
+msgid "Fit the graph to the data"
+msgstr "De grafiek aan de gegevens aanpassen"
+
+#: ui/main_window.py:151
+msgid "Show &Grid"
+msgstr "&Raster tonen"
+
+#: ui/main_window.py:151
+msgid "Show or hide the graph grid"
+msgstr "Het grafiekraster tonen of verbergen"
+
+#: ui/main_window.py:155
+msgid "Print Pre&view..."
+msgstr "Afdruk&voorbeeld..."
+
+#: ui/main_window.py:155
+msgid "Preview the label sheet"
+msgstr "Voorbeeld van het etiketvel"
+
+#: ui/main_window.py:156
+msgid "Print &PDF..."
+msgstr "Afdrukken naar &PDF..."
+
+#: ui/main_window.py:156
+msgid "Export the label sheet as PDF"
+msgstr "Het etiketvel exporteren als PDF"
+
+#: ui/main_window.py:157
+msgid "Export Label as P&NG..."
+msgstr "Etiket exporteren als P&NG..."
+
+#: ui/main_window.py:157
+msgid "Export the label as a PNG image"
+msgstr "Het etiket exporteren als PNG-afbeelding"
+
+#: ui/main_window.py:158
+msgid "Export Label as &JPEG..."
+msgstr "Etiket exporteren als &JPEG..."
+
+#: ui/main_window.py:158
+msgid "Export the label as a JPEG image"
+msgstr "Het etiket exporteren als JPEG-afbeelding"
+
+#: ui/main_window.py:160
+msgid "Thrust &Analysis..."
+msgstr "Stuwkracht&analyse..."
+
+#: ui/main_window.py:160
+msgid "Compute and display the motor characteristics"
+msgstr "De kenmerken van de motor berekenen en tonen"
+
+#: ui/main_window.py:161
+msgid "Curve &Digitizer..."
+msgstr "Curve&digitaliseerder..."
+
+#: ui/main_window.py:161
+msgid "Digitize a thrust curve from an image"
+msgstr "Een stuwkrachtcurve digitaliseren uit een afbeelding"
+
+#: ui/main_window.py:162
+msgid "&Label Designer..."
+msgstr "&Etiketontwerper..."
+
+#: ui/main_window.py:162
+msgid "Design and print motor labels"
+msgstr "Motoretiketten ontwerpen en afdrukken"
+
+#: ui/main_window.py:163
+msgid "Data &Validation..."
+msgstr "Gegevens&validatie..."
+
+#: ui/main_window.py:163
+msgid "Check the motor data for errors"
+msgstr "De motorgegevens op fouten controleren"
+
+#: ui/main_window.py:165
+msgid "&Manual"
+msgstr "&Handleiding"
+
+#: ui/main_window.py:165
+msgid "Open the PDF user manual"
+msgstr "De PDF-gebruikershandleiding openen"
+
+#: ui/main_window.py:166
+msgid "&Documentation"
+msgstr "&Documentatie"
+
+#: ui/main_window.py:166
+msgid "Open the technical documentation folder"
+msgstr "De map met technische documentatie openen"
+
+#: ui/main_window.py:167
+msgid "&About..."
+msgstr "&Over..."
+
+#: ui/main_window.py:167
+msgid "About Rocket Motor Manager"
+msgstr "Over Rocket Motor Manager"
+
+#: ui/main_window.py:171
+msgid "&File"
+msgstr "&Bestand"
+
+#: ui/main_window.py:175
+msgid "Recent &Files"
+msgstr "&Recente bestanden"
+
+#: ui/main_window.py:180
+msgid "&Edit"
+msgstr "Be&werken"
+
+#: ui/main_window.py:184
+msgid "&View"
+msgstr "Beel&d"
+
+#: ui/main_window.py:188
+msgid "&Print"
+msgstr "&Afdrukken"
+
+#: ui/main_window.py:192
+msgid "&Tools"
+msgstr "E&xtra"
+
+#: ui/main_window.py:196
+msgid "&Help"
+msgstr "&Help"
+
+#: ui/main_window.py:201
+msgid "Main toolbar"
+msgstr "Hoofdwerkbalk"
+
+#: ui/main_window.py:209
+msgid "Import ENG, CSV, Excel or an image"
+msgstr "ENG, CSV, Excel of een afbeelding importeren"
+
+#: ui/main_window.py:211
+msgid "Export"
+msgstr "Exporteren"
+
+#: ui/main_window.py:211
+msgid "Export ENG, CSV or the graph"
+msgstr "ENG, CSV of de grafiek exporteren"
+
+#: ui/main_window.py:217
+msgid "Analyze"
+msgstr "Analyseren"
+
+#: ui/main_window.py:217
+msgid "Digitize"
+msgstr "Digitaliseren"
+
+#: ui/main_window.py:221
+msgid "Add Point"
+msgstr "Punt toevoegen"
+
+#: ui/main_window.py:222
+msgid "Delete Point"
+msgstr "Punt verwijderen"
+
+#: ui/main_window.py:286
+msgid "Not saved"
+msgstr "Niet opgeslagen"
+
+#: ui/main_window.py:292 widgets/thrust_table.py:304
+#, python-brace-format
+msgid "{n} point"
+msgid_plural "{n} points"
+msgstr[0] "{n} punt"
+msgstr[1] "{n} punten"
+
+#: ui/main_window.py:310
+msgid "Clear list"
+msgstr "Lijst wissen"
+
+#: ui/main_window.py:321
+msgid "Unsaved changes"
+msgstr "Niet-opgeslagen wijzigingen"
+
+#: ui/main_window.py:322
+#, python-brace-format
+msgid ""
+"The motor '{name}' has unsaved changes.\n"
+"Do you want to save them?"
+msgstr ""
+"De motor '{name}' heeft niet-opgeslagen wijzigingen.\n"
+"Wilt u ze opslaan?"
+
+#: ui/main_window.py:346 ui/main_window.py:382
+msgid "All files (*)"
+msgstr "Alle bestanden (*)"
+
+#: ui/main_window.py:358
+#, python-brace-format
+msgid "'{name}' already exists. Replace it?"
+msgstr "'{name}' bestaat al. Vervangen?"
+
+#: ui/main_window.py:382
+msgid "Open motor project"
+msgstr "Motorproject openen"
+
+#: ui/main_window.py:389
+msgid "Recent files"
+msgstr "Recente bestanden"
+
+#: ui/main_window.py:389
+#, python-brace-format
+msgid ""
+"The file no longer exists:\n"
+"{path}"
+msgstr ""
+"Het bestand bestaat niet meer:\n"
+"{path}"
+
+#: ui/main_window.py:412
+#, python-brace-format
+msgid "Opened {path}"
+msgstr "Geopend: {path}"
+
+#: ui/main_window.py:415
+msgid "Cannot open the file."
+msgstr "Kan het bestand niet openen."
+
+#: ui/main_window.py:426
+msgid "Save motor project"
+msgstr "Motorproject opslaan"
+
+#: ui/main_window.py:436
+msgid "The project could not be saved."
+msgstr "Het project kon niet worden opgeslagen."
+
+#: ui/main_window.py:438
+#, python-brace-format
+msgid "Saved {path}"
+msgstr "Opgeslagen: {path}"
+
+#: ui/main_window.py:445
+msgid "Import ENG file"
+msgstr "ENG-bestand importeren"
+
+#: ui/main_window.py:450
+msgid "Cannot import the ENG file."
+msgstr "Kan het ENG-bestand niet importeren."
+
+#: ui/main_window.py:457
+msgid "Select a motor"
+msgstr "Kies een motor"
+
+#: ui/main_window.py:458
+msgid "This file contains several motors:"
+msgstr "Dit bestand bevat meerdere motoren:"
+
+#: ui/main_window.py:465
+msgid "ENG import"
+msgstr "ENG-import"
+
+#: ui/main_window.py:466
+#, python-brace-format
+msgid "Imported {name} from {path}"
+msgstr "{name} geïmporteerd uit {path}"
+
+#: ui/main_window.py:473
+msgid "ENG export - validation"
+msgstr "ENG-export - validatie"
+
+#: ui/main_window.py:474
+msgid "Export anyway"
+msgstr "Toch exporteren"
+
+#: ui/main_window.py:481
+msgid "Export as ENG"
+msgstr "Exporteren als ENG"
+
+#: ui/main_window.py:489
+#, python-brace-format
+msgid "ENG file exported: {path}"
+msgstr "ENG-bestand geëxporteerd: {path}"
+
+#: ui/main_window.py:493
+msgid "Import CSV file"
+msgstr "CSV-bestand importeren"
+
+#: ui/main_window.py:499
+msgid "Import Excel file"
+msgstr "Excel-bestand importeren"
+
+#: ui/main_window.py:508
+msgid "SRM workbook detected"
+msgstr "SRM-werkmap gedetecteerd"
+
+#: ui/main_window.py:509
+#, python-brace-format
+msgid ""
+"'{name}' is a Richard Nakka SRM motor design workbook.\n"
+"\n"
+"Yes: import the motor (properties and thrust curve) from its sheets.\n"
+"No: import columns manually as a plain table."
+msgstr ""
+"'{name}' is een SRM-motorontwerpwerkmap van Richard Nakka.\n"
+"\n"
+"Ja: de motor (eigenschappen en stuwkrachtcurve) uit de bladen importeren.\n"
+"Nee: kolommen handmatig importeren als eenvoudige tabel."
+
+#: ui/main_window.py:521
+msgid "Import SRM workbook"
+msgstr "SRM-werkmap importeren"
+
+#: ui/main_window.py:529
+#, python-brace-format
+msgid "Reading SRM workbook {name}..."
+msgstr "SRM-werkmap {name} wordt gelezen..."
+
+#: ui/main_window.py:540
+msgid "Cannot import the SRM workbook."
+msgstr "Kan de SRM-werkmap niet importeren."
+
+#: ui/main_window.py:551
+#, python-brace-format
+msgid "Imported {name} from SRM workbook {path}"
+msgstr "{name} geïmporteerd uit SRM-werkmap {path}"
+
+#: ui/main_window.py:563
+msgid "Replace thrust data"
+msgstr "Stuwkrachtgegevens vervangen"
+
+#: ui/main_window.py:564
+#, python-brace-format
+msgid ""
+"Replace the {current} current thrust point(s) with {imported} imported point(s)?\n"
+"(This can be undone with Ctrl+Z.)"
+msgstr ""
+"De {current} huidige stuwkrachtpunt(en) vervangen door {imported} geïmporteerde punt(en)?\n"
+"(Ongedaan te maken met Ctrl+Z.)"
+
+#: ui/main_window.py:570
+#, python-brace-format
+msgid "{count} point(s) imported from {source}"
+msgstr "{count} punt(en) geïmporteerd uit {source}"
+
+#: ui/main_window.py:576
+msgid "There is no thrust point to export."
+msgstr "Er is geen stuwkrachtpunt om te exporteren."
+
+#: ui/main_window.py:576 ui/main_window.py:581
+msgid "Export CSV"
+msgstr "CSV exporteren"
+
+#: ui/main_window.py:589
+#, python-brace-format
+msgid "CSV file exported: {path}"
+msgstr "CSV-bestand geëxporteerd: {path}"
+
+#: ui/main_window.py:593
+msgid "Import thrust curve image"
+msgstr "Afbeelding van stuwkrachtcurve importeren"
+
+#: ui/main_window.py:600
+msgid "Export graph"
+msgstr "Grafiek exporteren"
+
+#: ui/main_window.py:608
+msgid "The graph could not be exported."
+msgstr "De grafiek kon niet worden geëxporteerd."
+
+#: ui/main_window.py:610
+#, python-brace-format
+msgid "Graph exported: {path}"
+msgstr "Grafiek geëxporteerd: {path}"
+
+#: ui/main_window.py:666
+msgid "the curve digitizer"
+msgstr "de curvedigitaliseerder"
+
+#: ui/main_window.py:723
+msgid "Manual"
+msgstr "Handleiding"
+
+#: ui/main_window.py:723
+#, python-brace-format
+msgid ""
+"The user manual was not found:\n"
+"{manual}"
+msgstr ""
+"De gebruikershandleiding is niet gevonden:\n"
+"{manual}"
+
+#: ui/motor_editor.py:24
+msgid "Short motor code written in the ENG file, e.g. 'C6'. Required; spaces become '_'."
+msgstr "Korte motorcode in het ENG-bestand, bijv. 'C6'. Verplicht; spaties worden '_'."
+
+#: ui/motor_editor.py:25
+msgid "Manufacturer name or abbreviation (e.g. 'Estes'). Required by the ENG format."
+msgstr "Naam of afkorting van de fabrikant (bijv. 'Estes'). Verplicht in het ENG-formaat."
+
+#: ui/motor_editor.py:26
+msgid "Motor designation"
+msgstr "Motoraanduiding"
+
+#: ui/motor_editor.py:26
+msgid "Full commercial designation including the delay, e.g. 'C6-5'."
+msgstr "Volledige handelsaanduiding inclusief vertraging, bijv. 'C6-5'."
+
+#: ui/motor_editor.py:27
+msgid ""
+"Available ejection delays in seconds separated by '-' (e.g. '3-5-7'). 'P' = plugged (no ejection "
+"charge), '0' = none."
+msgstr ""
+"Beschikbare uitstootvertragingen in seconden, gescheiden door '-' (bijv. '3-5-7'). 'P' = "
+"afgesloten (zonder uitstootlading), '0' = geen."
+
+#: ui/motor_editor.py:31
+msgid "Motor diameter (mm)"
+msgstr "Motordiameter (mm)"
+
+#: ui/motor_editor.py:31
+msgid "Outside diameter of the motor casing in millimetres (> 0). Required for ENG export."
+msgstr "Buitendiameter van de motorbehuizing in millimeter (> 0). Verplicht voor ENG-export."
+
+#: ui/motor_editor.py:32
+msgid "Motor length (mm)"
+msgstr "Motorlengte (mm)"
+
+#: ui/motor_editor.py:32
+msgid "Overall length of the motor in millimetres (> 0). Required for ENG export."
+msgstr "Totale lengte van de motor in millimeter (> 0). Verplicht voor ENG-export."
+
+#: ui/motor_editor.py:33
+msgid "Propellant mass (g)"
+msgstr "Stuwstofmassa (g)"
+
+#: ui/motor_editor.py:33
+msgid "Mass of propellant in grams (> 0). Written in kg in ENG files."
+msgstr "Stuwstofmassa in gram (> 0). Wordt in kg geschreven in ENG-bestanden."
+
+#: ui/motor_editor.py:34
+msgid "Empty casing mass in grams (optional). When given, the total mass is computed."
+msgstr "Massa van de lege behuizing in gram (optioneel). Indien opgegeven wordt de totale massa berekend."
+
+#: ui/motor_editor.py:35
+msgid "Mass of the nozzle and closures in grams (optional)."
+msgstr "Massa van de straalpijp en afsluitingen in gram (optioneel)."
+
+#: ui/motor_editor.py:70
+msgid "Identification"
+msgstr "Identificatie"
+
+#: ui/motor_editor.py:81
+msgid "Propellant family (choose from the list or type your own)."
+msgstr "Stuwstoffamilie (kies uit de lijst of typ uw eigen)."
+
+#: ui/motor_editor.py:85
+msgid "Propellant type"
+msgstr "Type stuwstof"
+
+#: ui/motor_editor.py:89
+msgid "Dimensions and masses"
+msgstr "Afmetingen en massa's"
+
+#: ui/motor_editor.py:99
+msgid "Total motor mass (g)"
+msgstr "Totale motormassa (g)"
+
+#: ui/motor_editor.py:99
+msgid "Loaded motor mass in grams."
+msgstr "Massa van de geladen motor in gram."
+
+#: ui/motor_editor.py:107
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ui/motor_editor.py:110
+msgid "Free description of the motor (saved in the project file, not in ENG)."
+msgstr "Vrije beschrijving van de motor (opgeslagen in het projectbestand, niet in ENG)."
+
+#: ui/motor_editor.py:114
+msgid "Personal comments (saved in the project file, not in ENG)."
+msgstr "Persoonlijke opmerkingen (opgeslagen in het projectbestand, niet in ENG)."
+
+#: ui/motor_editor.py:117
+msgid "Motor description"
+msgstr "Motorbeschrijving"
+
+#: ui/motor_editor.py:117
+msgid "Free description."
+msgstr "Vrije beschrijving."
+
+#: ui/motor_editor.py:118
+msgid "Comments"
+msgstr "Opmerkingen"
+
+#: ui/motor_editor.py:118
+msgid "Personal comments."
+msgstr "Persoonlijke opmerkingen."
+
+#: ui/motor_editor.py:122
+msgid "Characteristics (computed)"
+msgstr "Kenmerken (berekend)"
+
+#: ui/motor_editor.py:123
+msgid "Values computed from the thrust curve. Open Tools > Thrust Analysis for details."
+msgstr "Waarden berekend uit de stuwkrachtcurve. Open Extra > Stuwkrachtanalyse voor details."
+
+#: ui/motor_editor.py:174
+msgid "Computed automatically: propellant + casing + nozzle/closure masses."
+msgstr "Automatisch berekend: stuwstof + behuizing + straalpijp/afsluitingen."
+
+#: ui/motor_editor.py:175
+msgid "Computed from the component masses."
+msgstr "Berekend uit de massa's van de onderdelen."
+
+#: ui/motor_editor.py:177
+msgid "Total loaded mass in grams. Enter the casing and nozzle masses to compute it automatically."
+msgstr ""
+"Totale geladen massa in gram. Voer de massa van behuizing en straalpijp in om deze automatisch te"
+" berekenen."
+
+#: ui/motor_editor.py:178
+msgid "Declared value (enter casing/nozzle masses to compute it)."
+msgstr "Opgegeven waarde (voer massa behuizing/straalpijp in om te berekenen)."
+
+#: ui/preferences_window.py:26
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: ui/preferences_window.py:31
+msgid "General"
+msgstr "Algemeen"
+
+#: ui/preferences_window.py:32
+msgid "Units"
+msgstr "Eenheden"
+
+#: ui/preferences_window.py:33
+msgid "Graph"
+msgstr "Grafiek"
+
+#: ui/preferences_window.py:34
+msgid "Folders"
+msgstr "Mappen"
+
+#: ui/preferences_window.py:35
+msgid "Printing"
+msgstr "Afdrukken"
+
+#: ui/preferences_window.py:43
+msgid "Reset every preference to its default value."
+msgstr "Alle voorkeuren terugzetten naar hun standaardwaarde."
+
+#: ui/preferences_window.py:59
+msgid "Interface language (restart required)."
+msgstr "Taal van de interface (herstart vereist)."
+
+#: ui/preferences_window.py:61
+msgid "Light"
+msgstr "Licht"
+
+#: ui/preferences_window.py:62
+msgid "Dark"
+msgstr "Donker"
+
+#: ui/preferences_window.py:63
+msgid "Colour theme of the application."
+msgstr "Kleurthema van de toepassing."
+
+#: ui/preferences_window.py:64 ui/preferences_window.py:195
+msgid "Language"
+msgstr "Taal"
+
+#: ui/preferences_window.py:65
+msgid "Theme"
+msgstr "Thema"
+
+#: ui/preferences_window.py:72
+msgid "Metric (N, N.s, g, mm)"
+msgstr "Metrisch (N, N.s, g, mm)"
+
+#: ui/preferences_window.py:73
+msgid "Imperial (lbf, lbf.s, oz, in)"
+msgstr "Imperiaal (lbf, lbf.s, oz, in)"
+
+#: ui/preferences_window.py:74
+msgid ""
+"Units used to display the analysis results and on labels. Data is always stored in SI units (s, "
+"N, g, mm)."
+msgstr ""
+"Eenheden voor de analyseresultaten en op etiketten. De gegevens worden altijd in SI-eenheden "
+"opgeslagen (s, N, g, mm)."
+
+#: ui/preferences_window.py:79
+msgid "Default decimal separator for CSV exports. Input fields accept both."
+msgstr "Standaard decimaalteken voor CSV-exports. Invoervelden accepteren beide."
+
+#: ui/preferences_window.py:83
+msgid "Burn time definition used for the average thrust."
+msgstr "Definitie van de brandduur voor de gemiddelde stuwkracht."
+
+#: ui/preferences_window.py:84
+msgid "Unit system"
+msgstr "Eenhedenstelsel"
+
+#: ui/preferences_window.py:93
+msgid "Colour of the thrust curve."
+msgstr "Kleur van de stuwkrachtcurve."
+
+#: ui/preferences_window.py:95
+msgid "Colour of the point markers."
+msgstr "Kleur van de puntmarkeringen."
+
+#: ui/preferences_window.py:96
+msgid "Show grid"
+msgstr "Raster tonen"
+
+#: ui/preferences_window.py:97
+msgid "Show point markers"
+msgstr "Puntmarkeringen tonen"
+
+#: ui/preferences_window.py:98
+msgid "Fill the area under the curve"
+msgstr "Gebied onder de curve vullen"
+
+#: ui/preferences_window.py:100
+msgid "Marker colour"
+msgstr "Markeringskleur"
+
+#: ui/preferences_window.py:110
+msgid "Default folder proposed when saving projects and exports."
+msgstr "Standaardmap voor het opslaan van projecten en exports."
+
+#: ui/preferences_window.py:112
+msgid "Default folder proposed when importing files."
+msgstr "Standaardmap voor het importeren van bestanden."
+
+#: ui/preferences_window.py:113
+msgid "Default save folder"
+msgstr "Standaardmap voor opslaan"
+
+#: ui/preferences_window.py:114
+msgid "Import folder"
+msgstr "Importmap"
+
+#: ui/preferences_window.py:121
+msgid "Browse..."
+msgstr "Bladeren..."
+
+#: ui/preferences_window.py:132
+msgid "Default paper format for label sheets."
+msgstr "Standaard papierformaat voor etiketvellen."
+
+#: ui/preferences_window.py:137
+msgid "Default resolution of PNG/JPEG label exports."
+msgstr "Standaardresolutie van PNG/JPEG-etiketexports."
+
+#: ui/preferences_window.py:139
+msgid "Image resolution"
+msgstr "Afbeeldingsresolutie"
+
+#: ui/preferences_window.py:146
+msgid "Choose a folder"
+msgstr "Kies een map"
+
+#: ui/preferences_window.py:195
+msgid "The new language will be used after restarting the application."
+msgstr "De nieuwe taal wordt gebruikt na het herstarten van de toepassing."
+
+#: widgets/image_calibration_widget.py:84
+msgid "Mouse wheel: zoom. Middle button: pan. The active tool is shown in the status bar."
+msgstr "Scrollwiel: zoomen. Middelste knop: verschuiven. Het actieve gereedschap staat in de statusbalk."
+
+#: widgets/label_preview.py:26
+msgid "Print preview of one label. The printed label has exactly the dimensions entered."
+msgstr "Voorbeeld van één etiket. Het afgedrukte etiket heeft precies de ingevoerde afmetingen."
+
+#: widgets/thrust_plot.py:41
+msgid "PNG image (*.png);;SVG vector image (*.svg);;PDF document (*.pdf)"
+msgstr "PNG-afbeelding (*.png);;SVG-vectorafbeelding (*.svg);;PDF-document (*.pdf)"
+
+#: widgets/thrust_plot.py:108
+msgid ""
+"Thrust curve. Drag a point to move it, double-click to add a point, right-click a point to delete"
+" it. Use the toolbar to zoom and pan."
+msgstr ""
+"Stuwkrachtcurve. Sleep een punt om het te verplaatsen, dubbelklik om een punt toe te voegen, "
+"rechtsklik op een punt om het te verwijderen. Gebruik de werkbalk om te zoomen en te verschuiven."
+
+#: widgets/thrust_plot.py:114
+msgid "Move the cursor over the graph"
+msgstr "Beweeg de cursor over de grafiek"
+
+#: widgets/thrust_plot.py:115
+msgid "Cursor position (time, thrust) and interpolated thrust of the curve at that time."
+msgstr "Cursorpositie (tijd, stuwkracht) en geïnterpoleerde stuwkracht van de curve op dat moment."
+
+#: widgets/thrust_plot.py:238
+msgid ""
+"No thrust data\n"
+"Add points, import a file or digitize an image"
+msgstr ""
+"Geen stuwkrachtgegevens\n"
+"Voeg punten toe, importeer een bestand of digitaliseer een afbeelding"
+
+#: widgets/thrust_plot.py:264
+#, python-brace-format
+msgid "Max {value} N"
+msgstr "Max {value} N"
+
+#: widgets/thrust_plot.py:380
+msgid "Delete point"
+msgstr "Punt verwijderen"
+
+#: widgets/thrust_plot.py:382 widgets/thrust_table.py:286
+msgid "Duplicate point"
+msgstr "Punt dupliceren"
+
+#: widgets/thrust_table.py:97
+msgid "Time since ignition in seconds (>= 0, increasing)."
+msgstr "Tijd sinds ontsteking in seconden (>= 0, oplopend)."
+
+#: widgets/thrust_table.py:98
+msgid "Thrust in Newtons (>= 0)."
+msgstr "Stuwkracht in newton (>= 0)."
+
+#: widgets/thrust_table.py:162
+msgid ""
+"Thrust points. Double-click a cell to edit it. Red rows contain errors, yellow rows warnings. "
+"Ctrl+V pastes data copied from Excel."
+msgstr ""
+"Stuwkrachtpunten. Dubbelklik op een cel om deze te bewerken. Rode rijen bevatten fouten, gele "
+"waarschuwingen. Ctrl+V plakt gegevens die uit Excel zijn gekopieerd."
+
+#: widgets/thrust_table.py:169
+msgid "Add a point after the selected row (Ctrl+Ins)"
+msgstr "Een punt toevoegen na de geselecteerde rij (Ctrl+Ins)"
+
+#: widgets/thrust_table.py:170
+msgid "Duplicate the selected point (Ctrl+D)"
+msgstr "Het geselecteerde punt dupliceren (Ctrl+D)"
+
+#: widgets/thrust_table.py:171
+msgid "Delete the selected point(s) (Del)"
+msgstr "Geselecteerde punt(en) verwijderen (Del)"
+
+#: widgets/thrust_table.py:172
+msgid "Sort points chronologically"
+msgstr "Punten chronologisch sorteren"
+
+#: widgets/thrust_table.py:285
+msgid "Add point"
+msgstr "Punt toevoegen"
+
+#: widgets/thrust_table.py:287
+msgid "Delete selected point(s)"
+msgstr "Geselecteerde punt(en) verwijderen"
+
+#: widgets/thrust_table.py:289
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: widgets/thrust_table.py:290
+msgid "Paste"
+msgstr "Plakken"
+
+#: widgets/thrust_table.py:292
+msgid "Sort chronologically"
+msgstr "Chronologisch sorteren"
+
+#: widgets/thrust_table.py:293
+msgid "Select all"
+msgstr "Alles selecteren"
+

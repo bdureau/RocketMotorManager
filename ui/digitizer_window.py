@@ -8,6 +8,8 @@ emits :attr:`DigitizerWindow.points_ready`.
 
 from __future__ import annotations
 
+from localization import N_, _
+
 import logging
 from pathlib import Path
 from typing import Optional
@@ -34,6 +36,13 @@ from widgets.image_calibration_widget import ImageCalibrationWidget, ViewMode
 
 logger = logging.getLogger(__name__)
 
+#: Captions of the calibration references (the English names are the keys
+#: stored in CalibrationPoint.label; they are translated when displayed).
+_CALIBRATION_CAPTIONS = (N_("Origin"), N_("Time max"), N_("Thrust max"), N_("Extra"))
+
+_DENOISE_CAPTIONS = {"none": N_("None"), "median": N_("Median"), "gaussian": N_("Gaussian"),
+                     "bilateral": N_("Bilateral"), "nlmeans": N_("Non-local means")}
+
 _CALIBRATION_LABELS = {
     ViewMode.CALIB_ORIGIN: "Origin",
     ViewMode.CALIB_TIME: "Time max",
@@ -42,15 +51,15 @@ _CALIBRATION_LABELS = {
 }
 
 _MODE_HINTS = {
-    ViewMode.NAVIGATE: "Navigate: drag to pan, wheel to zoom.",
-    ViewMode.CALIB_ORIGIN: "Click the graph origin (intersection of the axes).",
-    ViewMode.CALIB_TIME: "Click a point of the time axis whose value you know (e.g. the last graduation).",
-    ViewMode.CALIB_THRUST: "Click a point of the thrust axis whose value you know (e.g. the top graduation).",
-    ViewMode.CALIB_EXTRA: "Click any point whose time and thrust you know (improves precision).",
-    ViewMode.PICK_COLOR: "Click on the curve to pick its colour.",
-    ViewMode.CROP: "Drag a rectangle around the area to keep.",
-    ViewMode.PERSPECTIVE: "Click the four corners of the graph frame (any order).",
-    ViewMode.EDIT_POINTS: "Drag a point to move it, click to add, right-click to delete, Shift+drag to erase an area.",
+    ViewMode.NAVIGATE: N_("Navigate: drag to pan, wheel to zoom."),
+    ViewMode.CALIB_ORIGIN: N_("Click the graph origin (intersection of the axes)."),
+    ViewMode.CALIB_TIME: N_("Click a point of the time axis whose value you know (e.g. the last graduation)."),
+    ViewMode.CALIB_THRUST: N_("Click a point of the thrust axis whose value you know (e.g. the top graduation)."),
+    ViewMode.CALIB_EXTRA: N_("Click any point whose time and thrust you know (improves precision)."),
+    ViewMode.PICK_COLOR: N_("Click on the curve to pick its colour."),
+    ViewMode.CROP: N_("Drag a rectangle around the area to keep."),
+    ViewMode.PERSPECTIVE: N_("Click the four corners of the graph frame (any order)."),
+    ViewMode.EDIT_POINTS: N_("Drag a point to move it, click to add, right-click to delete, Shift+drag to erase an area."),
 }
 
 
@@ -59,22 +68,22 @@ class CalibrationValueDialog(QDialog):
 
     def __init__(self, label: str, time_default: float, thrust_default: float, parent: Optional[QWidget] = None) -> None:
         super().__init__(parent)
-        self.setWindowTitle(self.tr("Calibration point - %1").replace("%1", label))
+        self.setWindowTitle(_("Calibration point - {label}").format(label=_(label)))
         form = QFormLayout(self)
         self.time = QDoubleSpinBox()
         self.time.setRange(0.0, 1000.0)
         self.time.setDecimals(4)
         self.time.setSuffix(" s")
         self.time.setValue(time_default)
-        self.time.setToolTip(self.tr("Time value of the clicked point in seconds."))
+        self.time.setToolTip(_("Time value of the clicked point in seconds."))
         self.thrust = QDoubleSpinBox()
         self.thrust.setRange(0.0, 1e6)
         self.thrust.setDecimals(4)
         self.thrust.setSuffix(" N")
         self.thrust.setValue(thrust_default)
-        self.thrust.setToolTip(self.tr("Thrust value of the clicked point in Newtons."))
-        form.addRow(self.tr("Time"), self.time)
-        form.addRow(self.tr("Thrust"), self.thrust)
+        self.thrust.setToolTip(_("Thrust value of the clicked point in Newtons."))
+        form.addRow(_("Time"), self.time)
+        form.addRow(_("Thrust"), self.thrust)
         if label == "Time max":
             self.thrust.setEnabled(False)
             self.time.setFocus()
@@ -94,7 +103,7 @@ class DigitizerWindow(QMainWindow):
 
     def __init__(self, parent: Optional[QWidget] = None, start_dir: str = "") -> None:
         super().__init__(parent)
-        self.setWindowTitle(self.tr("Curve Digitizer"))
+        self.setWindowTitle(_("Curve Digitizer"))
         self.setWindowIcon(icon("digitize"))
         self.resize(1300, 820)
         self._start_dir = start_dir
@@ -127,16 +136,16 @@ class DigitizerWindow(QMainWindow):
         self.view.points_edited.connect(self._on_points_edited)
         self.view.cursor_moved.connect(self._on_cursor)
         self.tabs = QTabWidget()
-        self.tabs.addTab(self._image_tab(), self.tr("1. Image"))
-        self.tabs.addTab(self._calibration_tab(), self.tr("2. Calibration"))
-        self.tabs.addTab(self._extraction_tab(), self.tr("3. Extraction"))
+        self.tabs.addTab(self._image_tab(), _("1. Image"))
+        self.tabs.addTab(self._calibration_tab(), _("2. Calibration"))
+        self.tabs.addTab(self._extraction_tab(), _("3. Extraction"))
         self.figure = Figure(figsize=(4, 2.6), layout="tight")
         self.canvas = FigureCanvasQTAgg(self.figure)
-        self.canvas.setToolTip(self.tr("Reconstructed thrust curve (physical units)."))
+        self.canvas.setToolTip(_("Reconstructed thrust curve (physical units)."))
         self.stats = QLabel()
         self.stats.setWordWrap(True)
-        self.transfer_button = QPushButton(icon("transfer"), self.tr("Transfer to motor editor"))
-        self.transfer_button.setToolTip(self.tr("Replace the thrust points of the current motor with the digitized curve."))
+        self.transfer_button = QPushButton(icon("transfer"), _("Transfer to motor editor"))
+        self.transfer_button.setToolTip(_("Replace the thrust points of the current motor with the digitized curve."))
         self.transfer_button.clicked.connect(self._transfer)
         right = QWidget()
         right_layout = QVBoxLayout(right)
@@ -163,15 +172,15 @@ class DigitizerWindow(QMainWindow):
         self._set_mode(ViewMode.NAVIGATE)
 
     def _build_toolbar(self) -> None:
-        toolbar = QToolBar(self.tr("Digitizer"))
+        toolbar = QToolBar(_("Digitizer"))
         toolbar.setObjectName("digitizer_toolbar")
         self.addToolBar(toolbar)
         for text, icon_name, slot, shortcut, tip in (
-            (self.tr("Open image..."), "image", self.open_image_dialog, QKeySequence.StandardKey.Open,
-             self.tr("Open a photo, screenshot or scan (PNG, JPG, TIFF, BMP).")),
-            (self.tr("Fit to window"), "zoom_reset", self.view.fit, None, self.tr("Show the whole image.")),
-            (self.tr("Navigate"), "target", lambda: self._set_mode(ViewMode.NAVIGATE), None,
-             self.tr("Pan and zoom tool (Esc).")),
+            (_("Open image..."), "image", self.open_image_dialog, QKeySequence.StandardKey.Open,
+             _("Open a photo, screenshot or scan (PNG, JPG, TIFF, BMP).")),
+            (_("Fit to window"), "zoom_reset", self.view.fit, None, _("Show the whole image.")),
+            (_("Navigate"), "target", lambda: self._set_mode(ViewMode.NAVIGATE), None,
+             _("Pan and zoom tool (Esc).")),
         ):
             action = QAction(icon(icon_name), text, self)
             action.setToolTip(tip)
@@ -198,43 +207,43 @@ class DigitizerWindow(QMainWindow):
         self.rotation.setDecimals(2)
         self.rotation.setSingleStep(0.25)
         self.rotation.setSuffix(" °")
-        self.rotation.setToolTip(self.tr("Rotation angle (counter-clockwise, degrees) used to straighten the graph."))
-        grid.addWidget(QLabel(self.tr("Rotation")), 0, 0)
+        self.rotation.setToolTip(_("Rotation angle (counter-clockwise, degrees) used to straighten the graph."))
+        grid.addWidget(QLabel(_("Rotation")), 0, 0)
         grid.addWidget(self.rotation, 0, 1)
-        grid.addWidget(self._button(self.tr("Rotate"), self.tr("Apply the rotation angle."), self._apply_rotation, "rotate"), 0, 2)
-        grid.addWidget(self._button(self.tr("Crop"), self.tr("Drag a rectangle on the image to crop it."),
+        grid.addWidget(self._button(_("Rotate"), _("Apply the rotation angle."), self._apply_rotation, "rotate"), 0, 2)
+        grid.addWidget(self._button(_("Crop"), _("Drag a rectangle on the image to crop it."),
                                     lambda: self._set_mode(ViewMode.CROP), "crop"), 1, 0)
-        grid.addWidget(self._button(self.tr("Perspective"), self.tr("Click the four corners of the graph frame to straighten a photo."),
+        grid.addWidget(self._button(_("Perspective"), _("Click the four corners of the graph frame to straighten a photo."),
                                     lambda: self._set_mode(ViewMode.PERSPECTIVE), "perspective"), 1, 1)
-        grid.addWidget(self._button(self.tr("Undo correction"), self.tr("Undo the last rotation / crop / perspective."),
+        grid.addWidget(self._button(_("Undo correction"), _("Undo the last rotation / crop / perspective."),
                                     self._undo_geometry, "undo"), 1, 2)
         self.contrast = QSlider(Qt.Orientation.Horizontal)
         self.contrast.setRange(20, 300)
         self.contrast.setValue(100)
-        self.contrast.setToolTip(self.tr("Contrast (100 % = unchanged)."))
+        self.contrast.setToolTip(_("Contrast (100 % = unchanged)."))
         self.brightness = QSlider(Qt.Orientation.Horizontal)
         self.brightness.setRange(-100, 100)
         self.brightness.setValue(0)
-        self.brightness.setToolTip(self.tr("Brightness offset (0 = unchanged)."))
-        self.grayscale = QCheckBox(self.tr("Grey levels"))
-        self.grayscale.setToolTip(self.tr("Convert to grey levels (for black curves on coloured paper)."))
+        self.brightness.setToolTip(_("Brightness offset (0 = unchanged)."))
+        self.grayscale = QCheckBox(_("Grey levels"))
+        self.grayscale.setToolTip(_("Convert to grey levels (for black curves on coloured paper)."))
         self.denoise = QComboBox()
         for method in dig.DENOISE_METHODS:
-            self.denoise.addItem(self.tr(method.capitalize()), method)
-        self.denoise.setToolTip(self.tr("Noise filter: median (salt and pepper), gaussian (blur), bilateral "
+            self.denoise.addItem(_(_DENOISE_CAPTIONS[method]), method)
+        self.denoise.setToolTip(_("Noise filter: median (salt and pepper), gaussian (blur), bilateral "
                                         "(keeps edges), non-local means (photos, slow)."))
         self.denoise_strength = QSpinBox()
         self.denoise_strength.setRange(1, 10)
         self.denoise_strength.setValue(2)
-        self.denoise_strength.setToolTip(self.tr("Strength of the noise filter."))
-        grid.addWidget(QLabel(self.tr("Contrast")), 2, 0)
+        self.denoise_strength.setToolTip(_("Strength of the noise filter."))
+        grid.addWidget(QLabel(_("Contrast")), 2, 0)
         grid.addWidget(self.contrast, 2, 1, 1, 2)
-        grid.addWidget(QLabel(self.tr("Brightness")), 3, 0)
+        grid.addWidget(QLabel(_("Brightness")), 3, 0)
         grid.addWidget(self.brightness, 3, 1, 1, 2)
         grid.addWidget(self.grayscale, 4, 0)
         grid.addWidget(self.denoise, 4, 1)
         grid.addWidget(self.denoise_strength, 4, 2)
-        grid.addWidget(self._button(self.tr("Reset all corrections"), self.tr("Return to the original image."),
+        grid.addWidget(self._button(_("Reset all corrections"), _("Return to the original image."),
                                     self._reset_corrections), 5, 0, 1, 3)
         grid.setRowStretch(6, 1)
         for signal in (self.contrast.valueChanged, self.brightness.valueChanged, self.grayscale.toggled,
@@ -247,22 +256,22 @@ class DigitizerWindow(QMainWindow):
         layout = QVBoxLayout(tab)
         row = QGridLayout()
         for index, (mode, text, tip) in enumerate((
-            (ViewMode.CALIB_ORIGIN, self.tr("Set origin"), self.tr("Click the origin of the graph (time t0, thrust F0).")),
-            (ViewMode.CALIB_TIME, self.tr("Set time-axis point"), self.tr("Click a known graduation on the time axis.")),
-            (ViewMode.CALIB_THRUST, self.tr("Set thrust-axis point"), self.tr("Click a known graduation on the thrust axis.")),
-            (ViewMode.CALIB_EXTRA, self.tr("Add extra point"), self.tr("Add any point with known time and thrust to improve precision.")),
+            (ViewMode.CALIB_ORIGIN, _("Set origin"), _("Click the origin of the graph (time t0, thrust F0).")),
+            (ViewMode.CALIB_TIME, _("Set time-axis point"), _("Click a known graduation on the time axis.")),
+            (ViewMode.CALIB_THRUST, _("Set thrust-axis point"), _("Click a known graduation on the thrust axis.")),
+            (ViewMode.CALIB_EXTRA, _("Add extra point"), _("Add any point with known time and thrust to improve precision.")),
         )):
             row.addWidget(self._button(text, tip, lambda _c=False, m=mode: self._set_mode(m), "target"), index // 2, index % 2)
         layout.addLayout(row)
         self.calibration_table = QTableWidget(0, 5)
-        self.calibration_table.setHorizontalHeaderLabels(["Reference", "x (px)", "y (px)", "Time (s)", "Thrust (N)"])
+        self.calibration_table.setHorizontalHeaderLabels([_("Reference"), "x (px)", "y (px)", _("Time (s)"), _("Thrust (N)")])
         self.calibration_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
-        self.calibration_table.setToolTip(self.tr("Calibration references. Time and thrust cells can be edited."))
+        self.calibration_table.setToolTip(_("Calibration references. Time and thrust cells can be edited."))
         self.calibration_table.itemChanged.connect(self._on_calibration_edit)
         layout.addWidget(self.calibration_table)
         buttons = QHBoxLayout()
-        buttons.addWidget(self._button(self.tr("Remove selected"), self.tr("Delete the selected reference."), self._remove_calibration))
-        buttons.addWidget(self._button(self.tr("Clear"), self.tr("Delete every reference."), self._clear_calibration))
+        buttons.addWidget(self._button(_("Remove selected"), _("Delete the selected reference."), self._remove_calibration))
+        buttons.addWidget(self._button(_("Clear"), _("Delete every reference."), self._clear_calibration))
         layout.addLayout(buttons)
         self.calibration_status = QLabel()
         self.calibration_status.setWordWrap(True)
@@ -273,65 +282,65 @@ class DigitizerWindow(QMainWindow):
         tab = QWidget()
         form = QFormLayout(tab)
         color_row = QHBoxLayout()
-        color_row.addWidget(self._button(self.tr("Auto-detect"), self.tr("Detect the curve colour automatically."), self._auto_color))
-        color_row.addWidget(self._button(self.tr("Pick"), self.tr("Click on the curve to pick its colour."),
+        color_row.addWidget(self._button(_("Auto-detect"), _("Detect the curve colour automatically."), self._auto_color))
+        color_row.addWidget(self._button(_("Pick"), _("Click on the curve to pick its colour."),
                                          lambda: self._set_mode(ViewMode.PICK_COLOR), "pipette"))
         self.color_swatch = QLabel()
         self.color_swatch.setFixedSize(46, 22)
-        self.color_swatch.setToolTip(self.tr("Colour of the curve to extract."))
+        self.color_swatch.setToolTip(_("Colour of the curve to extract."))
         color_row.addWidget(self.color_swatch)
-        form.addRow(self.tr("Curve colour"), color_row)
+        form.addRow(_("Curve colour"), color_row)
         self.tolerance = QSlider(Qt.Orientation.Horizontal)
         self.tolerance.setRange(1, 100)
         self.tolerance.setValue(int(self.settings.tolerance))
-        self.tolerance.setToolTip(self.tr("Colour tolerance (CIE-Lab distance). Increase for faded or anti-aliased curves."))
+        self.tolerance.setToolTip(_("Colour tolerance (CIE-Lab distance). Increase for faded or anti-aliased curves."))
         self.tolerance_label = QLabel()
         tolerance_row = QHBoxLayout()
         tolerance_row.addWidget(self.tolerance, 1)
         tolerance_row.addWidget(self.tolerance_label)
-        form.addRow(self.tr("Tolerance"), tolerance_row)
+        form.addRow(_("Tolerance"), tolerance_row)
         self.extract_mode = QComboBox()
-        self.extract_mode.addItem(self.tr("Line centre"), "center")
-        self.extract_mode.addItem(self.tr("Top edge (filled curves)"), "top")
-        self.extract_mode.setToolTip(self.tr("Which pixel is used in each column of the image."))
-        form.addRow(self.tr("Detection"), self.extract_mode)
-        self.use_area = QCheckBox(self.tr("Only inside the calibrated area (axes excluded)"))
+        self.extract_mode.addItem(_("Line centre"), "center")
+        self.extract_mode.addItem(_("Top edge (filled curves)"), "top")
+        self.extract_mode.setToolTip(_("Which pixel is used in each column of the image."))
+        form.addRow(_("Detection"), self.extract_mode)
+        self.use_area = QCheckBox(_("Only inside the calibrated area (axes excluded)"))
         self.use_area.setChecked(True)
-        self.use_area.setToolTip(self.tr("Restrict the search to the rectangle defined by the calibration points."))
+        self.use_area.setToolTip(_("Restrict the search to the rectangle defined by the calibration points."))
         form.addRow("", self.use_area)
         self.outliers = QDoubleSpinBox()
         self.outliers.setRange(0.0, 20.0)
         self.outliers.setValue(self.settings.outlier_threshold)
-        self.outliers.setToolTip(self.tr("Outlier threshold in robust deviations (0 = disabled). Lower removes more points."))
-        form.addRow(self.tr("Outlier threshold"), self.outliers)
+        self.outliers.setToolTip(_("Outlier threshold in robust deviations (0 = disabled). Lower removes more points."))
+        form.addRow(_("Outlier threshold"), self.outliers)
         self.max_points = QSpinBox()
         self.max_points.setRange(0, 5000)
         self.max_points.setValue(100)
-        self.max_points.setSpecialValueText(self.tr("All"))
-        self.max_points.setToolTip(self.tr("Resample the curve to this number of equally spaced points (All = one per pixel column)."))
-        form.addRow(self.tr("Number of points"), self.max_points)
+        self.max_points.setSpecialValueText(_("All"))
+        self.max_points.setToolTip(_("Resample the curve to this number of equally spaced points (All = one per pixel column)."))
+        form.addRow(_("Number of points"), self.max_points)
         self.simplify = QDoubleSpinBox()
         self.simplify.setRange(0.0, 100.0)
         self.simplify.setDecimals(3)
         self.simplify.setSuffix(" N")
-        self.simplify.setToolTip(self.tr("Remove points while staying within this thrust tolerance (0 = keep all)."))
-        form.addRow(self.tr("Simplify tolerance"), self.simplify)
-        self.close_curve = QCheckBox(self.tr("End the curve with zero thrust"))
+        self.simplify.setToolTip(_("Remove points while staying within this thrust tolerance (0 = keep all)."))
+        form.addRow(_("Simplify tolerance"), self.simplify)
+        self.close_curve = QCheckBox(_("End the curve with zero thrust"))
         self.close_curve.setChecked(True)
-        self.close_curve.setToolTip(self.tr("Append a final zero-thrust point (required by the ENG format)."))
+        self.close_curve.setToolTip(_("Append a final zero-thrust point (required by the ENG format)."))
         form.addRow("", self.close_curve)
-        self.show_mask = QCheckBox(self.tr("Show detected pixels"))
-        self.show_mask.setToolTip(self.tr("Overlay the pixels matching the colour in magenta."))
+        self.show_mask = QCheckBox(_("Show detected pixels"))
+        self.show_mask.setToolTip(_("Overlay the pixels matching the colour in magenta."))
         self.show_mask.toggled.connect(self._refresh_mask)
         form.addRow("", self.show_mask)
         buttons = QGridLayout()
-        self.extract_button = self._button(self.tr("Extract curve"), self.tr("Run the automatic extraction."), self._extract, "digitize")
+        self.extract_button = self._button(_("Extract curve"), _("Run the automatic extraction."), self._extract, "digitize")
         buttons.addWidget(self.extract_button, 0, 0)
-        buttons.addWidget(self._button(self.tr("Edit points"), self.tr("Correct the extracted points manually."),
+        buttons.addWidget(self._button(_("Edit points"), _("Correct the extracted points manually."),
                                        lambda: self._set_mode(ViewMode.EDIT_POINTS), "add_point"), 0, 1)
-        buttons.addWidget(self._button(self.tr("Remove outliers"), self.tr("Remove aberrant points from the current curve."),
+        buttons.addWidget(self._button(_("Remove outliers"), _("Remove aberrant points from the current curve."),
                                        self._remove_outliers), 1, 0)
-        buttons.addWidget(self._button(self.tr("Clear points"), self.tr("Delete every extracted point."), self._clear_points), 1, 1)
+        buttons.addWidget(self._button(_("Clear points"), _("Delete every extracted point."), self._clear_points), 1, 1)
         form.addRow(buttons)
         self.tolerance.valueChanged.connect(self._on_tolerance)
         self._on_tolerance(self.tolerance.value())
@@ -343,8 +352,8 @@ class DigitizerWindow(QMainWindow):
     # ------------------------------------------------------------------
     def open_image_dialog(self) -> None:
         """Ask for an image file and load it."""
-        path, _ = QFileDialog.getOpenFileName(self, self.tr("Open thrust curve image"), self._start_dir,
-                                              self.tr(dig.SUPPORTED_IMAGE_FILTER))
+        path, _selected_filter = QFileDialog.getOpenFileName(self, _("Open thrust curve image"), self._start_dir,
+                                              _(dig.SUPPORTED_IMAGE_FILTER))
         if path:
             self.load_image(path)
 
@@ -364,7 +373,7 @@ class DigitizerWindow(QMainWindow):
         self.calibration.clear()
         self._set_pixels(np.empty((0, 2)))
         self.view.set_image(image, fit=True)
-        self.setWindowTitle(self.tr("Curve Digitizer - %1").replace("%1", Path(path).name))
+        self.setWindowTitle(_("Curve Digitizer - {name}").format(name=Path(path).name))
         self._refresh_calibration()
         self.tabs.setCurrentIndex(0)
         logger.info("Digitizer image loaded: %s (%dx%d)", path, image.shape[1], image.shape[0])
@@ -382,8 +391,8 @@ class DigitizerWindow(QMainWindow):
     def _confirm_geometry_change(self) -> bool:
         if not self.calibration.points and not len(self._pixels):
             return True
-        answer = QMessageBox.question(self, self.tr("Image correction"),
-                                      self.tr("Changing the image geometry clears the calibration and the extracted points. Continue?"))
+        answer = QMessageBox.question(self, _("Image correction"),
+                                      _("Changing the image geometry clears the calibration and the extracted points. Continue?"))
         return answer == QMessageBox.StandardButton.Yes
 
     def _push_geometry(self, image: np.ndarray) -> None:
@@ -407,7 +416,7 @@ class DigitizerWindow(QMainWindow):
         try:
             self._push_geometry(dig.crop(self._base, rect))
         except ValueError as exc:
-            reporter().warning(self, self.tr("Crop"), str(exc))
+            reporter().warning(self, _("Crop"), str(exc))
 
     def _on_perspective(self, corners: list) -> None:
         self._set_mode(ViewMode.NAVIGATE)
@@ -416,7 +425,7 @@ class DigitizerWindow(QMainWindow):
         try:
             self._push_geometry(dig.correct_perspective(self._base, corners))
         except ValueError as exc:
-            reporter().warning(self, self.tr("Perspective"), str(exc))
+            reporter().warning(self, _("Perspective"), str(exc))
 
     def _undo_geometry(self) -> None:
         if self._history and self._confirm_geometry_change():
@@ -463,7 +472,7 @@ class DigitizerWindow(QMainWindow):
         worker = TaskWorker(dig.apply_corrections, self._base, self._photometric_settings())
         worker.signals.finished.connect(lambda image: self._on_photometric_done(image, fit))
         worker.signals.failed.connect(lambda exc: reporter().error(self, exc))
-        self.statusBar().showMessage(self.tr("Processing image..."))
+        self.statusBar().showMessage(_("Processing image..."))
         self._pool.start(worker)
 
     def _on_photometric_done(self, image: np.ndarray, fit: bool) -> None:
@@ -479,7 +488,7 @@ class DigitizerWindow(QMainWindow):
     # ------------------------------------------------------------------
     def _set_mode(self, mode: ViewMode) -> None:
         self.view.set_mode(mode)
-        self.mode_label.setText(self.tr(_MODE_HINTS[mode]))
+        self.mode_label.setText(_(_MODE_HINTS[mode]))
 
     def _on_cursor(self, x: float, y: float) -> None:
         text = f"x = {x:.1f} px, y = {y:.1f} px"
@@ -538,22 +547,22 @@ class DigitizerWindow(QMainWindow):
         table.blockSignals(True)
         table.setRowCount(len(self.calibration.points))
         for row, point in enumerate(self.calibration.points):
-            values = (point.label, f"{point.px:.1f}", f"{point.py:.1f}", f"{point.time_s:g}", f"{point.thrust_n:g}")
+            values = (_(point.label), f"{point.px:.1f}", f"{point.py:.1f}", f"{point.time_s:g}", f"{point.thrust_n:g}")
             for column, value in enumerate(values):
                 item = QTableWidgetItem(value)
                 if column < 3:
                     item.setFlags(item.flags() & ~Qt.ItemFlag.ItemIsEditable)
                 table.setItem(row, column, item)
         table.blockSignals(False)
-        self.view.set_calibration_markers([(p.px, p.py, p.label) for p in self.calibration.points])
+        self.view.set_calibration_markers([(p.px, p.py, _(p.label)) for p in self.calibration.points])
         if self.calibration.is_ready():
             rms = self.calibration.rms_error()
-            text = self.tr("✔ Calibration ready.")
+            text = _("✔ Calibration ready.")
             if len(self.calibration.points) > 3:
-                text += " " + self.tr("Fit residual: %1 px.").replace("%1", f"{rms:.2f}")
+                text += " " + _("Fit residual: {rms} px.").format(rms=f"{rms:.2f}")
             self.calibration_status.setStyleSheet("color: #2E8B57;")
         else:
-            text = self.tr("Define the origin, a time-axis point and a thrust-axis point.")
+            text = _("Define the origin, a time-axis point and a thrust-axis point.")
             self.calibration_status.setStyleSheet("color: #B9770E;")
         self.calibration_status.setText(text)
         if len(self._pixels):
@@ -627,12 +636,12 @@ class DigitizerWindow(QMainWindow):
         if self._display is None or self._busy:
             return
         if not self.calibration.is_ready():
-            reporter().warning(self, self.tr("Calibration"), self.tr("Calibrate the axes before extracting the curve (tab 2)."))
+            reporter().warning(self, _("Calibration"), _("Calibrate the axes before extracting the curve (tab 2)."))
             self.tabs.setCurrentIndex(1)
             return
         self._busy = True
         self._update_state()
-        self.statusBar().showMessage(self.tr("Extracting the curve..."))
+        self.statusBar().showMessage(_("Extracting the curve..."))
         worker = TaskWorker(dig.digitize, self._display, self.calibration, self._collect_settings())
         worker.signals.finished.connect(self._on_extracted)
         worker.signals.failed.connect(self._on_extract_failed)
@@ -641,8 +650,7 @@ class DigitizerWindow(QMainWindow):
     def _on_extracted(self, result: dig.DigitizerResult) -> None:
         self._busy = False
         self.statusBar().showMessage(
-            self.tr("%1 curve pixels found, %2 outlier(s) removed.").replace("%1", str(len(result.pixels)))
-            .replace("%2", str(result.removed_outliers)), 6000)
+            _("{pixels} curve pixels found, {outliers} outlier(s) removed.").format(pixels=str(len(result.pixels)), outliers=str(result.removed_outliers)), 6000)
         self._set_pixels(result.pixels)
 
     def _on_extract_failed(self, exc: Exception) -> None:
@@ -650,7 +658,7 @@ class DigitizerWindow(QMainWindow):
         self.statusBar().clearMessage()
         self._update_state()
         if isinstance(exc, (ValueError, CalibrationError)):
-            reporter().warning(self, self.tr("Extraction"), str(exc))
+            reporter().warning(self, _("Extraction"), str(exc))
         else:
             reporter().error(self, exc)
 
@@ -660,7 +668,7 @@ class DigitizerWindow(QMainWindow):
         keep = dig.remove_outliers(self._pixels[:, 1], threshold=max(0.5, self.outliers.value() or 3.0))
         removed = int((~keep).sum())
         self._set_pixels(self._pixels[keep])
-        self.statusBar().showMessage(self.tr("%1 outlier(s) removed.").replace("%1", str(removed)), 4000)
+        self.statusBar().showMessage(_("{count} outlier(s) removed.").format(count=str(removed)), 4000)
 
     def _clear_points(self) -> None:
         self._set_pixels(np.empty((0, 2)))
@@ -688,19 +696,17 @@ class DigitizerWindow(QMainWindow):
         if self._points:
             ax.plot([p.time_s for p in self._points], [p.thrust_n for p in self._points], ".-", markersize=3, color="#1F77B4")
             ax.fill_between([p.time_s for p in self._points], [p.thrust_n for p in self._points], alpha=0.12)
-        ax.set_xlabel("Time (s)", fontsize=8)
-        ax.set_ylabel("Thrust (N)", fontsize=8)
+        ax.set_xlabel(_("Time (s)"), fontsize=8)
+        ax.set_ylabel(_("Thrust (N)"), fontsize=8)
         ax.tick_params(labelsize=7)
         ax.grid(True, linestyle="--", alpha=0.5)
         self.canvas.draw_idle()
         if self._points:
             impulse = total_impulse(self._points)
             peak = max(p.thrust_n for p in self._points)
-            self.stats.setText(self.tr("%1 points · total impulse %2 N.s · max thrust %3 N · duration %4 s")
-                               .replace("%1", str(len(self._points))).replace("%2", f"{impulse:.3f}")
-                               .replace("%3", f"{peak:.3f}").replace("%4", f"{self._points[-1].time_s:.3f}"))
+            self.stats.setText(_("{count} points · total impulse {impulse} N.s · max thrust {peak} N · duration {duration} s").format(count=str(len(self._points)), impulse=f"{impulse:.3f}", peak=f"{peak:.3f}", duration=f"{self._points[-1].time_s:.3f}"))
         else:
-            self.stats.setText(self.tr("No digitized point yet."))
+            self.stats.setText(_("No digitized point yet."))
 
     def _update_state(self) -> None:
         has_image = self._display is not None
@@ -721,8 +727,8 @@ class DigitizerWindow(QMainWindow):
 
     def closeEvent(self, event: QCloseEvent) -> None:  # noqa: N802
         if self._points and not self._transferred and self.isVisible():
-            answer = QMessageBox.question(self, self.tr("Close digitizer"),
-                                          self.tr("The digitized curve has not been transferred. Close anyway?"))
+            answer = QMessageBox.question(self, _("Close digitizer"),
+                                          _("The digitized curve has not been transferred. Close anyway?"))
             if answer != QMessageBox.StandardButton.Yes:
                 event.ignore()
                 return

@@ -8,6 +8,8 @@ every invalid row instead of silently dropping it.
 
 from __future__ import annotations
 
+from localization import _
+
 import math
 from dataclasses import dataclass, field
 from typing import Any, Optional, Sequence
@@ -118,7 +120,7 @@ class ColumnMapping:
                 False, or if no valid point remains.
         """
         if self.time_column == self.thrust_column:
-            raise ValidationError("Time and Thrust must be mapped to two different columns.")
+            raise ValidationError(_('Time and Thrust must be mapped to two different columns.'))
         result = ConversionResult()
         for index in range(len(table.rows)):
             raw_time = table.cell(index, self.time_column)
@@ -133,10 +135,10 @@ class ColumnMapping:
         if result.invalid_rows and not skip_invalid:
             first_row, first_reason = result.invalid_rows[0]
             raise ValidationError(
-                f"{len(result.invalid_rows)} invalid row(s). First: row {first_row + 1}: {first_reason}"
+                _('{count} invalid row(s). First: row {first_row}: {first_reason}').format(count=len(result.invalid_rows), first_row=first_row + 1, first_reason=first_reason)
             )
         if not result.points:
-            raise ValidationError("No valid numeric data found in the selected columns.")
+            raise ValidationError(_('No valid numeric data found in the selected columns.'))
         return result
 
     def _convert_row(self, raw_time: Cell, raw_thrust: Cell, result: ConversionResult) -> str:

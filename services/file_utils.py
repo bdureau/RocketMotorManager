@@ -8,6 +8,8 @@
 
 from __future__ import annotations
 
+from localization import _
+
 import os
 import tempfile
 from pathlib import Path
@@ -26,11 +28,11 @@ def read_bytes(path: PathLike) -> bytes:
     try:
         return Path(path).read_bytes()
     except FileNotFoundError as exc:
-        raise FileAccessError(f"File not found: {path}") from exc
+        raise FileAccessError(_('File not found: {path}').format(path=path)) from exc
     except PermissionError as exc:
-        raise FileAccessError(f"Permission denied while reading: {path}") from exc
+        raise FileAccessError(_('Permission denied while reading: {path}').format(path=path)) from exc
     except OSError as exc:
-        raise FileAccessError(f"Cannot read '{path}': {exc.strerror or exc}") from exc
+        raise FileAccessError(_("Cannot read '{path}': {reason}").format(path=path, reason=exc.strerror or exc)) from exc
 
 
 def decode_text(data: bytes, encodings: Iterable[str] = COMMON_ENCODINGS) -> tuple[str, str]:
@@ -55,7 +57,7 @@ def read_text(path: PathLike, encoding: str | None = None) -> tuple[str, str]:
         try:
             return data.decode(encoding), encoding
         except (UnicodeDecodeError, LookupError) as exc:
-            raise FileAccessError(f"Cannot decode '{path}' as {encoding}: {exc}") from exc
+            raise FileAccessError(_("Cannot decode '{path}' as {encoding}: {value}").format(path=path, encoding=encoding, value=exc)) from exc
     return decode_text(data)
 
 
@@ -77,9 +79,9 @@ def atomic_write_bytes(path: PathLike, data: bytes) -> None:
                 os.remove(temp_name)
             raise
     except PermissionError as exc:
-        raise FileAccessError(f"Permission denied while writing: {target}") from exc
+        raise FileAccessError(_('Permission denied while writing: {target}').format(target=target)) from exc
     except OSError as exc:
-        raise FileAccessError(f"Cannot write '{target}': {exc.strerror or exc}") from exc
+        raise FileAccessError(_("Cannot write '{target}': {reason}").format(target=target, reason=exc.strerror or exc)) from exc
 
 
 def atomic_write_text(path: PathLike, text: str, encoding: str = "utf-8", newline: str = "\n") -> None:
@@ -89,7 +91,7 @@ def atomic_write_text(path: PathLike, text: str, encoding: str = "utf-8", newlin
     try:
         data = text.encode(encoding)
     except UnicodeEncodeError as exc:
-        raise FileAccessError(f"Some characters cannot be encoded as {encoding}: {exc}") from exc
+        raise FileAccessError(_('Some characters cannot be encoded as {encoding}: {value}').format(encoding=encoding, value=exc)) from exc
     atomic_write_bytes(path, data)
 
 

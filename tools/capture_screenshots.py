@@ -1,6 +1,10 @@
 """Capture screenshots of the application for the user manual.
 
-Run from the project root:  ``python tools/capture_screenshots.py``
+Run from the project root::
+
+    python tools/capture_screenshots.py                 # English -> documentation/screenshots/en
+    python tools/capture_screenshots.py --lang fr       # French  -> documentation/screenshots/fr
+    python tools/capture_screenshots.py --lang all      # every language (one process each)
 
 Works without a display (offscreen platform). Preferences are written to a
 temporary folder so the user's settings are untouched.
@@ -24,13 +28,14 @@ import cv2  # noqa: E402
 import numpy as np  # noqa: E402
 from PyQt6.QtWidgets import QApplication, QWidget  # noqa: E402
 
-OUTPUT = ROOT / "documentation" / "screenshots"
+SCREENSHOTS = ROOT / "documentation" / "screenshots"
+OUTPUT = SCREENSHOTS / "en"
 
 
 def save(widget: QWidget, name: str) -> None:
     """Grab a widget to PNG."""
     QApplication.processEvents()
-    widget.grab().save(str(OUTPUT / f"{name}.png"))
+    widget.grab().save(str(OUTPUT / f"{name}.png"))  # OUTPUT may be redirected by --out
     print("captured", name)
 
 
@@ -59,8 +64,29 @@ def synthetic_graph() -> np.ndarray:
 
 
 def main() -> None:
+    global OUTPUT  # redirected by --out (script-level setting)
+    import argparse
+
+    import localization
+    from application.translator import TranslationManager
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--lang", default="en", help="interface language (en, fr, de, es, it, nl, pl, pt, ru) or 'all'")
+    parser.add_argument("--out", default=None, help="output folder (default: documentation/screenshots/<lang>)")
+    args = parser.parse_args()
+    if args.lang == "all":
+        import subprocess
+
+        for language in localization.LANGUAGES:
+            subprocess.run([sys.executable, __file__, "--lang", language], check=True)
+        return
+    if args.lang not in localization.LANGUAGES:
+        parser.error(f"unknown language '{args.lang}'")
+    OUTPUT = Path(args.out) if args.out else SCREENSHOTS / args.lang
     OUTPUT.mkdir(parents=True, exist_ok=True)
     app = QApplication.instance() or QApplication(sys.argv[:1])
+    localization.install(args.lang)
+    TranslationManager().install(app, args.lang)
     from application.application_controller import ApplicationController
     from services import image_digitizer as dig
     from ui.dialogs.analysis_dialog import AnalysisDialog

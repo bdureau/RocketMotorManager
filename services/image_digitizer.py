@@ -17,6 +17,8 @@ Workflow:
 
 from __future__ import annotations
 
+from localization import N_, _
+
 import logging
 from dataclasses import dataclass, field
 from typing import Optional, Sequence
@@ -31,7 +33,7 @@ from services.thrust_analysis import resample, simplify
 
 logger = logging.getLogger(__name__)
 
-SUPPORTED_IMAGE_FILTER = "Images (*.png *.jpg *.jpeg *.tif *.tiff *.bmp)"
+SUPPORTED_IMAGE_FILTER = N_("Images (*.png *.jpg *.jpeg *.tif *.tiff *.bmp)")
 DENOISE_METHODS = ("none", "median", "gaussian", "bilateral", "nlmeans")
 
 Point2D = tuple[float, float]
@@ -51,7 +53,7 @@ def load_image(path: PathLike) -> np.ndarray:
     data = np.frombuffer(read_bytes(path), dtype=np.uint8)
     image = cv2.imdecode(data, cv2.IMREAD_UNCHANGED)
     if image is None:
-        raise FileFormatError(f"Unsupported or corrupted image file: {path}")
+        raise FileFormatError(_('Unsupported or corrupted image file: {path}').format(path=path))
     return normalize_image(image)
 
 
@@ -93,7 +95,7 @@ def order_quad(points: Sequence[Point2D]) -> np.ndarray:
     """Order four points as top-left, top-right, bottom-right, bottom-left."""
     pts = np.array(points, dtype=np.float32)
     if pts.shape != (4, 2):
-        raise ValueError("Perspective correction needs exactly four points.")
+        raise ValueError(_('Perspective correction needs exactly four points.'))
     sums, diffs = pts.sum(axis=1), np.diff(pts, axis=1).ravel()
     return np.array([pts[np.argmin(sums)], pts[np.argmin(diffs)], pts[np.argmax(sums)], pts[np.argmax(diffs)]],
                     dtype=np.float32)
@@ -106,7 +108,7 @@ def correct_perspective(image: np.ndarray, corners: Sequence[Point2D]) -> np.nda
     width = int(round(max(np.linalg.norm(tr - tl), np.linalg.norm(br - bl))))
     height = int(round(max(np.linalg.norm(bl - tl), np.linalg.norm(br - tr))))
     if width < 10 or height < 10:
-        raise ValueError("The perspective quadrilateral is too small.")
+        raise ValueError(_('The perspective quadrilateral is too small.'))
     target = np.array([[0, 0], [width - 1, 0], [width - 1, height - 1], [0, height - 1]], dtype=np.float32)
     matrix = cv2.getPerspectiveTransform(quad, target)
     return cv2.warpPerspective(image, matrix, (width, height), flags=cv2.INTER_CUBIC,
@@ -135,7 +137,7 @@ def crop(image: np.ndarray, rect: Rect) -> np.ndarray:
     x0, y0 = max(0, int(x)), max(0, int(y))
     x1, y1 = min(width, int(x + w)), min(height, int(y + h))
     if x1 - x0 < 5 or y1 - y0 < 5:
-        raise ValueError("The crop rectangle is too small.")
+        raise ValueError(_('The crop rectangle is too small.'))
     return image[y0:y1, x0:x1].copy()
 
 
@@ -239,11 +241,11 @@ class AxisCalibration:
             CalibrationError: If fewer than three valid points exist.
         """
         if len(self.points) < 3:
-            raise CalibrationError("Calibration needs the origin, the time-axis and the thrust-axis reference points.")
+            raise CalibrationError(_('Calibration needs the origin, the time-axis and the thrust-axis reference points.'))
         if not self.is_ready():
-            raise CalibrationError("Calibration points are aligned or have identical values; the mapping is undefined.")
+            raise CalibrationError(_('Calibration points are aligned or have identical values; the mapping is undefined.'))
         pixels, physical = self._design()
-        solution, *_ = np.linalg.lstsq(pixels, physical, rcond=None)
+        solution = np.linalg.lstsq(pixels, physical, rcond=None)[0]
         return solution.T
 
     def pixel_to_physical(self, pixels: np.ndarray) -> np.ndarray:
@@ -284,7 +286,7 @@ def color_at(image: np.ndarray, x: float, y: float, radius: int = 1) -> tuple[in
     y0, y1 = max(0, int(y) - radius), min(height, int(y) + radius + 1)
     patch = image[y0:y1, x0:x1].reshape(-1, 3)
     if patch.size == 0:
-        raise ValueError("Point outside the image.")
+        raise ValueError(_('Point outside the image.'))
     return tuple(int(v) for v in np.median(patch, axis=0))  # type: ignore[return-value]
 
 
@@ -326,7 +328,7 @@ def _roi(image: np.ndarray, roi: Optional[Rect]) -> np.ndarray:
 
 def clean_mask(mask: np.ndarray, min_area: int = 4) -> np.ndarray:
     """Remove isolated specks smaller than ``min_area`` pixels."""
-    count, labels, stats, _ = cv2.connectedComponentsWithStats(mask.astype(np.uint8), connectivity=8)
+    count, labels, stats, _centroids = cv2.connectedComponentsWithStats(mask.astype(np.uint8), connectivity=8)
     keep = np.zeros(count, dtype=bool)
     keep[1:] = stats[1:, cv2.CC_STAT_AREA] >= min_area
     return keep[labels]
@@ -438,7 +440,7 @@ def digitize(image: np.ndarray, calibration: AxisCalibration, settings: Digitize
     mask = clean_mask(mask, settings.min_blob_area)
     pixels = extract_curve_pixels(mask, roi, settings.axis_margin_px, settings.mode)
     if len(pixels) == 0:
-        raise ValueError("No pixel of the selected colour was found. Increase the tolerance or pick the curve colour.")
+        raise ValueError(_('No pixel of the selected colour was found. Increase the tolerance or pick the curve colour.'))
     keep = remove_outliers(pixels[:, 1], threshold=settings.outlier_threshold)
     removed = int((~keep).sum())
     pixels = pixels[keep]

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from localization import _
+
 import platform
 import sys
 from typing import Optional
@@ -19,16 +21,16 @@ class AboutDialog(QDialog):
 
     def __init__(self, parent: Optional[QWidget] = None) -> None:
         super().__init__(parent)
-        self.setWindowTitle(self.tr("About %1").replace("%1", APP_NAME))
+        self.setWindowTitle(_("About {app}").format(app=APP_NAME))
         logo = QLabel()
         logo.setPixmap(icon("app").pixmap(96, 96))
         logo.setAlignment(Qt.AlignmentFlag.AlignTop)
         text = QLabel(
-            f"<h2>{APP_NAME}</h2><p><b>Version {APP_VERSION}</b></p><p>{APP_DESCRIPTION}</p>"
+            f"<h2>{APP_NAME}</h2><p><b>{_('Version {version}').format(version=APP_VERSION)}</b></p><p>{_(APP_DESCRIPTION)}</p>"
             f"<p>{APP_COPYRIGHT}</p>"
             f"<p style='color:gray;font-size:8pt'>Python {platform.python_version()} · Qt {QT_VERSION_STR} · "
             f"PyQt {PYQT_VERSION_STR} · {platform.system()} {platform.release()}<br>"
-            f"Log folder: {log_dir()}<br>Executable: {sys.executable}</p>"
+            f"{_('Log folder: {path}').format(path=log_dir())}<br>{_('Executable: {path}').format(path=sys.executable)}</p>"
         )
         text.setWordWrap(True)
         text.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)

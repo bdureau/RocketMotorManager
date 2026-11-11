@@ -21,6 +21,8 @@ Conventions (identical to the RASP/ENG format used by OpenRocket/RockSim):
 
 from __future__ import annotations
 
+from localization import N_, _
+
 import math
 from dataclasses import dataclass, field
 from typing import Optional, Sequence
@@ -32,8 +34,8 @@ from models.thrust_point import ThrustPoint
 from models.units import STANDARD_GRAVITY
 
 BURN_TIME_METHODS: dict[str, str] = {
-    "curve": "Full powered curve",
-    "threshold": "5 % of maximum thrust (NAR)",
+    "curve": N_("Full powered curve"),
+    "threshold": N_("5 % of maximum thrust (NAR)"),
 }
 
 #: Fraction of the maximum thrust used by the "threshold" burn time method.
@@ -74,17 +76,17 @@ class MotorCharacteristics:
     def as_rows(self) -> list[tuple[str, str, Optional[float], str]]:
         """Return ``(key, caption, value, unit)`` rows in display order."""
         return [
-            ("total_impulse_ns", "Total impulse", self.total_impulse_ns, "N.s"),
-            ("maximum_thrust_n", "Maximum thrust", self.maximum_thrust_n, "N"),
-            ("average_thrust_n", "Average thrust", self.average_thrust_n, "N"),
-            ("burn_time_s", "Burn time", self.burn_time_s, "s"),
-            ("initial_thrust_n", "Initial thrust", self.initial_thrust_n, "N"),
-            ("final_thrust_n", "Final thrust", self.final_thrust_n, "N"),
-            ("time_to_max_thrust_s", "Time to maximum thrust", self.time_to_max_thrust_s, "s"),
-            ("initial_mass_g", "Initial motor mass", self.initial_mass_g, "g"),
-            ("propellant_mass_g", "Propellant mass", self.propellant_mass_g, "g"),
-            ("propellant_mass_fraction", "Propellant mass fraction", self.propellant_mass_fraction, "-"),
-            ("specific_impulse_s", "Specific impulse", self.specific_impulse_s, "s"),
+            ("total_impulse_ns", N_("Total impulse"), self.total_impulse_ns, "N.s"),
+            ("maximum_thrust_n", N_("Maximum thrust"), self.maximum_thrust_n, "N"),
+            ("average_thrust_n", N_("Average thrust"), self.average_thrust_n, "N"),
+            ("burn_time_s", N_("Burn time"), self.burn_time_s, "s"),
+            ("initial_thrust_n", N_("Initial thrust"), self.initial_thrust_n, "N"),
+            ("final_thrust_n", N_("Final thrust"), self.final_thrust_n, "N"),
+            ("time_to_max_thrust_s", N_("Time to maximum thrust"), self.time_to_max_thrust_s, "s"),
+            ("initial_mass_g", N_("Initial motor mass"), self.initial_mass_g, "g"),
+            ("propellant_mass_g", N_("Propellant mass"), self.propellant_mass_g, "g"),
+            ("propellant_mass_fraction", N_("Propellant mass fraction"), self.propellant_mass_fraction, "-"),
+            ("specific_impulse_s", N_("Specific impulse"), self.specific_impulse_s, "s"),
         ]
 
 
@@ -100,9 +102,9 @@ def curve_arrays(points: Sequence[ThrustPoint]) -> tuple[np.ndarray, np.ndarray]
     times = np.array([p.time_s for p in points], dtype=float)
     thrusts = np.array([p.thrust_n for p in points], dtype=float)
     if not (np.all(np.isfinite(times)) and np.all(np.isfinite(thrusts))):
-        raise ValueError("The thrust curve contains non-numeric values.")
+        raise ValueError(_('The thrust curve contains non-numeric values.'))
     if times.size > 1 and np.any(np.diff(times) <= 0):
-        raise ValueError("Thrust points are not in strictly increasing time order.")
+        raise ValueError(_('Thrust points are not in strictly increasing time order.'))
     if times.size and times[0] > 0.0:
         times = np.insert(times, 0, 0.0)
         thrusts = np.insert(thrusts, 0, 0.0)
@@ -126,7 +128,7 @@ def burn_window(points: Sequence[ThrustPoint], method: str = "curve") -> tuple[f
     times, thrusts = curve_arrays(points)
     positive = np.nonzero(thrusts > 0.0)[0]
     if positive.size == 0:
-        raise ValueError("The thrust curve has no positive thrust.")
+        raise ValueError(_('The thrust curve has no positive thrust.'))
     if method == "threshold":
         return _threshold_window(times, thrusts)
     first, last = int(positive[0]), int(positive[-1])
@@ -190,7 +192,7 @@ class MotorCalculator:
 
     def __init__(self, burn_time_method: str = "curve") -> None:
         if burn_time_method not in BURN_TIME_METHODS:
-            raise ValueError(f"Unknown burn time method '{burn_time_method}'")
+            raise ValueError(_("Unknown burn time method '{burn_time_method}'").format(burn_time_method=burn_time_method))
         self.burn_time_method = burn_time_method
 
     def analyse(self, motor: Motor) -> MotorCharacteristics:
@@ -208,17 +210,17 @@ class MotorCalculator:
         result.propellant_mass_g = meta.propellant_mass_g
         result.initial_mass_g = meta.total_mass_g
         if meta.propellant_mass_g is None:
-            result.unavailable["propellant_mass_g"] = "Propellant mass not specified."
+            result.unavailable["propellant_mass_g"] = _('Propellant mass not specified.')
         elif meta.propellant_mass_g <= 0:
-            result.warnings.append("Propellant mass must be greater than zero.")
+            result.warnings.append(_('Propellant mass must be greater than zero.'))
         if result.initial_mass_g is None:
-            result.unavailable["initial_mass_g"] = "Total motor mass not specified."
+            result.unavailable["initial_mass_g"] = _('Total motor mass not specified.')
         if (
             result.initial_mass_g is not None
             and meta.propellant_mass_g is not None
             and meta.propellant_mass_g > result.initial_mass_g
         ):
-            result.warnings.append("Propellant mass is greater than the total motor mass.")
+            result.warnings.append(_('Propellant mass is greater than the total motor mass.'))
 
     # -- curve ------------------------------------------------------------
     def _analyse_curve(self, motor: Motor, result: MotorCharacteristics) -> None:
@@ -229,7 +231,7 @@ class MotorCalculator:
         )
         if len(points) < 2:
             for key in curve_keys:
-                result.unavailable[key] = "At least two thrust points are required."
+                result.unavailable[key] = _('At least two thrust points are required.')
             return
         try:
             times, thrusts = curve_arrays(points)
@@ -238,7 +240,7 @@ class MotorCalculator:
                 result.unavailable[key] = str(exc)
             return
         if np.any(thrusts < 0):
-            result.warnings.append("The curve contains negative thrust values.")
+            result.warnings.append(_('The curve contains negative thrust values.'))
         result.total_impulse_ns = _trapezoid(thrusts, times)
         peak = int(np.argmax(thrusts))
         result.maximum_thrust_n = float(thrusts[peak])
@@ -246,7 +248,7 @@ class MotorCalculator:
         result.initial_thrust_n = points[0].thrust_n
         result.final_thrust_n = points[-1].thrust_n
         if points[-1].thrust_n != 0.0:
-            result.warnings.append("The last thrust point is not zero: the curve may be truncated.")
+            result.warnings.append(_('The last thrust point is not zero: the curve may be truncated.'))
         self._analyse_burn(points, result)
 
     def _analyse_burn(self, points: Sequence[ThrustPoint], result: MotorCharacteristics) -> None:
@@ -259,7 +261,7 @@ class MotorCalculator:
         result.burn_start_s, result.burn_end_s = start, end
         result.burn_time_s = end - start
         if result.burn_time_s <= 0:
-            result.unavailable["average_thrust_n"] = "Burn time is zero."
+            result.unavailable["average_thrust_n"] = _('Burn time is zero.')
             return
         result.average_thrust_n = (result.total_impulse_ns or 0.0) / result.burn_time_s
 
@@ -271,13 +273,13 @@ class MotorCalculator:
             result.propellant_mass_fraction = prop / total
         else:
             result.unavailable["propellant_mass_fraction"] = (
-                "Requires propellant mass and total motor mass."
+                _('Requires propellant mass and total motor mass.')
             )
         if result.total_impulse_ns is not None and prop and prop > 0:
             result.specific_impulse_s = result.total_impulse_ns / (prop / 1000.0 * STANDARD_GRAVITY)
         else:
             result.unavailable["specific_impulse_s"] = (
-                "Requires the total impulse and a positive propellant mass."
+                _('Requires the total impulse and a positive propellant mass.')
             )
         if result.total_impulse_ns is not None and result.total_impulse_ns > 0:
             letter, percent = impulse_class(result.total_impulse_ns)

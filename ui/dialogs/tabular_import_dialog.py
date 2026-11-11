@@ -8,6 +8,8 @@ then validates. The converted points are available in :attr:`points`.
 
 from __future__ import annotations
 
+from localization import _
+
 import logging
 from typing import Optional
 
@@ -45,7 +47,7 @@ class TabularImportDialog(QDialog):
         self._table = TabularData()
         self._result: Optional[ConversionResult] = None
         self.points: list[ThrustPoint] = []
-        self.setWindowTitle(self.tr("Import %1 - preview").replace("%1", "CSV" if kind == "csv" else "Excel"))
+        self.setWindowTitle(_("Import {kind} - preview").format(kind="CSV" if kind == "csv" else "Excel"))
         self.resize(960, 640)
         self._build_ui()
         self._initial_load()
@@ -54,52 +56,52 @@ class TabularImportDialog(QDialog):
     # UI
     # ------------------------------------------------------------------
     def _build_ui(self) -> None:
-        options = QGroupBox(self.tr("Reading options"))
+        options = QGroupBox(_("Reading options"))
         options_form = QFormLayout(options)
-        self.header_check = QCheckBox(self.tr("First row contains column names"))
-        self.header_check.setToolTip(self.tr("Tick when the first row holds headers instead of numbers."))
+        self.header_check = QCheckBox(_("First row contains column names"))
+        self.header_check.setToolTip(_("Tick when the first row holds headers instead of numbers."))
         if self.kind == "csv":
             self.encoding_combo = QComboBox()
             self.encoding_combo.addItems(ENCODINGS)
-            self.encoding_combo.setToolTip(self.tr("Text encoding of the file (detected automatically)."))
+            self.encoding_combo.setToolTip(_("Text encoding of the file (detected automatically)."))
             self.separator_combo = QComboBox()
             for value, name in SEPARATOR_NAMES.items():
-                self.separator_combo.addItem(self.tr(name), value)
-            self.separator_combo.setToolTip(self.tr("Character separating the columns (detected automatically)."))
+                self.separator_combo.addItem(_(name), value)
+            self.separator_combo.setToolTip(_("Character separating the columns (detected automatically)."))
             self.decimal_combo = QComboBox()
-            self.decimal_combo.addItem(self.tr("Point (1.5)"), ".")
-            self.decimal_combo.addItem(self.tr("Comma (1,5)"), ",")
-            self.decimal_combo.setToolTip(self.tr("Decimal separator used in the numbers (detected automatically)."))
-            options_form.addRow(self.tr("Encoding"), self.encoding_combo)
-            options_form.addRow(self.tr("Column separator"), self.separator_combo)
-            options_form.addRow(self.tr("Decimal separator"), self.decimal_combo)
+            self.decimal_combo.addItem(_("Point (1.5)"), ".")
+            self.decimal_combo.addItem(_("Comma (1,5)"), ",")
+            self.decimal_combo.setToolTip(_("Decimal separator used in the numbers (detected automatically)."))
+            options_form.addRow(_("Encoding"), self.encoding_combo)
+            options_form.addRow(_("Column separator"), self.separator_combo)
+            options_form.addRow(_("Decimal separator"), self.decimal_combo)
         else:
             self.sheet_combo = QComboBox()
-            self.sheet_combo.setToolTip(self.tr("Worksheet containing the thrust data."))
-            options_form.addRow(self.tr("Worksheet"), self.sheet_combo)
+            self.sheet_combo.setToolTip(_("Worksheet containing the thrust data."))
+            options_form.addRow(_("Worksheet"), self.sheet_combo)
         options_form.addRow("", self.header_check)
 
-        mapping = QGroupBox(self.tr("Column mapping"))
+        mapping = QGroupBox(_("Column mapping"))
         mapping_form = QFormLayout(mapping)
         self.time_combo, self.thrust_combo = QComboBox(), QComboBox()
-        self.time_combo.setToolTip(self.tr("Column containing the time values."))
-        self.thrust_combo.setToolTip(self.tr("Column containing the thrust values."))
+        self.time_combo.setToolTip(_("Column containing the time values."))
+        self.thrust_combo.setToolTip(_("Column containing the thrust values."))
         self.time_unit = QComboBox()
         self.time_unit.addItems(units_for(Quantity.TIME))
-        self.time_unit.setToolTip(self.tr("Unit of the time column; values are converted to seconds."))
+        self.time_unit.setToolTip(_("Unit of the time column; values are converted to seconds."))
         self.thrust_unit = QComboBox()
         self.thrust_unit.addItems(units_for(Quantity.FORCE))
-        self.thrust_unit.setToolTip(self.tr("Unit of the thrust column; values are converted to Newtons."))
-        mapping_form.addRow(self.tr("Time column"), self._pair(self.time_combo, self.time_unit))
-        mapping_form.addRow(self.tr("Thrust column"), self._pair(self.thrust_combo, self.thrust_unit))
-        self.skip_invalid = QCheckBox(self.tr("Remove invalid rows"))
+        self.thrust_unit.setToolTip(_("Unit of the thrust column; values are converted to Newtons."))
+        mapping_form.addRow(_("Time column"), self._pair(self.time_combo, self.time_unit))
+        mapping_form.addRow(_("Thrust column"), self._pair(self.thrust_combo, self.thrust_unit))
+        self.skip_invalid = QCheckBox(_("Remove invalid rows"))
         self.skip_invalid.setChecked(True)
-        self.skip_invalid.setToolTip(self.tr("Invalid rows (highlighted in red) are skipped. Untick to refuse the import if any row is invalid."))
+        self.skip_invalid.setToolTip(_("Invalid rows (highlighted in red) are skipped. Untick to refuse the import if any row is invalid."))
         mapping_form.addRow("", self.skip_invalid)
 
         self.preview_table = QTableWidget()
         self.preview_table.setAlternatingRowColors(True)
-        self.preview_table.setToolTip(self.tr("Raw data preview. Rows in red cannot be converted."))
+        self.preview_table.setToolTip(_("Raw data preview. Rows in red cannot be converted."))
         self.figure = Figure(figsize=(3.5, 2.5), layout="tight")
         self.canvas = FigureCanvasQTAgg(self.figure)
         self.canvas.setMinimumWidth(300)
@@ -113,7 +115,7 @@ class TabularImportDialog(QDialog):
         middle.addWidget(self.preview_table, 3)
         middle.addWidget(self.canvas, 2)
         buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
-        buttons.button(QDialogButtonBox.StandardButton.Ok).setText(self.tr("Import"))
+        buttons.button(QDialogButtonBox.StandardButton.Ok).setText(_("Import"))
         buttons.accepted.connect(self._accept)
         buttons.rejected.connect(self.reject)
         self.ok_button = buttons.button(QDialogButtonBox.StandardButton.Ok)
@@ -232,7 +234,7 @@ class TabularImportDialog(QDialog):
         self._result = None
         self._highlight({})
         if self._table.column_count < 2:
-            self.status.setText(self.tr("At least two columns are needed (time and thrust)."))
+            self.status.setText(_("At least two columns are needed (time and thrust)."))
             self.ok_button.setEnabled(False)
             self._plot([])
             return
@@ -245,12 +247,11 @@ class TabularImportDialog(QDialog):
             return
         invalid = dict(self._result.invalid_rows)
         self._highlight(invalid)
-        message = self.tr("%1 valid point(s), %2 invalid row(s).").replace("%1", str(len(self._result.points))).replace(
-            "%2", str(len(invalid)))
+        message = _("{valid} valid point(s), {invalid} invalid row(s).").format(valid=str(len(self._result.points)), invalid=str(len(invalid)))
         if invalid and not self.skip_invalid.isChecked():
-            message += " " + self.tr("Tick 'Remove invalid rows' to import the valid points.")
+            message += " " + _("Tick 'Remove invalid rows' to import the valid points.")
         if any(b.time_s <= a.time_s for a, b in zip(self._result.points, self._result.points[1:])):
-            message += " " + self.tr("Warning: times are not strictly increasing (use Sort after import).")
+            message += " " + _("Warning: times are not strictly increasing (use Sort after import).")
         self.status.setText(message)
         self.ok_button.setEnabled(not invalid or self.skip_invalid.isChecked())
         self._plot(self._result.points)
@@ -270,8 +271,8 @@ class TabularImportDialog(QDialog):
         ax = self.figure.add_subplot(111)
         if points:
             ax.plot([p.time_s for p in points], [p.thrust_n for p in points], ".-", markersize=3)
-        ax.set_xlabel("Time (s)", fontsize=8)
-        ax.set_ylabel("Thrust (N)", fontsize=8)
+        ax.set_xlabel(_("Time (s)"), fontsize=8)
+        ax.set_ylabel(_("Thrust (N)"), fontsize=8)
         ax.tick_params(labelsize=7)
         ax.grid(True, linestyle="--", alpha=0.5)
         self.canvas.draw_idle()
@@ -280,7 +281,7 @@ class TabularImportDialog(QDialog):
         if self._result is None:
             return
         if self._result.invalid_rows and not self.skip_invalid.isChecked():
-            reporter().warning(self, self.tr("Invalid rows"), self.tr("Some rows are invalid. Tick 'Remove invalid rows' or fix the file."))
+            reporter().warning(self, _("Invalid rows"), _("Some rows are invalid. Tick 'Remove invalid rows' or fix the file."))
             return
         self.points = list(self._result.points)
         self.accept()

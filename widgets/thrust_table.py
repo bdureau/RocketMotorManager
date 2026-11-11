@@ -7,6 +7,8 @@ can be undone. Invalid rows (from the validation report) are highlighted.
 
 from __future__ import annotations
 
+from localization import N_, _, ngettext
+
 import re
 from typing import Any, Optional
 
@@ -54,7 +56,7 @@ def parse_clipboard_rows(text: str) -> list[ThrustPoint]:
 class ThrustTableModel(QAbstractTableModel):
     """Two-column (Time, Thrust) model over the document points."""
 
-    HEADERS = ("Time (s)", "Thrust (N)")
+    HEADERS = (N_("Time (s)"), N_("Thrust (N)"))
 
     def __init__(self, document: MotorDocument) -> None:
         super().__init__()
@@ -74,7 +76,7 @@ class ThrustTableModel(QAbstractTableModel):
         if role != Qt.ItemDataRole.DisplayRole:
             return None
         if orientation == Qt.Orientation.Horizontal:
-            return self.HEADERS[section]
+            return _(self.HEADERS[section])
         return str(section + 1)
 
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
@@ -92,8 +94,8 @@ class ThrustTableModel(QAbstractTableModel):
         if issue and role == Qt.ItemDataRole.ForegroundRole:
             return QBrush(QColor("#000000"))
         if role == Qt.ItemDataRole.ToolTipRole:
-            return issue[1] if issue else ("Time since ignition in seconds (>= 0, increasing)." if index.column() == 0
-                                           else "Thrust in Newtons (>= 0).")
+            return issue[1] if issue else (_("Time since ignition in seconds (>= 0, increasing).") if index.column() == 0
+                                           else _("Thrust in Newtons (>= 0)."))
         return None
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
@@ -157,17 +159,17 @@ class ThrustTableWidget(QWidget):
         self.view.verticalHeader().setDefaultSectionSize(22)
         self.view.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.view.customContextMenuRequested.connect(self._context_menu)
-        self.view.setToolTip(self.tr("Thrust points. Double-click a cell to edit it. Red rows contain errors, "
+        self.view.setToolTip(_("Thrust points. Double-click a cell to edit it. Red rows contain errors, "
                                      "yellow rows warnings. Ctrl+V pastes data copied from Excel."))
         self.view.selectionModel().currentRowChanged.connect(lambda current, _prev: self.row_selected.emit(current.row()))
 
         bar = QHBoxLayout()
         bar.setContentsMargins(0, 0, 0, 0)
         for icon_name, tip, slot in (
-            ("add_point", self.tr("Add a point after the selected row (Ctrl+Ins)"), self.add_point),
-            ("duplicate", self.tr("Duplicate the selected point (Ctrl+D)"), self.duplicate_point),
-            ("delete_point", self.tr("Delete the selected point(s) (Del)"), self.delete_selected),
-            ("sort", self.tr("Sort points chronologically"), self._document.sort_points),
+            ("add_point", _("Add a point after the selected row (Ctrl+Ins)"), self.add_point),
+            ("duplicate", _("Duplicate the selected point (Ctrl+D)"), self.duplicate_point),
+            ("delete_point", _("Delete the selected point(s) (Del)"), self.delete_selected),
+            ("sort", _("Sort points chronologically"), self._document.sort_points),
         ):
             button = QToolButton()
             button.setIcon(icon(icon_name))
@@ -280,15 +282,15 @@ class ThrustTableWidget(QWidget):
     def _context_menu(self, position) -> None:
         menu = QMenu(self)
         for text, icon_name, slot in (
-            (self.tr("Add point"), "add_point", self.add_point),
-            (self.tr("Duplicate point"), "duplicate", self.duplicate_point),
-            (self.tr("Delete selected point(s)"), "delete_point", self.delete_selected),
+            (_("Add point"), "add_point", self.add_point),
+            (_("Duplicate point"), "duplicate", self.duplicate_point),
+            (_("Delete selected point(s)"), "delete_point", self.delete_selected),
             (None, None, None),
-            (self.tr("Copy"), None, self.copy),
-            (self.tr("Paste"), None, self.paste),
+            (_("Copy"), None, self.copy),
+            (_("Paste"), None, self.paste),
             (None, None, None),
-            (self.tr("Sort chronologically"), "sort", self._document.sort_points),
-            (self.tr("Select all"), None, self.select_all),
+            (_("Sort chronologically"), "sort", self._document.sort_points),
+            (_("Select all"), None, self.select_all),
         ):
             if text is None:
                 menu.addSeparator()
@@ -298,4 +300,5 @@ class ThrustTableWidget(QWidget):
         menu.exec(self.view.viewport().mapToGlobal(position))
 
     def _update_count(self, _kind: str = "") -> None:
-        self.count_label.setText(self.tr("%n point(s)", "", self._document.motor.point_count()))
+        count = self._document.motor.point_count()
+        self.count_label.setText(ngettext("{n} point", "{n} points", count).format(n=count))

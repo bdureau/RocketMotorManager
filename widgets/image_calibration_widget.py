@@ -11,6 +11,8 @@ corners. The interaction depends on the current :class:`ViewMode`.
 
 from __future__ import annotations
 
+from localization import _
+
 from enum import Enum, auto
 from typing import Optional
 
@@ -79,7 +81,7 @@ class ImageCalibrationWidget(QGraphicsView):
         self._rubber_start: Optional[QPointF] = None
         self._drag_index: Optional[int] = None
         self._panning: Optional[QPointF] = None
-        self.setToolTip(self.tr("Mouse wheel: zoom. Middle button: pan. The active tool is shown in the status bar."))
+        self.setToolTip(_("Mouse wheel: zoom. Middle button: pan. The active tool is shown in the status bar."))
 
     # ------------------------------------------------------------------
     # Content
